@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WRAP 12 Principles Guide | RC2 Consulting</title>
+  <meta name="description" content="Comprehensive guide to WRAP's 12 Principles with explanations, examples, and best practices." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #0B2545;
+      --blue:       #1A4A8A;
+      --light-blue: #4A90E2;
+      --accent:     #C8922A;
+      --light-bg:   #F4F6FA;
+      --white:      #FFFFFF;
+      --text:       #1C2B3A;
+      --text-muted: #4A5568;
+      --border:     #D1D9E6;
+      --success:    #1A7A4E;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--light-bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #0A2847 0%, #1A4A8A 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 60px 24px 80px;
+      position: relative;
+    }
+
+    .rc2-badge {
+      display: inline-block;
+      background: var(--light-blue);
+      color: var(--white);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 8px 24px;
+      border-radius: 24px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.85);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Content Section */
+    .content {
+      max-width: 900px;
+      margin: -40px auto 60px;
+      padding: 0 24px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      padding: 48px;
+      text-align: center;
+    }
+
+    .card h2 {
+      font-size: 1.8rem;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+
+    .card-description {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    /* Features Grid */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin: 32px 0 40px;
+      text-align: left;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .feature-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .feature-text {
+      flex: 1;
+    }
+
+    .feature-text strong {
+      display: block;
+      color: var(--navy);
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+
+    .feature-text span {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Button */
+    .btn-launch {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--blue);
+      color: var(--white);
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 18px 40px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(26,74,138,0.3);
+    }
+
+    .btn-launch:hover {
+      background: var(--navy);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(26,74,138,0.4);
+    }
+
+    /* Info Section */
+    .info-section {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 24px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .info-card {
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .info-card .icon {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+    }
+
+    .info-card h3 {
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .info-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* How It Works */
+    .how-it-works {
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 40px;
+      margin-bottom: 48px;
+    }
+
+    .how-it-works h3 {
+      font-size: 1.5rem;
+      color: var(--navy);
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .step {
+      text-align: center;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background: var(--blue);
+      color: var(--white);
+      border-radius: 50%;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .step h4 {
+      font-size: 0.95rem;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .step p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Footer CTA */
+    .footer-cta {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 48px 24px;
+      margin-top: 60px;
+    }
+
+    .footer-cta h3 {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+
+    .footer-cta p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 24px;
+    }
+
+    .footer-cta a {
+      color: var(--white);
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 32px 24px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .footer strong {
+      color: var(--blue);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .card {
+        padding: 32px 24px;
+      }
+      .features {
+        grid-template-columns: 1fr;
+      }
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+      .steps {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="rc2-badge">RC2 CONSULTING</div>
+    <h1>WRAP 12 Principles Guide</h1>
+    <p>Complete Reference for Ethical Manufacturing Certification</p>
+  </section>
+
+  <!-- Main Content Card -->
+  <section class="content">
+    <div class="card">
+      <h2>Master WRAP's 12 Principles</h2>
+      <p class="card-description">
+        Comprehensive guide covering all 12 WRAP Principles with detailed explanations, 
+        real-world examples, common compliance gaps, and best practices. Your complete 
+        study resource for WRAP certification.
+      </p>
+
+      <!-- Features -->
+      <div class="features">
+        <div class="feature-item">
+          <div class="feature-icon">📚</div>
+          <div class="feature-text">
+            <strong>All 12 Principles</strong>
+            <span>From compliance with laws to security</span>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">✅</div>
+          <div class="feature-text">
+            <strong>Key Requirements</strong>
+            <span>What auditors verify at each principle</span>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">⚠️</div>
+          <div class="feature-text">
+            <strong>Common Gaps</strong>
+            <span>Typical mistakes facilities make</span>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">💡</div>
+          <div class="feature-text">
+            <strong>Best Practices</strong>
+            <span>How to implement each principle</span>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">🏭</div>
+          <div class="feature-text">
+            <strong>Real Examples</strong>
+            <span>Actual facility compliance scenarios</span>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">🖨️</div>
+          <div class="feature-text">
+            <strong>Print-Friendly</strong>
+            <span>Save or print for offline reference</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Launch Button -->
+      <a href="RC2_WRAP_12_Principles_Guide.html" class="btn-launch" target="_blank">
+        📖 Open Principles Guide
+      </a>
+
+      <p style="margin-top: 16px; font-size: 0.85rem; color: var(--text-muted);">
+        Opens in new tab • Free • No signup required
+      </p>
+    </div>
+  </section>
+
+  <!-- Info Cards -->
+  <section class="info-section">
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="icon">🎓</div>
+        <h3>Educational</h3>
+        <p>Learn what each principle means and how to demonstrate compliance.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="icon">📋</div>
+        <h3>Comprehensive</h3>
+        <p>Covers all requirements, common issues, and corrective actions.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="icon">🎯</div>
+        <h3>Practical</h3>
+        <p>Real facility examples and actionable implementation guidance.</p>
+      </div>
+    </div>
+
+    <!-- How It Works -->
+    <div class="how-it-works">
+      <h3>What's Included</h3>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h4>Explanation</h4>
+          <p>What each principle means</p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <h4>Requirements</h4>
+          <p>What auditors verify</p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <h4>Examples</h4>
+          <p>Real facility scenarios</p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <h4>Best Practices</h4>
+          <p>Implementation tips</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer CTA -->
+  <section class="footer-cta">
+    <h3>Need Help with WRAP Compliance?</h3>
+    <p>
+      RC2 Consulting provides expert guidance on implementing WRAP's 12 Principles.<br>
+      From policy development to audit preparation.
+    </p>
+    <p style="margin-top: 24px;">
+      <a href="mailto:info@rc2consulting.com">Contact Us for Support</a>
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p><strong>RC2 Consulting</strong> | Operations & Compliance Solutions</p>
+    <p style="margin-top: 8px;">
+      © 2026 RC2 Consulting. All rights reserved.
+    </p>
+  </footer>
+
+</body>
+</html>
