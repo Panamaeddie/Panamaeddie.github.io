@@ -10,17 +10,17 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy:       #0B2545;
-      --blue:       #1A4A8A;
-      --light-blue: #2563EB;
-      --accent:     #C8922A;
+      --navy:        #0B2545;
+      --blue:        #1A4A8A;
+      --light-blue:  #2563EB;
+      --accent:      #C8922A;
       --accent-light:#F0B429;
-      --light-bg:   #F4F6FA;
-      --white:      #FFFFFF;
-      --text:       #1C2B3A;
-      --text-muted: #4A5568;
-      --border:     #E2E8F0;
-      --success:    #1A7A4E;
+      --light-bg:    #F4F6FA;
+      --white:       #FFFFFF;
+      --text:        #1C2B3A;
+      --text-muted:  #4A5568;
+      --border:      #E2E8F0;
+      --success:     #1A7A4E;
     }
 
     body {
@@ -31,116 +31,120 @@
       margin: 0;
     }
 
-    /* ─── NAV ─── */
+    /* ══════════════════════════════
+       SHARED NAV — matches Google Sites
+    ══════════════════════════════ */
     .topnav {
       background: var(--navy);
-      padding: 0 32px;
+      padding: 0 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 56px;
+      height: 52px;
       position: sticky;
       top: 0;
       z-index: 200;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
     }
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: white;
-      text-decoration: none;
+    .nav-brand {
       display: flex;
       align-items: center;
-      gap: 2px;
+      gap: 8px;
+      text-decoration: none;
     }
-    .nav-logo sup {
-      font-size: 0.6rem;
-      color: var(--accent-light);
-      font-family: 'Source Sans 3', sans-serif;
+    .nav-logo-mark {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: white;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
       font-weight: 700;
-      letter-spacing: 1px;
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
-    .nav-subtitle {
-      font-size: 0.65rem;
-      color: rgba(255,255,255,0.5);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-left: 6px;
-      border-left: 1px solid rgba(255,255,255,0.2);
-      padding-left: 10px;
+    .nav-logo-mark sup { font-size: 0.5rem; vertical-align: super; }
+    .nav-brand-name {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 0.3px;
     }
     .nav-links {
       display: flex;
-      gap: 28px;
+      gap: 4px;
       list-style: none;
     }
     .nav-links a {
-      color: rgba(255,255,255,0.75);
+      color: rgba(255,255,255,0.78);
       text-decoration: none;
-      font-size: 0.88rem;
+      font-size: 0.83rem;
       font-weight: 600;
-      transition: color 0.2s;
-      padding-bottom: 2px;
+      padding: 6px 12px;
+      border-radius: 4px;
+      transition: all 0.2s;
+      white-space: nowrap;
     }
-    .nav-links a:hover,
-    .nav-links a.active { color: white; border-bottom: 2px solid var(--accent-light); }
+    .nav-links a:hover { color: white; background: rgba(255,255,255,0.1); }
+    .nav-links a.active { color: white; background: rgba(255,255,255,0.12); }
 
-    /* ─── HERO ─── */
+    /* ══════════════════════════════
+       HERO — ocean photo style matching Google Sites
+    ══════════════════════════════ */
     .hero {
-      background: linear-gradient(160deg, #071829 0%, #0B2545 45%, #1A3A6A 100%);
+      background:
+        linear-gradient(to bottom, rgba(11,37,69,0.72) 0%, rgba(11,37,69,0.55) 50%, rgba(11,37,69,0.72) 100%),
+        url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1400&q=80') center/cover no-repeat;
       color: white;
       text-align: center;
-      padding: 64px 24px 72px;
+      padding: 72px 24px 80px;
       position: relative;
-      overflow: hidden;
     }
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at 80% 20%, rgba(74,144,226,0.2) 0%, transparent 50%),
-        radial-gradient(ellipse at 20% 80%, rgba(200,146,42,0.1) 0%, transparent 50%);
-    }
-    .hero-inner { position: relative; max-width: 720px; margin: 0 auto; }
+    .hero-inner { max-width: 700px; margin: 0 auto; }
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 2.7rem;
-      font-weight: 800;
+      font-size: 2.6rem;
+      font-weight: 700;
       line-height: 1.2;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
+      letter-spacing: -0.3px;
     }
-    .hero h1 span { color: var(--accent-light); }
+    .hero h1 span { color: var(--white); }
     .hero p {
       font-size: 1rem;
-      color: rgba(255,255,255,0.75);
+      color: rgba(255,255,255,0.82);
       max-width: 560px;
       margin: 0 auto 28px;
       line-height: 1.7;
     }
-    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
     .btn-hero-solid {
       background: var(--light-blue);
       color: white;
       font-weight: 700;
       font-size: 0.88rem;
-      padding: 12px 24px;
-      border-radius: 6px;
+      padding: 11px 24px;
+      border-radius: 5px;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 8px;
       transition: all 0.2s;
+      border: 1px solid transparent;
     }
-    .btn-hero-solid:hover { background: #1d4ed8; transform: translateY(-2px); }
+    .btn-hero-solid:hover { background: #1d4ed8; transform: translateY(-1px); }
     .btn-hero-outline {
       background: transparent;
       color: white;
-      border: 1.5px solid rgba(255,255,255,0.4);
+      border: 1.5px solid rgba(255,255,255,0.5);
       font-weight: 600;
       font-size: 0.88rem;
-      padding: 12px 24px;
-      border-radius: 6px;
+      padding: 11px 24px;
+      border-radius: 5px;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
@@ -149,12 +153,11 @@
     }
     .btn-hero-outline:hover { border-color: white; background: rgba(255,255,255,0.1); }
 
-    /* ─── PAGE WRAP ─── */
-    .page { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-
-    /* ─── SECTION ─── */
-    .section { padding: 56px 0; }
-    .section + .section { padding-top: 0; }
+    /* ══════════════════════════════
+       PAGE LAYOUT
+    ══════════════════════════════ */
+    .page { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+    .section { padding: 52px 0; }
 
     .section-head {
       display: flex;
@@ -162,353 +165,263 @@
       justify-content: space-between;
       margin-bottom: 28px;
       border-bottom: 2px solid var(--border);
-      padding-bottom: 14px;
+      padding-bottom: 12px;
       flex-wrap: wrap;
       gap: 10px;
     }
     .section-head h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.55rem;
+      font-size: 1.5rem;
       color: var(--navy);
     }
     .section-head p {
-      font-size: 0.83rem;
+      font-size: 0.82rem;
       color: var(--text-muted);
       margin-top: 3px;
     }
     .section-pill {
-      font-size: 0.65rem;
+      font-size: 0.64rem;
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--accent);
-      background: rgba(200,146,42,0.1);
-      border: 1px solid rgba(200,146,42,0.25);
+      color: var(--blue);
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
       padding: 4px 12px;
       border-radius: 12px;
       white-space: nowrap;
     }
 
-    /* ─── 4-COLUMN CARD GRID ─── */
-    .grid-4 {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 22px;
-    }
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
+    /* ══════════════════════════════
+       GRIDS
+    ══════════════════════════════ */
+    .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
 
-    /* ─── ARTICLE CARD ─── */
+    /* ══════════════════════════════
+       CARDS
+    ══════════════════════════════ */
     .card {
       background: var(--white);
-      border-radius: 10px;
+      border-radius: 8px;
       border: 1px solid var(--border);
-      box-shadow: 0 1px 6px rgba(11,37,69,0.07);
+      box-shadow: 0 1px 4px rgba(11,37,69,0.06);
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: transform 0.22s, box-shadow 0.22s;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 28px rgba(11,37,69,0.14);
-    }
-    .card-img {
-      width: 100%;
-      height: 158px;
-      object-fit: cover;
-      display: block;
-    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(11,37,69,0.13); }
 
-    /* CSS photo-realistic card images using gradients + pseudo elements */
-    .photo-compliance {
-      height: 158px;
-      background:
-        linear-gradient(to bottom, rgba(11,37,69,0.3) 0%, rgba(11,37,69,0.55) 100%),
-        url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&q=70') center/cover;
-    }
-    .photo-nearshore {
-      height: 158px;
-      background:
-        linear-gradient(to bottom, rgba(11,37,69,0.2) 0%, rgba(11,37,69,0.45) 100%),
-        url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=70') center/cover;
-    }
-    .photo-growth {
-      height: 158px;
-      background:
-        linear-gradient(to bottom, rgba(11,37,69,0.2) 0%, rgba(11,37,69,0.45) 100%),
-        url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=70') center/cover;
-    }
-    .photo-wrap {
-      height: 158px;
-      background:
-        linear-gradient(to bottom, rgba(11,37,69,0.25) 0%, rgba(11,37,69,0.5) 100%),
-        url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=70') center/cover;
-    }
-    .photo-pasa {
-      height: 158px;
-      background:
-        linear-gradient(to bottom, rgba(11,37,69,0.2) 0%, rgba(11,37,69,0.45) 100%),
-        url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=70') center/cover;
-    }
-    .photo-cap {
-      height: 158px;
-      background:
-        linear-gradient(to bottom, rgba(11,37,69,0.2) 0%, rgba(11,37,69,0.45) 100%),
-        url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&q=70') center/cover;
-    }
-    .photo-gap {
-      height: 158px;
-      background:
-        linear-gradient(to bottom, rgba(11,37,69,0.2) 0%, rgba(11,37,69,0.45) 100%),
-        url('https://images.unsplash.com/photo-1543286386-713bdd548da4?w=400&q=70') center/cover;
-    }
-    .photo-supply {
-      height: 158px;
-      background:
-        linear-gradient(to bottom, rgba(11,37,69,0.2) 0%, rgba(11,37,69,0.45) 100%),
-        url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&q=70') center/cover;
-    }
+    /* Photo backgrounds */
+    .photo { width:100%; height:150px; background-size:cover; background-position:center; }
+    .p-compliance { background-image: linear-gradient(rgba(11,37,69,0.4),rgba(11,37,69,0.4)), url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&q=70'); }
+    .p-growth     { background-image: linear-gradient(rgba(11,37,69,0.35),rgba(11,37,69,0.35)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=70'); }
+    .p-nearshore  { background-image: linear-gradient(rgba(11,37,69,0.35),rgba(11,37,69,0.35)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=70'); }
+    .p-why        { background-image: linear-gradient(rgba(11,37,69,0.35),rgba(11,37,69,0.35)), url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=70'); }
+    .p-pasa       { background-image: linear-gradient(rgba(11,37,69,0.35),rgba(11,37,69,0.35)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=70'); }
+    .p-wrap12     { background-image: linear-gradient(rgba(11,37,69,0.4),rgba(11,37,69,0.4)), url('https://images.unsplash.com/photo-1568992688065-536aad8a12f6?w=400&q=70'); }
+    .p-cap        { background-image: linear-gradient(rgba(11,37,69,0.35),rgba(11,37,69,0.35)), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&q=70'); }
+    .p-gap        { background-image: linear-gradient(rgba(11,37,69,0.35),rgba(11,37,69,0.35)), url('https://images.unsplash.com/photo-1543286386-713bdd548da4?w=400&q=70'); }
 
     .card-body {
-      padding: 16px 18px 18px;
+      padding: 16px 18px 20px;
       flex: 1;
       display: flex;
       flex-direction: column;
     }
-    .card-category {
-      font-size: 0.65rem;
+    .card-cat {
+      font-size: 0.63rem;
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--text-muted);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
     .card-title {
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 700;
       color: var(--navy);
-      margin-bottom: 8px;
       line-height: 1.35;
+      margin-bottom: 8px;
       flex: 1;
     }
     .card-desc {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
       line-height: 1.55;
       margin-bottom: 14px;
     }
-    .card-coming {
-      font-size: 0.75rem;
+    .coming-tag {
+      font-size: 0.63rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      background: #F1F5F9;
+      color: var(--text-muted);
+      padding: 3px 8px;
+      border-radius: 8px;
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+    .card-soon {
+      font-size: 0.78rem;
       color: var(--text-muted);
       font-style: italic;
-      margin-bottom: 14px;
       flex: 1;
+      margin-bottom: 14px;
+      line-height: 1.5;
     }
-    .btn-card {
+
+    /* Buttons */
+    .btn-blue {
       display: inline-flex;
       align-items: center;
       gap: 6px;
       background: var(--light-blue);
       color: white;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 700;
-      padding: 9px 16px;
+      padding: 8px 16px;
       border-radius: 5px;
       text-decoration: none;
-      transition: all 0.2s;
+      transition: background 0.2s;
       align-self: flex-start;
-      white-space: nowrap;
     }
-    .btn-card:hover { background: #1d4ed8; transform: translateY(-1px); }
-    .btn-card-outline {
+    .btn-blue:hover { background: #1d4ed8; }
+    .btn-ghost {
       display: inline-flex;
       align-items: center;
       gap: 6px;
       background: transparent;
       color: var(--text-muted);
       border: 1px solid var(--border);
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 600;
-      padding: 9px 16px;
+      padding: 8px 16px;
       border-radius: 5px;
       text-decoration: none;
       align-self: flex-start;
     }
-    .coming-label {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      background: var(--border);
-      color: var(--text-muted);
-      padding: 3px 8px;
-      border-radius: 10px;
-      margin-bottom: 8px;
-      display: inline-block;
-    }
 
-    /* ─── CENTER BUTTON ─── */
-    .center-btn-wrap {
-      text-align: center;
-      padding: 28px 0 0;
-    }
-    .btn-center {
+    /* Center button */
+    .center-wrap { text-align:center; padding: 24px 0 0; }
+    .btn-outline-blue {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       background: transparent;
       color: var(--blue);
       border: 1.5px solid var(--blue);
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 700;
-      padding: 11px 28px;
+      padding: 10px 24px;
       border-radius: 6px;
       text-decoration: none;
       transition: all 0.2s;
     }
-    .btn-center:hover { background: var(--blue); color: white; }
+    .btn-outline-blue:hover { background: var(--blue); color: white; }
 
-    /* ─── RESOURCE CENTER CARDS ─── */
+    /* ══════════════════════════════
+       RESOURCE CENTER CARDS
+    ══════════════════════════════ */
     .rc-card {
       background: var(--white);
-      border-radius: 10px;
+      border-radius: 8px;
       border: 1px solid var(--border);
-      box-shadow: 0 1px 6px rgba(11,37,69,0.07);
-      padding: 24px 22px;
-      transition: transform 0.22s, box-shadow 0.22s;
+      box-shadow: 0 1px 4px rgba(11,37,69,0.06);
+      padding: 22px 20px;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    .rc-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(11,37,69,0.12);
-    }
-    .rc-icon {
-      font-size: 1.6rem;
-      margin-bottom: 12px;
-      display: block;
-    }
-    .rc-title {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 8px;
-    }
-    .rc-desc {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      line-height: 1.55;
-      margin-bottom: 16px;
-    }
-    .rc-links { list-style: none; margin-bottom: 18px; }
+    .rc-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(11,37,69,0.11); }
+    .rc-icon { font-size: 1.5rem; margin-bottom: 10px; display: block; }
+    .rc-title { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .rc-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.55; margin-bottom: 14px; }
+    .rc-links { list-style: none; margin-bottom: 16px; }
     .rc-links li {
-      font-size: 0.8rem;
-      padding: 5px 0;
+      font-size: 0.78rem;
+      padding: 4px 0;
       border-bottom: 1px solid var(--border);
-      color: var(--text-muted);
       display: flex;
       align-items: center;
       gap: 6px;
+      color: var(--text-muted);
     }
     .rc-links li:last-child { border-bottom: none; }
-    .rc-links li::before { content: '›'; color: var(--accent); font-size: 1rem; flex-shrink: 0; }
+    .rc-links li::before { content: '›'; color: var(--blue); font-size: 1rem; flex-shrink: 0; }
     .rc-links li a { color: var(--blue); text-decoration: none; font-weight: 600; }
     .rc-links li a:hover { text-decoration: underline; }
-    .btn-explore {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--light-blue);
-      color: white;
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 9px 16px;
-      border-radius: 5px;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .btn-explore:hover { background: #1d4ed8; }
 
-    /* Alt bg */
-    .bg-light { background: var(--light-bg); }
+    /* Section backgrounds */
     .bg-white { background: var(--white); }
-    .section-wrap-white { background: var(--white); }
-    .section-wrap-light { background: var(--light-bg); }
+    .bg-light  { background: var(--light-bg); }
 
-    /* ─── FOOTER CTA ─── */
-    .footer-cta {
-      background: linear-gradient(135deg, var(--navy), var(--blue));
+    /* ══════════════════════════════
+       SHARED FOOTER — BLUE
+    ══════════════════════════════ */
+    .site-footer {
+      background: var(--blue);
       color: white;
       text-align: center;
-      padding: 56px 24px;
+      padding: 40px 24px;
     }
-    .footer-cta h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      margin-bottom: 10px;
+    .footer-tagline {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.9);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
     }
-    .footer-cta p {
-      font-size: 0.95rem;
-      color: rgba(255,255,255,0.75);
-      max-width: 480px;
-      margin: 0 auto 24px;
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
     }
-    .btn-cta {
-      background: var(--accent);
-      color: white;
-      font-weight: 700;
-      font-size: 0.95rem;
-      padding: 14px 32px;
-      border-radius: 7px;
+    .footer-links a {
+      color: rgba(255,255,255,0.7);
       text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.2s;
+      font-size: 0.8rem;
+      transition: color 0.2s;
     }
-    .btn-cta:hover { background: var(--accent-light); color: var(--navy); transform: translateY(-2px); }
-
-    footer {
-      text-align: center;
-      padding: 24px;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      background: var(--white);
-      border-top: 1px solid var(--border);
+    .footer-links a:hover { color: white; }
+    .footer-copy {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
     }
 
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 1000px) {
-      .grid-4 { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 700px) {
-      .hero h1 { font-size: 2rem; }
+    /* ══════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════ */
+    @media (max-width: 960px) { .grid-4 { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 1.9rem; }
       .grid-4, .grid-3 { grid-template-columns: 1fr; }
       .topnav { padding: 0 16px; }
-      .nav-links { gap: 16px; }
-      .nav-subtitle { display: none; }
+      .nav-links a { padding: 5px 8px; font-size: 0.78rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- ─── NAV ─── -->
+<!-- ══ SHARED NAV ══ -->
 <nav class="topnav">
-  <a href="https://panamaeddie.github.io/" class="nav-logo">
-    RC<sup>2</sup>
-    <span class="nav-subtitle">Consulting, LLC</span>
+  <a href="https://sites.google.com/view/rc2consulting" class="nav-brand">
+    <div class="nav-logo-mark">RC<sup>2</sup></div>
+    <span class="nav-brand-name">Consulting</span>
   </a>
   <ul class="nav-links">
-    <li><a href="https://panamaeddie.github.io/">About</a></li>
-    <li><a href="https://panamaeddie.github.io/">Services</a></li>
+    <li><a href="https://sites.google.com/view/rc2consulting/home">Home</a></li>
+    <li><a href="https://sites.google.com/view/rc2consulting/services">Services</a></li>
+    <li><a href="https://sites.google.com/view/rc2consulting/who-we-help">Who We Help</a></li>
+    <li><a href="https://sites.google.com/view/rc2consulting/about">About</a></li>
     <li><a href="https://panamaeddie.github.io/RC2_Resources_Page.html" class="active">Resources</a></li>
-    <li><a href="mailto:info@rc2consulting.com">Contact</a></li>
+    <li><a href="https://sites.google.com/view/rc2consulting/contact">Contact</a></li>
   </ul>
 </nav>
 
-<!-- ─── HERO ─── -->
+<!-- ══ HERO — Ocean photo matching Google Sites ══ -->
 <section class="hero">
   <div class="hero-inner">
     <h1>Strategic <span>Resources</span> for<br>Compliance, Infrastructure & Scalable Growth</h1>
@@ -520,10 +433,9 @@
   </div>
 </section>
 
-<!-- ─── EXECUTIVE INSIGHTS ─── -->
-<div class="section-wrap-white" id="executive-insights">
-<div class="page">
-<div class="section">
+<!-- ══ EXECUTIVE INSIGHTS ══ -->
+<div class="bg-white" id="executive-insights">
+<div class="page"><div class="section">
   <div class="section-head">
     <div>
       <h2>Executive Insights</h2>
@@ -533,62 +445,56 @@
   </div>
   <div class="grid-4">
 
-    <!-- Article 1 — LIVE -->
     <div class="card">
-      <div class="photo-compliance"></div>
+      <div class="photo p-compliance"></div>
       <div class="card-body">
-        <div class="card-category">Industry Analysis</div>
+        <div class="card-cat">Industry Analysis</div>
         <div class="card-title">What Most Companies Miss Before a WRAP Audit</div>
-        <div class="card-desc">A deep dive and actionable guide covering compliance gaps, corrective action plans, and audit readiness.</div>
-        <a href="https://panamaeddie.github.io/RC2_2026_Compliance_Gap.html" target="_blank" class="btn-card">Read Article ›</a>
+        <div class="card-desc">A deep dive covering the 5 critical compliance gaps, corrective action, and audit readiness in 2026.</div>
+        <a href="https://panamaeddie.github.io/RC2_2026_Compliance_Gap.html" target="_blank" class="btn-blue">Read Article ›</a>
       </div>
     </div>
 
-    <!-- Article 2 — Coming Soon -->
     <div class="card">
-      <div class="photo-growth"></div>
+      <div class="photo p-growth"></div>
       <div class="card-body">
-        <div class="card-category">Operations Strategy</div>
-        <span class="coming-label">Coming Soon</span>
+        <div class="card-cat">Operations Strategy</div>
+        <span class="coming-tag">Coming Soon</span>
         <div class="card-title">Building Compliance Into Your Growth Strategy</div>
-        <div class="card-coming">A neutral executive's outline for companies that need to adopt a systematic compliance framework.</div>
-        <span class="btn-card-outline">Publishing Q2 2026</span>
+        <div class="card-soon">A neutral executive's outline for companies that need to adopt a systematic compliance framework.</div>
+        <span class="btn-ghost">Publishing Q2 2026</span>
       </div>
     </div>
 
-    <!-- Article 3 — Coming Soon -->
     <div class="card">
-      <div class="photo-nearshore"></div>
+      <div class="photo p-nearshore"></div>
       <div class="card-body">
-        <div class="card-category">Supply Chain</div>
-        <span class="coming-label">Coming Soon</span>
+        <div class="card-cat">Supply Chain</div>
+        <span class="coming-tag">Coming Soon</span>
         <div class="card-title">Nearshoring to the Americas: Operational Risks & Readiness Factors</div>
-        <div class="card-coming">What businesses considering near-term production shifts need to know about Latin America compliance landscape.</div>
-        <span class="btn-card-outline">Publishing Q2 2026</span>
+        <div class="card-soon">What businesses need to know about the Latin America compliance landscape before shifting production.</div>
+        <span class="btn-ghost">Publishing Q2 2026</span>
       </div>
     </div>
 
-    <!-- Article 4 — Coming Soon -->
     <div class="card">
-      <div class="photo-wrap"></div>
+      <div class="photo p-why"></div>
       <div class="card-body">
-        <div class="card-category">Growth Strategy</div>
-        <span class="coming-label">Coming Soon</span>
+        <div class="card-cat">Growth Strategy</div>
+        <span class="coming-tag">Coming Soon</span>
         <div class="card-title">Why Growth Outpaces Infrastructure — And How to Close the Gap</div>
-        <div class="card-coming">Operational infrastructure issues that derail scaling businesses and the frameworks that close them.</div>
-        <span class="btn-card-outline">Publishing Q2 2026</span>
+        <div class="card-soon">Operational infrastructure issues that derail scaling businesses and the frameworks that close them.</div>
+        <span class="btn-ghost">Publishing Q2 2026</span>
       </div>
     </div>
 
   </div>
-</div>
-</div>
+</div></div>
 </div>
 
-<!-- ─── OPERATIONAL & COMPLIANCE TOOLS ─── -->
-<div class="section-wrap-light" id="compliance-tools">
-<div class="page">
-<div class="section">
+<!-- ══ COMPLIANCE TOOLS ══ -->
+<div class="bg-light" id="compliance-tools">
+<div class="page"><div class="section">
   <div class="section-head">
     <div>
       <h2>Operational & Compliance Tools</h2>
@@ -598,64 +504,57 @@
   </div>
   <div class="grid-4">
 
-    <!-- Tool 1: PASA — Coming Soon placeholder -->
     <div class="card">
-      <div class="photo-pasa"></div>
+      <div class="photo p-pasa"></div>
       <div class="card-body">
-        <div class="card-category">Pre-Audit Assessment</div>
-        <span class="coming-label">Coming Soon</span>
+        <div class="card-cat">Pre-Audit Assessment</div>
+        <span class="coming-tag">Coming Soon</span>
         <div class="card-title">PASA Pre-Audit Risk Scorecard</div>
-        <div class="card-coming">Evaluate operational exposure before formal assessments begin. Score your facility's readiness across all audit dimensions.</div>
-        <span class="btn-card-outline">Available Q2 2026</span>
+        <div class="card-soon">Evaluate operational exposure before formal assessments begin. Score your facility's readiness across all audit dimensions.</div>
+        <span class="btn-ghost">Available Q2 2026</span>
       </div>
     </div>
 
-    <!-- Tool 2: WRAP 12 -->
     <div class="card">
-      <div class="photo-wrap" style="background-image: linear-gradient(to bottom, rgba(11,37,69,0.3) 0%, rgba(11,37,69,0.6) 100%), url('https://images.unsplash.com/photo-1568992688065-536aad8a12f6?w=400&q=70'); background-size: cover;"></div>
+      <div class="photo p-wrap12"></div>
       <div class="card-body">
-        <div class="card-category">Certification Guide</div>
+        <div class="card-cat">Certification Guide</div>
         <div class="card-title">WRAP 12 Principles Checklist</div>
         <div class="card-desc">A deep dive and explanatory tool to critically address audit readiness across all 12 principles.</div>
-        <a href="https://panamaeddie.github.io/RC2_WRAP_12_Principles_Guide.html" target="_blank" class="btn-card">Download Tool ›</a>
+        <a href="https://panamaeddie.github.io/RC2_WRAP_12_Principles_Guide.html" target="_blank" class="btn-blue">Download Tool ›</a>
       </div>
     </div>
 
-    <!-- Tool 3: CAP Template -->
     <div class="card">
-      <div class="photo-cap"></div>
+      <div class="photo p-cap"></div>
       <div class="card-body">
-        <div class="card-category">Interactive Template</div>
+        <div class="card-cat">Interactive Template</div>
         <div class="card-title">Corrective Action Tracking Template</div>
         <div class="card-desc">A practical execution tool for completing and managing audit corrective action plans. Print or save as PDF.</div>
-        <a href="https://panamaeddie.github.io/RC2_CAP_Template.html" target="_blank" class="btn-card">Download Tool ›</a>
+        <a href="https://panamaeddie.github.io/RC2_CAP_Template.html" target="_blank" class="btn-blue">Download Tool ›</a>
       </div>
     </div>
 
-    <!-- Tool 4: Gap Analysis -->
     <div class="card">
-      <div class="photo-gap"></div>
+      <div class="photo p-gap"></div>
       <div class="card-body">
-        <div class="card-category">Assessment Tool</div>
+        <div class="card-cat">Assessment Tool</div>
         <div class="card-title">Operational Infrastructure Gap Analysis</div>
-        <div class="card-desc">Manually assess your specific principles. Identify your highest-risk areas and get a prioritized plan in minutes.</div>
-        <a href="https://panamaeddie.github.io/RC2_Gap_Analysis.html" target="_blank" class="btn-card">Start Analysis ›</a>
+        <div class="card-desc">Assess your facility against all 12 WRAP principles. Get a prioritized action plan in 10–15 minutes.</div>
+        <a href="https://panamaeddie.github.io/RC2_Gap_Analysis.html" target="_blank" class="btn-blue">Start Analysis ›</a>
       </div>
     </div>
 
   </div>
-
-  <div class="center-btn-wrap">
-    <a href="mailto:info@rc2consulting.com" class="btn-center">Request Framework Access ›</a>
+  <div class="center-wrap">
+    <a href="mailto:info@rc2consulting.com" class="btn-outline-blue">Request Framework Access ›</a>
   </div>
-</div>
-</div>
+</div></div>
 </div>
 
-<!-- ─── RESOURCE CENTERS ─── -->
-<div class="section-wrap-white" id="resource-centers">
-<div class="page">
-<div class="section">
+<!-- ══ RESOURCE CENTERS ══ -->
+<div class="bg-white" id="resource-centers">
+<div class="page"><div class="section">
   <div class="section-head">
     <div>
       <h2>Resource Centers</h2>
@@ -665,35 +564,32 @@
   </div>
   <div class="grid-3">
 
-    <!-- RC 1: WRAP -->
     <div class="rc-card">
       <span class="rc-icon">📋</span>
       <div class="rc-title">WRAP Compliance Resource Center</div>
-      <div class="rc-desc">Guides, tools, readiness and pre-preparation tools for all treatment and compliance tools.</div>
+      <div class="rc-desc">Guides, tools, readiness and pre-preparation tools for compliance certification.</div>
       <ul class="rc-links">
         <li><a href="https://panamaeddie.github.io/RC2_WRAP_12_Principles_Guide.html" target="_blank">WRAP 12 Principles Guide</a></li>
         <li><a href="https://panamaeddie.github.io/RC2_Gap_Analysis.html" target="_blank">Compliance Gap Analysis Tool</a></li>
         <li><a href="https://panamaeddie.github.io/RC2_CAP_Template.html" target="_blank">Corrective Action Plan Template</a></li>
         <li><a href="https://panamaeddie.github.io/RC2_2026_Compliance_Gap.html" target="_blank">The 2026 Compliance Gap Article</a></li>
       </ul>
-      <a href="https://panamaeddie.github.io/RC2_WRAP_12_Principles_Guide.html" target="_blank" class="btn-explore">Explore Resources ›</a>
+      <a href="https://panamaeddie.github.io/RC2_WRAP_12_Principles_Guide.html" target="_blank" class="btn-blue">Explore Resources ›</a>
     </div>
 
-    <!-- RC 2: PASA -->
     <div class="rc-card">
       <span class="rc-icon">🛡️</span>
       <div class="rc-title">PASA Assessment Resource Center</div>
-      <div class="rc-desc">Non-binding models, operations tip guides, and corrective step planning guides for facility teams.</div>
+      <div class="rc-desc">Non-binding models, operations tip guides, and corrective step planning for facility teams.</div>
       <ul class="rc-links">
         <li><a href="https://panamaeddie.github.io/RC2_Gap_Analysis.html" target="_blank">Pre-Audit Gap Analysis Tool</a></li>
         <li><a href="https://panamaeddie.github.io/RC2_CAP_Template.html" target="_blank">Corrective Action Plan Template</a></li>
         <li><span>PASA Pre-Audit Scorecard — Coming Soon</span></li>
         <li><span>H&S Inspection Checklist — Coming Soon</span></li>
       </ul>
-      <a href="https://panamaeddie.github.io/RC2_Gap_Analysis.html" target="_blank" class="btn-explore">Explore Resources ›</a>
+      <a href="https://panamaeddie.github.io/RC2_Gap_Analysis.html" target="_blank" class="btn-blue">Explore Resources ›</a>
     </div>
 
-    <!-- RC 3: Supply Chain -->
     <div class="rc-card">
       <span class="rc-icon">🌐</span>
       <div class="rc-title">Supply Chain & Nearshoring Strategy Hub</div>
@@ -704,23 +600,25 @@
         <li><span>Vendor Due Diligence Checklist — Coming Soon</span></li>
         <li><span>Country Risk Assessment — Coming Soon</span></li>
       </ul>
-      <a href="mailto:info@rc2consulting.com" class="btn-explore">Request Early Access ›</a>
+      <a href="mailto:info@rc2consulting.com" class="btn-blue">Request Early Access ›</a>
     </div>
 
   </div>
-</div>
-</div>
+</div></div>
 </div>
 
-<!-- ─── FOOTER CTA ─── -->
-<section class="footer-cta">
-  <h3>Ready to Strengthen Your Infrastructure?</h3>
-  <p>RC2 Consulting provides expert guidance on building the operational and compliance infrastructure your business needs to scale and certify.</p>
-  <a href="mailto:info@rc2consulting.com" class="btn-cta">📅 Schedule a Strategy Consultation</a>
-</section>
-
-<footer>
-  © 2026 RC2 Consulting, LLC &nbsp;|&nbsp; <a href="#" style="color:var(--blue);">Privacy Policy</a> &nbsp;|&nbsp; <a href="#" style="color:var(--blue);">Terms of Service</a>
+<!-- ══ SHARED FOOTER — BLUE ══ -->
+<footer class="site-footer">
+  <div class="footer-tagline">Operational Clarity. Compliance Confidence. Systems That Scale.</div>
+  <div class="footer-links">
+    <a href="https://sites.google.com/view/rc2consulting/home">Home</a>
+    <a href="https://sites.google.com/view/rc2consulting/services">Services</a>
+    <a href="https://sites.google.com/view/rc2consulting/who-we-help">Who We Help</a>
+    <a href="https://sites.google.com/view/rc2consulting/about">About</a>
+    <a href="https://panamaeddie.github.io/RC2_Resources_Page.html">Resources</a>
+    <a href="https://sites.google.com/view/rc2consulting/contact">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 RC2 Consulting, LLC &nbsp;|&nbsp; Privacy Policy &nbsp;|&nbsp; Terms of Service</div>
 </footer>
 
 </body>
