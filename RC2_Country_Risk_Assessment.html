@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Country Risk Assessment | RC2 Consulting</title>
+  <meta name="description" content="A structured country risk assessment tool for companies evaluating nearshoring markets in Latin America. Score political, trade, infrastructure, labor, and compliance risk before committing." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --navy:#0B2545; --blue:#1A4A8A; --light-blue:#2563EB; --light-bg:#F4F6FA; --white:#FFFFFF; --text:#1C2B3A; --text-muted:#4A5568; --border:#E2E8F0; --success:#1A7A4E; --success-bg:#EBF7F2; --warn:#854D0E; --warn-bg:#FFFBEB; --danger:#9B1C1C; --danger-bg:#FEF2F2; }
+    body { font-family:'Source Sans 3',sans-serif; background:var(--light-bg); color:var(--text); margin:0; line-height:1.6; }
+    .topnav { background:var(--navy); padding:0 40px; display:flex; align-items:center; justify-content:space-between; height:52px; position:sticky; top:0; z-index:200; box-shadow:0 2px 8px rgba(0,0,0,0.25); }
+    .nav-brand { display:flex; align-items:center; gap:8px; text-decoration:none; }
+    .nav-logo-mark { background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); color:white; font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; width:32px; height:32px; border-radius:6px; display:flex; align-items:center; justify-content:center; }
+    .nav-logo-mark sup { font-size:0.5rem; vertical-align:super; }
+    .nav-brand-name { font-size:0.88rem; font-weight:600; color:rgba(255,255,255,0.9); }
+    .nav-links { display:flex; gap:4px; list-style:none; }
+    .nav-links a { color:rgba(255,255,255,0.78); text-decoration:none; font-size:0.83rem; font-weight:600; padding:6px 12px; border-radius:4px; white-space:nowrap; }
+    .nav-links a:hover { color:white; background:rgba(255,255,255,0.1); }
+    .nav-links a.active { color:white; background:rgba(255,255,255,0.12); }
+    .hero { background:linear-gradient(to bottom, rgba(11,37,69,0.86) 0%, rgba(11,37,69,0.70) 100%), url('https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1400&q=80') center/cover no-repeat; padding:60px 40px 52px; }
+    .hero-inner { max-width:960px; margin:0 auto; }
+    .article-tag { display:inline-block; font-size:0.65rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.7); background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); padding:4px 12px; border-radius:10px; margin-bottom:14px; }
+    .hero h1 { font-family:'Playfair Display',serif; font-size:2.3rem; font-weight:700; color:white; line-height:1.2; margin-bottom:10px; }
+    .hero-sub { font-size:0.92rem; color:rgba(255,255,255,0.75); margin-bottom:16px; max-width:640px; line-height:1.6; }
+    .hero-meta { display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+    .hero-meta span { font-size:0.82rem; color:rgba(255,255,255,0.6); }
+    .hero-meta .divider { color:rgba(255,255,255,0.3); }
+    .page-wrap { max-width:960px; margin:0 auto; padding:0 24px; }
+    .btn-back { display:inline-flex; align-items:center; gap:6px; color:var(--light-blue); text-decoration:none; font-size:0.84rem; font-weight:600; margin:24px 0 0; }
+    .abstract-box { background:var(--white); border-left:4px solid var(--light-blue); border-radius:0 8px 8px 0; padding:22px 26px; margin:36px 0 28px; box-shadow:0 2px 8px rgba(11,37,69,0.07); }
+    .abstract-box h3 { font-size:0.68rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--light-blue); margin-bottom:8px; }
+    .abstract-box p { font-size:0.9rem; color:var(--text-muted); line-height:1.75; font-style:italic; }
+
+    /* SCORE KEY */
+    .score-key { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin-bottom:24px; }
+    .key-card { border-radius:8px; padding:12px; text-align:center; border:1px solid; }
+    .k5 { background:var(--success-bg); border-color:#BBF7D0; }
+    .k4 { background:#F0FDF4; border-color:#D1FAE5; }
+    .k3 { background:#FFF7ED; border-color:#FED7AA; }
+    .k2 { background:var(--warn-bg); border-color:#FDE68A; }
+    .k1 { background:var(--danger-bg); border-color:#FECACA; }
+    .k5 .key-score { color:var(--success); }
+    .k4 .key-score { color:#15803D; }
+    .k3 .key-score { color:#C2410C; }
+    .k2 .key-score { color:var(--warn); }
+    .k1 .key-score { color:var(--danger); }
+    .key-score { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700; line-height:1; margin-bottom:4px; }
+    .key-label { font-size:0.7rem; font-weight:700; margin-top:3px; }
+    .key-desc { font-size:0.68rem; color:var(--text-muted); margin-top:2px; }
+
+    /* TOOL BLOCK */
+    .cra-block { background:var(--white); border-radius:10px; border:1px solid var(--border); box-shadow:0 2px 8px rgba(11,37,69,0.06); margin-bottom:20px; overflow:hidden; }
+    .cra-header { background:var(--navy); padding:13px 22px; display:flex; align-items:center; justify-content:space-between; }
+    .cra-header h3 { font-size:0.86rem; font-weight:700; color:white; }
+    .cra-header span { font-size:0.72rem; color:rgba(255,255,255,0.55); }
+    .info-grid { display:grid; grid-template-columns:1fr 1fr 1fr; }
+    .info-cell { padding:12px 20px; border-bottom:1px solid var(--border); border-right:1px solid var(--border); }
+    .info-cell:nth-child(3n) { border-right:none; }
+    .info-label { font-size:0.69rem; font-weight:700; color:var(--text-muted); letter-spacing:0.8px; text-transform:uppercase; display:block; margin-bottom:4px; }
+    .info-field { border:none; border-bottom:1.5px solid var(--border); width:100%; font-size:0.86rem; color:var(--navy); padding:3px 0; background:transparent; font-family:'Source Sans 3',sans-serif; outline:none; }
+    .info-field:focus { border-bottom-color:var(--light-blue); }
+    .info-cell.full { grid-column:1/-1; border-right:none; }
+
+    /* SCORING TABLE */
+    .score-table { width:100%; border-collapse:collapse; }
+    .score-table th { background:var(--light-bg); padding:9px 14px; text-align:left; font-size:0.72rem; font-weight:700; color:var(--text-muted); border-bottom:2px solid var(--border); letter-spacing:0.4px; }
+    .score-table th.col-score { text-align:center; width:90px; }
+    .score-table th.col-weight { text-align:center; width:80px; }
+    .score-table th.col-weighted { text-align:center; width:90px; }
+    .score-table th.col-notes { width:200px; }
+    .score-table td { padding:11px 14px; border-bottom:1px solid var(--border); font-size:0.83rem; color:var(--text-muted); vertical-align:top; }
+    .score-table tr:hover td { background:#FAFBFD; }
+    .score-table td:first-child { font-weight:600; color:var(--navy); }
+    .section-row td { background:var(--light-bg); font-size:0.72rem; font-weight:700; color:var(--blue); letter-spacing:1px; text-transform:uppercase; border-top:2px solid var(--border); }
+    .subtotal-row td { background:var(--light-bg); font-weight:700; color:var(--navy); border-top:2px solid var(--border); }
+    .total-row td { background:var(--navy); color:white; font-weight:700; font-size:0.88rem; border-top:2px solid var(--border); }
+    .score-input { border:none; border-bottom:1.5px solid var(--border); width:60px; font-size:0.84rem; color:var(--navy); background:transparent; font-family:'Source Sans 3',sans-serif; outline:none; text-align:center; }
+    .score-input:focus { border-bottom-color:var(--light-blue); }
+    .weight-badge { display:inline-block; background:rgba(37,99,235,0.1); color:var(--light-blue); font-size:0.72rem; font-weight:700; padding:2px 6px; border-radius:4px; }
+
+    /* RISK MATRIX */
+    .risk-matrix { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; padding:20px; }
+    .rm-card { border-radius:8px; padding:16px; border:1px solid; }
+    .rm-green { background:var(--success-bg); border-color:#BBF7D0; }
+    .rm-yellow { background:var(--warn-bg); border-color:#FDE68A; }
+    .rm-red { background:var(--danger-bg); border-color:#FECACA; }
+    .rm-range { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; margin-bottom:4px; }
+    .rm-green .rm-range { color:var(--success); }
+    .rm-yellow .rm-range { color:var(--warn); }
+    .rm-red .rm-range { color:var(--danger); }
+    .rm-title { font-size:0.84rem; font-weight:700; color:var(--navy); margin-bottom:6px; }
+    .rm-desc { font-size:0.78rem; color:var(--text-muted); line-height:1.5; }
+
+    /* RECOMMENDATION */
+    .rec-body { padding:20px 24px; }
+    .rec-body p { font-size:0.88rem; color:var(--text-muted); line-height:1.7; margin-bottom:12px; }
+    .notes-input { width:100%; border:1.5px solid var(--border); border-radius:6px; font-size:0.84rem; color:var(--navy); padding:10px; background:var(--light-bg); font-family:'Source Sans 3',sans-serif; outline:none; resize:vertical; min-height:80px; line-height:1.6; }
+    .notes-input:focus { border-color:var(--light-blue); }
+    .signoff-grid { display:grid; grid-template-columns:1fr 1fr; }
+    .signoff-cell { padding:16px 20px; border-right:1px solid var(--border); }
+    .signoff-cell:last-child { border-right:none; }
+    .signoff-label { font-size:0.69rem; font-weight:700; color:var(--text-muted); letter-spacing:1px; text-transform:uppercase; margin-bottom:8px; }
+    .signoff-line { border-bottom:1.5px solid var(--navy); margin-bottom:6px; height:28px; }
+    .signoff-sub { font-size:0.72rem; color:var(--text-muted); }
+
+    .sources { background:var(--light-bg); border-radius:8px; padding:18px 22px; margin:0 0 24px; border:1px solid var(--border); }
+    .sources h4 { font-size:0.68rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); margin-bottom:10px; }
+    .sources ul { list-style:none; }
+    .sources ul li { font-size:0.77rem; color:var(--text-muted); padding:3px 0; border-bottom:1px solid var(--border); }
+    .sources ul li:last-child { border-bottom:none; }
+    .sources ul li a { color:var(--light-blue); text-decoration:none; }
+    .article-cta { background:linear-gradient(135deg,var(--navy),var(--blue)); border-radius:10px; padding:32px; text-align:center; margin-bottom:44px; }
+    .article-cta h3 { font-family:'Playfair Display',serif; font-size:1.35rem; color:white; margin-bottom:8px; }
+    .article-cta p { font-size:0.86rem; color:rgba(255,255,255,0.78); margin-bottom:18px; }
+    .btn-cta { display:inline-flex; align-items:center; gap:8px; background:white; color:var(--blue); font-weight:700; font-size:0.86rem; padding:11px 22px; border-radius:6px; text-decoration:none; }
+    .btn-print { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.15); color:white; font-weight:600; font-size:0.84rem; padding:10px 20px; border-radius:6px; border:1px solid rgba(255,255,255,0.3); margin-left:10px; cursor:pointer; font-family:'Source Sans 3',sans-serif; }
+    .site-footer { background:var(--blue); color:white; text-align:center; padding:36px 24px; }
+    .footer-tagline { font-size:0.9rem; color:rgba(255,255,255,0.9); font-weight:600; letter-spacing:0.5px; margin-bottom:10px; }
+    .footer-links { display:flex; gap:18px; justify-content:center; flex-wrap:wrap; margin-bottom:12px; }
+    .footer-links a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.78rem; }
+    .footer-copy { font-size:0.73rem; color:rgba(255,255,255,0.5); }
+    @media (max-width:700px) {
+      .hero h1 { font-size:1.75rem; }
+      .score-key { grid-template-columns:repeat(2,1fr); }
+      .info-grid { grid-template-columns:1fr 1fr; }
+      .risk-matrix { grid-template-columns:1fr; }
+      .signoff-grid { grid-template-columns:1fr; }
+      .topnav { padding:0 14px; }
+      .nav-links a { padding:5px 7px; font-size:0.76rem; }
+    }
+    @media print {
+      .topnav, .btn-back, .abstract-box, .score-key, .article-cta, .site-footer, .sources { display:none; }
+      body { background:white; }
+      .cra-block { box-shadow:none; break-inside:avoid; }
+    }
+  </style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="https://panamaeddie.github.io/" class="nav-brand">
+    <div class="nav-logo-mark">RC<sup>2</sup></div>
+    <span class="nav-brand-name">Consulting</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://panamaeddie.github.io/">Home</a></li>
+    <li><a href="https://panamaeddie.github.io/services.html">Services</a></li>
+    <li><a href="https://panamaeddie.github.io/who-we-help.html">Who We Help</a></li>
+    <li><a href="https://panamaeddie.github.io/about.html">About</a></li>
+    <li><a href="https://panamaeddie.github.io/RC2_Resources_Page.html" class="active">Resources</a></li>
+    <li><a href="https://panamaeddie.github.io/contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="article-tag">Supply Chain Tool</span>
+    <h1>Country Risk Assessment</h1>
+    <p class="hero-sub">A structured scoring tool for evaluating nearshoring markets in Latin America across five risk dimensions: political stability, trade policy, logistics infrastructure, labor market, and social compliance readiness. Complete one assessment per candidate country.</p>
+    <div class="hero-meta">
+      <span>RC2 Consulting</span><span class="divider">|</span>
+      <span>February 2026</span><span class="divider">|</span>
+      <span>Printable Working Document</span>
+    </div>
+  </div>
+</section>
+
+<div class="page-wrap">
+  <a href="https://panamaeddie.github.io/RC2_Resources_Page.html" class="btn-back">← Back to Resources</a>
+  <div class="abstract-box">
+    <h3>About This Tool</h3>
+    <p>This Country Risk Assessment provides a weighted scoring framework for evaluating Latin American nearshoring markets before production or sourcing commitments are made. Five risk dimensions are scored on a 1–5 scale, weighted by relative business impact, and combined into a composite Country Risk Score. Companies evaluating multiple markets should complete one assessment per country and compare composite scores to guide market selection decisions.</p>
+  </div>
+
+  <!-- SCORING KEY -->
+  <div style="background:var(--white);border-radius:10px;border:1px solid var(--border);padding:20px 24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(11,37,69,0.06);">
+    <p style="font-size:0.72rem;font-weight:700;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;">Scoring Scale — Use for All Risk Dimensions</p>
+    <div class="score-key">
+      <div class="key-card k5"><div class="key-score">5</div><div class="key-label">Very Low Risk</div><div class="key-desc">Favorable — strong enabling conditions</div></div>
+      <div class="key-card k4"><div class="key-score">4</div><div class="key-label">Low Risk</div><div class="key-desc">Generally favorable — minor concerns</div></div>
+      <div class="key-card k3"><div class="key-score">3</div><div class="key-label">Moderate Risk</div><div class="key-desc">Mixed conditions — monitor closely</div></div>
+      <div class="key-card k2"><div class="key-score">2</div><div class="key-label">High Risk</div><div class="key-desc">Significant concerns — mitigation required</div></div>
+      <div class="key-card k1"><div class="key-score">1</div><div class="key-label">Critical Risk</div><div class="key-desc">Unacceptable — do not proceed</div></div>
+    </div>
+  </div>
+
+  <!-- COUNTRY INFO -->
+  <div class="cra-block">
+    <div class="cra-header"><h3>Country & Assessment Identification</h3><span>One form per country evaluated</span></div>
+    <div class="info-grid">
+      <div class="info-cell"><span class="info-label">Country Being Assessed</span><input class="info-field" placeholder="Country name" /></div>
+      <div class="info-cell"><span class="info-label">Assessment Date</span><input class="info-field" placeholder="MM / DD / YYYY" /></div>
+      <div class="info-cell"><span class="info-label">Assessed By</span><input class="info-field" placeholder="Name and title" /></div>
+      <div class="info-cell"><span class="info-label">Production / Sourcing Type Under Consideration</span><input class="info-field" placeholder="e.g. apparel manufacturing, light assembly" /></div>
+      <div class="info-cell"><span class="info-label">Applicable Trade Agreement</span><input class="info-field" placeholder="e.g. CAFTA-DR / USMCA / US-Colombia FTA" /></div>
+      <div class="info-cell"><span class="info-label">Assessment Reference #</span><input class="info-field" placeholder="e.g. CRA-2026-001" /></div>
+    </div>
+  </div>
+
+  <!-- SCORING TABLE -->
+  <div class="cra-block">
+    <div class="cra-header"><h3>Weighted Risk Scoring Matrix</h3><span>Score each factor 1–5. Multiply by weight. Enter weighted score.</span></div>
+    <table class="score-table">
+      <thead>
+        <tr>
+          <th>Risk Factor</th>
+          <th style="width:220px;">What to Evaluate</th>
+          <th class="col-score">Score (1–5)</th>
+          <th class="col-weight">Weight</th>
+          <th class="col-weighted">Weighted Score</th>
+          <th class="col-notes">Notes / Evidence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- POLITICAL -->
+        <tr class="section-row"><td colspan="6">Dimension 1 — Political Stability & Regulatory Environment</td></tr>
+        <tr><td>Government stability</td><td style="font-size:0.78rem;color:var(--text-muted);">Recent elections, transitions, constitutional changes</td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td style="text-align:center;"><span class="weight-badge">×2</span></td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td><input style="border:none;border-bottom:1.5px solid var(--border);width:100%;font-size:0.78rem;outline:none;background:transparent;" placeholder="Notes..." /></td></tr>
+        <tr><td>Rule of law & contract enforcement</td><td style="font-size:0.78rem;color:var(--text-muted);">Judicial independence, contract enforceability</td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td style="text-align:center;"><span class="weight-badge">×2</span></td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td><input style="border:none;border-bottom:1.5px solid var(--border);width:100%;font-size:0.78rem;outline:none;background:transparent;" placeholder="Notes..." /></td></tr>
+        <tr><td>Corruption & bribery risk</td><td style="font-size:0.78rem;color:var(--text-muted);">Transparency International CPI score</td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td style="text-align:center;"><span class="weight-badge">×2</span></td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td><input style="border:none;border-bottom:1.5px solid var(--border);width:100%;font-size:0.78rem;outline:none;background:transparent;" placeholder="Notes..." /></td></tr>
+        <tr><td>Foreign investment climate</td><td style="font-size:0.78rem;color:var(--text-muted);">FDI openness, profit repatriation, property rights</td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td style="text-align:center;"><span class="weight-badge">×1</span></td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td><input style="border:none;border-bottom:1.5px solid var(--border);width:100%;font-size:0.78rem;outline:none;background:transparent;" placeholder="Notes..." /></td></tr>
+        <tr class="subtotal-row"><td colspan="4" style="text-align:right;font-size:0.78rem;">Dimension 1 Subtotal (max 35)</td><td style="text-align:center;"><input class="score-input" style="font-weight:700;" placeholder="—" /></td><td></td></tr>
+
+        <!-- TRADE -->
+        <tr class="section-row"><td colspan="6">Dimension 2 — Trade Policy & Tariff Access</td></tr>
+        <tr><td>Trade agreement access</td><td style="font-size:0.78rem;color:var(--text-muted);">CAFTA-DR, USMCA, or FTA applicability to products</td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td style="text-align:center;"><span class="weight-badge">×3</span></td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td><input style="border:none;border-bottom:1.5px solid var(--border);width:100%;font-size:0.78rem;outline:none;background:transparent;" placeholder="Notes..." /></td></tr>
+        <tr><td>Rules of origin compliance feasibility</td><td style="font-size:0.78rem;color:var(--text-muted);">Yarn-forward or fiber-forward requirements achievable</td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td style="text-align:center;"><span class="weight-badge">×2</span></td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td><input style="border:none;border-bottom:1.5px solid var(--border);width:100%;font-size:0.78rem;outline:none;background:transparent;" placeholder="Notes..." /></td></tr>
+        <tr><td>Trade policy stability risk</td><td style="font-size:0.78rem;color:var(--text-muted);">Likelihood of agreement renegotiation or disruption</td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td style="text-align:center;"><span class="weight-badge">×2</span></td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td><input style="border:none;border-bottom:1.5px solid var(--border);width:100%;font-size:0.78rem;outline:none;background:transparent;" placeholder="Notes..." /></td></tr>
+        <tr><td>Export compliance risk</td><td style="font-size:0.78rem;color:var(--text-muted);">Sanctions, OFAC flags, buyer hesitancy indicators</td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td style="text-align:center;"><span class="weight-badge">×2</span></td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td><input style="border:none;border-bottom:1.5px solid var(--border);width:100%;font-size:0.78rem;outline:none;background:transparent;" placeholder="Notes..." /></td></tr>
+        <tr class="subtotal-row"><td colspan="4" style="text-align:right;font-size:0.78rem;">Dimension 2 Subtotal (max 45)</td><td style="text-align:center;"><input class="score-input" style="font-weight:700;" placeholder="—" /></td><td></td></tr>
+
+        <!-- LOGISTICS -->
+        <tr class="section-row"><td colspan="6">Dimension 3 — Logistics & Infrastructure</td></tr>
+        <tr><td>Port access & capacity</td><td style="font-size:0.78rem;color:var(--text-muted);">Port quality, congestion, container handling</td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td style="text-align:center;"><span class="weight-badge">×2</span></td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td><input style="border:none;border-bottom:1.5px solid var(--border);width:100%;font-size:0.78rem;outline:none;background:transparent;" placeholder="Notes..." /></td></tr>
+        <tr><td>Road & inland transport quality</td><td style="font-size:0.78rem;color:var(--text-muted);">Road conditions between port and production zones</td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td style="text-align:center;"><span class="weight-badge">×2</span></td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td><input style="border:none;border-bottom:1.5px solid var(--border);width:100%;font-size:0.78rem;outline:none;background:transparent;" placeholder="Notes..." /></td></tr>
+        <tr><td>Freight forwarder & customs broker availability</td><td style="font-size:0.78rem;color:var(--text-muted);">Local logistics expertise and service provider depth</td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td style="text-align:center;"><span class="weight-badge">×1</span></td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td><input style="border:none;border-bottom:1.5px solid var(--border);width:100%;font-size:0.78rem;outline:none;background:transparent;" placeholder="Notes..." /></td></tr>
+        <tr><td>Energy & utility reliability</td><td style="font-size:0.78rem;color:var(--text-muted);">Power stability, water access, telecommunications</td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td style="text-align:center;"><span class="weight-badge">×1</span></td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td><input style="border:none;border-bottom:1.5px solid var(--border);width:100%;font-size:0.78rem;outline:none;background:transparent;" placeholder="Notes..." /></td></tr>
+        <tr class="subtotal-row"><td colspan="4" style="text-align:right;font-size:0.78rem;">Dimension 3 Subtotal (max 30)</td><td style="text-align:center;"><input class="score-input" style="font-weight:700;" placeholder="—" /></td><td></td></tr>
+
+        <!-- LABOR -->
+        <tr class="section-row"><td colspan="6">Dimension 4 — Labor Market & Workforce</td></tr>
+        <tr><td>Labor cost competitiveness</td><td style="font-size:0.78rem;color:var(--text-muted);">Wage levels vs. current sourcing market</td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td style="text-align:center;"><span class="weight-badge">×2</span></td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td><input style="border:none;border-bottom:1.5px solid var(--border);width:100%;font-size:0.78rem;outline:none;background:transparent;" placeholder="Notes..." /></td></tr>
+        <tr><td>Skilled labor availability</td><td style="font-size:0.78rem;color:var(--text-muted);">Technical skills depth for your production type</td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td style="text-align:center;"><span class="weight-badge">×2</span></td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td><input style="border:none;border-bottom:1.5px solid var(--border);width:100%;font-size:0.78rem;outline:none;background:transparent;" placeholder="Notes..." /></td></tr>
+        <tr><td>Workforce turnover risk</td><td style="font-size:0.78rem;color:var(--text-muted);">Industry turnover rates, retention environment</td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td style="text-align:center;"><span class="weight-badge">×2</span></td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td><input style="border:none;border-bottom:1.5px solid var(--border);width:100%;font-size:0.78rem;outline:none;background:transparent;" placeholder="Notes..." /></td></tr>
+        <tr><td>Currency stability risk</td><td style="font-size:0.78rem;color:var(--text-muted);">Local currency volatility vs. USD over prior 24 months</td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td style="text-align:center;"><span class="weight-badge">×1</span></td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td><input style="border:none;border-bottom:1.5px solid var(--border);width:100%;font-size:0.78rem;outline:none;background:transparent;" placeholder="Notes..." /></td></tr>
+        <tr class="subtotal-row"><td colspan="4" style="text-align:right;font-size:0.78rem;">Dimension 4 Subtotal (max 35)</td><td style="text-align:center;"><input class="score-input" style="font-weight:700;" placeholder="—" /></td><td></td></tr>
+
+        <!-- COMPLIANCE -->
+        <tr class="section-row"><td colspan="6">Dimension 5 — Social Compliance Readiness</td></tr>
+        <tr><td>WRAP certification base — facilities available</td><td style="font-size:0.78rem;color:var(--text-muted);">Number of certified facilities in country</td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td style="text-align:center;"><span class="weight-badge">×2</span></td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td><input style="border:none;border-bottom:1.5px solid var(--border);width:100%;font-size:0.78rem;outline:none;background:transparent;" placeholder="Notes..." /></td></tr>
+        <tr><td>Local compliance infrastructure</td><td style="font-size:0.78rem;color:var(--text-muted);">WRAP monitors, compliance consultants, audit capacity</td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td style="text-align:center;"><span class="weight-badge">×1</span></td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td><input style="border:none;border-bottom:1.5px solid var(--border);width:100%;font-size:0.78rem;outline:none;background:transparent;" placeholder="Notes..." /></td></tr>
+        <tr><td>Labor law enforcement environment</td><td style="font-size:0.78rem;color:var(--text-muted);">Strength of government labor inspection system</td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td style="text-align:center;"><span class="weight-badge">×2</span></td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td><input style="border:none;border-bottom:1.5px solid var(--border);width:100%;font-size:0.78rem;outline:none;background:transparent;" placeholder="Notes..." /></td></tr>
+        <tr><td>Environmental compliance framework</td><td style="font-size:0.78rem;color:var(--text-muted);">Environmental regulation strength and enforcement</td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td style="text-align:center;"><span class="weight-badge">×1</span></td><td style="text-align:center;"><input class="score-input" placeholder="—" /></td><td><input style="border:none;border-bottom:1.5px solid var(--border);width:100%;font-size:0.78rem;outline:none;background:transparent;" placeholder="Notes..." /></td></tr>
+        <tr class="subtotal-row"><td colspan="4" style="text-align:right;font-size:0.78rem;">Dimension 5 Subtotal (max 30)</td><td style="text-align:center;"><input class="score-input" style="font-weight:700;" placeholder="—" /></td><td></td></tr>
+
+        <!-- TOTAL -->
+        <tr class="total-row"><td colspan="4" style="text-align:right;">COMPOSITE COUNTRY RISK SCORE (max 175)</td><td style="text-align:center;"><input class="score-input" style="background:transparent;border-bottom-color:rgba(255,255,255,0.4);color:white;font-size:0.9rem;" placeholder="—" /></td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- RESULTS MATRIX -->
+  <div class="cra-block">
+    <div class="cra-header"><h3>Score Interpretation — Country Risk Tier</h3><span>Reference after calculating composite score</span></div>
+    <div class="risk-matrix">
+      <div class="rm-card rm-green">
+        <div class="rm-range">140–175</div>
+        <div class="rm-title">Tier 1 — Favorable Market</div>
+        <div class="rm-desc">Strong enabling conditions across most dimensions. Proceed to vendor qualification and operational planning. Standard mitigation measures apply.</div>
+      </div>
+      <div class="rm-card rm-yellow">
+        <div class="rm-range">100–139</div>
+        <div class="rm-title">Tier 2 — Conditional Market</div>
+        <div class="rm-desc">Meaningful risks in one or more dimensions. Proceed with specific mitigation strategies for low-scoring dimensions. Enhanced monitoring required.</div>
+      </div>
+      <div class="rm-card rm-red">
+        <div class="rm-range">Below 100</div>
+        <div class="rm-title">Tier 3 — High-Risk Market</div>
+        <div class="rm-desc">Significant risk concentration across multiple dimensions. Do not commit capital or volume without executive-level risk review and multi-country optionality plan.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECOMMENDATION & SIGN-OFF -->
+  <div class="cra-block" style="margin-bottom:28px;">
+    <div class="cra-header"><h3>Assessment Recommendation & Authorization</h3></div>
+    <div class="rec-body">
+      <p style="font-size:0.72rem;font-weight:700;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">Analyst Recommendation & Key Risk Notes</p>
+      <textarea class="notes-input" placeholder="Summarize key risk findings, mitigation recommendations, and overall market suitability for your nearshoring objectives..."></textarea>
+    </div>
+    <div style="border-top:2px solid var(--border);">
+      <div class="signoff-grid">
+        <div class="signoff-cell"><div class="signoff-label">Assessed By — Name & Title</div><div class="signoff-line"></div><div class="signoff-sub">Signature &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Date: ___________</div></div>
+        <div class="signoff-cell"><div class="signoff-label">Reviewed By — Name & Title</div><div class="signoff-line"></div><div class="signoff-sub">Signature &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Date: ___________</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sources">
+    <h4>Sources & Data References</h4>
+    <ul>
+      <li>Transparency International — Corruption Perceptions Index (2025) — <a href="https://www.transparency.org" target="_blank">transparency.org</a></li>
+      <li>World Bank — Logistics Performance Index & Doing Business Data (2024) — <a href="https://www.worldbank.org" target="_blank">worldbank.org</a></li>
+      <li>U.S. Trade Representative — Trade Agreement Tariff Schedules & Rules of Origin (2025) — <a href="https://ustr.gov" target="_blank">ustr.gov</a></li>
+      <li>Inter-American Development Bank — Latin America Competitiveness & Infrastructure Report (2024) — <a href="https://www.iadb.org" target="_blank">iadb.org</a></li>
+      <li>WRAP — Certified Facility Registry by Country (2024) — <a href="https://www.wrapcompliance.org" target="_blank">wrapcompliance.org</a></li>
+      <li>U.S. State Department — Country Reports on Human Rights Practices (2025) — <a href="https://www.state.gov" target="_blank">state.gov</a></li>
+    </ul>
+  </div>
+  <div class="article-cta">
+    <h3>Need a Country Risk Assessment for Your Market?</h3>
+    <p>RC2 Consulting builds custom country risk assessments using primary market intelligence, in-market contacts, and sourcing data — giving you a company-specific risk picture before committing to a nearshoring market.</p>
+    <a href="https://panamaeddie.github.io/contact.html" class="btn-cta">Request a Custom Assessment →</a>
+    <button class="btn-print" onclick="window.print()">🖨 Print / Save as PDF</button>
+  </div>
+</div>
+<footer class="site-footer">
+  <div class="footer-tagline">Operational Clarity. Compliance Confidence. Systems That Scale.</div>
+  <div class="footer-links">
+    <a href="https://panamaeddie.github.io/">Home</a><a href="https://panamaeddie.github.io/services.html">Services</a>
+    <a href="https://panamaeddie.github.io/who-we-help.html">Who We Help</a><a href="https://panamaeddie.github.io/about.html">About</a>
+    <a href="https://panamaeddie.github.io/RC2_Resources_Page.html">Resources</a><a href="https://panamaeddie.github.io/contact.html">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 RC2 Consulting, LLC &nbsp;|&nbsp; Privacy Policy &nbsp;|&nbsp; Terms of Service</div>
+</footer>
+</body>
+</html>

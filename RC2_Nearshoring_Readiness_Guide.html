@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nearshoring Readiness Guide | RC2 Consulting</title>
+  <meta name="description" content="A structured readiness guide for companies evaluating or executing a nearshoring transition to Latin America. Assess operational, compliance, and logistical readiness before committing." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:#0B2545; --blue:#1A4A8A; --light-blue:#2563EB;
+      --light-bg:#F4F6FA; --white:#FFFFFF;
+      --text:#1C2B3A; --text-muted:#4A5568; --border:#E2E8F0;
+      --success:#1A7A4E; --success-bg:#EBF7F2;
+      --warn:#854D0E; --warn-bg:#FFFBEB;
+      --danger:#9B1C1C; --danger-bg:#FEF2F2;
+    }
+    body { font-family:'Source Sans 3',sans-serif; background:var(--light-bg); color:var(--text); margin:0; line-height:1.6; }
+    .topnav { background:var(--navy); padding:0 40px; display:flex; align-items:center; justify-content:space-between; height:52px; position:sticky; top:0; z-index:200; box-shadow:0 2px 8px rgba(0,0,0,0.25); }
+    .nav-brand { display:flex; align-items:center; gap:8px; text-decoration:none; }
+    .nav-logo-mark { background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); color:white; font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; width:32px; height:32px; border-radius:6px; display:flex; align-items:center; justify-content:center; }
+    .nav-logo-mark sup { font-size:0.5rem; vertical-align:super; }
+    .nav-brand-name { font-size:0.88rem; font-weight:600; color:rgba(255,255,255,0.9); }
+    .nav-links { display:flex; gap:4px; list-style:none; }
+    .nav-links a { color:rgba(255,255,255,0.78); text-decoration:none; font-size:0.83rem; font-weight:600; padding:6px 12px; border-radius:4px; transition:all 0.2s; white-space:nowrap; }
+    .nav-links a:hover { color:white; background:rgba(255,255,255,0.1); }
+    .nav-links a.active { color:white; background:rgba(255,255,255,0.12); }
+    .hero { background:linear-gradient(to bottom, rgba(11,37,69,0.84) 0%, rgba(11,37,69,0.68) 100%), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1400&q=80') center/cover no-repeat; padding:60px 40px 52px; }
+    .hero-inner { max-width:900px; margin:0 auto; }
+    .article-tag { display:inline-block; font-size:0.65rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.7); background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); padding:4px 12px; border-radius:10px; margin-bottom:14px; }
+    .hero h1 { font-family:'Playfair Display',serif; font-size:2.3rem; font-weight:700; color:white; line-height:1.2; margin-bottom:10px; }
+    .hero-sub { font-size:0.92rem; color:rgba(255,255,255,0.75); margin-bottom:16px; max-width:620px; line-height:1.6; }
+    .hero-meta { display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+    .hero-meta span { font-size:0.82rem; color:rgba(255,255,255,0.6); }
+    .hero-meta .divider { color:rgba(255,255,255,0.3); }
+    .page-wrap { max-width:900px; margin:0 auto; padding:0 24px; }
+    .btn-back { display:inline-flex; align-items:center; gap:6px; color:var(--light-blue); text-decoration:none; font-size:0.84rem; font-weight:600; margin:24px 0 0; }
+    .abstract-box { background:var(--white); border-left:4px solid var(--light-blue); border-radius:0 8px 8px 0; padding:22px 26px; margin:36px 0 28px; box-shadow:0 2px 8px rgba(11,37,69,0.07); }
+    .abstract-box h3 { font-size:0.68rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--light-blue); margin-bottom:8px; }
+    .abstract-box p { font-size:0.9rem; color:var(--text-muted); line-height:1.75; font-style:italic; }
+
+    /* PHASE CARDS */
+    .phase-block { background:var(--white); border-radius:10px; border:1px solid var(--border); box-shadow:0 2px 8px rgba(11,37,69,0.06); margin-bottom:20px; overflow:hidden; }
+    .phase-header { padding:14px 24px; display:flex; align-items:center; gap:14px; border-bottom:2px solid var(--border); }
+    .phase-header.ph1 { background:#EFF6FF; }
+    .phase-header.ph2 { background:#F0FDF4; }
+    .phase-header.ph3 { background:#FFF7ED; }
+    .phase-header.ph4 { background:#FDF4FF; }
+    .phase-num { font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:700; line-height:1; }
+    .ph1 .phase-num { color:#1D4ED8; }
+    .ph2 .phase-num { color:#15803D; }
+    .ph3 .phase-num { color:#C2410C; }
+    .ph4 .phase-num { color:#7E22CE; }
+    .phase-title-wrap h3 { font-size:1rem; font-weight:700; color:var(--navy); }
+    .phase-title-wrap p { font-size:0.78rem; color:var(--text-muted); margin-top:2px; }
+    .phase-body { padding:20px 24px; }
+
+    /* CHECKLIST GROUPS */
+    .check-group { margin-bottom:18px; }
+    .check-group:last-child { margin-bottom:0; }
+    .check-group-title { font-size:0.78rem; font-weight:700; color:var(--blue); letter-spacing:0.5px; text-transform:uppercase; margin-bottom:10px; padding-bottom:6px; border-bottom:1px solid var(--border); }
+    .check-items { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+    .check-item { display:flex; align-items:flex-start; gap:10px; padding:8px 10px; background:var(--light-bg); border-radius:6px; border:1px solid var(--border); }
+    .check-box { width:16px; height:16px; border:2px solid var(--border); border-radius:3px; flex-shrink:0; margin-top:2px; background:white; cursor:pointer; }
+    .check-text { font-size:0.82rem; color:var(--text); line-height:1.45; }
+
+    /* COUNTRY MATRIX */
+    .country-table { width:100%; border-collapse:collapse; margin:20px 0; font-size:0.82rem; }
+    .country-table th { background:var(--navy); color:white; padding:10px 14px; text-align:left; font-size:0.74rem; font-weight:700; letter-spacing:0.5px; }
+    .country-table td { padding:10px 14px; border-bottom:1px solid var(--border); color:var(--text-muted); vertical-align:middle; }
+    .country-table tr:nth-child(even) td { background:var(--light-bg); }
+    .country-table td:first-child { font-weight:700; color:var(--navy); }
+    .tag { display:inline-block; font-size:0.68rem; font-weight:700; padding:2px 8px; border-radius:10px; white-space:nowrap; }
+    .tag-green { background:var(--success-bg); color:var(--success); }
+    .tag-yellow { background:var(--warn-bg); color:var(--warn); }
+    .tag-red { background:var(--danger-bg); color:var(--danger); }
+
+    /* COST TABLE */
+    .cost-table { width:100%; border-collapse:collapse; font-size:0.82rem; margin:16px 0; }
+    .cost-table th { background:var(--light-bg); padding:9px 14px; text-align:left; font-size:0.74rem; font-weight:700; color:var(--text-muted); border-bottom:2px solid var(--border); }
+    .cost-table td { padding:9px 14px; border-bottom:1px solid var(--border); color:var(--text-muted); }
+    .cost-table td:first-child { font-weight:600; color:var(--navy); }
+    .cost-table tr:last-child td { border-bottom:none; font-weight:700; color:var(--navy); background:var(--light-bg); }
+
+    .callout { background:var(--light-bg); border-radius:8px; padding:16px 20px; margin:16px 0; border:1px solid var(--border); }
+    .callout p { font-size:0.88rem; color:var(--navy); font-weight:600; line-height:1.65; margin:0; font-style:italic; border-left:3px solid var(--light-blue); padding-left:14px; }
+
+    /* SOURCES */
+    .sources { background:var(--light-bg); border-radius:8px; padding:18px 22px; margin:0 0 24px; border:1px solid var(--border); }
+    .sources h4 { font-size:0.68rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); margin-bottom:10px; }
+    .sources ul { list-style:none; }
+    .sources ul li { font-size:0.77rem; color:var(--text-muted); padding:3px 0; border-bottom:1px solid var(--border); }
+    .sources ul li:last-child { border-bottom:none; }
+    .sources ul li a { color:var(--light-blue); text-decoration:none; }
+    .article-cta { background:linear-gradient(135deg,var(--navy),var(--blue)); border-radius:10px; padding:32px; text-align:center; margin-bottom:44px; }
+    .article-cta h3 { font-family:'Playfair Display',serif; font-size:1.35rem; color:white; margin-bottom:8px; }
+    .article-cta p { font-size:0.86rem; color:rgba(255,255,255,0.78); margin-bottom:18px; }
+    .btn-cta { display:inline-flex; align-items:center; gap:8px; background:white; color:var(--blue); font-weight:700; font-size:0.86rem; padding:11px 22px; border-radius:6px; text-decoration:none; }
+    .btn-print { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.15); color:white; font-weight:600; font-size:0.84rem; padding:10px 20px; border-radius:6px; text-decoration:none; border:1px solid rgba(255,255,255,0.3); margin-left:10px; cursor:pointer; font-family:'Source Sans 3',sans-serif; }
+    .site-footer { background:var(--blue); color:white; text-align:center; padding:36px 24px; }
+    .footer-tagline { font-size:0.9rem; color:rgba(255,255,255,0.9); font-weight:600; letter-spacing:0.5px; margin-bottom:10px; }
+    .footer-links { display:flex; gap:18px; justify-content:center; flex-wrap:wrap; margin-bottom:12px; }
+    .footer-links a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.78rem; }
+    .footer-copy { font-size:0.73rem; color:rgba(255,255,255,0.5); }
+    @media (max-width:700px) {
+      .hero h1 { font-size:1.75rem; }
+      .check-items { grid-template-columns:1fr; }
+      .topnav { padding:0 14px; }
+      .nav-links a { padding:5px 7px; font-size:0.76rem; }
+    }
+    @media print {
+      .topnav, .btn-back, .abstract-box, .article-cta, .site-footer, .sources { display:none; }
+      body { background:white; }
+      .phase-block { box-shadow:none; border:1px solid #ccc; break-inside:avoid; }
+    }
+  </style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="https://panamaeddie.github.io/" class="nav-brand">
+    <div class="nav-logo-mark">RC<sup>2</sup></div>
+    <span class="nav-brand-name">Consulting</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://panamaeddie.github.io/">Home</a></li>
+    <li><a href="https://panamaeddie.github.io/services.html">Services</a></li>
+    <li><a href="https://panamaeddie.github.io/who-we-help.html">Who We Help</a></li>
+    <li><a href="https://panamaeddie.github.io/about.html">About</a></li>
+    <li><a href="https://panamaeddie.github.io/RC2_Resources_Page.html" class="active">Resources</a></li>
+    <li><a href="https://panamaeddie.github.io/contact.html">Contact</a></li>
+  </ul>
+</nav>
+<section class="hero">
+  <div class="hero-inner">
+    <span class="article-tag">Supply Chain Tool</span>
+    <h1>Nearshoring Readiness Guide</h1>
+    <p class="hero-sub">A structured, phase-by-phase readiness guide for companies evaluating or executing a nearshoring transition to Latin America. Assess readiness across operations, compliance, logistics, and workforce before committing capital.</p>
+    <div class="hero-meta">
+      <span>RC2 Consulting</span><span class="divider">|</span>
+      <span>February 2026</span><span class="divider">|</span>
+      <span>Printable Working Guide</span>
+    </div>
+  </div>
+</section>
+<div class="page-wrap">
+  <a href="https://panamaeddie.github.io/RC2_Resources_Page.html" class="btn-back">← Back to Resources</a>
+  <div class="abstract-box">
+    <h3>About This Guide</h3>
+    <p>This guide walks companies through four phases of nearshoring readiness — from strategic evaluation through operational launch — using structured checklists, a country comparison matrix, and a total landed cost framework. It is designed to surface the gaps that most financial models miss before capital is committed and production is transferred.</p>
+  </div>
+
+  <!-- PHASE 1 -->
+  <div class="phase-block">
+    <div class="phase-header ph1">
+      <span class="phase-num">01</span>
+      <div class="phase-title-wrap">
+        <h3>Strategic Evaluation — Pre-Decision</h3>
+        <p>Complete before committing to any nearshoring market or vendor</p>
+      </div>
+    </div>
+    <div class="phase-body">
+      <div class="check-group">
+        <div class="check-group-title">Business Case & Financial Modeling</div>
+        <div class="check-items">
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Total landed cost model completed — all cost variables included</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Current tariff exposure under existing sourcing structure quantified</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">CAFTA-DR / USMCA / FTA tariff savings modeled by country</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Quality ramp cost and rework rate during transition budgeted</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Currency risk exposure identified and hedging strategy considered</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Break-even timeline calculated under conservative assumptions</span></div>
+        </div>
+      </div>
+      <div class="check-group">
+        <div class="check-group-title">Country Selection</div>
+        <div class="check-items">
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Minimum 2 target countries evaluated and compared</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Political stability and policy risk assessed for each candidate</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Trade agreement eligibility confirmed with legal counsel</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">On-the-ground market visit completed — no commitment before site visit</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Secondary market option identified for concentration risk</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Exit scenario modeled for primary market disruption</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COUNTRY MATRIX -->
+  <div class="phase-block">
+    <div class="phase-header ph1">
+      <span class="phase-num">📊</span>
+      <div class="phase-title-wrap">
+        <h3>Country Readiness Comparison Matrix</h3>
+        <p>Key nearshoring markets — Latin America 2026</p>
+      </div>
+    </div>
+    <div class="phase-body">
+      <table class="country-table">
+        <thead>
+          <tr><th>Country</th><th>Trade Framework</th><th>Labor Cost</th><th>Infrastructure</th><th>Political Stability</th><th>WRAP Base</th><th>Overall Readiness</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Mexico</td><td>USMCA</td><td>Medium-High</td><td>Strong</td><td><span class="tag tag-yellow">Moderate</span></td><td>Strong</td><td><span class="tag tag-green">High</span></td></tr>
+          <tr><td>Honduras</td><td>CAFTA-DR</td><td>Low</td><td>Moderate</td><td><span class="tag tag-yellow">Moderate</span></td><td>Strong</td><td><span class="tag tag-green">High</span></td></tr>
+          <tr><td>Guatemala</td><td>CAFTA-DR</td><td>Low</td><td>Moderate</td><td><span class="tag tag-green">Stable</span></td><td>Growing</td><td><span class="tag tag-green">High</span></td></tr>
+          <tr><td>El Salvador</td><td>CAFTA-DR</td><td>Low</td><td>Good</td><td><span class="tag tag-yellow">Moderate</span></td><td>Strong</td><td><span class="tag tag-green">High</span></td></tr>
+          <tr><td>Colombia</td><td>US-Colombia FTA</td><td>Low-Medium</td><td>Moderate</td><td><span class="tag tag-green">Stable</span></td><td>Developing</td><td><span class="tag tag-yellow">Medium</span></td></tr>
+          <tr><td>Nicaragua</td><td>CAFTA-DR</td><td>Very Low</td><td>Limited</td><td><span class="tag tag-red">High Risk</span></td><td>Limited</td><td><span class="tag tag-red">High Risk</span></td></tr>
+          <tr><td>Costa Rica</td><td>CAFTA-DR</td><td>Medium</td><td>Strong</td><td><span class="tag tag-green">Stable</span></td><td>Developing</td><td><span class="tag tag-yellow">Medium</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- PHASE 2 -->
+  <div class="phase-block">
+    <div class="phase-header ph2">
+      <span class="phase-num">02</span>
+      <div class="phase-title-wrap">
+        <h3>Operational Foundation — Pre-Launch</h3>
+        <p>Complete before first production run or shipment</p>
+      </div>
+    </div>
+    <div class="phase-body">
+      <div class="check-group">
+        <div class="check-group-title">Vendor & Facility Qualification</div>
+        <div class="check-items">
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Vendor qualification criteria defined and documented</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Factory audit completed — physical and documentation review</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Social compliance status of vendor confirmed or assessed</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Raw material and component sourcing strategy mapped</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Backup vendor identified for production continuity</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Production capacity confirmed against volume requirements</span></div>
+        </div>
+      </div>
+      <div class="check-group">
+        <div class="check-group-title">Logistics & Customs</div>
+        <div class="check-items">
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Freight forwarder with Latin America expertise engaged</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Customs broker licensed for relevant trade corridors retained</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Country-of-origin documentation system established</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Import entry process mapped and tested before first shipment</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Lead time variability scenarios modeled (best/base/worst)</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Inland transportation to production zone evaluated</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOTAL LANDED COST -->
+  <div class="phase-block">
+    <div class="phase-header ph2">
+      <span class="phase-num">💰</span>
+      <div class="phase-title-wrap">
+        <h3>Total Landed Cost Framework</h3>
+        <p>All variables that must be included — not just labor and freight</p>
+      </div>
+    </div>
+    <div class="phase-body">
+      <div class="callout"><p>Companies that model only labor rates and ocean freight consistently overpromise nearshoring savings. True total landed cost includes at least 12 distinct cost categories. Missing even 3 of them can eliminate the projected cost advantage entirely.</p></div>
+      <table class="cost-table">
+        <thead><tr><th>Cost Category</th><th>Included in Your Model?</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Labor — direct wages</td><td>☐ Yes &nbsp; ☐ No</td><td>Minimum wage + benefits per local law</td></tr>
+          <tr><td>Labor — turnover & recruitment</td><td>☐ Yes &nbsp; ☐ No</td><td>5–10%/mo turnover common in maquila environments</td></tr>
+          <tr><td>Labor — training ramp cost</td><td>☐ Yes &nbsp; ☐ No</td><td>Quality consistency takes 6–18 months to stabilize</td></tr>
+          <tr><td>Ocean / air freight</td><td>☐ Yes &nbsp; ☐ No</td><td>Include port fees and inland drayage</td></tr>
+          <tr><td>Customs duties & tariffs</td><td>☐ Yes &nbsp; ☐ No</td><td>After FTA/CAFTA-DR preference applied</td></tr>
+          <tr><td>Customs brokerage fees</td><td>☐ Yes &nbsp; ☐ No</td><td>Often underestimated at new corridors</td></tr>
+          <tr><td>Compliance / certification costs</td><td>☐ Yes &nbsp; ☐ No</td><td>WRAP audit, CAP remediation, annual renewal</td></tr>
+          <tr><td>Quality control / inspection</td><td>☐ Yes &nbsp; ☐ No</td><td>Third-party QC during ramp-up period</td></tr>
+          <tr><td>Rework & defect cost</td><td>☐ Yes &nbsp; ☐ No</td><td>Higher during first 6–12 months of production</td></tr>
+          <tr><td>Management oversight overhead</td><td>☐ Yes &nbsp; ☐ No</td><td>Travel, local management, communication</td></tr>
+          <tr><td>Currency risk exposure</td><td>☐ Yes &nbsp; ☐ No</td><td>Local cost inputs indexed to local currency</td></tr>
+          <tr><td>Inventory carrying cost</td><td>☐ Yes &nbsp; ☐ No</td><td>Longer lead times require larger safety stock</td></tr>
+          <tr><td>TOTAL LANDED COST</td><td colspan="2">Sum of all above — compare to current sourcing cost on same basis</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- PHASE 3 -->
+  <div class="phase-block">
+    <div class="phase-header ph3">
+      <span class="phase-num">03</span>
+      <div class="phase-title-wrap">
+        <h3>Workforce & Quality Systems — Ramp-Up</h3>
+        <p>First 6–18 months of production</p>
+      </div>
+    </div>
+    <div class="phase-body">
+      <div class="check-group">
+        <div class="check-group-title">Workforce Readiness</div>
+        <div class="check-items">
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Local operational leadership identified and onboarded</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Workforce training program built on documented SOPs</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Training records system established from day one</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Turnover tracking and retention strategy in place</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Worker communication channels established in local language</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Grievance procedure posted and communicated</span></div>
+        </div>
+      </div>
+      <div class="check-group">
+        <div class="check-group-title">Quality Systems Transfer</div>
+        <div class="check-items">
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Quality standards documented in local language</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Inspection protocols adapted to new production environment</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Defect rate KPI tracked weekly through ramp-up</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Third-party QC inspection engaged during first production runs</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Corrective action system built for quality findings</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Buyer quality requirements communicated and confirmed with vendor</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 4 -->
+  <div class="phase-block">
+    <div class="phase-header ph4">
+      <span class="phase-num">04</span>
+      <div class="phase-title-wrap">
+        <h3>Compliance Certification & Scale</h3>
+        <p>18–36 months — building long-term supply chain value</p>
+      </div>
+    </div>
+    <div class="phase-body">
+      <div class="check-group">
+        <div class="check-group-title">Social Compliance & Certification</div>
+        <div class="check-items">
+          <div class="check-item"><div class="check-box"></div><span class="check-text">WRAP or equivalent certification process initiated</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">PASA self-assessment completed — gaps identified and in CAP</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Full policy library documented across all 12 WRAP principles</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Internal audit history established — quarterly cadence</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">WRAP-registered monitor engaged for pre-audit review</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Annual certification renewal calendar established</span></div>
+        </div>
+      </div>
+      <div class="check-group">
+        <div class="check-group-title">Supply Chain Optimization</div>
+        <div class="check-items">
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Local supply base expanded — Asia dependency reduced</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Second-country option developed for concentration risk management</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Production capacity expanded on proven quality foundation</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Buyer relationships expanded using certification as credential</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">KPI dashboard reporting stabilized — weekly operational review</span></div>
+          <div class="check-item"><div class="check-box"></div><span class="check-text">Year 2 nearshoring strategy plan documented and approved</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sources">
+    <h4>Sources & References</h4>
+    <ul>
+      <li>U.S. Trade Representative — CAFTA-DR & USMCA Trade Agreement Guides (2025) — <a href="https://ustr.gov" target="_blank">ustr.gov</a></li>
+      <li>World Bank — Logistics Performance Index, Latin America (2024) — <a href="https://www.worldbank.org" target="_blank">worldbank.org</a></li>
+      <li>WRAP — Certification Program Requirements (2024) — <a href="https://www.wrapcompliance.org" target="_blank">wrapcompliance.org</a></li>
+      <li>Kearney — Reshoring Index, Latin America Supply Chain Report (2025) — <a href="https://www.kearney.com" target="_blank">kearney.com</a></li>
+    </ul>
+  </div>
+  <div class="article-cta">
+    <h3>Ready to Plan Your Nearshoring Transition?</h3>
+    <p>RC2 Consulting guides companies through every phase of nearshoring readiness — from total landed cost modeling through vendor qualification, compliance certification, and operational launch.</p>
+    <a href="https://panamaeddie.github.io/contact.html" class="btn-cta">Schedule a Readiness Consultation →</a>
+    <button class="btn-print" onclick="window.print()">🖨 Print / Save as PDF</button>
+  </div>
+</div>
+<footer class="site-footer">
+  <div class="footer-tagline">Operational Clarity. Compliance Confidence. Systems That Scale.</div>
+  <div class="footer-links">
+    <a href="https://panamaeddie.github.io/">Home</a>
+    <a href="https://panamaeddie.github.io/services.html">Services</a>
+    <a href="https://panamaeddie.github.io/who-we-help.html">Who We Help</a>
+    <a href="https://panamaeddie.github.io/about.html">About</a>
+    <a href="https://panamaeddie.github.io/RC2_Resources_Page.html">Resources</a>
+    <a href="https://panamaeddie.github.io/contact.html">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 RC2 Consulting, LLC &nbsp;|&nbsp; Privacy Policy &nbsp;|&nbsp; Terms of Service</div>
+</footer>
+</body>
+</html>

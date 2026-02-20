@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vendor Due Diligence Checklist | RC2 Consulting</title>
+  <meta name="description" content="A structured vendor due diligence checklist for companies qualifying new suppliers in Latin America. Evaluate legal, financial, operational, compliance, and ethical standing before committing." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --navy:#0B2545; --blue:#1A4A8A; --light-blue:#2563EB; --light-bg:#F4F6FA; --white:#FFFFFF; --text:#1C2B3A; --text-muted:#4A5568; --border:#E2E8F0; --success:#1A7A4E; --success-bg:#EBF7F2; --warn:#854D0E; --warn-bg:#FFFBEB; --danger:#9B1C1C; --danger-bg:#FEF2F2; }
+    body { font-family:'Source Sans 3',sans-serif; background:var(--light-bg); color:var(--text); margin:0; line-height:1.6; }
+    .topnav { background:var(--navy); padding:0 40px; display:flex; align-items:center; justify-content:space-between; height:52px; position:sticky; top:0; z-index:200; box-shadow:0 2px 8px rgba(0,0,0,0.25); }
+    .nav-brand { display:flex; align-items:center; gap:8px; text-decoration:none; }
+    .nav-logo-mark { background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); color:white; font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; width:32px; height:32px; border-radius:6px; display:flex; align-items:center; justify-content:center; }
+    .nav-logo-mark sup { font-size:0.5rem; vertical-align:super; }
+    .nav-brand-name { font-size:0.88rem; font-weight:600; color:rgba(255,255,255,0.9); }
+    .nav-links { display:flex; gap:4px; list-style:none; }
+    .nav-links a { color:rgba(255,255,255,0.78); text-decoration:none; font-size:0.83rem; font-weight:600; padding:6px 12px; border-radius:4px; white-space:nowrap; }
+    .nav-links a:hover { color:white; background:rgba(255,255,255,0.1); }
+    .nav-links a.active { color:white; background:rgba(255,255,255,0.12); }
+    .hero { background:linear-gradient(to bottom, rgba(11,37,69,0.84) 0%, rgba(11,37,69,0.68) 100%), url('https://images.unsplash.com/photo-1556761175-4b46a572b786?w=1400&q=80') center/cover no-repeat; padding:60px 40px 52px; }
+    .hero-inner { max-width:960px; margin:0 auto; }
+    .article-tag { display:inline-block; font-size:0.65rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.7); background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); padding:4px 12px; border-radius:10px; margin-bottom:14px; }
+    .hero h1 { font-family:'Playfair Display',serif; font-size:2.3rem; font-weight:700; color:white; line-height:1.2; margin-bottom:10px; }
+    .hero-sub { font-size:0.92rem; color:rgba(255,255,255,0.75); margin-bottom:16px; max-width:640px; line-height:1.6; }
+    .hero-meta { display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+    .hero-meta span { font-size:0.82rem; color:rgba(255,255,255,0.6); }
+    .hero-meta .divider { color:rgba(255,255,255,0.3); }
+    .page-wrap { max-width:960px; margin:0 auto; padding:0 24px; }
+    .btn-back { display:inline-flex; align-items:center; gap:6px; color:var(--light-blue); text-decoration:none; font-size:0.84rem; font-weight:600; margin:24px 0 0; }
+    .abstract-box { background:var(--white); border-left:4px solid var(--light-blue); border-radius:0 8px 8px 0; padding:22px 26px; margin:36px 0 28px; box-shadow:0 2px 8px rgba(11,37,69,0.07); }
+    .abstract-box h3 { font-size:0.68rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--light-blue); margin-bottom:8px; }
+    .abstract-box p { font-size:0.9rem; color:var(--text-muted); line-height:1.75; font-style:italic; }
+
+    /* VENDOR INFO */
+    .vdd-block { background:var(--white); border-radius:10px; border:1px solid var(--border); box-shadow:0 2px 8px rgba(11,37,69,0.06); margin-bottom:20px; overflow:hidden; }
+    .vdd-header { background:var(--navy); padding:13px 22px; display:flex; align-items:center; justify-content:space-between; }
+    .vdd-header h3 { font-size:0.86rem; font-weight:700; color:white; }
+    .vdd-header span { font-size:0.72rem; color:rgba(255,255,255,0.55); }
+    .info-grid { display:grid; grid-template-columns:1fr 1fr 1fr; }
+    .info-cell { padding:12px 20px; border-bottom:1px solid var(--border); border-right:1px solid var(--border); }
+    .info-cell:nth-child(3n) { border-right:none; }
+    .info-cell.full { grid-column:1/-1; border-right:none; }
+    .info-label { font-size:0.69rem; font-weight:700; color:var(--text-muted); letter-spacing:0.8px; text-transform:uppercase; display:block; margin-bottom:4px; }
+    .info-field { border:none; border-bottom:1.5px solid var(--border); width:100%; font-size:0.86rem; color:var(--navy); padding:3px 0; background:transparent; font-family:'Source Sans 3',sans-serif; outline:none; }
+    .info-field:focus { border-bottom-color:var(--light-blue); }
+
+    /* CHECKLIST SECTIONS */
+    .section-label { background:var(--light-bg); padding:11px 22px; border-bottom:1px solid var(--border); border-top:2px solid var(--border); }
+    .section-label span { font-size:0.72rem; font-weight:700; color:var(--blue); letter-spacing:1px; text-transform:uppercase; }
+    .section-label small { font-size:0.7rem; color:var(--text-muted); margin-left:8px; }
+
+    .item-table { width:100%; border-collapse:collapse; }
+    .item-table th { background:var(--light-bg); padding:9px 16px; text-align:left; font-size:0.72rem; font-weight:700; color:var(--text-muted); border-bottom:1px solid var(--border); }
+    .item-table th.col-yn { width:110px; text-align:center; }
+    .item-table th.col-flag { width:90px; text-align:center; }
+    .item-table th.col-notes { width:200px; }
+    .item-table td { padding:10px 16px; border-bottom:1px solid var(--border); font-size:0.83rem; color:var(--text-muted); vertical-align:middle; }
+    .item-table tr:last-child td { border-bottom:none; }
+    .item-table tr:hover td { background:#FAFBFD; }
+    .item-num { font-size:0.72rem; font-weight:700; color:var(--light-blue); width:32px; }
+    .item-text { line-height:1.45; }
+    .item-sub { font-size:0.72rem; color:var(--text-muted); margin-top:2px; }
+    .yn-group { display:flex; align-items:center; justify-content:center; gap:12px; }
+    .yn-label { display:flex; align-items:center; gap:5px; font-size:0.78rem; font-weight:600; cursor:pointer; }
+    .yn-label input[type=radio] { width:14px; height:14px; cursor:pointer; accent-color:var(--light-blue); }
+    .flag-sel { border:none; border-bottom:1.5px solid var(--border); font-size:0.78rem; color:var(--navy); background:transparent; font-family:'Source Sans 3',sans-serif; outline:none; cursor:pointer; padding:2px 0; }
+    .note-field { border:none; border-bottom:1.5px solid var(--border); width:100%; font-size:0.78rem; color:var(--navy); background:transparent; font-family:'Source Sans 3',sans-serif; outline:none; }
+    .note-field:focus { border-bottom-color:var(--light-blue); }
+
+    /* RATING BLOCK */
+    .rating-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+    .rating-cell { padding:16px 18px; text-align:center; border-right:1px solid var(--border); }
+    .rating-cell:last-child { border-right:none; }
+    .rating-num { font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:700; line-height:1; margin-bottom:4px; }
+    .rating-label { font-size:0.7rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px; }
+    .rating-input { border:1.5px solid var(--border); border-radius:6px; padding:6px 10px; font-size:0.86rem; color:var(--navy); font-family:'Source Sans 3',sans-serif; outline:none; background:var(--light-bg); text-align:center; width:100%; }
+
+    /* DECISION */
+    .decision-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; }
+    .decision-opt { padding:16px 20px; border-right:1px solid var(--border); display:flex; align-items:center; gap:12px; cursor:pointer; }
+    .decision-opt:last-child { border-right:none; }
+    .decision-radio { width:18px; height:18px; accent-color:var(--light-blue); cursor:pointer; flex-shrink:0; }
+    .decision-text h4 { font-size:0.84rem; font-weight:700; color:var(--navy); margin-bottom:2px; }
+    .decision-text p { font-size:0.74rem; color:var(--text-muted); line-height:1.4; margin:0; }
+
+    /* SIGN OFF */
+    .signoff-grid { display:grid; grid-template-columns:1fr 1fr; gap:0; }
+    .signoff-cell { padding:16px 20px; border-right:1px solid var(--border); }
+    .signoff-cell:last-child { border-right:none; }
+    .signoff-label { font-size:0.69rem; font-weight:700; color:var(--text-muted); letter-spacing:1px; text-transform:uppercase; margin-bottom:8px; }
+    .signoff-line { border-bottom:1.5px solid var(--navy); margin-bottom:6px; height:28px; }
+    .signoff-sub { font-size:0.72rem; color:var(--text-muted); }
+
+    .sources { background:var(--light-bg); border-radius:8px; padding:18px 22px; margin:0 0 24px; border:1px solid var(--border); }
+    .sources h4 { font-size:0.68rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); margin-bottom:10px; }
+    .sources ul { list-style:none; }
+    .sources ul li { font-size:0.77rem; color:var(--text-muted); padding:3px 0; border-bottom:1px solid var(--border); }
+    .sources ul li:last-child { border-bottom:none; }
+    .sources ul li a { color:var(--light-blue); text-decoration:none; }
+    .article-cta { background:linear-gradient(135deg,var(--navy),var(--blue)); border-radius:10px; padding:32px; text-align:center; margin-bottom:44px; }
+    .article-cta h3 { font-family:'Playfair Display',serif; font-size:1.35rem; color:white; margin-bottom:8px; }
+    .article-cta p { font-size:0.86rem; color:rgba(255,255,255,0.78); margin-bottom:18px; }
+    .btn-cta { display:inline-flex; align-items:center; gap:8px; background:white; color:var(--blue); font-weight:700; font-size:0.86rem; padding:11px 22px; border-radius:6px; text-decoration:none; }
+    .btn-print { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.15); color:white; font-weight:600; font-size:0.84rem; padding:10px 20px; border-radius:6px; border:1px solid rgba(255,255,255,0.3); margin-left:10px; cursor:pointer; font-family:'Source Sans 3',sans-serif; }
+    .site-footer { background:var(--blue); color:white; text-align:center; padding:36px 24px; }
+    .footer-tagline { font-size:0.9rem; color:rgba(255,255,255,0.9); font-weight:600; letter-spacing:0.5px; margin-bottom:10px; }
+    .footer-links { display:flex; gap:18px; justify-content:center; flex-wrap:wrap; margin-bottom:12px; }
+    .footer-links a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.78rem; }
+    .footer-copy { font-size:0.73rem; color:rgba(255,255,255,0.5); }
+    @media (max-width:700px) {
+      .hero h1 { font-size:1.75rem; }
+      .info-grid { grid-template-columns:1fr 1fr; }
+      .info-cell:nth-child(3n) { border-right:1px solid var(--border); }
+      .info-cell:nth-child(2n) { border-right:none; }
+      .rating-grid { grid-template-columns:repeat(2,1fr); }
+      .rating-cell:nth-child(2) { border-right:none; }
+      .decision-grid { grid-template-columns:1fr; }
+      .signoff-grid { grid-template-columns:1fr; }
+      .topnav { padding:0 14px; }
+      .nav-links a { padding:5px 7px; font-size:0.76rem; }
+    }
+    @media print {
+      .topnav, .btn-back, .abstract-box, .article-cta, .site-footer, .sources { display:none; }
+      body { background:white; }
+      .vdd-block { box-shadow:none; break-inside:avoid; }
+    }
+  </style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="https://panamaeddie.github.io/" class="nav-brand">
+    <div class="nav-logo-mark">RC<sup>2</sup></div>
+    <span class="nav-brand-name">Consulting</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://panamaeddie.github.io/">Home</a></li>
+    <li><a href="https://panamaeddie.github.io/services.html">Services</a></li>
+    <li><a href="https://panamaeddie.github.io/who-we-help.html">Who We Help</a></li>
+    <li><a href="https://panamaeddie.github.io/about.html">About</a></li>
+    <li><a href="https://panamaeddie.github.io/RC2_Resources_Page.html" class="active">Resources</a></li>
+    <li><a href="https://panamaeddie.github.io/contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="article-tag">Supply Chain Tool</span>
+    <h1>Vendor Due Diligence Checklist</h1>
+    <p class="hero-sub">A structured qualification document for evaluating new vendors and suppliers in Latin America — covering legal standing, financial health, operational capacity, social compliance, and ethical risk before committing to a supply relationship.</p>
+    <div class="hero-meta">
+      <span>RC2 Consulting</span><span class="divider">|</span>
+      <span>February 2026</span><span class="divider">|</span>
+      <span>Printable Working Document</span>
+    </div>
+  </div>
+</section>
+
+<div class="page-wrap">
+  <a href="https://panamaeddie.github.io/RC2_Resources_Page.html" class="btn-back">← Back to Resources</a>
+  <div class="abstract-box">
+    <h3>About This Document</h3>
+    <p>Vendor due diligence is not optional — it is the operational foundation of a responsible and resilient supply chain. This checklist walks procurement teams through five due diligence categories: legal & business standing, financial health, operational capacity, social compliance posture, and ethical & reputational risk. Complete one checklist per prospective vendor before any purchase order, contract, or production commitment is issued.</p>
+  </div>
+
+  <!-- VENDOR INFO -->
+  <div class="vdd-block">
+    <div class="vdd-header"><h3>Vendor Identification</h3><span>Complete all fields — one form per vendor</span></div>
+    <div class="info-grid">
+      <div class="info-cell"><span class="info-label">Vendor / Supplier Name</span><input class="info-field" type="text" placeholder="Legal registered name" /></div>
+      <div class="info-cell"><span class="info-label">DBA / Trade Name</span><input class="info-field" type="text" placeholder="If different from legal name" /></div>
+      <div class="info-cell"><span class="info-label">Assessment Date</span><input class="info-field" type="text" placeholder="MM / DD / YYYY" /></div>
+      <div class="info-cell"><span class="info-label">Country / City</span><input class="info-field" type="text" placeholder="Country and city of operation" /></div>
+      <div class="info-cell"><span class="info-label">Products / Services Offered</span><input class="info-field" type="text" placeholder="Describe what they will supply" /></div>
+      <div class="info-cell"><span class="info-label">Assessed By</span><input class="info-field" type="text" placeholder="Name and title" /></div>
+      <div class="info-cell full"><span class="info-label">Primary Contact — Name, Title, Email, Phone</span><input class="info-field" type="text" placeholder="Vendor primary contact details" /></div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: LEGAL & BUSINESS STANDING -->
+  <div class="vdd-block">
+    <div class="vdd-header"><h3>Section 1 — Legal & Business Standing</h3><span>Verify before any commitment</span></div>
+    <div class="section-label"><span>Legal Registration & Licensing</span><small>Obtain copies of all documents listed</small></div>
+    <table class="item-table">
+      <thead><tr><th style="width:32px">#</th><th>Due Diligence Item</th><th class="col-yn">Yes / No / N/A</th><th class="col-flag">Risk Flag</th><th class="col-notes">Notes / Doc Reference</th></tr></thead>
+      <tbody>
+        <tr><td class="item-num">1.1</td><td><div class="item-text">Business legally registered in country of operation — registration certificate obtained</div></td><td><div class="yn-group"><label class="yn-label"><input type="radio" name="q1_1" value="y"/>Y</label><label class="yn-label"><input type="radio" name="q1_1" value="n"/>N</label><label class="yn-label"><input type="radio" name="q1_1" value="na"/>N/A</label></div></td><td><select class="flag-sel"><option value="">—</option><option>None</option><option>Low</option><option>Medium</option><option>High</option></select></td><td><input class="note-field" type="text" placeholder="Notes..." /></td></tr>
+        <tr><td class="item-num">1.2</td><td><div class="item-text">Tax identification number confirmed and active</div></td><td><div class="yn-group"><label class="yn-label"><input type="radio" name="q1_2" value="y"/>Y</label><label class="yn-label"><input type="radio" name="q1_2" value="n"/>N</label><label class="yn-label"><input type="radio" name="q1_2" value="na"/>N/A</label></div></td><td><select class="flag-sel"><option value="">—</option><option>None</option><option>Low</option><option>Medium</option><option>High</option></select></td><td><input class="note-field" type="text" placeholder="Notes..." /></td></tr>
+        <tr><td class="item-num">1.3</td><td><div class="item-text">Required operating licenses current — manufacturing, import/export, environmental</div></td><td><div class="yn-group"><label class="yn-label"><input type="radio" name="q1_3" value="y"/>Y</label><label class="yn-label"><input type="radio" name="q1_3" value="n"/>N</label><label class="yn-label"><input type="radio" name="q1_3" value="na"/>N/A</label></div></td><td><select class="flag-sel"><option value="">—</option><option>None</option><option>Low</option><option>Medium</option><option>High</option></select></td><td><input class="note-field" type="text" placeholder="Notes..." /></td></tr>
+        <tr><td class="item-num">1.4</td><td><div class="item-text">No pending legal actions, sanctions, or debarments — OFAC and SAM.gov confirmed clear</div><div class="item-sub">Check: sam.gov, ofac.treas.gov</div></td><td><div class="yn-group"><label class="yn-label"><input type="radio" name="q1_4" value="y"/>Y</label><label class="yn-label"><input type="radio" name="q1_4" value="n"/>N</label><label class="yn-label"><input type="radio" name="q1_4" value="na"/>N/A</label></div></td><td><select class="flag-sel"><option value="">—</option><option>None</option><option>Low</option><option>Medium</option><option>High</option></select></td><td><input class="note-field" type="text" placeholder="Notes..." /></td></tr>
+        <tr><td class="item-num">1.5</td><td><div class="item-text">Ownership structure disclosed — no undisclosed beneficial owners or shell company arrangements</div></td><td><div class="yn-group"><label class="yn-label"><input type="radio" name="q1_5" value="y"/>Y</label><label class="yn-label"><input type="radio" name="q1_5" value="n"/>N</label><label class="yn-label"><input type="radio" name="q1_5" value="na"/>N/A</label></div></td><td><select class="flag-sel"><option value="">—</option><option>None</option><option>Low</option><option>Medium</option><option>High</option></select></td><td><input class="note-field" type="text" placeholder="Notes..." /></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 2: FINANCIAL HEALTH -->
+  <div class="vdd-block">
+    <div class="vdd-header"><h3>Section 2 — Financial Health & Stability</h3><span>Assess capacity to fulfill orders and sustain the relationship</span></div>
+    <table class="item-table">
+      <thead><tr><th style="width:32px">#</th><th>Due Diligence Item</th><th class="col-yn">Yes / No / N/A</th><th class="col-flag">Risk Flag</th><th class="col-notes">Notes / Doc Reference</th></tr></thead>
+      <tbody>
+        <tr><td class="item-num">2.1</td><td><div class="item-text">Audited financial statements or equivalent provided for prior 2 years</div></td><td><div class="yn-group"><label class="yn-label"><input type="radio" name="q2_1" value="y"/>Y</label><label class="yn-label"><input type="radio" name="q2_1" value="n"/>N</label><label class="yn-label"><input type="radio" name="q2_1" value="na"/>N/A</label></div></td><td><select class="flag-sel"><option value="">—</option><option>None</option><option>Low</option><option>Medium</option><option>High</option></select></td><td><input class="note-field" type="text" placeholder="Notes..." /></td></tr>
+        <tr><td class="item-num">2.2</td><td><div class="item-text">No evidence of insolvency, bankruptcy filing, or significant outstanding debt obligations</div></td><td><div class="yn-group"><label class="yn-label"><input type="radio" name="q2_2" value="y"/>Y</label><label class="yn-label"><input type="radio" name="q2_2" value="n"/>N</label><label class="yn-label"><input type="radio" name="q2_2" value="na"/>N/A</label></div></td><td><select class="flag-sel"><option value="">—</option><option>None</option><option>Low</option><option>Medium</option><option>High</option></select></td><td><input class="note-field" type="text" placeholder="Notes..." /></td></tr>
+        <tr><td class="item-num">2.3</td><td><div class="item-text">Credit references from existing buyers obtained and reviewed</div></td><td><div class="yn-group"><label class="yn-label"><input type="radio" name="q2_3" value="y"/>Y</label><label class="yn-label"><input type="radio" name="q2_3" value="n"/>N</label><label class="yn-label"><input type="radio" name="q2_3" value="na"/>N/A</label></div></td><td><select class="flag-sel"><option value="">—</option><option>None</option><option>Low</option><option>Medium</option><option>High</option></select></td><td><input class="note-field" type="text" placeholder="Notes..." /></td></tr>
+        <tr><td class="item-num">2.4</td><td><div class="item-text">Payment history with suppliers and subcontractors confirmed — no pattern of late payment</div></td><td><div class="yn-group"><label class="yn-label"><input type="radio" name="q2_4" value="y"/>Y</label><label class="yn-label"><input type="radio" name="q2_4" value="n"/>N</label><label class="yn-label"><input type="radio" name="q2_4" value="na"/>N/A</label></div></td><td><select class="flag-sel"><option value="">—</option><option>None</option><option>Low</option><option>Medium</option><option>High</option></select></td><td><input class="note-field" type="text" placeholder="Notes..." /></td></tr>
+        <tr><td class="item-num">2.5</td><td><div class="item-text">Financial capacity to fulfill projected order volume confirmed</div></td><td><div class="yn-group"><label class="yn-label"><input type="radio" name="q2_5" value="y"/>Y</label><label class="yn-label"><input type="radio" name="q2_5" value="n"/>N</label><label class="yn-label"><input type="radio" name="q2_5" value="na"/>N/A</label></div></td><td><select class="flag-sel"><option value="">—</option><option>None</option><option>Low</option><option>Medium</option><option>High</option></select></td><td><input class="note-field" type="text" placeholder="Notes..." /></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 3: OPERATIONAL CAPACITY -->
+  <div class="vdd-block">
+    <div class="vdd-header"><h3>Section 3 — Operational Capacity & Quality Systems</h3><span>On-site visit required before approval</span></div>
+    <table class="item-table">
+      <thead><tr><th style="width:32px">#</th><th>Due Diligence Item</th><th class="col-yn">Yes / No / N/A</th><th class="col-flag">Risk Flag</th><th class="col-notes">Notes / Doc Reference</th></tr></thead>
+      <tbody>
+        <tr><td class="item-num">3.1</td><td><div class="item-text">On-site facility visit completed — production floor, storage, equipment, and working conditions reviewed</div></td><td><div class="yn-group"><label class="yn-label"><input type="radio" name="q3_1" value="y"/>Y</label><label class="yn-label"><input type="radio" name="q3_1" value="n"/>N</label><label class="yn-label"><input type="radio" name="q3_1" value="na"/>N/A</label></div></td><td><select class="flag-sel"><option value="">—</option><option>None</option><option>Low</option><option>Medium</option><option>High</option></select></td><td><input class="note-field" type="text" placeholder="Notes..." /></td></tr>
+        <tr><td class="item-num">3.2</td><td><div class="item-text">Production capacity confirmed — can fulfill projected monthly order volumes</div></td><td><div class="yn-group"><label class="yn-label"><input type="radio" name="q3_2" value="y"/>Y</label><label class="yn-label"><input type="radio" name="q3_2" value="n"/>N</label><label class="yn-label"><input type="radio" name="q3_2" value="na"/>N/A</label></div></td><td><select class="flag-sel"><option value="">—</option><option>None</option><option>Low</option><option>Medium</option><option>High</option></select></td><td><input class="note-field" type="text" placeholder="Notes..." /></td></tr>
+        <tr><td class="item-num">3.3</td><td><div class="item-text">Quality control systems documented — inspection protocols, defect rate tracking, corrective action process</div></td><td><div class="yn-group"><label class="yn-label"><input type="radio" name="q3_3" value="y"/>Y</label><label class="yn-label"><input type="radio" name="q3_3" value="n"/>N</label><label class="yn-label"><input type="radio" name="q3_3" value="na"/>N/A</label></div></td><td><select class="flag-sel"><option value="">—</option><option>None</option><option>Low</option><option>Medium</option><option>High</option></select></td><td><input class="note-field" type="text" placeholder="Notes..." /></td></tr>
+        <tr><td class="item-num">3.4</td><td><div class="item-text">Subcontracting arrangements disclosed — no unauthorized outsourcing of buyer-assigned work</div></td><td><div class="yn-group"><label class="yn-label"><input type="radio" name="q3_4" value="y"/>Y</label><label class="yn-label"><input type="radio" name="q3_4" value="n"/>N</label><label class="yn-label"><input type="radio" name="q3_4" value="na"/>N/A</label></div></td><td><select class="flag-sel"><option value="">—</option><option>None</option><option>Low</option><option>Medium</option><option>High</option></select></td><td><input class="note-field" type="text" placeholder="Notes..." /></td></tr>
+        <tr><td class="item-num">3.5</td><td><div class="item-text">Management team assessed — experienced leadership with traceable industry history</div></td><td><div class="yn-group"><label class="yn-label"><input type="radio" name="q3_5" value="y"/>Y</label><label class="yn-label"><input type="radio" name="q3_5" value="n"/>N</label><label class="yn-label"><input type="radio" name="q3_5" value="na"/>N/A</label></div></td><td><select class="flag-sel"><option value="">—</option><option>None</option><option>Low</option><option>Medium</option><option>High</option></select></td><td><input class="note-field" type="text" placeholder="Notes..." /></td></tr>
+        <tr><td class="item-num">3.6</td><td><div class="item-text">Logistics and shipping capacity confirmed — freight, customs, and delivery reliability assessed</div></td><td><div class="yn-group"><label class="yn-label"><input type="radio" name="q3_6" value="y"/>Y</label><label class="yn-label"><input type="radio" name="q3_6" value="n"/>N</label><label class="yn-label"><input type="radio" name="q3_6" value="na"/>N/A</label></div></td><td><select class="flag-sel"><option value="">—</option><option>None</option><option>Low</option><option>Medium</option><option>High</option></select></td><td><input class="note-field" type="text" placeholder="Notes..." /></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 4: SOCIAL COMPLIANCE -->
+  <div class="vdd-block">
+    <div class="vdd-header"><h3>Section 4 — Social Compliance & Labor Practices</h3><span>Non-negotiable for U.S. buyer and government contract supply chains</span></div>
+    <table class="item-table">
+      <thead><tr><th style="width:32px">#</th><th>Due Diligence Item</th><th class="col-yn">Yes / No / N/A</th><th class="col-flag">Risk Flag</th><th class="col-notes">Notes / Doc Reference</th></tr></thead>
+      <tbody>
+        <tr><td class="item-num">4.1</td><td><div class="item-text">Active WRAP, SA8000, BSCI, or equivalent social compliance certification — certificate obtained</div><div class="item-sub">Verify at wrapcompliance.org or applicable registry</div></td><td><div class="yn-group"><label class="yn-label"><input type="radio" name="q4_1" value="y"/>Y</label><label class="yn-label"><input type="radio" name="q4_1" value="n"/>N</label><label class="yn-label"><input type="radio" name="q4_1" value="na"/>N/A</label></div></td><td><select class="flag-sel"><option value="">—</option><option>None</option><option>Low</option><option>Medium</option><option>High</option></select></td><td><input class="note-field" type="text" placeholder="Notes..." /></td></tr>
+        <tr><td class="item-num">4.2</td><td><div class="item-text">No forced labor, child labor, or debt bondage indicators identified during site visit or document review</div></td><td><div class="yn-group"><label class="yn-label"><input type="radio" name="q4_2" value="y"/>Y</label><label class="yn-label"><input type="radio" name="q4_2" value="n"/>N</label><label class="yn-label"><input type="radio" name="q4_2" value="na"/>N/A</label></div></td><td><select class="flag-sel"><option value="">—</option><option>None</option><option>Low</option><option>Medium</option><option>High</option></select></td><td><input class="note-field" type="text" placeholder="Notes..." /></td></tr>
+        <tr><td class="item-num">4.3</td><td><div class="item-text">Wage rates at or above legal minimum — payroll records reviewed and confirmed</div></td><td><div class="yn-group"><label class="yn-label"><input type="radio" name="q4_3" value="y"/>Y</label><label class="yn-label"><input type="radio" name="q4_3" value="n"/>N</label><label class="yn-label"><input type="radio" name="q4_3" value="na"/>N/A</label></div></td><td><select class="flag-sel"><option value="">—</option><option>None</option><option>Low</option><option>Medium</option><option>High</option></select></td><td><input class="note-field" type="text" placeholder="Notes..." /></td></tr>
+        <tr><td class="item-num">4.4</td><td><div class="item-text">Working hours within legal maximums — time and attendance records reviewed</div></td><td><div class="yn-group"><label class="yn-label"><input type="radio" name="q4_4" value="y"/>Y</label><label class="yn-label"><input type="radio" name="q4_4" value="n"/>N</label><label class="yn-label"><input type="radio" name="q4_4" value="na"/>N/A</label></div></td><td><select class="flag-sel"><option value="">—</option><option>None</option><option>Low</option><option>Medium</option><option>High</option></select></td><td><input class="note-field" type="text" placeholder="Notes..." /></td></tr>
+        <tr><td class="item-num">4.5</td><td><div class="item-text">Worker grievance procedure documented and accessible — confidential reporting mechanism confirmed</div></td><td><div class="yn-group"><label class="yn-label"><input type="radio" name="q4_5" value="y"/>Y</label><label class="yn-label"><input type="radio" name="q4_5" value="n"/>N</label><label class="yn-label"><input type="radio" name="q4_5" value="na"/>N/A</label></div></td><td><select class="flag-sel"><option value="">—</option><option>None</option><option>Low</option><option>Medium</option><option>High</option></select></td><td><input class="note-field" type="text" placeholder="Notes..." /></td></tr>
+        <tr><td class="item-num">4.6</td><td><div class="item-text">No prior audit failures, sanctions, or buyer terminations related to labor violations in past 3 years</div></td><td><div class="yn-group"><label class="yn-label"><input type="radio" name="q4_6" value="y"/>Y</label><label class="yn-label"><input type="radio" name="q4_6" value="n"/>N</label><label class="yn-label"><input type="radio" name="q4_6" value="na"/>N/A</label></div></td><td><select class="flag-sel"><option value="">—</option><option>None</option><option>Low</option><option>Medium</option><option>High</option></select></td><td><input class="note-field" type="text" placeholder="Notes..." /></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 5: ETHICAL & REPUTATIONAL -->
+  <div class="vdd-block">
+    <div class="vdd-header"><h3>Section 5 — Ethical Standing & Reputational Risk</h3><span>Public record and reference checks</span></div>
+    <table class="item-table">
+      <thead><tr><th style="width:32px">#</th><th>Due Diligence Item</th><th class="col-yn">Yes / No / N/A</th><th class="col-flag">Risk Flag</th><th class="col-notes">Notes / Doc Reference</th></tr></thead>
+      <tbody>
+        <tr><td class="item-num">5.1</td><td><div class="item-text">No negative press coverage related to labor violations, corruption, or environmental incidents in prior 3 years</div></td><td><div class="yn-group"><label class="yn-label"><input type="radio" name="q5_1" value="y"/>Y</label><label class="yn-label"><input type="radio" name="q5_1" value="n"/>N</label><label class="yn-label"><input type="radio" name="q5_1" value="na"/>N/A</label></div></td><td><select class="flag-sel"><option value="">—</option><option>None</option><option>Low</option><option>Medium</option><option>High</option></select></td><td><input class="note-field" type="text" placeholder="Notes..." /></td></tr>
+        <tr><td class="item-num">5.2</td><td><div class="item-text">Anti-bribery and anti-corruption policy in place — Supplier Code of Conduct signed</div></td><td><div class="yn-group"><label class="yn-label"><input type="radio" name="q5_2" value="y"/>Y</label><label class="yn-label"><input type="radio" name="q5_2" value="n"/>N</label><label class="yn-label"><input type="radio" name="q5_2" value="na"/>N/A</label></div></td><td><select class="flag-sel"><option value="">—</option><option>None</option><option>Low</option><option>Medium</option><option>High</option></select></td><td><input class="note-field" type="text" placeholder="Notes..." /></td></tr>
+        <tr><td class="item-num">5.3</td><td><div class="item-text">Buyer references from at least 2 current or former clients checked — positive feedback received</div></td><td><div class="yn-group"><label class="yn-label"><input type="radio" name="q5_3" value="y"/>Y</label><label class="yn-label"><input type="radio" name="q5_3" value="n"/>N</label><label class="yn-label"><input type="radio" name="q5_3" value="na"/>N/A</label></div></td><td><select class="flag-sel"><option value="">—</option><option>None</option><option>Low</option><option>Medium</option><option>High</option></select></td><td><input class="note-field" type="text" placeholder="Notes..." /></td></tr>
+        <tr><td class="item-num">5.4</td><td><div class="item-text">No FCPA, UFLPA, or forced labor import prohibition flags identified for this supplier or country of origin</div><div class="item-sub">Check: CBP Withhold Release Orders, UFLPA Entity List</div></td><td><div class="yn-group"><label class="yn-label"><input type="radio" name="q5_4" value="y"/>Y</label><label class="yn-label"><input type="radio" name="q5_4" value="n"/>N</label><label class="yn-label"><input type="radio" name="q5_4" value="na"/>N/A</label></div></td><td><select class="flag-sel"><option value="">—</option><option>None</option><option>Low</option><option>Medium</option><option>High</option></select></td><td><input class="note-field" type="text" placeholder="Notes..." /></td></tr>
+        <tr><td class="item-num">5.5</td><td><div class="item-text">Environmental compliance confirmed — no outstanding violations, fines, or environmental enforcement actions</div></td><td><div class="yn-group"><label class="yn-label"><input type="radio" name="q5_5" value="y"/>Y</label><label class="yn-label"><input type="radio" name="q5_5" value="n"/>N</label><label class="yn-label"><input type="radio" name="q5_5" value="na"/>N/A</label></div></td><td><select class="flag-sel"><option value="">—</option><option>None</option><option>Low</option><option>Medium</option><option>High</option></select></td><td><input class="note-field" type="text" placeholder="Notes..." /></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- OVERALL RATING -->
+  <div class="vdd-block">
+    <div class="vdd-header"><h3>Section 6 — Overall Vendor Risk Rating</h3><span>Score each category 1–5. 5 = Excellent. 1 = Unacceptable.</span></div>
+    <div class="rating-grid">
+      <div class="rating-cell"><div class="rating-label">Legal Standing</div><input class="rating-input" type="text" placeholder="/ 5" /></div>
+      <div class="rating-cell"><div class="rating-label">Financial Health</div><input class="rating-input" type="text" placeholder="/ 5" /></div>
+      <div class="rating-cell"><div class="rating-label">Operational Capacity</div><input class="rating-input" type="text" placeholder="/ 5" /></div>
+      <div class="rating-cell"><div class="rating-label">Social Compliance</div><input class="rating-input" type="text" placeholder="/ 5" /></div>
+    </div>
+    <div style="padding:14px 20px;border-top:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <div><span class="info-label">Ethical / Reputational Risk Score</span><input class="rating-input" style="margin-top:4px;" type="text" placeholder="/ 5" /></div>
+      <div><span class="info-label">Overall Composite Score</span><input class="rating-input" style="margin-top:4px;font-weight:700;" type="text" placeholder="Total / 25" /></div>
+    </div>
+
+    <!-- DECISION -->
+    <div style="border-top:2px solid var(--border);">
+      <div style="padding:11px 22px;background:var(--light-bg);border-bottom:1px solid var(--border);"><span style="font-size:0.72rem;font-weight:700;color:var(--blue);letter-spacing:1px;text-transform:uppercase;">Qualification Decision</span></div>
+      <div class="decision-grid">
+        <label class="decision-opt"><input class="decision-radio" type="radio" name="decision" value="approved" /><div class="decision-text"><h4 style="color:var(--success);">✓ Approved</h4><p>No high-risk flags. Score ≥ 18/25. Proceed to onboarding.</p></div></label>
+        <label class="decision-opt"><input class="decision-radio" type="radio" name="decision" value="conditional" /><div class="decision-text"><h4 style="color:var(--warn);">⚠ Conditional Approval</h4><p>Score 12–17/25 or isolated flags. Use with mitigation plan.</p></div></label>
+        <label class="decision-opt"><input class="decision-radio" type="radio" name="decision" value="rejected" /><div class="decision-text"><h4 style="color:var(--danger);">✗ Not Approved</h4><p>Score below 12 or critical flag present. Do not engage.</p></div></label>
+      </div>
+    </div>
+
+    <!-- SIGN OFF -->
+    <div style="border-top:2px solid var(--border);">
+      <div class="signoff-grid">
+        <div class="signoff-cell"><div class="signoff-label">Assessed By — Name & Title</div><div class="signoff-line"></div><div class="signoff-sub">Signature &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Date: ___________</div></div>
+        <div class="signoff-cell"><div class="signoff-label">Approved By — Name & Title</div><div class="signoff-line"></div><div class="signoff-sub">Signature &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Date: ___________</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sources">
+    <h4>Sources & References</h4>
+    <ul>
+      <li>U.S. CBP — Uyghur Forced Labor Prevention Act (UFLPA) Entity List (2025) — <a href="https://www.cbp.gov/trade/forced-labor/UFLPA" target="_blank">cbp.gov</a></li>
+      <li>U.S. Treasury / OFAC — Sanctions List Search (2025) — <a href="https://ofac.treas.gov" target="_blank">ofac.treas.gov</a></li>
+      <li>SAM.gov — System for Award Management Exclusions (2025) — <a href="https://sam.gov" target="_blank">sam.gov</a></li>
+      <li>WRAP — Active Certified Facility Registry (2024) — <a href="https://www.wrapcompliance.org" target="_blank">wrapcompliance.org</a></li>
+      <li>ILO — Indicators of Forced Labor in Supply Chains (2024) — <a href="https://www.ilo.org" target="_blank">ilo.org</a></li>
+    </ul>
+  </div>
+  <div class="article-cta">
+    <h3>Need Support Qualifying Vendors?</h3>
+    <p>RC2 Consulting conducts structured vendor qualification assessments — including on-site visits, document reviews, social compliance evaluations, and risk ratings — for companies building or expanding Latin American supply chains.</p>
+    <a href="https://panamaeddie.github.io/contact.html" class="btn-cta">Request Vendor Assessment Support →</a>
+    <button class="btn-print" onclick="window.print()">🖨 Print / Save as PDF</button>
+  </div>
+</div>
+<footer class="site-footer">
+  <div class="footer-tagline">Operational Clarity. Compliance Confidence. Systems That Scale.</div>
+  <div class="footer-links">
+    <a href="https://panamaeddie.github.io/">Home</a><a href="https://panamaeddie.github.io/services.html">Services</a>
+    <a href="https://panamaeddie.github.io/who-we-help.html">Who We Help</a><a href="https://panamaeddie.github.io/about.html">About</a>
+    <a href="https://panamaeddie.github.io/RC2_Resources_Page.html">Resources</a><a href="https://panamaeddie.github.io/contact.html">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 RC2 Consulting, LLC &nbsp;|&nbsp; Privacy Policy &nbsp;|&nbsp; Terms of Service</div>
+</footer>
+</body>
+</html>
