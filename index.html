@@ -3,461 +3,292 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WRAP 12 Principles Guide | RC2 Consulting</title>
-  <meta name="description" content="Comprehensive guide to WRAP's 12 Principles with explanations, examples, and best practices." />
+  <title>RC2 Consulting | Operational Clarity. Compliance Confidence. Systems That Scale.</title>
+  <meta name="description" content="RC2 Consulting helps organizations increase revenue, strengthen compliance posture, and build operational systems that perform in the real world." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --navy:       #0B2545;
-      --blue:       #1A4A8A;
-      --light-blue: #4A90E2;
-      --accent:     #C8922A;
-      --light-bg:   #F4F6FA;
-      --white:      #FFFFFF;
-      --text:       #1C2B3A;
-      --text-muted: #4A5568;
-      --border:     #D1D9E6;
-      --success:    #1A7A4E;
+      --navy:        #0B2545;
+      --blue:        #1A4A8A;
+      --light-blue:  #2563EB;
+      --accent:      #C8922A;
+      --accent-light:#F0B429;
+      --light-bg:    #F4F6FA;
+      --white:       #FFFFFF;
+      --text:        #1C2B3A;
+      --text-muted:  #4A5568;
+      --border:      #E2E8F0;
     }
+    body { font-family: 'Source Sans 3', sans-serif; background: var(--white); color: var(--text); margin: 0; line-height: 1.6; }
 
-    body {
-      font-family: Arial, sans-serif;
-      background: var(--light-bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    /* Hero Section */
-    .hero {
-      background: linear-gradient(135deg, #0A2847 0%, #1A4A8A 100%);
-      color: var(--white);
-      text-align: center;
-      padding: 60px 24px 80px;
-      position: relative;
-    }
-
-    .rc2-badge {
-      display: inline-block;
-      background: var(--light-blue);
-      color: var(--white);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 8px 24px;
-      border-radius: 24px;
-      margin-bottom: 24px;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 16px;
-      line-height: 1.2;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      color: rgba(255,255,255,0.85);
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* Content Section */
-    .content {
-      max-width: 900px;
-      margin: -40px auto 60px;
-      padding: 0 24px;
-      position: relative;
-      z-index: 10;
-    }
-
-    .card {
-      background: var(--white);
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-      padding: 48px;
-      text-align: center;
-    }
-
-    .card h2 {
-      font-size: 1.8rem;
-      color: var(--navy);
-      margin-bottom: 16px;
-    }
-
-    .card-description {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      margin-bottom: 32px;
-      line-height: 1.7;
-    }
-
-    /* Features Grid */
-    .features {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      margin: 32px 0 40px;
-      text-align: left;
-    }
-
-    .feature-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-
-    .feature-icon {
-      font-size: 1.5rem;
-      flex-shrink: 0;
-    }
-
-    .feature-text {
-      flex: 1;
-    }
-
-    .feature-text strong {
-      display: block;
-      color: var(--navy);
-      font-size: 0.95rem;
-      margin-bottom: 4px;
-    }
-
-    .feature-text span {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    /* Button */
-    .btn-launch {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--blue);
-      color: var(--white);
-      font-size: 1.1rem;
-      font-weight: 700;
-      padding: 18px 40px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.3s;
-      text-decoration: none;
-      box-shadow: 0 4px 12px rgba(26,74,138,0.3);
-    }
-
-    .btn-launch:hover {
+    /* ── NAV ── */
+    .topnav {
       background: var(--navy);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(26,74,138,0.4);
+      padding: 0 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 52px; position: sticky; top: 0; z-index: 200;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
     }
-
-    /* Info Section */
-    .info-section {
-      max-width: 900px;
-      margin: 60px auto;
-      padding: 0 24px;
+    .nav-brand { display:flex; align-items:center; gap:8px; text-decoration:none; }
+    .nav-logo-mark {
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+      color: white; font-family: 'Playfair Display', serif;
+      font-size: 0.95rem; font-weight: 700; width: 32px; height: 32px;
+      border-radius: 6px; display:flex; align-items:center; justify-content:center;
     }
-
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-bottom: 48px;
+    .nav-logo-mark sup { font-size:0.5rem; vertical-align:super; }
+    .nav-brand-name { font-size:0.88rem; font-weight:600; color:rgba(255,255,255,0.9); }
+    .nav-links { display:flex; gap:4px; list-style:none; }
+    .nav-links a {
+      color:rgba(255,255,255,0.78); text-decoration:none; font-size:0.83rem;
+      font-weight:600; padding:6px 12px; border-radius:4px; transition:all 0.2s; white-space:nowrap;
     }
+    .nav-links a:hover { color:white; background:rgba(255,255,255,0.1); }
+    .nav-links a.active { color:white; background:rgba(255,255,255,0.12); }
 
-    .info-card {
-      background: var(--white);
-      border: 2px solid var(--border);
-      border-radius: 8px;
-      padding: 24px;
-      text-align: center;
+    /* ── HERO ── */
+    .hero {
+      background:
+        linear-gradient(to bottom, rgba(11,37,69,0.75) 0%, rgba(11,37,69,0.55) 50%, rgba(11,37,69,0.75) 100%),
+        url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1400&q=80') center/cover no-repeat;
+      min-height: 420px;
+      display: flex; align-items: center;
+      padding: 64px 40px;
     }
-
-    .info-card .icon {
-      font-size: 2.5rem;
-      margin-bottom: 12px;
+    .hero-inner {
+      max-width: 1100px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: center;
     }
-
-    .info-card h3 {
-      font-size: 1.1rem;
-      color: var(--navy);
-      margin-bottom: 8px;
+    .hero-left h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem; font-weight: 700; color: white;
+      line-height: 1.2; margin-bottom: 20px;
     }
-
-    .info-card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.6;
+    .hero-left p { font-size: 1rem; color: rgba(255,255,255,0.82); line-height: 1.7; max-width: 520px; }
+    .hero-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 10px; padding: 28px 24px; backdrop-filter: blur(8px);
     }
-
-    /* How It Works */
-    .how-it-works {
-      background: var(--white);
-      border: 2px solid var(--border);
-      border-radius: 12px;
-      padding: 40px;
-      margin-bottom: 48px;
+    .hero-card p { font-size: 0.9rem; color: rgba(255,255,255,0.85); margin-bottom: 20px; line-height: 1.6; }
+    .btn-get-started {
+      display: block; background: var(--light-blue); color: white;
+      font-weight: 700; font-size: 0.92rem; padding: 13px 24px;
+      border-radius: 6px; text-decoration: none; text-align: center;
+      transition: all 0.2s;
     }
+    .btn-get-started:hover { background: #1d4ed8; transform: translateY(-1px); }
 
-    .how-it-works h3 {
-      font-size: 1.5rem;
-      color: var(--navy);
-      margin-bottom: 24px;
-      text-align: center;
+    /* ── SERVICES STRIP ── */
+    .services-strip { background: var(--white); padding: 56px 40px; }
+    .strip-inner { max-width: 1100px; margin: 0 auto; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+      border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
     }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+    .service-col {
+      padding: 32px 28px; border-right: 1px solid var(--border);
     }
-
-    .step {
-      text-align: center;
+    .service-col:last-child { border-right: none; }
+    .service-col h3 {
+      font-size: 0.95rem; font-weight: 700; color: var(--navy);
+      margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid var(--border);
     }
-
-    .step-number {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 48px;
-      height: 48px;
-      background: var(--blue);
-      color: var(--white);
-      border-radius: 50%;
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 12px;
+    .service-col ul { list-style: none; }
+    .service-col ul li {
+      font-size: 0.85rem; color: var(--text-muted); padding: 6px 0;
+      border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px;
     }
+    .service-col ul li:last-child { border-bottom: none; }
+    .service-col ul li::before { content: '→'; color: var(--blue); flex-shrink: 0; }
 
-    .step h4 {
-      font-size: 0.95rem;
-      color: var(--navy);
-      margin-bottom: 6px;
+    /* ── WHAT CLIENTS GAIN ── */
+    .clients-gain {
+      background:
+        linear-gradient(to bottom, rgba(11,37,69,0.78) 0%, rgba(11,37,69,0.65) 100%),
+        url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1400&q=80') center/cover no-repeat;
+      padding: 72px 40px; text-align: center;
     }
-
-    .step p {
-      font-size: 0.85rem;
-      color: var(--text-muted);
+    .clients-gain h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; color: white; margin-bottom: 40px;
     }
-
-    /* Footer CTA */
-    .footer-cta {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
-      color: var(--white);
-      text-align: center;
-      padding: 48px 24px;
-      margin-top: 60px;
+    .gains-grid {
+      max-width: 800px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
     }
-
-    .footer-cta h3 {
-      font-size: 1.8rem;
-      margin-bottom: 12px;
+    .gain-item {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px; padding: 18px 22px;
+      display: flex; align-items: center; gap: 12px;
     }
+    .gain-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .gain-text { font-size: 0.9rem; color: rgba(255,255,255,0.9); font-weight: 600; text-align: left; }
 
-    .footer-cta p {
-      font-size: 1rem;
-      color: rgba(255,255,255,0.85);
-      margin-bottom: 24px;
+    /* ── CTA STRIP ── */
+    .cta-strip { background: var(--light-bg); padding: 56px 40px; }
+    .cta-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
     }
-
-    .footer-cta a {
-      color: var(--white);
-      text-decoration: underline;
-      font-weight: 600;
+    .cta-left h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--navy); margin-bottom: 10px; }
+    .cta-left p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
+    .cta-right { text-align: center; }
+    .btn-cta-large {
+      display: inline-block; background: var(--light-blue); color: white;
+      font-weight: 700; font-size: 1rem; padding: 16px 36px;
+      border-radius: 7px; text-decoration: none; transition: all 0.2s;
     }
+    .btn-cta-large:hover { background: #1d4ed8; transform: translateY(-2px); }
 
-    /* Footer */
-    .footer {
-      text-align: center;
-      padding: 32px 24px;
-      color: var(--text-muted);
-      font-size: 0.85rem;
+    /* ── FOOTER ── */
+    .site-footer { background: var(--blue); color: white; text-align: center; padding: 40px 24px; }
+    .footer-tagline { font-size: 0.92rem; color: rgba(255,255,255,0.9); font-weight: 600; letter-spacing: 0.5px; margin-bottom: 12px; }
+    .footer-links { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-bottom:14px; }
+    .footer-links a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.8rem; transition:color 0.2s; }
+    .footer-links a:hover { color:white; }
+    .footer-copy { font-size:0.75rem; color:rgba(255,255,255,0.5); }
+
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+      .services-grid { grid-template-columns: 1fr; }
+      .service-col { border-right: none; border-bottom: 1px solid var(--border); }
+      .gains-grid { grid-template-columns: 1fr; }
+      .cta-inner { grid-template-columns: 1fr; text-align: center; }
     }
-
-    .footer strong {
-      color: var(--blue);
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2rem;
-      }
-      .hero p {
-        font-size: 1rem;
-      }
-      .card {
-        padding: 32px 24px;
-      }
-      .features {
-        grid-template-columns: 1fr;
-      }
-      .info-grid {
-        grid-template-columns: 1fr;
-      }
-      .steps {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 640px) {
+      .hero { padding: 48px 24px; }
+      .hero-left h1 { font-size: 2rem; }
+      .topnav { padding: 0 16px; }
+      .nav-links a { padding: 5px 8px; font-size: 0.78rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="rc2-badge">RC2 CONSULTING</div>
-    <h1>WRAP 12 Principles Guide</h1>
-    <p>Complete Reference for Ethical Manufacturing Certification</p>
-  </section>
+<!-- NAV -->
+<nav class="topnav">
+  <a href="https://panamaeddie.github.io/" class="nav-brand">
+    <div class="nav-logo-mark">RC<sup>2</sup></div>
+    <span class="nav-brand-name">Consulting</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://panamaeddie.github.io/" class="active">Home</a></li>
+    <li><a href="https://panamaeddie.github.io/services.html">Services</a></li>
+    <li><a href="https://panamaeddie.github.io/who-we-help.html">Who We Help</a></li>
+    <li><a href="https://panamaeddie.github.io/about.html">About</a></li>
+    <li><a href="https://panamaeddie.github.io/RC2_Resources_Page.html">Resources</a></li>
+    <li><a href="https://panamaeddie.github.io/contact.html">Contact</a></li>
+  </ul>
+</nav>
 
-  <!-- Main Content Card -->
-  <section class="content">
-    <div class="card">
-      <h2>Master WRAP's 12 Principles</h2>
-      <p class="card-description">
-        Comprehensive guide covering all 12 WRAP Principles with detailed explanations, 
-        real-world examples, common compliance gaps, and best practices. Your complete 
-        study resource for WRAP certification.
-      </p>
-
-      <!-- Features -->
-      <div class="features">
-        <div class="feature-item">
-          <div class="feature-icon">📚</div>
-          <div class="feature-text">
-            <strong>All 12 Principles</strong>
-            <span>From compliance with laws to security</span>
-          </div>
-        </div>
-
-        <div class="feature-item">
-          <div class="feature-icon">✅</div>
-          <div class="feature-text">
-            <strong>Key Requirements</strong>
-            <span>What auditors verify at each principle</span>
-          </div>
-        </div>
-
-        <div class="feature-item">
-          <div class="feature-icon">⚠️</div>
-          <div class="feature-text">
-            <strong>Common Gaps</strong>
-            <span>Typical mistakes facilities make</span>
-          </div>
-        </div>
-
-        <div class="feature-item">
-          <div class="feature-icon">💡</div>
-          <div class="feature-text">
-            <strong>Best Practices</strong>
-            <span>How to implement each principle</span>
-          </div>
-        </div>
-
-        <div class="feature-item">
-          <div class="feature-icon">🏭</div>
-          <div class="feature-text">
-            <strong>Real Examples</strong>
-            <span>Actual facility compliance scenarios</span>
-          </div>
-        </div>
-
-        <div class="feature-item">
-          <div class="feature-icon">🖨️</div>
-          <div class="feature-text">
-            <strong>Print-Friendly</strong>
-            <span>Save or print for offline reference</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Launch Button -->
-      <a href="RC2_WRAP_12_Principles_Guide.html" class="btn-launch" target="_blank">
-        📖 Open Principles Guide
-      </a>
-
-      <p style="margin-top: 16px; font-size: 0.85rem; color: var(--text-muted);">
-        Opens in new tab • Free • No signup required
-      </p>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <h1>We connect the dots between strategy, compliance, and results.</h1>
+      <p>RC2 Consulting helps organizations increase revenue, strengthen compliance posture, and build operational systems that perform in the real world.</p>
     </div>
-  </section>
+    <div class="hero-card">
+      <p>Submit a brief intake and we'll determine the right engagement path for your organization.</p>
+      <a href="https://panamaeddie.github.io/contact.html" class="btn-get-started">Get Started</a>
+    </div>
+  </div>
+</section>
 
-  <!-- Info Cards -->
-  <section class="info-section">
-    <div class="info-grid">
-      <div class="info-card">
-        <div class="icon">🎓</div>
-        <h3>Educational</h3>
-        <p>Learn what each principle means and how to demonstrate compliance.</p>
+<!-- SERVICES STRIP -->
+<section class="services-strip">
+  <div class="strip-inner">
+    <div class="services-grid">
+      <div class="service-col">
+        <h3>Operations & Execution</h3>
+        <ul>
+          <li>Process Optimization</li>
+          <li>SOP & Workflow Development / Alignment</li>
+          <li>Fractional Directing</li>
+        </ul>
       </div>
-
-      <div class="info-card">
-        <div class="icon">📋</div>
-        <h3>Comprehensive</h3>
-        <p>Covers all requirements, common issues, and corrective actions.</p>
+      <div class="service-col">
+        <h3>Compliance & Readiness</h3>
+        <ul>
+          <li>Audit Preparation</li>
+          <li>Policy Documentation</li>
+          <li>Regulatory Compliance</li>
+        </ul>
       </div>
-
-      <div class="info-card">
-        <div class="icon">🎯</div>
-        <h3>Practical</h3>
-        <p>Real facility examples and actionable implementation guidance.</p>
+      <div class="service-col">
+        <h3>Sales & Growth Enablement</h3>
+        <ul>
+          <li>New Business Development</li>
+          <li>Performance Optimization</li>
+          <li>Pipeline Development</li>
+          <li>Sales Messaging</li>
+        </ul>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- How It Works -->
-    <div class="how-it-works">
-      <h3>What's Included</h3>
-      <div class="steps">
-        <div class="step">
-          <div class="step-number">1</div>
-          <h4>Explanation</h4>
-          <p>What each principle means</p>
-        </div>
-
-        <div class="step">
-          <div class="step-number">2</div>
-          <h4>Requirements</h4>
-          <p>What auditors verify</p>
-        </div>
-
-        <div class="step">
-          <div class="step-number">3</div>
-          <h4>Examples</h4>
-          <p>Real facility scenarios</p>
-        </div>
-
-        <div class="step">
-          <div class="step-number">4</div>
-          <h4>Best Practices</h4>
-          <p>Implementation tips</p>
-        </div>
-      </div>
+<!-- WHAT CLIENTS GAIN -->
+<section class="clients-gain">
+  <h2>What Clients Gain</h2>
+  <div class="gains-grid">
+    <div class="gain-item">
+      <span class="gain-icon">📋</span>
+      <span class="gain-text">Structured execution plans</span>
     </div>
-  </section>
+    <div class="gain-item">
+      <span class="gain-icon">✅</span>
+      <span class="gain-text">Audit-ready documentation</span>
+    </div>
+    <div class="gain-item">
+      <span class="gain-icon">⚙️</span>
+      <span class="gain-text">Reduced operational friction</span>
+    </div>
+    <div class="gain-item">
+      <span class="gain-icon">🔄</span>
+      <span class="gain-text">Repeatable internal processes</span>
+    </div>
+    <div class="gain-item">
+      <span class="gain-icon">📈</span>
+      <span class="gain-text">Clear revenue growth systems</span>
+    </div>
+    <div class="gain-item">
+      <span class="gain-icon">🛡️</span>
+      <span class="gain-text">Strengthened compliance posture</span>
+    </div>
+  </div>
+</section>
 
-  <!-- Footer CTA -->
-  <section class="footer-cta">
-    <h3>Need Help with WRAP Compliance?</h3>
-    <p>
-      RC2 Consulting provides expert guidance on implementing WRAP's 12 Principles.<br>
-      From policy development to audit preparation.
-    </p>
-    <p style="margin-top: 24px;">
-      <a href="mailto:info@rc2consulting.com">Contact Us for Support</a>
-    </p>
-  </section>
+<!-- CTA -->
+<section class="cta-strip">
+  <div class="cta-inner">
+    <div class="cta-left">
+      <h2>Ready to Build With Structure?</h2>
+      <p>If your organization is preparing to certify, scale, or strengthen compliance, we can help you build the operational systems that support long-term success.</p>
+    </div>
+    <div class="cta-right">
+      <a href="https://panamaeddie.github.io/contact.html" class="btn-cta-large">Start the Conversation →</a>
+    </div>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <p><strong>RC2 Consulting</strong> | Operations & Compliance Solutions</p>
-    <p style="margin-top: 8px;">
-      © 2026 RC2 Consulting. All rights reserved.
-    </p>
-  </footer>
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-tagline">Operational Clarity. Compliance Confidence. Systems That Scale.</div>
+  <div class="footer-links">
+    <a href="https://panamaeddie.github.io/">Home</a>
+    <a href="https://panamaeddie.github.io/services.html">Services</a>
+    <a href="https://panamaeddie.github.io/who-we-help.html">Who We Help</a>
+    <a href="https://panamaeddie.github.io/about.html">About</a>
+    <a href="https://panamaeddie.github.io/RC2_Resources_Page.html">Resources</a>
+    <a href="https://panamaeddie.github.io/contact.html">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 RC2 Consulting, LLC &nbsp;|&nbsp; Privacy Policy &nbsp;|&nbsp; Terms of Service</div>
+</footer>
 
 </body>
 </html>
