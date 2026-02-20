@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Who We Help | RC2 Consulting</title>
+  <meta name="description" content="RC2 Consulting works with growth-focused companies building operational infrastructure — preparing for certification, scaling operations, and strengthening compliance." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0B2545; --blue: #1A4A8A; --light-blue: #2563EB;
+      --light-bg: #F4F6FA; --white: #FFFFFF;
+      --text: #1C2B3A; --text-muted: #4A5568; --border: #E2E8F0;
+    }
+    body { font-family: 'Source Sans 3', sans-serif; background: var(--light-bg); color: var(--text); margin: 0; line-height: 1.6; }
+
+    /* NAV */
+    .topnav { background:var(--navy); padding:0 40px; display:flex; align-items:center; justify-content:space-between; height:52px; position:sticky; top:0; z-index:200; box-shadow:0 2px 8px rgba(0,0,0,0.25); }
+    .nav-brand { display:flex; align-items:center; gap:8px; text-decoration:none; }
+    .nav-logo-mark { background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); color:white; font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; width:32px; height:32px; border-radius:6px; display:flex; align-items:center; justify-content:center; }
+    .nav-logo-mark sup { font-size:0.5rem; vertical-align:super; }
+    .nav-brand-name { font-size:0.88rem; font-weight:600; color:rgba(255,255,255,0.9); }
+    .nav-links { display:flex; gap:4px; list-style:none; }
+    .nav-links a { color:rgba(255,255,255,0.78); text-decoration:none; font-size:0.83rem; font-weight:600; padding:6px 12px; border-radius:4px; transition:all 0.2s; }
+    .nav-links a:hover { color:white; background:rgba(255,255,255,0.1); }
+    .nav-links a.active { color:white; background:rgba(255,255,255,0.12); }
+
+    /* HERO */
+    .hero { background:linear-gradient(to bottom, rgba(11,37,69,0.75) 0%, rgba(11,37,69,0.55) 50%, rgba(11,37,69,0.75) 100%), url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1400&q=80') center/cover no-repeat; padding:72px 40px; text-align:center; }
+    .hero h1 { font-family:'Playfair Display',serif; font-size:2.4rem; font-weight:700; color:white; margin-bottom:14px; line-height:1.25; }
+    .hero p { font-size:1rem; color:rgba(255,255,255,0.82); max-width:600px; margin:0 auto; line-height:1.7; }
+
+    /* CONTENT */
+    .page { max-width:1000px; margin:0 auto; padding:0 28px; }
+    .section { padding:56px 0; }
+
+    .client-card {
+      background:var(--white); border-radius:10px; border:1px solid var(--border);
+      box-shadow:0 2px 8px rgba(11,37,69,0.07); padding:32px 36px;
+      margin-bottom:20px; display:grid; grid-template-columns:1fr 1fr; gap:40px;
+      transition:transform 0.2s, box-shadow 0.2s;
+    }
+    .client-card:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(11,37,69,0.12); }
+
+    .client-card-header {
+      grid-column:1/-1; padding-bottom:16px; border-bottom:2px solid var(--border); margin-bottom:4px;
+    }
+    .client-tag { font-size:0.65rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--light-blue); margin-bottom:6px; }
+    .client-title { font-family:'Playfair Display',serif; font-size:1.25rem; color:var(--navy); }
+
+    .col-label { font-size:0.75rem; font-weight:700; color:var(--text-muted); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:10px; }
+    .check-list { list-style:none; }
+    .check-list li { font-size:0.87rem; color:var(--text-muted); padding:5px 0; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:8px; }
+    .check-list li:last-child { border-bottom:none; }
+    .check-list.you li::before { content:'•'; color:var(--navy); font-weight:700; flex-shrink:0; }
+    .check-list.helps li::before { content:'✓'; color:#1A7A4E; font-weight:700; flex-shrink:0; }
+
+    /* BOTTOM CTA */
+    .bottom-cta {
+      background:linear-gradient(to bottom, rgba(11,37,69,0.78) 0%, rgba(11,37,69,0.65) 100%), url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1400&q=80') center/cover no-repeat;
+      padding:64px 28px; text-align:center;
+    }
+    .bottom-cta h3 { font-family:'Playfair Display',serif; font-size:1.7rem; color:white; margin-bottom:10px; }
+    .bottom-cta p { font-size:0.95rem; color:rgba(255,255,255,0.78); max-width:520px; margin:0 auto 24px; line-height:1.7; }
+    .btn-cta { display:inline-flex; align-items:center; gap:8px; background:var(--light-blue); color:white; font-weight:700; font-size:0.92rem; padding:13px 28px; border-radius:6px; text-decoration:none; transition:all 0.2s; }
+    .btn-cta:hover { background:#1d4ed8; transform:translateY(-1px); }
+
+    /* FOOTER */
+    .site-footer { background:var(--blue); color:white; text-align:center; padding:40px 24px; }
+    .footer-tagline { font-size:0.92rem; color:rgba(255,255,255,0.9); font-weight:600; letter-spacing:0.5px; margin-bottom:12px; }
+    .footer-links { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-bottom:14px; }
+    .footer-links a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.8rem; transition:color 0.2s; }
+    .footer-links a:hover { color:white; }
+    .footer-copy { font-size:0.75rem; color:rgba(255,255,255,0.5); }
+
+    @media (max-width:700px) {
+      .client-card { grid-template-columns:1fr; gap:20px; padding:24px; }
+      .client-card-header { grid-column:1; }
+      .hero h1 { font-size:1.9rem; }
+      .topnav { padding:0 16px; }
+      .nav-links a { padding:5px 8px; font-size:0.78rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="https://panamaeddie.github.io/" class="nav-brand">
+    <div class="nav-logo-mark">RC<sup>2</sup></div>
+    <span class="nav-brand-name">Consulting</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://panamaeddie.github.io/">Home</a></li>
+    <li><a href="https://panamaeddie.github.io/services.html">Services</a></li>
+    <li><a href="https://panamaeddie.github.io/who-we-help.html" class="active">Who We Help</a></li>
+    <li><a href="https://panamaeddie.github.io/about.html">About</a></li>
+    <li><a href="https://panamaeddie.github.io/RC2_Resources_Page.html">Resources</a></li>
+    <li><a href="https://panamaeddie.github.io/contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <h1>Growth-Focused Companies Building<br>Operational Infrastructure</h1>
+  <p>We work with companies preparing for certification, scaling operations, or strengthening compliance across global supply chains.</p>
+</section>
+
+<div class="page"><div class="section">
+
+  <div class="client-card">
+    <div class="client-card-header">
+      <div class="client-tag">Certification & Market Entry</div>
+      <div class="client-title">Companies Preparing for Certification & Market Entry</div>
+    </div>
+    <div>
+      <div class="col-label">You Are</div>
+      <ul class="check-list you">
+        <li>Preparing for WRAP or social compliance</li>
+        <li>Registering for federal contracting</li>
+        <li>Entering new markets</li>
+      </ul>
+    </div>
+    <div>
+      <div class="col-label">How RC2 Helps</div>
+      <ul class="check-list helps">
+        <li>Audit readiness assessments</li>
+        <li>Compliance documentation</li>
+        <li>Corrective action plan</li>
+        <li>Audit prep</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="client-card">
+    <div class="client-card-header">
+      <div class="client-tag">Scaling Operations</div>
+      <div class="client-title">Growth-Focused Companies Scaling Operations</div>
+    </div>
+    <div>
+      <div class="col-label">You Are</div>
+      <ul class="check-list you">
+        <li>Increasing production & expanding facilities</li>
+        <li>Nearshoring to Latin America</li>
+        <li>Entering new markets</li>
+      </ul>
+    </div>
+    <div>
+      <div class="col-label">How RC2 Helps</div>
+      <ul class="check-list helps">
+        <li>Audit readiness assessments</li>
+        <li>Compliance documentation</li>
+        <li>Corrective action plan</li>
+        <li>Audit prep</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="client-card">
+    <div class="client-card-header">
+      <div class="client-tag">Structured Operations</div>
+      <div class="client-title">Founder-Led Companies Transitioning to Structured Operations</div>
+    </div>
+    <div>
+      <div class="col-label">You Are</div>
+      <ul class="check-list you">
+        <li>Founder driven & growth-focused</li>
+        <li>Outgrowing current systems</li>
+        <li>Needing repeatable processes</li>
+      </ul>
+    </div>
+    <div>
+      <div class="col-label">How RC2 Helps</div>
+      <ul class="check-list helps">
+        <li>Operational framework</li>
+        <li>Role & process clarity</li>
+        <li>Governance strategy</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="client-card">
+    <div class="client-card-header">
+      <div class="client-tag">Compliance & Governance</div>
+      <div class="client-title">Organizations Strengthening Compliance & Governance</div>
+    </div>
+    <div>
+      <div class="col-label">You Are</div>
+      <ul class="check-list you">
+        <li>Already certified — maintaining standards</li>
+        <li>Managing corrective action</li>
+        <li>Preparing for re-certification</li>
+      </ul>
+    </div>
+    <div>
+      <div class="col-label">How RC2 Helps</div>
+      <ul class="check-list helps">
+        <li>CAP implementation</li>
+        <li>Ongoing compliance management</li>
+        <li>Internal audit programs</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="client-card">
+    <div class="client-card-header">
+      <div class="client-tag">Supply Chain</div>
+      <div class="client-title">Latin America-Based Manufacturers Entering U.S. Supply Chain</div>
+    </div>
+    <div>
+      <div class="col-label">You Are</div>
+      <ul class="check-list you">
+        <li>Nearshoring into the U.S. market</li>
+        <li>Seeking WRAP certification</li>
+        <li>Building U.S. buyer relationships</li>
+      </ul>
+    </div>
+    <div>
+      <div class="col-label">How RC2 Helps</div>
+      <ul class="check-list helps">
+        <li>Regulatory gap analysis</li>
+        <li>Workforce training</li>
+        <li>Policy standardization</li>
+      </ul>
+    </div>
+  </div>
+
+</div></div>
+
+<section class="bottom-cta">
+  <h3>Build the Infrastructure That Growth Requires</h3>
+  <p>If your company is preparing to certify, scale, or strengthen compliance, we can help you build the operational systems that support long-term success.</p>
+  <a href="https://panamaeddie.github.io/contact.html" class="btn-cta">Start the Conversation →</a>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-tagline">Operational Clarity. Compliance Confidence. Systems That Scale.</div>
+  <div class="footer-links">
+    <a href="https://panamaeddie.github.io/">Home</a>
+    <a href="https://panamaeddie.github.io/services.html">Services</a>
+    <a href="https://panamaeddie.github.io/who-we-help.html">Who We Help</a>
+    <a href="https://panamaeddie.github.io/about.html">About</a>
+    <a href="https://panamaeddie.github.io/RC2_Resources_Page.html">Resources</a>
+    <a href="https://panamaeddie.github.io/contact.html">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 RC2 Consulting, LLC &nbsp;|&nbsp; Privacy Policy &nbsp;|&nbsp; Terms of Service</div>
+</footer>
+
+</body>
+</html>

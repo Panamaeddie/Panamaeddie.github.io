@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services | RC2 Consulting</title>
+  <meta name="description" content="RC2 Consulting services — Compliance Readiness, Operational Systems Optimization, Sales & Growth, and Fractional Director of Operations." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0B2545; --blue: #1A4A8A; --light-blue: #2563EB;
+      --accent: #C8922A; --light-bg: #F4F6FA; --white: #FFFFFF;
+      --text: #1C2B3A; --text-muted: #4A5568; --border: #E2E8F0;
+    }
+    body { font-family: 'Source Sans 3', sans-serif; background: var(--white); color: var(--text); margin: 0; line-height: 1.6; }
+
+    /* NAV */
+    .topnav { background: var(--navy); padding: 0 40px; display:flex; align-items:center; justify-content:space-between; height:52px; position:sticky; top:0; z-index:200; box-shadow:0 2px 8px rgba(0,0,0,0.25); }
+    .nav-brand { display:flex; align-items:center; gap:8px; text-decoration:none; }
+    .nav-logo-mark { background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); color:white; font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; width:32px; height:32px; border-radius:6px; display:flex; align-items:center; justify-content:center; }
+    .nav-logo-mark sup { font-size:0.5rem; vertical-align:super; }
+    .nav-brand-name { font-size:0.88rem; font-weight:600; color:rgba(255,255,255,0.9); }
+    .nav-links { display:flex; gap:4px; list-style:none; }
+    .nav-links a { color:rgba(255,255,255,0.78); text-decoration:none; font-size:0.83rem; font-weight:600; padding:6px 12px; border-radius:4px; transition:all 0.2s; white-space:nowrap; }
+    .nav-links a:hover { color:white; background:rgba(255,255,255,0.1); }
+    .nav-links a.active { color:white; background:rgba(255,255,255,0.12); }
+
+    /* HERO */
+    .hero { background: linear-gradient(to bottom, rgba(11,37,69,0.75) 0%, rgba(11,37,69,0.55) 50%, rgba(11,37,69,0.75) 100%), url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1400&q=80') center/cover no-repeat; padding:72px 40px; text-align:center; }
+    .hero h1 { font-family:'Playfair Display',serif; font-size:2.6rem; font-weight:700; color:white; margin-bottom:14px; }
+    .hero p { font-size:1rem; color:rgba(255,255,255,0.82); max-width:560px; margin:0 auto; line-height:1.7; }
+    .hero-sub { font-size:0.9rem; color:rgba(255,255,255,0.7); margin-top:10px; }
+
+    /* SERVICES */
+    .page { max-width:1100px; margin:0 auto; padding:0 28px; }
+    .section { padding:56px 0; }
+
+    .service-block {
+      display:grid; grid-template-columns:1fr 320px; gap:48px; align-items:center;
+      padding:40px 0; border-bottom:1px solid var(--border);
+    }
+    .service-block:last-child { border-bottom:none; }
+    .service-block.reverse { direction:rtl; }
+    .service-block.reverse > * { direction:ltr; }
+
+    .service-content {}
+    .service-tag { font-size:0.65rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--light-blue); margin-bottom:8px; }
+    .service-title { font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--navy); margin-bottom:14px; }
+    .service-list { list-style:none; }
+    .service-list li { font-size:0.88rem; color:var(--text-muted); padding:7px 0; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:10px; }
+    .service-list li:last-child { border-bottom:none; }
+    .service-list li::before { content:'→'; color:var(--blue); flex-shrink:0; }
+
+    .service-photo { border-radius:10px; overflow:hidden; height:220px; }
+    .service-photo div { width:100%; height:100%; background-size:cover; background-position:center; }
+    .p-s1 { background-image:linear-gradient(rgba(11,37,69,0.2),rgba(11,37,69,0.2)), url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=500&q=70'); }
+    .p-s2 { background-image:linear-gradient(rgba(11,37,69,0.2),rgba(11,37,69,0.2)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&q=70'); }
+    .p-s3 { background-image:linear-gradient(rgba(11,37,69,0.2),rgba(11,37,69,0.2)), url('https://images.unsplash.com/photo-1556761175-4b46a572b786?w=500&q=70'); }
+    .p-s4 { background-image:linear-gradient(rgba(11,37,69,0.2),rgba(11,37,69,0.2)), url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=70'); }
+
+    /* WHO THIS IS FOR */
+    .who-strip { background:var(--light-bg); padding:48px 28px; }
+    .who-inner { max-width:1100px; margin:0 auto; }
+    .who-inner h3 { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--navy); margin-bottom:20px; }
+    .who-list { list-style:none; display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
+    .who-list li { font-size:0.88rem; color:var(--text-muted); display:flex; align-items:center; gap:8px; }
+    .who-list li::before { content:'✓'; color:var(--blue); font-weight:700; flex-shrink:0; }
+
+    /* CTA */
+    .cta-bar { background:var(--blue); padding:48px 28px; text-align:center; }
+    .cta-bar h3 { font-family:'Playfair Display',serif; font-size:1.6rem; color:white; margin-bottom:10px; }
+    .cta-bar p { font-size:0.92rem; color:rgba(255,255,255,0.78); margin-bottom:24px; }
+    .btn-cta { display:inline-flex; align-items:center; gap:8px; background:white; color:var(--blue); font-weight:700; font-size:0.92rem; padding:13px 28px; border-radius:6px; text-decoration:none; transition:all 0.2s; }
+    .btn-cta:hover { background:var(--light-bg); transform:translateY(-1px); }
+
+    /* FOOTER */
+    .site-footer { background:var(--blue); color:white; text-align:center; padding:40px 24px; border-top:1px solid rgba(255,255,255,0.1); }
+    .footer-tagline { font-size:0.92rem; color:rgba(255,255,255,0.9); font-weight:600; letter-spacing:0.5px; margin-bottom:12px; }
+    .footer-links { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-bottom:14px; }
+    .footer-links a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.8rem; transition:color 0.2s; }
+    .footer-links a:hover { color:white; }
+    .footer-copy { font-size:0.75rem; color:rgba(255,255,255,0.5); }
+
+    @media (max-width:900px) {
+      .service-block { grid-template-columns:1fr; }
+      .service-block.reverse { direction:ltr; }
+      .service-photo { height:180px; }
+      .who-list { grid-template-columns:1fr; }
+    }
+    @media (max-width:640px) {
+      .hero h1 { font-size:2rem; }
+      .topnav { padding:0 16px; }
+      .nav-links a { padding:5px 8px; font-size:0.78rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="https://panamaeddie.github.io/" class="nav-brand">
+    <div class="nav-logo-mark">RC<sup>2</sup></div>
+    <span class="nav-brand-name">Consulting</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://panamaeddie.github.io/">Home</a></li>
+    <li><a href="https://panamaeddie.github.io/services.html" class="active">Services</a></li>
+    <li><a href="https://panamaeddie.github.io/who-we-help.html">Who We Help</a></li>
+    <li><a href="https://panamaeddie.github.io/about.html">About</a></li>
+    <li><a href="https://panamaeddie.github.io/RC2_Resources_Page.html">Resources</a></li>
+    <li><a href="https://panamaeddie.github.io/contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <h1>SERVICES</h1>
+  <p class="hero-sub">Operational Clarity. &nbsp;Compliance Confidence. &nbsp;Systems That Scale.</p>
+  <p>We prepare organizations to succeed. &nbsp;Audit-Ready. &nbsp;Growth-Focused.</p>
+</section>
+
+<div class="page"><div class="section">
+
+  <div class="service-block">
+    <div class="service-content">
+      <div class="service-tag">Compliance</div>
+      <div class="service-title">Compliance Readiness Review</div>
+      <ul class="service-list">
+        <li>Documentation Gap Review</li>
+        <li>Policy Structuring</li>
+        <li>Readiness Planning</li>
+        <li>Corrective Action Plan Development</li>
+        <li>Pre-Audit Internal Assessment</li>
+      </ul>
+    </div>
+    <div class="service-photo"><div class="p-s1"></div></div>
+  </div>
+
+  <div class="service-block reverse">
+    <div class="service-content">
+      <div class="service-tag">Operations</div>
+      <div class="service-title">Operational Systems Optimization</div>
+      <ul class="service-list">
+        <li>SOP & Workflow Buildout</li>
+        <li>Education / Training Programming</li>
+        <li>Compliance & Readiness Review</li>
+        <li>Process Documentation & Standardization</li>
+        <li>KPI Framework Development</li>
+      </ul>
+    </div>
+    <div class="service-photo"><div class="p-s2"></div></div>
+  </div>
+
+  <div class="service-block">
+    <div class="service-content">
+      <div class="service-tag">Growth</div>
+      <div class="service-title">Sales & Growth</div>
+      <ul class="service-list">
+        <li>Sales Strategy Framework</li>
+        <li>Messaging Alignment</li>
+        <li>KPI Structure</li>
+        <li>Pipeline Development</li>
+        <li>New Business Development Strategy</li>
+      </ul>
+    </div>
+    <div class="service-photo"><div class="p-s3"></div></div>
+  </div>
+
+  <div class="service-block reverse">
+    <div class="service-content">
+      <div class="service-tag">Leadership</div>
+      <div class="service-title">Fractional Director of Operations</div>
+      <ul class="service-list">
+        <li>Sales Strategy Framework</li>
+        <li>Messaging Alignment</li>
+        <li>KPI Structure</li>
+        <li>Growing organizations needing structure</li>
+        <li>Leadership teams seeking executive support</li>
+      </ul>
+    </div>
+    <div class="service-photo"><div class="p-s4"></div></div>
+  </div>
+
+</div></div>
+
+<div class="who-strip">
+  <div class="who-inner">
+    <h3>Who This Is For</h3>
+    <ul class="who-list">
+      <li>Companies with audit challenges</li>
+      <li>Growing organizations needing structure</li>
+      <li>Leadership teams seeking executive support</li>
+      <li>Business seeking WRAP certification</li>
+      <li>Companies preparing for government contracting</li>
+      <li>Organizations scaling across multiple locations</li>
+    </ul>
+  </div>
+</div>
+
+<div class="cta-bar">
+  <h3>Ready to Get Started?</h3>
+  <p>Tell us about your organization and we'll determine the right engagement path.</p>
+  <a href="https://panamaeddie.github.io/contact.html" class="btn-cta">Start the Conversation →</a>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-tagline">Operational Clarity. Compliance Confidence. Systems That Scale.</div>
+  <div class="footer-links">
+    <a href="https://panamaeddie.github.io/">Home</a>
+    <a href="https://panamaeddie.github.io/services.html">Services</a>
+    <a href="https://panamaeddie.github.io/who-we-help.html">Who We Help</a>
+    <a href="https://panamaeddie.github.io/about.html">About</a>
+    <a href="https://panamaeddie.github.io/RC2_Resources_Page.html">Resources</a>
+    <a href="https://panamaeddie.github.io/contact.html">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 RC2 Consulting, LLC &nbsp;|&nbsp; Privacy Policy &nbsp;|&nbsp; Terms of Service</div>
+</footer>
+
+</body>
+</html>
