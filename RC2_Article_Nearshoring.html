@@ -4,12 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nearshoring to the Americas: Operational Risks & Readiness Factors | RC2 Consulting</title>
-  <meta name="description" content="Shifting trade dynamics and tariffs are accelerating nearshoring to Latin America. The operational and compliance risks of this transition are consistently underestimated." />
+  <meta name="description" content="The business case for nearshoring to Latin America is compelling. The operational risks are real and frequently underestimated. A practical assessment framework for companies evaluating the move." />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --navy:#0B2545; --blue:#1A4A8A; --light-blue:#2563EB; --light-bg:#F4F6FA; --white:#FFFFFF; --text:#1C2B3A; --text-muted:#4A5568; --border:#E2E8F0; }
-    body { font-family:'Source Sans 3',sans-serif; background:var(--light-bg); color:var(--text); margin:0; line-height:1.6; }
+    :root {
+      --navy:#0B2545; --blue:#1A4A8A; --light-blue:#2563EB;
+      --light-bg:#F4F6FA; --white:#FFFFFF;
+      --text:#1C2B3A; --text-muted:#4A5568; --border:#E2E8F0;
+      --success:#1A7A4E; --success-bg:#EBF7F2;
+      --warn:#854D0E; --warn-bg:#FEF9C3;
+      --danger:#9B1C1C; --danger-bg:#FEF2F2;
+    }
+    body { font-family:'Source Sans 3',sans-serif; background:var(--light-bg); color:var(--text); margin:0; line-height:1.7; }
+
+    /* NAV */
     .topnav { background:var(--navy); padding:0 40px; display:flex; align-items:center; justify-content:space-between; height:52px; position:sticky; top:0; z-index:200; box-shadow:0 2px 8px rgba(0,0,0,0.25); }
     .nav-brand { display:flex; align-items:center; gap:8px; text-decoration:none; }
     .nav-logo-mark { background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); color:white; font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; width:32px; height:32px; border-radius:6px; display:flex; align-items:center; justify-content:center; }
@@ -19,6 +28,8 @@
     .nav-links a { color:rgba(255,255,255,0.78); text-decoration:none; font-size:0.83rem; font-weight:600; padding:6px 12px; border-radius:4px; transition:all 0.2s; white-space:nowrap; }
     .nav-links a:hover { color:white; background:rgba(255,255,255,0.1); }
     .nav-links a.active { color:white; background:rgba(255,255,255,0.12); }
+
+    /* HERO */
     .hero { background:linear-gradient(to bottom, rgba(11,37,69,0.82) 0%, rgba(11,37,69,0.65) 100%), url('https://images.unsplash.com/photo-1569025743873-ea3a9ade89f9?w=1400&q=80') center/cover no-repeat; padding:64px 40px 56px; }
     .hero-inner { max-width:820px; margin:0 auto; }
     .article-tag { display:inline-block; font-size:0.65rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.7); background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); padding:4px 12px; border-radius:10px; margin-bottom:16px; }
@@ -26,37 +37,50 @@
     .hero-meta { display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
     .hero-meta span { font-size:0.82rem; color:rgba(255,255,255,0.65); }
     .hero-meta .divider { color:rgba(255,255,255,0.3); }
+
+    /* LAYOUT */
     .article-wrap { max-width:820px; margin:0 auto; padding:0 28px; }
+    .btn-back { display:inline-flex; align-items:center; gap:6px; color:var(--light-blue); text-decoration:none; font-size:0.85rem; font-weight:600; margin:28px 0 0; }
+
+    /* ABSTRACT */
     .abstract-box { background:var(--white); border-left:4px solid var(--light-blue); border-radius:0 8px 8px 0; padding:24px 28px; margin:40px 0; box-shadow:0 2px 8px rgba(11,37,69,0.07); }
     .abstract-box h3 { font-size:0.7rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--light-blue); margin-bottom:10px; }
     .abstract-box p { font-size:0.92rem; color:var(--text-muted); line-height:1.75; font-style:italic; }
+
+    /* ARTICLE BODY */
     .article-body { background:var(--white); border-radius:10px; border:1px solid var(--border); box-shadow:0 2px 8px rgba(11,37,69,0.06); padding:48px; margin-bottom:32px; }
     .article-body h2 { font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--navy); margin:36px 0 14px; padding-top:8px; border-top:2px solid var(--border); }
     .article-body h2:first-child { margin-top:0; border-top:none; padding-top:0; }
     .article-body h3 { font-size:1rem; font-weight:700; color:var(--blue); margin:24px 0 10px; }
     .article-body p { font-size:0.93rem; color:var(--text-muted); line-height:1.8; margin-bottom:16px; }
     .article-body p strong { color:var(--navy); }
+
+    /* CALLOUT */
     .callout { background:var(--light-bg); border-radius:8px; padding:20px 24px; margin:24px 0; border:1px solid var(--border); }
-    .callout p { font-size:0.88rem; color:var(--navy); font-weight:600; line-height:1.65; margin:0; }
-    .callout p::before { content:'"'; font-size:2rem; color:var(--light-blue); line-height:0; vertical-align:-12px; margin-right:6px; }
+    .callout p { font-size:0.9rem; color:var(--navy); font-weight:600; line-height:1.7; margin:0; font-style:italic; border-left:3px solid var(--light-blue); padding-left:16px; }
 
-    /* RISK TABLE */
-    .risk-table { width:100%; border-collapse:collapse; margin:20px 0; font-size:0.85rem; }
-    .risk-table th { background:var(--navy); color:white; padding:10px 14px; text-align:left; font-size:0.78rem; font-weight:700; letter-spacing:0.5px; }
-    .risk-table td { padding:10px 14px; border-bottom:1px solid var(--border); color:var(--text-muted); vertical-align:top; }
-    .risk-table tr:nth-child(even) td { background:var(--light-bg); }
-    .risk-high { color:#DC2626; font-weight:700; }
-    .risk-med { color:#D97706; font-weight:700; }
+    /* RISK CARDS */
+    .risk-cards { display:flex; flex-direction:column; gap:14px; margin:20px 0; }
+    .risk-card { border-radius:8px; padding:20px 22px; border:1px solid; display:grid; grid-template-columns:auto 1fr; gap:14px; align-items:start; }
+    .risk-card.high { background:var(--danger-bg); border-color:#FECACA; }
+    .risk-card.medium { background:var(--warn-bg); border-color:#FDE68A; }
+    .risk-card.low { background:var(--success-bg); border-color:#BBF7D0; }
+    .risk-badge { font-size:0.65rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:3px 8px; border-radius:10px; white-space:nowrap; margin-top:2px; }
+    .risk-card.high .risk-badge { background:#FEE2E2; color:var(--danger); }
+    .risk-card.medium .risk-badge { background:#FEF3C7; color:var(--warn); }
+    .risk-card.low .risk-badge { background:#DCFCE7; color:var(--success); }
+    .risk-content h4 { font-size:0.92rem; font-weight:700; color:var(--navy); margin-bottom:6px; }
+    .risk-content p { font-size:0.84rem; color:var(--text-muted); line-height:1.6; margin:0; }
 
-    /* COUNTRY GRID */
-    .country-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:20px 0; }
-    .country-card { background:var(--light-bg); border:1px solid var(--border); border-radius:8px; padding:16px; }
-    .country-name { font-size:0.88rem; font-weight:700; color:var(--navy); margin-bottom:6px; }
-    .country-status { font-size:0.72rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:2px 8px; border-radius:10px; display:inline-block; margin-bottom:8px; }
-    .status-ready { background:#DCFCE7; color:#15803D; }
-    .status-developing { background:#FEF9C3; color:#854D0E; }
-    .country-card p { font-size:0.78rem; color:var(--text-muted); line-height:1.5; margin:0; }
+    /* COMPARISON TABLE */
+    .comp-table { width:100%; border-collapse:collapse; margin:20px 0; font-size:0.84rem; }
+    .comp-table th { background:var(--navy); color:white; padding:10px 14px; text-align:left; font-size:0.78rem; font-weight:700; }
+    .comp-table th:first-child { width:28%; }
+    .comp-table td { padding:10px 14px; border-bottom:1px solid var(--border); color:var(--text-muted); vertical-align:top; line-height:1.5; }
+    .comp-table tr:nth-child(even) td { background:var(--light-bg); }
+    .comp-table td:first-child { font-weight:600; color:var(--navy); }
 
+    /* HORIZON */
     .horizon-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:24px 0; }
     .horizon-card { border-radius:8px; padding:20px; border:1px solid var(--border); }
     .horizon-card.h1 { background:#EFF6FF; border-color:#BFDBFE; }
@@ -69,35 +93,44 @@
     .horizon-title { font-size:0.85rem; font-weight:700; color:var(--navy); margin-bottom:8px; }
     .horizon-card p { font-size:0.8rem; color:var(--text-muted); line-height:1.55; margin:0; }
 
-    .check-section { background:var(--navy); border-radius:10px; padding:28px 32px; margin:28px 0; }
-    .check-section h3 { font-size:0.88rem; font-weight:700; color:white; letter-spacing:1px; text-transform:uppercase; margin-bottom:16px; }
-    .check-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-    .check-item { display:flex; align-items:flex-start; gap:10px; }
-    .check-item::before { content:'✓'; color:#4ADE80; font-weight:700; flex-shrink:0; margin-top:2px; }
-    .check-item span { font-size:0.84rem; color:rgba(255,255,255,0.85); line-height:1.5; }
+    /* READINESS SCORECARD */
+    .scorecard { background:var(--navy); border-radius:10px; padding:28px 32px; margin:28px 0; }
+    .scorecard h3 { font-size:0.88rem; font-weight:700; color:white; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px; }
+    .scorecard p { font-size:0.82rem; color:rgba(255,255,255,0.65); margin-bottom:16px; }
+    .score-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .score-item { display:flex; align-items:flex-start; gap:10px; }
+    .score-item::before { content:'✓'; color:#4ADE80; font-weight:700; flex-shrink:0; margin-top:2px; }
+    .score-item span { font-size:0.84rem; color:rgba(255,255,255,0.85); line-height:1.5; }
+
+    /* SOURCES */
     .sources { background:var(--light-bg); border-radius:8px; padding:20px 24px; margin-top:28px; border:1px solid var(--border); }
     .sources h4 { font-size:0.72rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); margin-bottom:12px; }
     .sources ul { list-style:none; }
     .sources ul li { font-size:0.78rem; color:var(--text-muted); padding:4px 0; border-bottom:1px solid var(--border); }
     .sources ul li:last-child { border-bottom:none; }
     .sources ul li a { color:var(--light-blue); text-decoration:none; }
+
+    /* CTA */
     .article-cta { background:linear-gradient(135deg,var(--navy),var(--blue)); border-radius:10px; padding:36px; text-align:center; margin-bottom:48px; }
     .article-cta h3 { font-family:'Playfair Display',serif; font-size:1.4rem; color:white; margin-bottom:10px; }
     .article-cta p { font-size:0.88rem; color:rgba(255,255,255,0.78); margin-bottom:20px; }
-    .btn-cta { display:inline-flex; align-items:center; gap:8px; background:white; color:var(--blue); font-weight:700; font-size:0.88rem; padding:12px 24px; border-radius:6px; text-decoration:none; transition:all 0.2s; }
+    .btn-cta { display:inline-flex; align-items:center; gap:8px; background:white; color:var(--blue); font-weight:700; font-size:0.88rem; padding:12px 24px; border-radius:6px; text-decoration:none; }
     .btn-cta:hover { background:var(--light-bg); }
-    .btn-back { display:inline-flex; align-items:center; gap:6px; color:var(--light-blue); text-decoration:none; font-size:0.85rem; font-weight:600; margin:28px 0 0; }
+
+    /* FOOTER */
     .site-footer { background:var(--blue); color:white; text-align:center; padding:40px 24px; }
     .footer-tagline { font-size:0.92rem; color:rgba(255,255,255,0.9); font-weight:600; letter-spacing:0.5px; margin-bottom:12px; }
     .footer-links { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-bottom:14px; }
     .footer-links a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.8rem; }
     .footer-links a:hover { color:white; }
     .footer-copy { font-size:0.75rem; color:rgba(255,255,255,0.5); }
+
     @media (max-width:700px) {
       .hero h1 { font-size:1.75rem; }
       .article-body { padding:24px 18px; }
-      .horizon-grid, .country-grid { grid-template-columns:1fr; }
-      .check-grid { grid-template-columns:1fr; }
+      .horizon-grid { grid-template-columns:1fr; }
+      .score-grid { grid-template-columns:1fr; }
+      .risk-card { grid-template-columns:1fr; }
       .topnav { padding:0 16px; }
       .nav-links a { padding:5px 8px; font-size:0.78rem; }
     }
@@ -129,7 +162,7 @@
       <span class="divider">|</span>
       <span>February 2026</span>
       <span class="divider">|</span>
-      <span>10 min read</span>
+      <span>11 min read</span>
     </div>
   </div>
 </section>
@@ -139,165 +172,188 @@
 
   <div class="abstract-box">
     <h3>Executive Summary</h3>
-    <p>Shifting trade dynamics, rising tariffs, and supply chain instability are accelerating a nearshoring movement toward Latin America. However, the operational and compliance risks of this transition are consistently underestimated. Facilities entering U.S. supply chains face a compressed readiness timeline: WRAP certification, customs compliance, workforce documentation, and buyer-imposed codes of conduct must be addressed simultaneously. This article provides a Triple-Horizon analysis of the nearshoring landscape — what companies face today, what infrastructure they must build over the next 12–18 months, and what long-term compliance posture a successful nearshoring strategy requires.</p>
+    <p>The business case for nearshoring to Latin America has never been stronger — driven by tariff exposure, supply chain fragility, and the strategic advantage of geographic proximity to U.S. markets. But the operational risks of making that transition are real, frequently underestimated, and rarely discussed with the specificity executives need to make informed decisions. This article examines the on-the-ground operational risks of nearshoring — logistics infrastructure, labor market realities, geopolitical exposure, vendor qualification, quality control gaps, and currency volatility — and provides a practical readiness framework for companies evaluating or executing a nearshoring strategy.</p>
   </div>
 
   <div class="article-body">
 
-    <h2>The Nearshoring Acceleration</h2>
-    <p>The reshaping of global supply chains is no longer a forecast — it is a documented, accelerating reality. Escalating U.S.-China trade tensions, Section 301 tariffs, and post-pandemic supply chain fragility have driven a fundamental shift in sourcing strategy among U.S. importers. Latin America — particularly Honduras, Guatemala, El Salvador, Mexico, and Colombia — has emerged as the primary nearshoring destination for apparel, manufacturing, and light industrial production.</p>
-    <p>According to the <strong>U.S. International Trade Commission</strong>, nearshoring activity to CAFTA-DR countries increased by <strong>23% between 2022 and 2025</strong>, with apparel and textile production leading the shift. The <strong>World Bank</strong> projects continued acceleration through 2028, driven by labor cost advantages, proximity-based logistics savings, and preferential trade agreement access. <em>(Source: USITC, 2025; World Bank Trade Report, 2024)</em></p>
+    <h2>Why Companies Are Moving — and Why Many Aren't Ready</h2>
+    <p>The numbers driving nearshoring interest are not speculative. <strong>Section 301 tariffs on Chinese goods</strong> range from 25% to 100% across dozens of product categories as of 2026. Ocean freight lead times from Asia — which averaged 45–60 days pre-pandemic — remain elevated and unpredictable. And the geopolitical risk of single-country sourcing concentration has moved from boardroom concern to CFO line item.</p>
+    <p>Against this backdrop, Latin America offers a genuinely compelling alternative. <strong>CAFTA-DR member countries</strong> — Honduras, Guatemala, El Salvador, Costa Rica, Nicaragua, and the Dominican Republic — offer preferential tariff access to the U.S. market. Mexico's <strong>USMCA</strong> framework provides additional advantages for manufacturers seeking tight integration with U.S. production systems. Geographic proximity cuts lead times to 3–10 days. And labor cost structures, while rising, remain competitive with Asian alternatives when total landed cost is calculated.</p>
+    <p>But the gap between a compelling strategic rationale and successful operational execution is wide. Companies that move toward nearshoring without understanding the on-the-ground operational realities frequently encounter problems that their financial models never anticipated.</p>
 
     <div class="callout">
-      <p>The decision to nearshore is a strategic one. The failure to prepare operationally and compliance-wise before entering the U.S. supply chain is an operational one — and it is avoidable.</p>
+      <p>Nearshoring is not simply a matter of moving production closer to home. It is the construction of an entirely new operational ecosystem — vendor relationships, logistics infrastructure, workforce capability, quality systems — in an environment that may be geographically close but operationally unfamiliar.</p>
     </div>
 
-    <h2>The Readiness Gap — What Companies Get Wrong</h2>
-    <p>The most consistent failure pattern in nearshoring transitions is not production capacity — it is compliance and operational readiness. Companies that successfully build or acquire production infrastructure in Latin America frequently underestimate the compliance infrastructure required to access U.S. buyers, government contracts, and major retail supply chains.</p>
-    <p>The readiness gap manifests in five specific areas:</p>
+    <h2>The Seven Operational Risks Companies Underestimate</h2>
 
-    <h3>1. Social Compliance Certification</h3>
-    <p>WRAP certification is the most widely recognized social compliance standard in the apparel and sewn products industry. U.S. buyers — including major retailers, brands, and government contractors — require WRAP certification or equivalent as a baseline condition of supply chain participation. Facilities entering the U.S. supply chain without this certification are effectively locked out of the most valuable buyer relationships.</p>
-
-    <h3>2. Customs & Trade Compliance</h3>
-    <p>CAFTA-DR preferential tariff treatment requires rigorous country-of-origin documentation, regional value content verification, and customs compliance record-keeping. Companies that fail to establish these systems before their first shipment face retroactive tariff exposure, customs holds, and potential debarment from preferential treatment programs.</p>
-
-    <h3>3. Workforce Documentation Standards</h3>
-    <p>U.S. buyers impose workforce documentation requirements that frequently exceed local legal minimums. Wage records, hour logs, age verification documentation, worker grievance procedures, and anti-harassment policies must all be maintained in retrievable, auditable formats — in both local language and English.</p>
-
-    <h3>4. Environmental & Safety Compliance</h3>
-    <p>Environmental compliance requirements — wastewater management, chemical handling, fire safety — are audit points in virtually every major social compliance standard. Facilities built to local code frequently fall short of international buyer standards and require investment before certification is achievable.</p>
-
-    <h3>5. Management Systems & SOP Infrastructure</h3>
-    <p>Auditors do not just review conditions — they review systems. A facility without documented management systems, written SOPs, internal audit protocols, and corrective action tracking will fail a WRAP or equivalent audit regardless of actual conditions on the floor.</p>
-
-    <h2>Country Readiness Profile — Key Nearshoring Markets</h2>
-    <div class="country-grid">
-      <div class="country-card">
-        <div class="country-name">Honduras</div>
-        <span class="country-status status-ready">High Readiness</span>
-        <p>Established WRAP base. Strong maquila infrastructure. CAFTA-DR member. Largest apparel exporter in Central America.</p>
+    <div class="risk-cards">
+      <div class="risk-card high">
+        <span class="risk-badge">High Risk</span>
+        <div class="risk-content">
+          <h4>1. Infrastructure Gaps — Logistics, Port, and Transportation Reliability</h4>
+          <p>Latin American logistics infrastructure varies dramatically by country and corridor. Port congestion, road quality limitations, and inconsistent cold chain or specialized freight capacity can add unexpected cost and delay to supply chains that modeled only ocean and air freight. Honduras's Puerto Cortés and Mexico's Manzanillo are well-developed — but inland transportation to production zones in Guatemala, Nicaragua, and Colombia presents real operational challenges that require local logistics expertise to navigate.</p>
+        </div>
       </div>
-      <div class="country-card">
-        <div class="country-name">Guatemala</div>
-        <span class="country-status status-ready">High Readiness</span>
-        <p>Growing certification base. Strong textile sector. CAFTA-DR member. Labor compliance improving significantly.</p>
+      <div class="risk-card high">
+        <span class="risk-badge">High Risk</span>
+        <div class="risk-content">
+          <h4>2. Vendor Qualification & Supply Base Depth</h4>
+          <p>Asia's manufacturing ecosystem has been built over decades — deep supplier networks, specialized component manufacturers, and competitive raw material sourcing exist at scale. Latin America's supply base, while growing, is shallower. Companies nearshoring production frequently discover that raw materials, components, and specialized inputs must still be sourced from Asia — partially offsetting lead time and tariff advantages. Vendor qualification processes that took weeks in established Asian markets can take months in emerging Latin American corridors.</p>
+        </div>
       </div>
-      <div class="country-card">
-        <div class="country-name">El Salvador</div>
-        <span class="country-status status-ready">High Readiness</span>
-        <p>Advanced full-package capability. CAFTA-DR member. Strong logistics infrastructure. Competitive labor costs.</p>
+      <div class="risk-card high">
+        <span class="risk-badge">High Risk</span>
+        <div class="risk-content">
+          <h4>3. Geopolitical & Policy Instability</h4>
+          <p>Several key nearshoring markets carry meaningful geopolitical risk. Nicaragua's political environment has created export compliance complications for U.S. buyers. El Salvador's economic policy shifts have introduced uncertainty for long-term facility investment. And the ongoing renegotiation dynamics around USMCA and CAFTA-DR mean that the tariff advantages underpinning many nearshoring financial models are subject to revision. Companies making 5–10 year production commitments must stress-test their models against policy change scenarios.</p>
+        </div>
       </div>
-      <div class="country-card">
-        <div class="country-name">Colombia</div>
-        <span class="country-status status-developing">Developing</span>
-        <p>U.S.-Colombia FTA. Growing compliance base. Strong in fashion manufacturing. Requires documentation investment.</p>
+      <div class="risk-card medium">
+        <span class="risk-badge">Medium Risk</span>
+        <div class="risk-content">
+          <h4>4. Labor Market Realities — Skill Gaps and Turnover</h4>
+          <p>Labor cost advantages in Latin America are real — but they come with workforce realities that financial models rarely capture. Skilled technical labor in specialized manufacturing disciplines is in short supply in many nearshoring markets. Worker turnover rates in maquila-style production environments can run 5–10% per month in some corridors, driving training costs, quality inconsistency, and production volatility. Companies that budget only for wage rates — without accounting for recruitment, training, and turnover costs — consistently exceed their labor cost projections.</p>
+        </div>
       </div>
-      <div class="country-card">
-        <div class="country-name">Mexico</div>
-        <span class="country-status status-ready">High Readiness</span>
-        <p>USMCA member. Largest nearshoring market. Strong automotive and industrial base. Advanced compliance infrastructure.</p>
+      <div class="risk-card medium">
+        <span class="risk-badge">Medium Risk</span>
+        <div class="risk-content">
+          <h4>5. Quality Control System Transfer</h4>
+          <p>Quality systems that functioned in an established Asian production environment do not automatically transfer to a new nearshoring facility. Inspection protocols, defect rate benchmarks, sampling procedures, and corrective action systems must be rebuilt in the new operational context — with a workforce that may have limited experience with the specific quality standards U.S. buyers require. The ramp-up period for quality consistency in a new nearshoring facility typically runs 6–18 months, during which defect rates and rework costs are elevated.</p>
+        </div>
       </div>
-      <div class="country-card">
-        <div class="country-name">Nicaragua</div>
-        <span class="country-status status-developing">Developing</span>
-        <p>CAFTA-DR member. Low labor costs. Compliance infrastructure developing. Requires pre-entry gap assessment.</p>
+      <div class="risk-card medium">
+        <span class="risk-badge">Medium Risk</span>
+        <div class="risk-content">
+          <h4>6. Currency & Cost Volatility</h4>
+          <p>While U.S. dollar-denominated transactions are common in major nearshoring markets, local currency volatility affects supplier pricing, labor costs indexed to local minimums, and overhead expenses. Colombia's peso, Guatemala's quetzal, and Honduras's lempira have all experienced meaningful volatility against the dollar in recent years. Companies without currency risk management strategies in their nearshoring financial models carry exposure that can erode projected cost advantages within a single fiscal year.</p>
+        </div>
       </div>
-    </div>
-
-    <h2>Triple-Horizon Analysis — The Nearshoring Compliance Timeline</h2>
-    <div class="horizon-grid">
-      <div class="horizon-card h1">
-        <div class="horizon-label">Horizon 1 — Pre-Entry (0–6 Mo.)</div>
-        <div class="horizon-title">Gap Assessment & Foundation</div>
-        <p>Conduct compliance gap assessment. Identify documentation deficiencies. Map buyer requirements. Begin SOP development and policy documentation. Engage WRAP-registered monitor.</p>
-      </div>
-      <div class="horizon-card h2">
-        <div class="horizon-label">Horizon 2 — Ramp (6–18 Mo.)</div>
-        <div class="horizon-title">Build & Certify</div>
-        <p>Complete SOP library. Train workforce and management. Conduct pre-audit internal review. Submit WRAP application. Establish customs compliance documentation system.</p>
-      </div>
-      <div class="horizon-card h3">
-        <div class="horizon-label">Horizon 3 — Scale (18–36 Mo.)</div>
-        <div class="horizon-title">Sustain & Expand</div>
-        <p>Maintain certification through annual audits. Expand buyer relationships. Build multi-facility compliance systems. Develop internal compliance team capability.</p>
+      <div class="risk-card medium">
+        <span class="risk-badge">Medium Risk</span>
+        <div class="risk-content">
+          <h4>7. Management Bandwidth & Operational Oversight</h4>
+          <p>Operating a production facility or vendor relationship across a language barrier, a time zone difference, and a cultural gap requires management bandwidth that most U.S. companies underestimate. Without experienced on-the-ground operational leadership — whether employed directly or provided through a management services arrangement — quality, compliance, and production consistency will suffer. Remote management of a nearshoring operation without local operational presence is one of the most common and most costly mistakes companies make in their first nearshoring transition.</p>
+        </div>
       </div>
     </div>
 
-    <h2>The Risk Matrix — What Happens Without Readiness</h2>
-    <table class="risk-table">
+    <h2>Country-by-Country Risk & Readiness Profile</h2>
+    <table class="comp-table">
       <thead>
-        <tr>
-          <th>Risk Area</th>
-          <th>Consequence</th>
-          <th>Severity</th>
-        </tr>
+        <tr><th>Country</th><th>Key Advantage</th><th>Primary Operational Risk</th><th>Trade Framework</th></tr>
       </thead>
       <tbody>
         <tr>
-          <td>No WRAP certification</td>
-          <td>Exclusion from major U.S. buyer supply chains</td>
-          <td><span class="risk-high">HIGH</span></td>
+          <td>Mexico</td>
+          <td>Largest market, deepest supply base, USMCA access</td>
+          <td>Rising labor costs, security concerns in some corridors</td>
+          <td>USMCA</td>
         </tr>
         <tr>
-          <td>Customs documentation gaps</td>
-          <td>Retroactive tariff exposure, shipment holds</td>
-          <td><span class="risk-high">HIGH</span></td>
+          <td>Honduras</td>
+          <td>Established maquila infrastructure, Puerto Cortés access</td>
+          <td>Political stability concerns, infrastructure outside main corridors</td>
+          <td>CAFTA-DR</td>
         </tr>
         <tr>
-          <td>Missing workforce records</td>
-          <td>Audit failure, corrective action requirements</td>
-          <td><span class="risk-high">HIGH</span></td>
+          <td>Guatemala</td>
+          <td>Growing manufacturing base, competitive labor, strong logistics</td>
+          <td>Workforce skill gap in technical manufacturing</td>
+          <td>CAFTA-DR</td>
         </tr>
         <tr>
-          <td>No SOP documentation</td>
-          <td>Failed audit, re-audit costs, buyer relationship loss</td>
-          <td><span class="risk-med">MEDIUM</span></td>
+          <td>El Salvador</td>
+          <td>Full-package capability, strong port access, compact geography</td>
+          <td>Policy uncertainty, limited supply base depth</td>
+          <td>CAFTA-DR</td>
         </tr>
         <tr>
-          <td>Environmental non-compliance</td>
-          <td>Regulatory penalties, buyer disqualification</td>
-          <td><span class="risk-med">MEDIUM</span></td>
+          <td>Colombia</td>
+          <td>Strong fashion/apparel sector, growing FDI infrastructure</td>
+          <td>Currency volatility, longer logistics corridors</td>
+          <td>U.S.-Colombia FTA</td>
+        </tr>
+        <tr>
+          <td>Nicaragua</td>
+          <td>Lowest labor costs in Central America</td>
+          <td>Export compliance complications, political risk, buyer hesitancy</td>
+          <td>CAFTA-DR</td>
         </tr>
       </tbody>
     </table>
 
-    <div class="check-section">
-      <h3>Nearshoring Readiness Checklist — Pre-Entry Assessment</h3>
-      <div class="check-grid">
-        <div class="check-item"><span>WRAP certification target identified</span></div>
-        <div class="check-item"><span>Compliance gap assessment completed</span></div>
-        <div class="check-item"><span>CAFTA-DR / FTA eligibility confirmed</span></div>
-        <div class="check-item"><span>Country-of-origin documentation system built</span></div>
-        <div class="check-item"><span>Workforce documentation standards mapped</span></div>
-        <div class="check-item"><span>SOP development initiated</span></div>
-        <div class="check-item"><span>Environmental compliance reviewed</span></div>
-        <div class="check-item"><span>Buyer code of conduct requirements documented</span></div>
-        <div class="check-item"><span>Internal audit schedule established</span></div>
-        <div class="check-item"><span>WRAP-registered monitor engaged</span></div>
+    <h2>Triple-Horizon Analysis — The Nearshoring Decision Timeline</h2>
+    <div class="horizon-grid">
+      <div class="horizon-card h1">
+        <div class="horizon-label">Horizon 1 — Pre-Decision (0–6 Mo.)</div>
+        <div class="horizon-title">Assess Before You Commit</div>
+        <p>Total landed cost analysis including logistics, tariffs, quality ramp, and turnover. Country risk assessment across geopolitical, currency, and infrastructure dimensions. Vendor qualification feasibility study. On-the-ground market visit before any capital commitment.</p>
+      </div>
+      <div class="horizon-card h2">
+        <div class="horizon-label">Horizon 2 — Launch (6–18 Mo.)</div>
+        <div class="horizon-title">Build the Operational Foundation</div>
+        <p>Establish local operational leadership. Build vendor qualification process. Transfer quality systems with local adaptation. Implement workforce training program. Establish logistics partnerships with local expertise. Monitor quality KPIs weekly through ramp-up period.</p>
+      </div>
+      <div class="horizon-card h3">
+        <div class="horizon-label">Horizon 3 — Scale (18–36 Mo.)</div>
+        <div class="horizon-title">Optimize & Expand</div>
+        <p>Localize supply base to reduce Asia dependency. Expand production capacity on proven quality foundation. Pursue certifications that open additional buyer relationships. Develop second-country optionality to manage geopolitical concentration risk.</p>
       </div>
     </div>
 
-    <h2>Conclusion</h2>
-    <p>Nearshoring to Latin America represents a genuine strategic opportunity — one that is being realized by hundreds of U.S. companies navigating a fundamentally changed trade environment. But the opportunity is only accessible to companies that arrive in the U.S. supply chain with their compliance and operational infrastructure already built.</p>
-    <p>The companies that succeed in nearshoring transitions are not the ones that move fastest. They are the ones that move most prepared.</p>
+    <h2>The Readiness Assessment — Questions to Answer Before You Move</h2>
+    <p>Most nearshoring failures are traceable to decisions made before the first shipment — specifically, decisions made without adequate operational intelligence. Before committing capital, production volume, or buyer relationships to a nearshoring strategy, every company should be able to answer these questions with specificity.</p>
+
+    <h3>On Total Cost:</h3>
+    <p>Have you modeled total landed cost — not just labor and freight — including quality ramp costs, vendor development investment, management overhead, rework rates during transition, and potential currency exposure? Companies that model only the favorable variables consistently overpromise and underdeliver on nearshoring cost projections.</p>
+
+    <h3>On Operational Leadership:</h3>
+    <p>Who will manage this operation on the ground? A nearshoring facility without experienced local leadership is not a supply chain asset — it is a liability. The answer cannot be "we'll manage it remotely from our U.S. office." It requires a named individual with operational authority, local language capability, and accountability for production and quality outcomes.</p>
+
+    <h3>On Exit Optionality:</h3>
+    <p>What is your exit plan if the primary nearshoring market becomes untenable — due to policy change, political instability, or logistics disruption? Companies that nearshore without a secondary market option are trading one form of supply chain concentration risk for another.</p>
+
+    <div class="scorecard">
+      <h3>Nearshoring Operational Readiness Scorecard</h3>
+      <p>Answer yes to 8 or more before committing to a nearshoring transition.</p>
+      <div class="score-grid">
+        <div class="score-item"><span>Total landed cost model completed — all variables included</span></div>
+        <div class="score-item"><span>On-the-ground market visit completed pre-commitment</span></div>
+        <div class="score-item"><span>Local operational leadership identified and in place</span></div>
+        <div class="score-item"><span>Vendor qualification process defined and resourced</span></div>
+        <div class="score-item"><span>Quality system transfer plan documented</span></div>
+        <div class="score-item"><span>Logistics partnerships established with local expertise</span></div>
+        <div class="score-item"><span>Currency risk management strategy in place</span></div>
+        <div class="score-item"><span>Geopolitical risk scenario analysis completed</span></div>
+        <div class="score-item"><span>Workforce training and retention program designed</span></div>
+        <div class="score-item"><span>Secondary market optionality identified</span></div>
+      </div>
+    </div>
+
+    <h2>Conclusion — The Operational Reality of a Strategic Opportunity</h2>
+    <p>Nearshoring to Latin America is not a trend. It is a structural shift in global supply chain architecture — one that is being driven by forces that will persist regardless of any single political or trade policy cycle. The companies that capture the full value of that shift will be the ones that approach it as an operational challenge, not just a financial one.</p>
+    <p>The advantages are real. So are the risks. The difference between companies that realize the former and are surprised by the latter comes down to how thoroughly they assessed the operational realities before they committed — and how rigorously they built the systems to manage those realities after they did.</p>
 
     <div class="sources">
       <h4>Sources & References</h4>
       <ul>
-        <li>U.S. International Trade Commission — Nearshoring Trends in CAFTA-DR Markets (2025) — <a href="https://www.usitc.gov" target="_blank">usitc.gov</a></li>
-        <li>World Bank — Trade Integration in Latin America and the Caribbean (2024) — <a href="https://www.worldbank.org" target="_blank">worldbank.org</a></li>
-        <li>WRAP — Certification Program Requirements and Guidelines (2024) — <a href="https://www.wrapcompliance.org" target="_blank">wrapcompliance.org</a></li>
-        <li>U.S. Customs & Border Protection — CAFTA-DR Rules of Origin Guide (2024) — <a href="https://www.cbp.gov" target="_blank">cbp.gov</a></li>
-        <li>International Labour Organization — Labour Standards in Latin American Supply Chains (2024) — <a href="https://www.ilo.org" target="_blank">ilo.org</a></li>
+        <li>U.S. Trade Representative — Section 301 Tariff Schedule & CAFTA-DR Trade Data (2025) — <a href="https://ustr.gov" target="_blank">ustr.gov</a></li>
+        <li>U.S. International Trade Commission — Western Hemisphere Trade Flows Report (2025) — <a href="https://www.usitc.gov" target="_blank">usitc.gov</a></li>
+        <li>World Bank — Doing Business in Latin America: Logistics Performance Index (2024) — <a href="https://www.worldbank.org" target="_blank">worldbank.org</a></li>
+        <li>McKinsey & Company — Reshaping Global Supply Chains: The Nearshoring Opportunity (2024) — <a href="https://www.mckinsey.com" target="_blank">mckinsey.com</a></li>
+        <li>Kearney — Reshoring Index: Latin America Supply Chain Analysis (2025) — <a href="https://www.kearney.com" target="_blank">kearney.com</a></li>
+        <li>Inter-American Development Bank — Latin America Manufacturing Competitiveness Report (2024) — <a href="https://www.iadb.org" target="_blank">iadb.org</a></li>
       </ul>
     </div>
   </div>
 
   <div class="article-cta">
-    <h3>Planning a Nearshoring Transition?</h3>
-    <p>RC2 Consulting provides pre-entry gap assessments, WRAP readiness preparation, and operational compliance systems for facilities entering the U.S. supply chain.</p>
-    <a href="https://panamaeddie.github.io/contact.html" class="btn-cta">Schedule a Readiness Consultation →</a>
+    <h3>Evaluating a Nearshoring Transition?</h3>
+    <p>RC2 Consulting helps companies assess the operational realities of nearshoring — total landed cost modeling, country risk analysis, vendor qualification, and on-the-ground operational readiness planning.</p>
+    <a href="https://panamaeddie.github.io/contact.html" class="btn-cta">Schedule an Operational Assessment →</a>
   </div>
 </div>
 
