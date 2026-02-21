@@ -1,95 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | RC2 Consulting</title>
-  <meta name="description" content="Start the conversation with RC2 Consulting — submit a brief intake and schedule a discovery call." />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Schedule a Consultation | RC2 Consulting</title>
+  <meta name="description" content="Schedule a free discovery call with RC2 Consulting — operations, compliance, WRAP audits, government contracting, and supply chain advisory."/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --navy:#0B2545; --blue:#1A4A8A; --light-blue:#2563EB;
-      --light-bg:#F4F6FA; --white:#FFFFFF;
-      --text:#1C2B3A; --text-muted:#4A5568; --border:#E2E8F0;
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --navy:#0B2545;--blue:#1A4A8A;--lb:#2563EB;
+      --gold:#C8922A;--gold-lt:#F0B429;
+      --bg:#F4F6FA;--w:#FFFFFF;
+      --txt:#1C2B3A;--mu:#4A5568;--bdr:#E2E8F0;
+      --sg:#1A7A4E;--sbg:#EBF7F2;
+      --dg:#9B1C1C;--dbg:#FEF2F2;
     }
-    body { font-family:'Source Sans 3',sans-serif; background:var(--light-bg); color:var(--text); margin:0; line-height:1.6; }
+    body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--txt);margin:0;line-height:1.6}
 
-    /* NAV */
-    .topnav { background:var(--navy); padding:0 40px; display:flex; align-items:center; justify-content:space-between; height:52px; position:sticky; top:0; z-index:200; box-shadow:0 2px 8px rgba(0,0,0,0.25); }
-    .nav-brand { display:flex; align-items:center; gap:8px; text-decoration:none; }
-    .nav-logo-mark { background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); color:white; font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; width:32px; height:32px; border-radius:6px; display:flex; align-items:center; justify-content:center; }
-    .nav-logo-mark sup { font-size:0.5rem; vertical-align:super; }
-    .nav-brand-name { font-size:0.88rem; font-weight:600; color:rgba(255,255,255,0.9); }
-    .nav-links { display:flex; gap:4px; list-style:none; }
-    .nav-links a { color:rgba(255,255,255,0.78); text-decoration:none; font-size:0.83rem; font-weight:600; padding:6px 12px; border-radius:4px; transition:all 0.2s; }
-    .nav-links a:hover { color:white; background:rgba(255,255,255,0.1); }
-    .nav-links a.active { color:white; background:rgba(255,255,255,0.12); }
+    /* ── NAV ─────────────────────────────────────────────────── */
+    .topnav{background:var(--navy);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+    .nav-brand{display:flex;align-items:center;gap:8px;text-decoration:none}
+    .nav-logo-mark{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center}
+    .nav-logo-mark sup{font-size:.5rem;vertical-align:super}
+    .nav-brand-name{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.9)}
+    .nav-links{display:flex;gap:4px;list-style:none}
+    .nav-links a{color:rgba(255,255,255,.78);text-decoration:none;font-size:.83rem;font-weight:600;padding:6px 12px;border-radius:4px;transition:all .2s;white-space:nowrap}
+    .nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+    .nav-links a.active{color:#fff;background:rgba(255,255,255,.12)}
 
-    /* HERO */
-    .hero { background:linear-gradient(to bottom, rgba(11,37,69,0.75) 0%, rgba(11,37,69,0.55) 50%, rgba(11,37,69,0.75) 100%), url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1400&q=80') center/cover no-repeat; padding:72px 40px; text-align:center; }
-    .hero h1 { font-family:'Playfair Display',serif; font-size:2.6rem; font-weight:700; color:white; margin-bottom:14px; }
-    .hero p { font-size:1rem; color:rgba(255,255,255,0.82); max-width:500px; margin:0 auto; line-height:1.7; }
-
-    /* LAYOUT */
-    .contact-wrap { max-width:1000px; margin:0 auto; padding:56px 28px; display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start; }
-
-    /* FORM CARD */
-    .form-card { background:var(--white); border-radius:10px; border:1px solid var(--border); box-shadow:0 2px 12px rgba(11,37,69,0.09); padding:36px 32px; }
-    .form-card h2 { font-family:'Playfair Display',serif; font-size:1.35rem; color:var(--navy); margin-bottom:6px; }
-    .form-card p { font-size:0.85rem; color:var(--text-muted); margin-bottom:24px; line-height:1.6; }
-    .form-group { margin-bottom:18px; }
-    .form-group label { display:block; font-size:0.8rem; font-weight:700; color:var(--navy); margin-bottom:6px; }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width:100%; padding:10px 14px; border:1.5px solid var(--border); border-radius:6px;
-      font-family:'Source Sans 3',sans-serif; font-size:0.88rem; color:var(--text);
-      background:var(--white); transition:border-color 0.2s; outline:none;
+    /* ── HERO ────────────────────────────────────────────────── */
+    .hero{
+      background:linear-gradient(160deg,var(--navy) 0%,#1A3A6B 60%,#0D2E5C 100%);
+      padding:60px 40px 0;
+      position:relative;
+      overflow:hidden;
     }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus { border-color:var(--light-blue); }
-    .form-group textarea { height:110px; resize:vertical; }
-    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-    .btn-submit { width:100%; background:var(--light-blue); color:white; font-weight:700; font-size:0.95rem; padding:13px 24px; border-radius:6px; border:none; cursor:pointer; transition:all 0.2s; font-family:'Source Sans 3',sans-serif; }
-    .btn-submit:hover { background:#1d4ed8; transform:translateY(-1px); }
-
-    /* INFO CARD */
-    .info-card { display:flex; flex-direction:column; gap:20px; }
-    .info-block { background:var(--white); border-radius:10px; border:1px solid var(--border); box-shadow:0 2px 8px rgba(11,37,69,0.07); padding:24px; }
-    .info-block h3 { font-size:0.88rem; font-weight:700; color:var(--navy); margin-bottom:12px; display:flex; align-items:center; gap:8px; }
-    .info-block p { font-size:0.85rem; color:var(--text-muted); line-height:1.65; }
-    .info-block a { color:var(--light-blue); text-decoration:none; font-weight:600; }
-    .info-block a:hover { text-decoration:underline; }
-
-    /* WHAT HAPPENS NEXT */
-    .next-steps { background:var(--navy); border-radius:10px; padding:24px; }
-    .next-steps h3 { font-size:0.88rem; font-weight:700; color:white; margin-bottom:14px; }
-    .step-list { list-style:none; }
-    .step-list li { font-size:0.84rem; color:rgba(255,255,255,0.82); padding:7px 0; border-bottom:1px solid rgba(255,255,255,0.1); display:flex; align-items:center; gap:10px; }
-    .step-list li:last-child { border-bottom:none; }
-    .step-num { background:var(--light-blue); color:white; font-size:0.7rem; font-weight:700; width:20px; height:20px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-
-    /* FOOTER */
-    .site-footer { background:var(--blue); color:white; text-align:center; padding:40px 24px; }
-    .footer-tagline { font-size:0.92rem; color:rgba(255,255,255,0.9); font-weight:600; letter-spacing:0.5px; margin-bottom:12px; }
-    .footer-links { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-bottom:14px; }
-    .footer-links a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.8rem; transition:color 0.2s; }
-    .footer-links a:hover { color:white; }
-    .footer-copy { font-size:0.75rem; color:rgba(255,255,255,0.5); }
-
-    @media (max-width:800px) {
-      .contact-wrap { grid-template-columns:1fr; }
-      .form-row { grid-template-columns:1fr; }
-      .hero h1 { font-size:2rem; }
-      .topnav { padding:0 16px; }
-      .nav-links a { padding:5px 8px; font-size:0.78rem; }
+    .hero::before{
+      content:'';position:absolute;inset:0;
+      background:radial-gradient(ellipse at 80% 50%,rgba(200,146,42,.08) 0%,transparent 60%);
+      pointer-events:none;
     }
+    .hero-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;position:relative;z-index:1}
+    .hero-left{padding-bottom:52px}
+    .hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.75);font-size:.7rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:20px}
+    .hero-pill span{width:6px;height:6px;background:#4ADE80;border-radius:50%;animation:pulse 2s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+    .hero h1{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:700;color:#fff;line-height:1.15;margin-bottom:16px}
+    .hero h1 em{font-style:normal;color:var(--gold-lt)}
+    .hero-sub{font-size:.95rem;color:rgba(255,255,255,.72);line-height:1.75;margin-bottom:28px;max-width:480px}
+    .trust-row{display:flex;gap:20px;flex-wrap:wrap}
+    .trust-item{display:flex;align-items:center;gap:8px;font-size:.78rem;color:rgba(255,255,255,.6)}
+    .trust-item::before{content:'✓';color:#4ADE80;font-weight:700;font-size:.9rem}
+
+    /* HERO RIGHT — path selector tabs */
+    .path-tabs{display:grid;grid-template-columns:1fr 1fr;gap:0;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px 14px 0 0;overflow:hidden}
+    .path-tab{padding:20px 18px;cursor:pointer;transition:all .25s;border-bottom:3px solid transparent;text-align:center}
+    .path-tab:first-child{border-right:1px solid rgba(255,255,255,.1)}
+    .path-tab.active{background:rgba(255,255,255,.1);border-bottom-color:var(--gold-lt)}
+    .path-tab:hover:not(.active){background:rgba(255,255,255,.05)}
+    .tab-icon{font-size:1.5rem;margin-bottom:6px;display:block}
+    .tab-title{font-size:.84rem;font-weight:700;color:#fff;margin-bottom:2px}
+    .tab-sub{font-size:.7rem;color:rgba(255,255,255,.55);line-height:1.4}
+
+    /* ── MAIN CONTENT ────────────────────────────────────────── */
+    .main{max-width:1080px;margin:0 auto;padding:0 40px 60px}
+
+    /* ── PANEL CONTAINER ─────────────────────────────────────── */
+    .panel-wrap{background:var(--w);border-radius:0 0 14px 14px;border:1px solid var(--bdr);border-top:none;box-shadow:0 8px 32px rgba(11,37,69,.10);margin-bottom:40px;overflow:hidden}
+
+    /* ── PANEL: BOOK A CALL ─────────────────────────────────── */
+    .panel{display:none;padding:0}
+    .panel.active{display:block}
+
+    /* Calendar Embed Panel */
+    .cal-panel{padding:0}
+    .cal-intro{padding:28px 32px 20px;border-bottom:1px solid var(--bdr);display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:16px}
+    .cal-intro-left h2{font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--navy);margin-bottom:6px}
+    .cal-intro-left p{font-size:.86rem;color:var(--mu);line-height:1.65;max-width:560px}
+    .cal-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .badge{display:inline-flex;align-items:center;gap:5px;font-size:.7rem;font-weight:700;padding:4px 10px;border-radius:10px}
+    .badge-green{background:var(--sbg);color:var(--sg);border:1px solid #BBF7D0}
+    .badge-blue{background:#EFF6FF;color:#1D4ED8;border:1px solid #BFDBFE}
+    .badge-gold{background:#FFFBEB;color:#92400E;border:1px solid #FDE68A}
+
+    /* CALENDAR EMBED AREA */
+    .cal-embed-area{padding:24px 32px 32px}
+    .cal-embed-container{
+      border-radius:12px;overflow:hidden;border:1px solid var(--bdr);
+      background:var(--bg);
+      min-height:600px;
+      position:relative;
+    }
+    .cal-embed-container iframe{
+      width:100%;min-height:600px;border:none;display:block;
+    }
+
+    /* PLACEHOLDER — shown when iframe src is not yet configured */
+    .cal-placeholder{
+      min-height:500px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,#EFF6FF,#F4F6FA);
+      border-radius:12px;border:2px dashed #BFDBFE;padding:40px 32px;text-align:center;
+    }
+    .cal-placeholder-icon{font-size:3rem;margin-bottom:16px}
+    .cal-placeholder h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--navy);margin-bottom:10px}
+    .cal-placeholder p{font-size:.86rem;color:var(--mu);line-height:1.7;max-width:480px;margin-bottom:20px}
+    .cal-placeholder .setup-step{background:var(--w);border:1px solid var(--bdr);border-radius:8px;padding:14px 18px;text-align:left;width:100%;max-width:520px;margin-bottom:10px}
+    .cal-placeholder .setup-step strong{color:var(--navy);font-size:.84rem}
+    .cal-placeholder .setup-step p{font-size:.8rem;color:var(--mu);margin:3px 0 0;line-height:1.5}
+    .cal-placeholder code{background:#EFF6FF;color:#1D4ED8;padding:2px 7px;border-radius:4px;font-size:.78rem;font-family:monospace}
+
+    /* Direct booking button (used when iframe not embedded) */
+    .book-direct-btn{
+      display:inline-flex;align-items:center;gap:10px;
+      background:var(--navy);color:#fff;
+      font-weight:700;font-size:.92rem;
+      padding:14px 28px;border-radius:8px;
+      text-decoration:none;transition:all .2s;
+      border:none;cursor:pointer;font-family:'Source Sans 3',sans-serif;
+    }
+    .book-direct-btn:hover{background:var(--blue);transform:translateY(-2px);box-shadow:0 6px 20px rgba(11,37,69,.25)}
+
+    /* ── PANEL: SEND A MESSAGE ──────────────────────────────── */
+    .form-panel{padding:28px 32px 36px}
+    .form-panel h2{font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--navy);margin-bottom:6px}
+    .form-panel .form-sub{font-size:.86rem;color:var(--mu);margin-bottom:24px;line-height:1.65}
+
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+    .form-group{display:flex;flex-direction:column;gap:5px}
+    .form-group.full{grid-column:1/-1}
+    .form-label{font-size:.72rem;font-weight:700;color:var(--mu);letter-spacing:.6px;text-transform:uppercase}
+    .form-label .req{color:var(--lb)}
+    .form-input,.form-select,.form-textarea{
+      border:1.5px solid var(--bdr);border-radius:7px;
+      padding:10px 13px;font-size:.9rem;color:var(--navy);
+      font-family:'Source Sans 3',sans-serif;
+      outline:none;background:var(--bg);
+      transition:border-color .2s,box-shadow .2s;width:100%;
+    }
+    .form-input:focus,.form-select:focus,.form-textarea:focus{
+      border-color:var(--lb);background:#fff;
+      box-shadow:0 0 0 3px rgba(37,99,235,.1);
+    }
+    .form-textarea{resize:vertical;min-height:110px;line-height:1.6}
+    .form-select{cursor:pointer}
+
+    /* Urgency selector */
+    .urgency-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}
+    .urg-btn{padding:8px 10px;border-radius:7px;border:1.5px solid var(--bdr);background:var(--bg);font-size:.76rem;font-weight:700;color:var(--mu);cursor:pointer;text-align:center;transition:all .2s;font-family:'Source Sans 3',sans-serif}
+    .urg-btn:hover{border-color:var(--lb);color:var(--lb);background:#EFF6FF}
+    .urg-btn.selected{background:var(--navy);border-color:var(--navy);color:#fff}
+
+    /* Char counter */
+    .char-note{font-size:.7rem;color:var(--mu);text-align:right;margin-top:2px}
+
+    /* Submit button */
+    .form-submit-row{display:flex;align-items:center;gap:16px;margin-top:8px;flex-wrap:wrap}
+    .form-submit-btn{
+      display:inline-flex;align-items:center;gap:10px;
+      background:var(--navy);color:#fff;
+      font-weight:700;font-size:.9rem;
+      padding:13px 28px;border-radius:7px;
+      border:none;cursor:pointer;font-family:'Source Sans 3',sans-serif;
+      transition:all .2s;
+    }
+    .form-submit-btn:hover{background:var(--blue);transform:translateY(-2px);box-shadow:0 6px 20px rgba(11,37,69,.2)}
+    .form-privacy{font-size:.74rem;color:var(--mu);line-height:1.55}
+
+    /* Success state */
+    .form-success{display:none;text-align:center;padding:40px 32px;background:var(--sbg);border-radius:10px;border:1px solid #BBF7D0}
+    .form-success.visible{display:block}
+    .form-success h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--sg);margin-bottom:10px}
+    .form-success p{font-size:.88rem;color:var(--mu);line-height:1.7}
+
+    /* ── WHAT HAPPENS NEXT ───────────────────────────────────── */
+    .next-section{background:var(--w);border-radius:12px;border:1px solid var(--bdr);box-shadow:0 2px 8px rgba(11,37,69,.06);padding:28px 32px;margin-bottom:28px}
+    .next-section h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--navy);margin-bottom:18px}
+    .next-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .next-step{display:flex;flex-direction:column;gap:8px}
+    .step-circle{width:40px;height:40px;background:var(--navy);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;flex-shrink:0}
+    .step-title{font-size:.88rem;font-weight:700;color:var(--navy)}
+    .step-desc{font-size:.78rem;color:var(--mu);line-height:1.55}
+
+    /* ── CONTACT INFO STRIP ──────────────────────────────────── */
+    .info-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px}
+    .info-chip{background:var(--w);border-radius:10px;border:1px solid var(--bdr);padding:18px 20px;display:flex;align-items:flex-start;gap:14px;box-shadow:0 1px 4px rgba(11,37,69,.05)}
+    .info-chip-icon{font-size:1.3rem;flex-shrink:0;margin-top:2px}
+    .info-chip-title{font-size:.72rem;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.6px;margin-bottom:3px}
+    .info-chip-val{font-size:.86rem;font-weight:600;color:var(--navy)}
+    .info-chip-sub{font-size:.74rem;color:var(--mu);margin-top:2px;line-height:1.4}
+
+    /* ── FOOTER ─────────────────────────────────────────────── */
+    .site-footer{background:var(--blue);color:#fff;text-align:center;padding:36px 24px}
+    .ft{font-size:.9rem;color:rgba(255,255,255,.9);font-weight:600;letter-spacing:.5px;margin-bottom:10px}
+    .fl{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+    .fl a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.78rem}
+    .fc{font-size:.73rem;color:rgba(255,255,255,.5)}
+
+    @media(max-width:760px){
+      .hero-inner{grid-template-columns:1fr}
+      .path-tabs{border-radius:12px 12px 0 0}
+      .hero-left{padding-bottom:0}
+      .form-grid{grid-template-columns:1fr}
+      .next-steps{grid-template-columns:1fr}
+      .info-strip{grid-template-columns:1fr}
+      .urgency-grid{grid-template-columns:1fr}
+      .topnav{padding:0 14px}
+      .nav-links a{padding:5px 7px;font-size:.76rem}
+      .hero{padding:40px 20px 0}
+      .main{padding:0 20px 40px}
+      .cal-intro,.cal-embed-area,.form-panel{padding:20px}
+    }
+    @media print{.topnav,.site-footer{display:none}}
   </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav class="topnav">
   <a href="https://panamaeddie.github.io/" class="nav-brand">
     <div class="nav-logo-mark">RC<sup>2</sup></div>
@@ -105,100 +232,254 @@
   </ul>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-  <h1>Start the Conversation</h1>
-  <p>Please provide your contact information and service interests. We look forward to connecting with you.</p>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-pill"><span></span>Now Accepting New Clients</div>
+      <h1>Let's Build Something <em>That Lasts</em></h1>
+      <p class="hero-sub">Whether you're preparing for a WRAP audit, entering the federal market, or restructuring your supply chain — the first conversation costs nothing. Pick a time or send a message below.</p>
+      <div class="trust-row">
+        <div class="trust-item">30-min discovery call, no obligation</div>
+        <div class="trust-item">Response within one business day</div>
+        <div class="trust-item">Free resource access before we connect</div>
+      </div>
+    </div>
+    <div>
+      <div class="path-tabs" id="path-tabs">
+        <div class="path-tab active" onclick="switchPanel('book')" id="tab-book">
+          <span class="tab-icon">📅</span>
+          <div class="tab-title">Book a Call</div>
+          <div class="tab-sub">Pick a time directly on the calendar — instant confirmation</div>
+        </div>
+        <div class="path-tab" onclick="switchPanel('message')" id="tab-message">
+          <span class="tab-icon">✉️</span>
+          <div class="tab-title">Send a Message</div>
+          <div class="tab-sub">Describe your situation — we'll follow up within 24 hours</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<div class="contact-wrap">
+<!-- MAIN -->
+<div class="main">
 
-  <!-- FORM -->
-  <div class="form-card">
-    <h2>RC2 Consulting</h2>
-    <p>Submit a brief intake and we'll determine the right engagement path for your organization.</p>
-    <form action="mailto:info@rc2salesconsulting.com" method="POST" enctype="text/plain">
-      <div class="form-row">
-        <div class="form-group">
-          <label>First Name *</label>
-          <input type="text" name="first_name" placeholder="Your answer" required />
+  <!-- PANEL CONTAINER -->
+  <div class="panel-wrap">
+
+    <!-- PANEL 1: BOOK A CALL -->
+    <div class="panel active cal-panel" id="panel-book">
+      <div class="cal-intro">
+        <div class="cal-intro-left">
+          <h2>Schedule a Free Discovery Call</h2>
+          <p>30 minutes. No pitch, no pressure. We'll learn about your situation, identify your most pressing compliance or operations gap, and tell you exactly what the path forward looks like — whether that's working with RC2 or not.</p>
+          <div class="cal-badges">
+            <span class="badge badge-green">✓ Free — No Obligation</span>
+            <span class="badge badge-blue">📅 30 Minutes via Google Meet</span>
+            <span class="badge badge-gold">⚡ Instant Confirmation</span>
+          </div>
         </div>
-        <div class="form-group">
-          <label>Last Name *</label>
-          <input type="text" name="last_name" placeholder="Your answer" required />
+      </div>
+      <div class="cal-embed-area">
+
+        <!--
+        ═══════════════════════════════════════════════════════════
+        EDWARD — SETUP INSTRUCTIONS (remove this comment after setup)
+
+        STEP 1: Set up Google Calendar Appointment Schedule
+          1. Open Google Calendar at calendar.google.com
+          2. Click the "+" next to "Other calendars" → "Create new calendar"
+             Name it: "RC2 Consulting — Discovery Calls"
+          3. Click "New" → "Appointment schedule" (at top left)
+          4. Set: Duration = 30 minutes, Title = "RC2 Consulting — Free Discovery Call"
+          5. Set your available hours (e.g. Mon–Fri 9am–5pm)
+          6. Add a buffer: 10 min after each appointment
+          7. Under "Booking page photo" — upload your RC2 logo
+          8. Under "Location" → add Google Meet (auto-generated)
+          9. Click "Open booking page" → copy the URL
+             It will look like:
+             https://calendar.google.com/calendar/appointments/schedules/XXXXXXXXX
+
+        STEP 2: Paste your URL in TWO places in this file:
+          A) Replace YOUR_GOOGLE_CALENDAR_BOOKING_URL_HERE below (iframe src)
+          B) Replace the same placeholder in the book-direct-btn href below
+
+        STEP 3: Uncomment the iframe (remove <!-- and the --> around it)
+               and delete the placeholder div above it
+
+        THAT'S IT. Google handles all scheduling, confirmations, and reminders.
+        ═══════════════════════════════════════════════════════════
+        -->
+
+        <!-- PLACEHOLDER (delete this div after setup) -->
+        <div class="cal-placeholder">
+          <div class="cal-placeholder-icon">📅</div>
+          <h3>Calendar Setup — 3 Easy Steps</h3>
+          <p>Follow the steps below to connect your Google Calendar. Once set up, clients will see your live availability and book directly — all confirmations and reminders are sent automatically.</p>
+
+          <div class="setup-step">
+            <strong>Step 1 — Create an Appointment Schedule in Google Calendar</strong>
+            <p>Go to <code>calendar.google.com</code> → click <strong>+ New</strong> → select <strong>Appointment schedule</strong> → set duration to 30 min, add your available hours, enable Google Meet, and save.</p>
+          </div>
+          <div class="setup-step">
+            <strong>Step 2 — Copy Your Booking Page URL</strong>
+            <p>After saving, click <strong>"Open booking page"</strong>. Copy the full URL — it starts with <code>calendar.google.com/calendar/appointments/schedules/...</code></p>
+          </div>
+          <div class="setup-step">
+            <strong>Step 3 — Paste URL into This File</strong>
+            <p>Open <code>contact.html</code> in a text editor. Find <code>YOUR_GOOGLE_CALENDAR_BOOKING_URL_HERE</code> and replace it with your URL in both places. Save and upload to GitHub.</p>
+          </div>
+
+          <br/>
+          <p style="font-size:.8rem;color:var(--mu);margin-bottom:14px">Once configured, your live calendar replaces this placeholder automatically.</p>
+          <a href="YOUR_GOOGLE_CALENDAR_BOOKING_URL_HERE" target="_blank" class="book-direct-btn">📅 Open Booking Page in New Tab →</a>
         </div>
-      </div>
-      <div class="form-group">
-        <label>Email Address *</label>
-        <input type="email" name="email" placeholder="Your answer" required />
-      </div>
-      <div class="form-group">
-        <label>Company / Organization</label>
-        <input type="text" name="company" placeholder="Your answer" />
-      </div>
-      <div class="form-group">
-        <label>Phone Number</label>
-        <input type="tel" name="phone" placeholder="Your answer" />
-      </div>
-      <div class="form-group">
-        <label>Service Interest</label>
-        <select name="service">
-          <option value="">Select a service...</option>
-          <option>Compliance Readiness Review</option>
-          <option>Operational Systems Optimization</option>
-          <option>Sales & Growth</option>
-          <option>Fractional Director of Operations</option>
-          <option>WRAP Audit Preparation</option>
-          <option>Not sure — need guidance</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Tell Us About Your Situation</label>
-        <textarea name="message" placeholder="Briefly describe your goals or challenges..."></textarea>
-      </div>
-      <button type="submit" class="btn-submit">Submit Inquiry →</button>
-    </form>
-  </div>
+        <!-- END PLACEHOLDER -->
 
-  <!-- INFO -->
-  <div class="info-card">
-    <div class="info-block">
-      <h3>📧 Email Us Directly</h3>
-      <p><a href="mailto:info@rc2salesconsulting.com">info@rc2salesconsulting.com</a><br/>We typically respond within one business day.</p>
-    </div>
+        <!-- IFRAME (uncomment after setup — paste your booking URL below) -->
+        <!--
+        <div class="cal-embed-container">
+          <iframe
+            src="YOUR_GOOGLE_CALENDAR_BOOKING_URL_HERE?embed=true"
+            frameborder="0"
+            scrolling="no"
+            allow="camera; microphone; fullscreen"
+            title="Schedule a discovery call with RC2 Consulting">
+          </iframe>
+        </div>
+        -->
 
-    <div class="info-block">
-      <h3>📅 Schedule a Discovery Call</h3>
-      <p>30-minute consultation via Google Meet. Select a time that works for you and we'll confirm your appointment.</p>
-      <p style="margin-top:14px;">
-        <a href="https://calendar.app.google/nbCnkeUkNDFnZ4iV7" target="_blank" 
-           style="display:inline-flex;align-items:center;gap:8px;background:#2563EB;color:white;font-weight:700;font-size:0.85rem;padding:10px 20px;border-radius:6px;text-decoration:none;">
-          📅 Book a Discovery Call →
-        </a>
-      </p>
-    </div>
+      </div>
+    </div><!-- end panel-book -->
 
-    <div class="info-block">
-      <h3>🔧 Explore Free Resources</h3>
-      <p>Before we connect, explore our free compliance tools — WRAP Gap Analysis, CAP Template, and 12 Principles Guide.</p>
-      <p style="margin-top:10px;"><a href="https://panamaeddie.github.io/RC2_Resources_Page.html">Browse Resources →</a></p>
-    </div>
+    <!-- PANEL 2: SEND A MESSAGE -->
+    <div class="panel form-panel" id="panel-message">
+      <h2>Send Us a Message</h2>
+      <p class="form-sub">Describe your situation and we'll respond within one business day with a recommended next step. All information is confidential.</p>
 
+      <form id="contact-form" action="mailto:info@rc2salesconsulting.com" method="POST" enctype="text/plain" onsubmit="handleSubmit(event)">
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">First Name <span class="req">*</span></label>
+            <input class="form-input" type="text" name="first_name" required placeholder="Edward"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name <span class="req">*</span></label>
+            <input class="form-input" type="text" name="last_name" required placeholder="Smith"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address <span class="req">*</span></label>
+            <input class="form-input" type="email" name="email" required placeholder="you@company.com"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input class="form-input" type="tel" name="phone" placeholder="(555) 000-0000"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Company / Organization</label>
+            <input class="form-input" type="text" name="company" placeholder="Your company name"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Primary Service Interest</label>
+            <select class="form-select" name="service">
+              <option value="">— Select one —</option>
+              <option>WRAP Compliance & Audit Preparation</option>
+              <option>Government Contracting / SBA Certification</option>
+              <option>Supply Chain & Nearshoring Strategy</option>
+              <option>Operations SOPs & Process Development</option>
+              <option>Scaling & Growth Infrastructure</option>
+              <option>Tariffs, Duties & Trade Compliance</option>
+              <option>Internal Audit & Documentation</option>
+              <option>Training Program Development</option>
+              <option>Other / Not Sure Yet</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label class="form-label">How Urgent Is Your Situation?</label>
+            <div class="urgency-grid">
+              <button type="button" class="urg-btn" onclick="selectUrgency(this,'Exploratory — No immediate deadline')">🔵 Exploratory</button>
+              <button type="button" class="urg-btn" onclick="selectUrgency(this,'Moderate — Within 1–3 months')">🟡 Moderate (1–3 months)</button>
+              <button type="button" class="urg-btn" onclick="selectUrgency(this,'Urgent — Immediate or audit pending')">🔴 Urgent / Audit Pending</button>
+            </div>
+            <input type="hidden" name="urgency" id="urgency-val"/>
+          </div>
+          <div class="form-group full">
+            <label class="form-label">Tell Us About Your Situation</label>
+            <textarea class="form-textarea" name="message" id="message-field" maxlength="1000" oninput="updateChar()" placeholder="Brief description: industry, current challenge, what you need help with, any relevant context (facility size, contract type, certification timeline, etc.)"></textarea>
+            <div class="char-note"><span id="char-count">0</span> / 1,000 characters</div>
+          </div>
+        </div>
+
+        <div class="form-submit-row">
+          <button type="submit" class="form-submit-btn">Send Message →</button>
+          <div class="form-privacy">🔒 Your information is confidential and never shared with third parties.</div>
+        </div>
+      </form>
+
+      <div class="form-success" id="form-success">
+        <h3>✅ Message Sent — Thank You</h3>
+        <p>We received your message and will respond within one business day.<br>In the meantime, <a href="https://panamaeddie.github.io/RC2_Resources_Page.html" style="color:var(--lb);font-weight:600">explore our free compliance tools and resources →</a></p>
+      </div>
+    </div><!-- end panel-message -->
+
+  </div><!-- end panel-wrap -->
+
+  <!-- WHAT HAPPENS NEXT -->
+  <div class="next-section">
+    <h3>What Happens After You Reach Out</h3>
     <div class="next-steps">
-      <h3>What Happens Next:</h3>
-      <ul class="step-list">
-        <li><span class="step-num">1</span>We review your submission</li>
-        <li><span class="step-num">2</span>We confirm alignment</li>
-        <li><span class="step-num">3</span>We schedule a structured discovery call</li>
-        <li><span class="step-num">4</span>We recommend the right engagement</li>
-      </ul>
+      <div class="next-step">
+        <div class="step-circle">1</div>
+        <div class="step-title">We Review Your Situation</div>
+        <div class="step-desc">Within one business day we review your intake and research your industry, audit type, or contracting environment so the discovery call is immediately productive.</div>
+      </div>
+      <div class="next-step">
+        <div class="step-circle">2</div>
+        <div class="step-title">30-Minute Discovery Call</div>
+        <div class="step-desc">A focused conversation — no slides, no pitch. We ask targeted questions, identify your highest-priority gap, and map what a realistic engagement looks like for your organization.</div>
+      </div>
+      <div class="next-step">
+        <div class="step-circle">3</div>
+        <div class="step-title">Scope & Engagement Plan</div>
+        <div class="step-desc">If there's a fit, we deliver a written scope with deliverables, timeline, and investment — clear and specific. No retainers required to get started.</div>
+      </div>
     </div>
   </div>
 
-</div>
+  <!-- CONTACT INFO STRIP -->
+  <div class="info-strip">
+    <div class="info-chip">
+      <div class="info-chip-icon">📧</div>
+      <div>
+        <div class="info-chip-title">Email</div>
+        <div class="info-chip-val"><a href="mailto:info@rc2salesconsulting.com" style="color:var(--lb);text-decoration:none">info@rc2salesconsulting.com</a></div>
+        <div class="info-chip-sub">Monitored daily — response within 24 hours</div>
+      </div>
+    </div>
+    <div class="info-chip">
+      <div class="info-chip-icon">📅</div>
+      <div>
+        <div class="info-chip-title">Discovery Calls</div>
+        <div class="info-chip-val">30 Minutes — Free</div>
+        <div class="info-chip-sub">Mon – Fri · Google Meet · Instant confirmation</div>
+      </div>
+    </div>
+    <div class="info-chip">
+      <div class="info-chip-icon">🔧</div>
+      <div>
+        <div class="info-chip-title">Free Resources</div>
+        <div class="info-chip-val"><a href="https://panamaeddie.github.io/RC2_Resources_Page.html" style="color:var(--lb);text-decoration:none">Browse Tools & Articles →</a></div>
+        <div class="info-chip-sub">WRAP, SBA, Supply Chain, FAR/DCAA tools — all free</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end main -->
 
 <footer class="site-footer">
-  <div class="footer-tagline">Operational Clarity. Compliance Confidence. Systems That Scale.</div>
-  <div class="footer-links">
+  <div class="ft">Operational Clarity. Compliance Confidence. Systems That Scale.</div>
+  <div class="fl">
     <a href="https://panamaeddie.github.io/">Home</a>
     <a href="https://panamaeddie.github.io/services.html">Services</a>
     <a href="https://panamaeddie.github.io/who-we-help.html">Who We Help</a>
@@ -206,8 +487,48 @@
     <a href="https://panamaeddie.github.io/RC2_Resources_Page.html">Resources</a>
     <a href="https://panamaeddie.github.io/contact.html">Contact</a>
   </div>
-  <div class="footer-copy">© 2026 RC2 Consulting, LLC &nbsp;|&nbsp; Privacy Policy &nbsp;|&nbsp; Terms of Service</div>
+  <div class="fc">© 2026 RC2 Consulting, LLC &nbsp;|&nbsp; Privacy Policy &nbsp;|&nbsp; Terms of Service</div>
 </footer>
+
+<script>
+  // ── TAB SWITCHING ──────────────────────────────────────────
+  function switchPanel(which){
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.path-tab').forEach(t=>t.classList.remove('active'));
+    document.getElementById('panel-'+which).classList.add('active');
+    document.getElementById('tab-'+which).classList.add('active');
+  }
+
+  // ── URGENCY BUTTONS ────────────────────────────────────────
+  function selectUrgency(btn, val){
+    document.querySelectorAll('.urg-btn').forEach(b=>b.classList.remove('selected'));
+    btn.classList.add('selected');
+    document.getElementById('urgency-val').value = val;
+  }
+
+  // ── CHAR COUNTER ───────────────────────────────────────────
+  function updateChar(){
+    const len = document.getElementById('message-field').value.length;
+    document.getElementById('char-count').textContent = len;
+  }
+
+  // ── FORM SUBMIT ────────────────────────────────────────────
+  // NOTE: The form uses mailto: as a fallback (no backend needed).
+  // To upgrade to a real form handler (Formspree, Netlify Forms, etc.),
+  // replace the action URL and remove the onsubmit handler.
+  function handleSubmit(e){
+    // For mailto: just let it fire — show success after brief delay
+    setTimeout(()=>{
+      document.getElementById('contact-form').style.display='none';
+      document.getElementById('form-success').classList.add('visible');
+    }, 300);
+  }
+
+  // ── AUTO-OPEN CORRECT TAB FROM URL HASH ──────────────────
+  // e.g. contact.html#book or contact.html#message
+  if(window.location.hash === '#message') switchPanel('message');
+  if(window.location.hash === '#book') switchPanel('book');
+</script>
 
 </body>
 </html>
