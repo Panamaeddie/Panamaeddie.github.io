@@ -282,76 +282,23 @@
         </div>
       </div>
       <div class="cal-embed-area">
-
-        <!--
-        ═══════════════════════════════════════════════════════════
-        EDWARD — SETUP INSTRUCTIONS (remove this comment after setup)
-
-        STEP 1: Set up Google Calendar Appointment Schedule
-          1. Open Google Calendar at calendar.google.com
-          2. Click the "+" next to "Other calendars" → "Create new calendar"
-             Name it: "RC2 Consulting — Discovery Calls"
-          3. Click "New" → "Appointment schedule" (at top left)
-          4. Set: Duration = 30 minutes, Title = "RC2 Consulting — Free Discovery Call"
-          5. Set your available hours (e.g. Mon–Fri 9am–5pm)
-          6. Add a buffer: 10 min after each appointment
-          7. Under "Booking page photo" — upload your RC2 logo
-          8. Under "Location" → add Google Meet (auto-generated)
-          9. Click "Open booking page" → copy the URL
-             It will look like:
-             https://calendar.google.com/calendar/appointments/schedules/XXXXXXXXX
-
-        STEP 2: Paste your URL in TWO places in this file:
-          A) Replace https://calendar.app.google/H1mbbNXQhhjJhy8J6 below (iframe src)
-          B) Replace the same placeholder in the book-direct-btn href below
-
-        STEP 3: Uncomment the iframe (remove <!-- and the --> around it)
-               and delete the placeholder div above it
-
-        THAT'S IT. Google handles all scheduling, confirmations, and reminders.
-        ═══════════════════════════════════════════════════════════
-        -->
-
-        <!-- PLACEHOLDER (delete this div after setup) -->
-        <div class="cal-placeholder">
-          <div class="cal-placeholder-icon">📅</div>
-          <h3>Calendar Setup — 3 Easy Steps</h3>
-          <p>Follow the steps below to connect your Google Calendar. Once set up, clients will see your live availability and book directly — all confirmations and reminders are sent automatically.</p>
-
-          <div class="setup-step">
-            <strong>Step 1 — Create an Appointment Schedule in Google Calendar</strong>
-            <p>Go to <code>calendar.google.com</code> → click <strong>+ New</strong> → select <strong>Appointment schedule</strong> → set duration to 30 min, add your available hours, enable Google Meet, and save.</p>
-          </div>
-          <div class="setup-step">
-            <strong>Step 2 — Copy Your Booking Page URL</strong>
-            <p>After saving, click <strong>"Open booking page"</strong>. Copy the full URL — it starts with <code>calendar.google.com/calendar/appointments/schedules/...</code></p>
-          </div>
-          <div class="setup-step">
-            <strong>Step 3 — Paste URL into This File</strong>
-            <p>Open <code>contact.html</code> in a text editor. Find <code>https://calendar.app.google/H1mbbNXQhhjJhy8J6</code> and replace it with your URL in both places. Save and upload to GitHub.</p>
-          </div>
-
-          <br/>
-          <p style="font-size:.8rem;color:var(--mu);margin-bottom:14px">Once configured, your live calendar replaces this placeholder automatically.</p>
-          <a href="https://calendar.app.google/H1mbbNXQhhjJhy8J6" target="_blank" class="book-direct-btn">📅 Open Booking Page in New Tab →</a>
-        </div>
-        <!-- END PLACEHOLDER -->
-
-        <!-- IFRAME (uncomment after setup — paste your booking URL below) -->
-        <!--
         <div class="cal-embed-container">
           <iframe
             src="https://calendar.app.google/H1mbbNXQhhjJhy8J6?embed=true"
             frameborder="0"
             scrolling="no"
+            style="width:100%;min-height:600px;border:none;display:block;"
             allow="camera; microphone; fullscreen"
             title="Schedule a discovery call with RC2 Consulting">
           </iframe>
         </div>
-        -->
-
+        <div style="text-align:center;margin-top:14px">
+          <a href="https://calendar.app.google/H1mbbNXQhhjJhy8J6" target="_blank" style="font-size:.78rem;color:var(--mu);text-decoration:none">
+            📅 Prefer to open in a new tab? <span style="color:var(--lb);font-weight:600">Click here →</span>
+          </a>
+        </div>
       </div>
-    </div><!-- end panel-book -->
+      </div><!-- end panel-book -->
 
     <!-- PANEL 2: SEND A MESSAGE -->
     <div class="panel form-panel" id="panel-message">
