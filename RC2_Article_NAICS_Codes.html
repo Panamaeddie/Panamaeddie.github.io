@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>NAICS Codes in Government Contracting: How to Select, Use, and Protect Your Classification | RC2 Consulting</title>
+  <meta name="description" content="NAICS codes determine your SBA size standard, your set-aside eligibility, and which federal contracts you can legally compete for. This guide covers everything government contractors need to know."/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--navy:#0B2545;--blue:#1A4A8A;--lb:#2563EB;--bg:#F4F6FA;--w:#FFFFFF;--txt:#1C2B3A;--mu:#4A5568;--bdr:#E2E8F0;--sg:#1A7A4E;--sbg:#EBF7F2;--wg:#854D0E;--wbg:#FFFBEB;--dg:#9B1C1C;--dbg:#FEF2F2}
+    body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--txt);margin:0;line-height:1.6}
+    .topnav{background:var(--navy);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+    .nav-brand{display:flex;align-items:center;gap:8px;text-decoration:none}
+    .nav-logo-mark{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center}
+    .nav-logo-mark sup{font-size:.5rem;vertical-align:super}
+    .nav-brand-name{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.9)}
+    .nav-links{display:flex;gap:4px;list-style:none}
+    .nav-links a{color:rgba(255,255,255,.78);text-decoration:none;font-size:.83rem;font-weight:600;padding:6px 12px;border-radius:4px;white-space:nowrap}
+    .nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+    .nav-links a.active{color:#fff;background:rgba(255,255,255,.12)}
+    .hero{background:linear-gradient(to bottom,rgba(11,37,69,.88),rgba(11,37,69,.72)),url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1400&q=80') center/cover no-repeat;padding:64px 40px 56px}
+    .hero-inner{max-width:820px;margin:0 auto}
+    .atag{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:4px 12px;border-radius:10px;margin-bottom:16px}
+    .hero h1{font-family:'Playfair Display',serif;font-size:2.3rem;font-weight:700;color:#fff;line-height:1.2;margin-bottom:14px}
+    .hero-sub{font-size:.93rem;color:rgba(255,255,255,.78);line-height:1.65;margin-bottom:18px;max-width:680px}
+    .hmeta{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+    .hmeta span{font-size:.82rem;color:rgba(255,255,255,.65)}
+    .hdiv{color:rgba(255,255,255,.3)}
+    .awrap{max-width:820px;margin:0 auto;padding:0 28px}
+    .btn-back{display:inline-flex;align-items:center;gap:6px;color:var(--lb);text-decoration:none;font-size:.84rem;font-weight:600;margin:24px 0 0}
+    .abstract-box{background:var(--w);border-left:4px solid var(--lb);border-radius:0 8px 8px 0;padding:24px 28px;margin:38px 0 32px;box-shadow:0 2px 8px rgba(11,37,69,.07)}
+    .abstract-box h3{font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lb);margin-bottom:10px}
+    .abstract-box p{font-size:.92rem;color:var(--mu);line-height:1.75;font-style:italic}
+    .abody{background:var(--w);border-radius:10px;border:1px solid var(--bdr);box-shadow:0 2px 8px rgba(11,37,69,.06);padding:48px;margin-bottom:32px}
+    .abody h2{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--navy);margin:40px 0 14px;padding-top:10px;border-top:2px solid var(--bdr)}
+    .abody h2:first-child{margin-top:0;border-top:none;padding-top:0}
+    .abody h3{font-size:1rem;font-weight:700;color:var(--blue);margin:26px 0 10px}
+    .abody p{font-size:.93rem;color:var(--mu);line-height:1.82;margin-bottom:16px}
+    .abody p strong{color:var(--navy)}
+    .callout{background:var(--bg);border-radius:8px;padding:20px 24px;margin:24px 0;border:1px solid var(--bdr)}
+    .callout p{font-size:.88rem;color:var(--navy);font-weight:600;line-height:1.68;margin:0}
+    .callout p::before{content:'"';font-size:2rem;color:var(--lb);line-height:0;vertical-align:-12px;margin-right:6px}
+    /* NAICS REFERENCE TABLE */
+    .ntable{width:100%;border-collapse:collapse;font-size:.8rem;margin:20px 0}
+    .ntable th{background:var(--navy);color:#fff;padding:10px 12px;text-align:left;font-size:.72rem;font-weight:700;letter-spacing:.5px}
+    .ntable td{padding:9px 12px;border-bottom:1px solid var(--bdr);color:var(--mu);line-height:1.4}
+    .ntable td:first-child{font-family:'Source Sans 3',sans-serif;font-weight:700;color:var(--navy);width:90px}
+    .ntable td:nth-child(3){font-weight:700;color:var(--sg)}
+    .ntable tr:nth-child(even) td{background:var(--bg)}
+    .ntable thead tr th:nth-child(3){text-align:center}
+    .ntable td:nth-child(3){text-align:center}
+    .sec-hdr{background:rgba(11,37,69,.06);padding:8px 12px;font-size:.7rem;font-weight:700;color:var(--blue);letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--bdr)}
+    /* STEPS */
+    .step-list{margin:20px 0}
+    .step-item{display:grid;grid-template-columns:48px 1fr;gap:14px;margin-bottom:16px;align-items:start}
+    .step-num{background:var(--lb);color:#fff;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:.9rem;font-weight:700;flex-shrink:0}
+    .step-body h4{font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:5px}
+    .step-body p{font-size:.84rem;color:var(--mu);line-height:1.6;margin:0 0 4px}
+    .step-tag{display:inline-block;font-size:.66rem;font-weight:700;padding:2px 8px;border-radius:10px;background:var(--bg);color:var(--mu);border:1px solid var(--bdr)}
+    .warn-box{background:var(--wbg);border:1px solid #FDE68A;border-radius:8px;padding:18px 22px;margin:20px 0}
+    .warn-box h4{font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--wg);margin-bottom:10px}
+    .warn-box ul{list-style:none}
+    .warn-box li{font-size:.84rem;color:var(--mu);padding:5px 0;border-bottom:1px solid #FDE68A;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+    .warn-box li:last-child{border-bottom:none}
+    .warn-box li::before{content:'⚠';font-size:.8rem;color:var(--wg);flex-shrink:0;margin-top:2px}
+    .horizon-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}
+    .horizon-card{border-radius:8px;padding:20px;border:1px solid var(--bdr)}
+    .h1{background:#EFF6FF;border-color:#BFDBFE}.h2{background:#F0FDF4;border-color:#BBF7D0}.h3{background:#FFF7ED;border-color:#FED7AA}
+    .hl{font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+    .h1 .hl{color:#1D4ED8}.h2 .hl{color:#15803D}.h3 .hl{color:#C2410C}
+    .ht{font-size:.86rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+    .horizon-card p{font-size:.8rem;color:var(--mu);line-height:1.55;margin:0}
+    .sources{background:var(--bg);border-radius:8px;padding:18px 22px;margin:0 0 32px;border:1px solid var(--bdr)}
+    .sources h4{font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:12px}
+    .sources ul{list-style:none}
+    .sources li{font-size:.78rem;color:var(--mu);padding:4px 0;border-bottom:1px solid var(--bdr);line-height:1.55}
+    .sources li:last-child{border-bottom:none}
+    .sources a{color:var(--lb);text-decoration:none}
+    .acta{background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:10px;padding:36px;text-align:center;margin-bottom:48px}
+    .acta h3{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;margin-bottom:10px}
+    .acta p{font-size:.88rem;color:rgba(255,255,255,.78);margin-bottom:20px;line-height:1.65}
+    .btn-cta{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--blue);font-weight:700;font-size:.88rem;padding:12px 24px;border-radius:6px;text-decoration:none}
+    .site-footer{background:var(--blue);color:#fff;text-align:center;padding:36px 24px}
+    .ft{font-size:.9rem;color:rgba(255,255,255,.9);font-weight:600;letter-spacing:.5px;margin-bottom:10px}
+    .fl{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+    .fl a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.78rem}
+    .fc{font-size:.73rem;color:rgba(255,255,255,.5)}
+    @media(max-width:720px){.hero h1{font-size:1.8rem}.abody{padding:28px 22px}.horizon-grid{grid-template-columns:1fr}.topnav{padding:0 14px}.nav-links a{padding:5px 7px;font-size:.76rem}}
+  </style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="https://panamaeddie.github.io/" class="nav-brand"><div class="nav-logo-mark">RC<sup>2</sup></div><span class="nav-brand-name">Consulting</span></a>
+  <ul class="nav-links">
+    <li><a href="https://panamaeddie.github.io/">Home</a></li>
+    <li><a href="https://panamaeddie.github.io/services.html">Services</a></li>
+    <li><a href="https://panamaeddie.github.io/who-we-help.html">Who We Help</a></li>
+    <li><a href="https://panamaeddie.github.io/about.html">About</a></li>
+    <li><a href="https://panamaeddie.github.io/RC2_Resources_Page.html" class="active">Resources</a></li>
+    <li><a href="https://panamaeddie.github.io/contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="atag">Government Contracting</span>
+    <h1>NAICS Codes in Government Contracting: How to Select, Use, and Protect Your Classification</h1>
+    <p class="hero-sub">Your NAICS code determines your SBA size standard, your set-aside eligibility pool, which contracts you can legally compete for, and how contracting officers find your business. Selecting the wrong code — or failing to update it — has legal and financial consequences that most businesses never see coming.</p>
+    <div class="hmeta"><span>RC2 Consulting</span><span class="hdiv">|</span><span>February 2026</span><span class="hdiv">|</span><span>Government Contracting</span><span class="hdiv">|</span><span>11 min read</span></div>
+  </div>
+</section>
+
+<div class="awrap">
+  <a href="https://panamaeddie.github.io/RC2_Resources_Page.html" class="btn-back">← Back to Resources</a>
+
+  <div class="abstract-box">
+    <h3>Executive Summary</h3>
+    <p>The North American Industry Classification System (NAICS) is the standard used by U.S. federal statistical agencies to classify business establishments. In government contracting, NAICS codes serve a fundamentally different and more consequential role: they determine a business's SBA size standard (and therefore small business eligibility), define the set-aside pools a business can compete in, and serve as the primary search filter contracting officers and prime contractors use to identify vendors. Every federal solicitation is assigned a principal NAICS code — and only vendors registered under that code in SAM.gov, with the appropriate size certification, can compete for the set-aside award without challenge. This article explains how NAICS codes work, how to select the right codes for your business, how size standards are determined by code, and how to use your NAICS profile strategically to maximize federal market visibility and award eligibility.</p>
+  </div>
+
+  <div class="abody">
+    <h2>What NAICS Codes Are and Why They Matter More in Federal Contracting</h2>
+    <p>The North American Industry Classification System was developed jointly by the U.S., Canada, and Mexico and replaced the older Standard Industrial Classification (SIC) system in 1997. NAICS codes are six-digit numeric identifiers organized hierarchically: the first two digits designate the sector, the third digit the subsector, the fourth the industry group, the fifth the NAICS industry, and the sixth the national industry detail.</p>
+    <p>In commercial business, NAICS codes are used primarily for statistical reporting and market analysis. In federal government contracting, they carry legal weight. Under the Federal Acquisition Regulation (<strong>FAR 19.102</strong>), the contracting officer is required to assign a principal NAICS code to every procurement — the code that most precisely describes the principal purpose of the contract. That single NAICS code assignment determines the SBA size standard against which all competing vendors will be measured. Vendors that are not small under the size standard for the assigned NAICS code cannot receive set-aside awards under that solicitation as a small business.</p>
+
+    <div class="callout"><p>The NAICS code the contracting officer assigns to a solicitation — not your NAICS code list in SAM.gov — determines the size standard you must meet to compete as a small business for that specific award.</p></div>
+
+    <h2>How Size Standards Work — Revenue vs. Employee-Based</h2>
+    <p>The SBA publishes a <strong>Table of Small Business Size Standards</strong> (13 CFR Part 121, Appendix A) that assigns a size threshold to every NAICS code in the system. Size standards are expressed in one of two ways: annual revenue averaged over the prior three fiscal years, or number of employees averaged over the prior 12 months.</p>
+    <p><strong>Revenue-based standards</strong> are used for most service industries, retail, wholesale, and construction. The threshold can range from <strong>$8 million to $47 million</strong> in average annual revenue depending on the specific NAICS code. Wholesale trade codes often apply a 250-employee standard rather than a revenue figure.</p>
+    <p><strong>Employee-based standards</strong> are used for manufacturing, mining, and certain other industries. Manufacturing size standards typically range from <strong>500 to 1,500 employees</strong> depending on the specific manufacturing activity. Some manufacturing NAICS codes carry a 750 or 1,000 employee standard.</p>
+    <p>A business can be small under one NAICS code and not small under another. This is strategically important: if your business operates across multiple service lines, you may qualify as a small business for some contracting categories and not others. Accurate NAICS code selection in SAM.gov — and accurate size certifications for each — is a legal obligation, not an administrative exercise.</p>
+
+    <h2>Key NAICS Codes for Government Contractors — Reference Table</h2>
+    <p>The following table covers the most commonly used NAICS codes in federal contracting across sectors relevant to RC2 Consulting's client base. Verify current size standards at <strong>sba.gov/size-standards</strong> — SBA updates the table periodically.</p>
+
+    <table class="ntable">
+      <thead><tr><th>NAICS Code</th><th>Industry Description</th><th>Size Standard</th><th>Basis</th></tr></thead>
+      <tbody>
+        <tr><td colspan="4" class="sec-hdr">Manufacturing — Apparel & Textile</td></tr>
+        <tr><td>315</td><td>Apparel Manufacturing (broad sector)</td><td>500 employees</td><td>Employees</td></tr>
+        <tr><td>315110</td><td>Hosiery and Sock Mills</td><td>500 employees</td><td>Employees</td></tr>
+        <tr><td>315190</td><td>Other Apparel Knitting Mills</td><td>500 employees</td><td>Employees</td></tr>
+        <tr><td>315210</td><td>Cut and Sew Apparel Contractors</td><td>500 employees</td><td>Employees</td></tr>
+        <tr><td>315250</td><td>Cut and Sew Apparel Mfg (except contractors)</td><td>500 employees</td><td>Employees</td></tr>
+        <tr><td>315990</td><td>Apparel Accessories and Other Apparel Mfg</td><td>500 employees</td><td>Employees</td></tr>
+        <tr><td>313110</td><td>Fiber, Yarn, and Thread Mills</td><td>1,000 employees</td><td>Employees</td></tr>
+        <tr><td>314110</td><td>Carpet and Rug Mills</td><td>1,000 employees</td><td>Employees</td></tr>
+        <tr><td>314120</td><td>Curtain and Linen Mills</td><td>500 employees</td><td>Employees</td></tr>
+        <tr><td>314910</td><td>Textile Bag and Canvas Mills</td><td>500 employees</td><td>Employees</td></tr>
+        <tr><td colspan="4" class="sec-hdr">Professional, Scientific & Technical Services</td></tr>
+        <tr><td>541611</td><td>Administrative Management & General Management Consulting</td><td>$24.5M revenue</td><td>Revenue</td></tr>
+        <tr><td>541612</td><td>Human Resources Consulting Services</td><td>$24.5M revenue</td><td>Revenue</td></tr>
+        <tr><td>541614</td><td>Process, Physical Distribution & Logistics Consulting</td><td>$24.5M revenue</td><td>Revenue</td></tr>
+        <tr><td>541618</td><td>Other Management Consulting Services</td><td>$24.5M revenue</td><td>Revenue</td></tr>
+        <tr><td>541690</td><td>Other Scientific & Technical Consulting Services</td><td>$19M revenue</td><td>Revenue</td></tr>
+        <tr><td>541990</td><td>All Other Professional, Scientific & Technical Services</td><td>$19M revenue</td><td>Revenue</td></tr>
+        <tr><td colspan="4" class="sec-hdr">Supply Chain, Logistics & Transportation</td></tr>
+        <tr><td>484110</td><td>General Freight Trucking, Local</td><td>$34M revenue</td><td>Revenue</td></tr>
+        <tr><td>484121</td><td>General Freight Trucking, Long-Distance, TL</td><td>$34M revenue</td><td>Revenue</td></tr>
+        <tr><td>488510</td><td>Freight Transportation Arrangement (Freight Forwarders)</td><td>$20M revenue</td><td>Revenue</td></tr>
+        <tr><td>493110</td><td>General Warehousing and Storage</td><td>$34M revenue</td><td>Revenue</td></tr>
+        <tr><td colspan="4" class="sec-hdr">Administrative & Support Services</td></tr>
+        <tr><td>561110</td><td>Office Administrative Services</td><td>$19M revenue</td><td>Revenue</td></tr>
+        <tr><td>561210</td><td>Facilities Support Services</td><td>$47M revenue</td><td>Revenue</td></tr>
+        <tr><td>561320</td><td>Temporary Staffing Agencies</td><td>$30M revenue</td><td>Revenue</td></tr>
+        <tr><td>561990</td><td>All Other Support Services</td><td>$19M revenue</td><td>Revenue</td></tr>
+        <tr><td colspan="4" class="sec-hdr">Construction</td></tr>
+        <tr><td>236220</td><td>Commercial and Institutional Building Construction</td><td>$45M revenue</td><td>Revenue</td></tr>
+        <tr><td>238910</td><td>Site Preparation Contractors</td><td>$19M revenue</td><td>Revenue</td></tr>
+        <tr><td>238990</td><td>All Other Specialty Trade Contractors</td><td>$19M revenue</td><td>Revenue</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.78rem;color:var(--mu);font-style:italic">Source: SBA Table of Size Standards (13 CFR Part 121, Appendix A). Revenue figures shown are approximate — verify current thresholds at sba.gov/size-standards. Size standards are updated periodically.</p>
+
+    <h2>How to Select Your NAICS Codes Strategically</h2>
+    <p>Every business should register with a <strong>primary NAICS code</strong> — the code that best describes its principal business activity — plus all secondary NAICS codes that describe other services or products it legitimately provides. There is no regulatory limit on the number of secondary NAICS codes you can carry in SAM.gov, but every code you register must accurately reflect actual business activity. Adding NAICS codes speculatively — for industries you do not actually operate in — constitutes misrepresentation and exposes you to False Claims Act liability if you win a set-aside contract under a code you cannot legitimately perform.</p>
+
+    <div class="step-list">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>Identify Your Primary Business Activity</h4>
+          <p>Determine the single activity that generates the largest percentage of your revenue. This drives your primary NAICS code. If you are a management consulting firm, your primary code is likely in the 5416xx range. If you are a cut-and-sew apparel manufacturer, it is likely 315210 or 315250. When in doubt, search the NAICS code database at census.gov/naics and use the keyword search to find codes matching your activity descriptions.</p>
+          <span class="step-tag">census.gov/naics — Authoritative Search Tool</span>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Review the Size Standard for Your Primary Code</h4>
+          <p>Once you identify your primary code, look up the size standard at sba.gov/size-standards. Confirm whether you are small under that standard based on your actual 3-year average revenue (for revenue-based codes) or 12-month average employee count (for employee-based codes). If you are borderline, consult the SBA's formal size determination process — you can request an official size determination from the SBA Office of Size Standards.</p>
+          <span class="step-tag">sba.gov/size-standards — Official Table</span>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Research Which Codes Federal Agencies Are Actually Buying Under</h4>
+          <p>Use <strong>USASpending.gov</strong> to search federal contract awards by NAICS code. Filter by the agencies you are targeting, the NAICS codes relevant to your business, and the award amounts. This research reveals which agencies are actively buying under each code, at what dollar amounts, and how frequently. It also reveals which incumbents you would be displacing — intelligence that directly informs your competitive strategy.</p>
+          <span class="step-tag">usaspending.gov — Free Federal Award Data</span>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>Register All Legitimate Secondary Codes in SAM.gov</h4>
+          <p>After completing your research, add all secondary NAICS codes that accurately reflect your business capabilities to your SAM.gov entity profile and your SBA Dynamic Small Business Search (DSBS) profile. Ensure your size certifications (small/not small) are correctly applied to each secondary code individually — you may be small under your primary code but not under a secondary code, or vice versa.</p>
+          <span class="step-tag">Each Code Requires Separate Size Certification in SAM.gov</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="warn-box">
+      <h4>⚠ Critical NAICS Code Mistakes That Disqualify Bids and Trigger Investigations</h4>
+      <ul>
+        <li>Competing for a set-aside contract under a NAICS code you are not registered for in SAM.gov — contracting officers check NAICS registration at time of award. Missing codes mean missed awards and potential protest grounds.</li>
+        <li>Certifying as small under a NAICS code when your actual revenue or employee count exceeds the size standard — this is a false certification subject to False Claims Act penalties and SBA size protest investigation.</li>
+        <li>Using a NAICS code that does not accurately describe what you will actually perform on the contract — misrepresentation of business activity during competition is grounds for award termination and debarment proceedings.</li>
+        <li>Failing to update your size certifications annually in SAM.gov after business growth — SAM.gov Reps & Certs require annual recertification of all size representations. A business that grows above its size standard must update its certification.</li>
+        <li>Not recognizing that the contracting officer's NAICS code assignment controls — even if you are small under your registered primary code, if the CO assigns a different code to the solicitation and you are not small under that code, you cannot compete as a small business for that award.</li>
+      </ul>
+    </div>
+
+    <h2>Challenging a NAICS Code Assignment — The Protest Process</h2>
+    <p>The FAR gives offerors the right to <strong>challenge a contracting officer's NAICS code assignment</strong> before the solicitation closes. If a CO assigns a NAICS code that does not accurately describe the principal purpose of the procurement, or assigns a code with a size standard that is artificially low (effectively excluding legitimate competitors) or artificially high (improperly allowing large businesses to compete as small), any interested party can file a NAICS code appeal with the <strong>SBA Office of Hearings and Appeals (OHA)</strong>.</p>
+    <p>NAICS code challenges must be filed with the SBA OHA within 10 calendar days after the date the solicitation is issued. The OHA issues a decision within 10 business days of receiving the appeal. If upheld, the CO must amend the solicitation to reflect the correct NAICS code before accepting offers. Understanding this mechanism gives sophisticated small businesses a tool to level the playing field when NAICS code assignments appear strategically manipulated.</p>
+
+    <h2>Triple-Horizon Outlook — NAICS Codes and Federal Classification</h2>
+    <div class="horizon-grid">
+      <div class="horizon-card h1">
+        <div class="hl">Horizon 1 — Now (2025–2026)</div>
+        <div class="ht">2022 NAICS Revision Active — Verify Your Codes</div>
+        <p>The 2022 NAICS revision introduced significant changes across multiple sectors — particularly in professional services, technology, and manufacturing. Businesses that registered NAICS codes pre-2022 should verify that their codes still accurately reflect their activities under the 2022 classification structure. Outdated codes generate search mismatches and can result in incorrect size standard application.</p>
+      </div>
+      <div class="horizon-card h2">
+        <div class="hl">Horizon 2 — Near Term (2026–2028)</div>
+        <div class="ht">2027 NAICS Revision in Development</div>
+        <p>OMB and the Census Bureau are currently in the public comment and development phase for the 2027 NAICS revision. Proposed changes include significant restructuring of technology services codes (particularly around AI, cloud computing, and cybersecurity services) and further refinement of manufacturing subcategories driven by advanced manufacturing and reshoring policy priorities. Businesses in these sectors should monitor the revision process at census.gov/naics.</p>
+      </div>
+      <div class="horizon-card h3">
+        <div class="hl">Horizon 3 — Strategic (2028–2032)</div>
+        <div class="ht">AI-Augmented NAICS Matching in Federal Procurement</div>
+        <p>GSA and agency procurement offices are piloting AI-assisted solicitation drafting tools that automatically recommend NAICS codes based on statement of work analysis. As these tools mature, the accuracy and consistency of NAICS code assignments in solicitations will improve — reducing the frequency of misassignment protests but also making it harder for businesses to benefit from ambiguous code assignments that previously created advantageous set-aside access.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sources">
+    <h4>Sources & Regulatory References</h4>
+    <ul>
+      <li>U.S. Census Bureau — NAICS Code Search & Official Classification Structure — <a href="https://www.census.gov/naics" target="_blank">census.gov/naics</a></li>
+      <li>SBA — Table of Small Business Size Standards (13 CFR Part 121, Appendix A) — <a href="https://www.sba.gov/document/support-table-size-standards" target="_blank">sba.gov/size-standards</a></li>
+      <li>FAR 19.102 — NAICS Code Assignment in Federal Solicitations — <a href="https://www.acquisition.gov" target="_blank">acquisition.gov</a></li>
+      <li>SBA Office of Hearings and Appeals — NAICS Code Appeal Procedures — <a href="https://www.sba.gov/oha" target="_blank">sba.gov/oha</a></li>
+      <li>USASpending.gov — Federal Contract Award Data by NAICS Code — <a href="https://www.usaspending.gov" target="_blank">usaspending.gov</a></li>
+      <li>SBA — Dynamic Small Business Search (DSBS) — <a href="https://web.sba.gov/pro-net/search/dsp_dsbs.cfm" target="_blank">sba.gov DSBS</a></li>
+      <li>U.S. False Claims Act — 31 U.S.C. §§ 3729–3733 (false size certification liability)</li>
+    </ul>
+  </div>
+
+  <div class="acta">
+    <h3>Need Help Optimizing Your NAICS Code Strategy?</h3>
+    <p>RC2 Consulting helps businesses build the complete government market entry foundation — from NAICS code selection and SAM.gov profile optimization through SBA certification readiness and FAR compliance infrastructure.</p>
+    <a href="https://panamaeddie.github.io/contact.html" class="btn-cta">Schedule a Government Contracting Strategy Session →</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="ft">Operational Clarity. Compliance Confidence. Systems That Scale.</div>
+  <div class="fl"><a href="https://panamaeddie.github.io/">Home</a><a href="https://panamaeddie.github.io/services.html">Services</a><a href="https://panamaeddie.github.io/who-we-help.html">Who We Help</a><a href="https://panamaeddie.github.io/about.html">About</a><a href="https://panamaeddie.github.io/RC2_Resources_Page.html">Resources</a><a href="https://panamaeddie.github.io/contact.html">Contact</a></div>
+  <div class="fc">© 2026 RC2 Consulting, LLC &nbsp;|&nbsp; Privacy Policy &nbsp;|&nbsp; Terms of Service</div>
+</footer>
+</body>
+</html>

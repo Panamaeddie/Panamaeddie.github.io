@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>SBA Special Programs: 8(a), WOSB, HUBZone, SDVOSB & Beyond | RC2 Consulting</title>
+  <meta name="description" content="A deep-dive executive guide to every SBA special program — eligibility requirements, strategic value, application nuance, and the compliance obligations that follow certification."/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--navy:#0B2545;--blue:#1A4A8A;--lb:#2563EB;--bg:#F4F6FA;--w:#FFFFFF;--txt:#1C2B3A;--mu:#4A5568;--bdr:#E2E8F0;--sg:#1A7A4E;--sbg:#EBF7F2;--wg:#854D0E;--wbg:#FFFBEB;--dg:#9B1C1C;--dbg:#FEF2F2}
+    body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--txt);margin:0;line-height:1.6}
+    .topnav{background:var(--navy);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+    .nav-brand{display:flex;align-items:center;gap:8px;text-decoration:none}
+    .nav-logo-mark{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center}
+    .nav-logo-mark sup{font-size:.5rem;vertical-align:super}
+    .nav-brand-name{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.9)}
+    .nav-links{display:flex;gap:4px;list-style:none}
+    .nav-links a{color:rgba(255,255,255,.78);text-decoration:none;font-size:.83rem;font-weight:600;padding:6px 12px;border-radius:4px;white-space:nowrap}
+    .nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+    .nav-links a.active{color:#fff;background:rgba(255,255,255,.12)}
+    .hero{background:linear-gradient(to bottom,rgba(11,37,69,.88),rgba(11,37,69,.72)),url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1400&q=80') center/cover no-repeat;padding:64px 40px 56px}
+    .hero-inner{max-width:820px;margin:0 auto}
+    .atag{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:4px 12px;border-radius:10px;margin-bottom:16px}
+    .hero h1{font-family:'Playfair Display',serif;font-size:2.3rem;font-weight:700;color:#fff;line-height:1.2;margin-bottom:14px}
+    .hero-sub{font-size:.93rem;color:rgba(255,255,255,.78);line-height:1.65;margin-bottom:18px;max-width:680px}
+    .hmeta{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+    .hmeta span{font-size:.82rem;color:rgba(255,255,255,.65)}
+    .hdiv{color:rgba(255,255,255,.3)}
+    .awrap{max-width:820px;margin:0 auto;padding:0 28px}
+    .btn-back{display:inline-flex;align-items:center;gap:6px;color:var(--lb);text-decoration:none;font-size:.84rem;font-weight:600;margin:24px 0 0}
+    .abstract-box{background:var(--w);border-left:4px solid var(--lb);border-radius:0 8px 8px 0;padding:24px 28px;margin:38px 0 32px;box-shadow:0 2px 8px rgba(11,37,69,.07)}
+    .abstract-box h3{font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lb);margin-bottom:10px}
+    .abstract-box p{font-size:.92rem;color:var(--mu);line-height:1.75;font-style:italic}
+    .abody{background:var(--w);border-radius:10px;border:1px solid var(--bdr);box-shadow:0 2px 8px rgba(11,37,69,.06);padding:48px;margin-bottom:32px}
+    .abody h2{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--navy);margin:40px 0 14px;padding-top:10px;border-top:2px solid var(--bdr)}
+    .abody h2:first-child{margin-top:0;border-top:none;padding-top:0}
+    .abody h3{font-size:1rem;font-weight:700;color:var(--blue);margin:26px 0 10px}
+    .abody p{font-size:.93rem;color:var(--mu);line-height:1.82;margin-bottom:16px}
+    .abody p strong{color:var(--navy)}
+    .callout{background:var(--bg);border-radius:8px;padding:20px 24px;margin:24px 0;border:1px solid var(--bdr)}
+    .callout p{font-size:.88rem;color:var(--navy);font-weight:600;line-height:1.68;margin:0}
+    .callout p::before{content:'"';font-size:2rem;color:var(--lb);line-height:0;vertical-align:-12px;margin-right:6px}
+    /* PROGRAM CARDS */
+    .prog-card{border-radius:10px;border:1px solid var(--bdr);margin:20px 0;overflow:hidden}
+    .prog-hdr{padding:16px 22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+    .prog-hdr.c8a{background:linear-gradient(to right,#EFF6FF,#DBEAFE)}
+    .prog-hdr.cwosb{background:linear-gradient(to right,#FDF4FF,#EDE9FE)}
+    .prog-hdr.chub{background:linear-gradient(to right,#F0FDF4,#DCFCE7)}
+    .prog-hdr.csdv{background:linear-gradient(to right,#FFF7ED,#FFEDD5)}
+    .prog-hdr.cvosb{background:linear-gradient(to right,#FFFBEB,#FEF9C3)}
+    .prog-hdr.cmentor{background:linear-gradient(to right,#F0F9FF,#E0F2FE)}
+    .prog-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--navy)}
+    .prog-abbr{font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:10px}
+    .c8a .prog-abbr{background:#BFDBFE;color:#1D4ED8}
+    .cwosb .prog-abbr{background:#DDD6FE;color:#5B21B6}
+    .chub .prog-abbr{background:#BBF7D0;color:#15803D}
+    .csdv .prog-abbr{background:#FED7AA;color:#92400E}
+    .cvosb .prog-abbr{background:#FDE68A;color:#78350F}
+    .cmentor .prog-abbr{background:#BAE6FD;color:#0369A1}
+    .prog-body{padding:18px 22px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .prog-col h4{font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--mu);margin-bottom:8px}
+    .prog-col ul{list-style:none}
+    .prog-col li{font-size:.84rem;color:var(--mu);padding:4px 0;border-bottom:1px solid var(--bdr);display:flex;align-items:flex-start;gap:8px;line-height:1.45}
+    .prog-col li:last-child{border-bottom:none}
+    .prog-col li::before{content:'→';font-size:.78rem;color:var(--lb);flex-shrink:0;margin-top:3px}
+    .prog-col li.crit::before{content:'★';color:var(--dg)}
+    .prog-stat{display:flex;gap:10px;padding:10px 22px;background:rgba(11,37,69,.03);border-top:1px solid var(--bdr);flex-wrap:wrap}
+    .stat-pill{font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:10px;background:var(--bg);border:1px solid var(--bdr);color:var(--mu)}
+    /* COMPARISON TABLE */
+    .comp-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.8rem}
+    .comp-table th{background:var(--navy);color:#fff;padding:10px 12px;text-align:left;font-size:.72rem;font-weight:700;letter-spacing:.5px}
+    .comp-table th:not(:first-child){text-align:center}
+    .comp-table td{padding:9px 12px;border-bottom:1px solid var(--bdr);color:var(--mu)}
+    .comp-table td:first-child{font-weight:700;color:var(--navy)}
+    .comp-table td:not(:first-child){text-align:center}
+    .comp-table tr:nth-child(even) td{background:var(--bg)}
+    .yes{color:var(--sg);font-weight:700}
+    .no{color:var(--dg);font-weight:700}
+    .lim{color:var(--wg);font-weight:700}
+    /* CHECKLIST */
+    .check-section{background:var(--navy);border-radius:10px;padding:28px 32px;margin:28px 0}
+    .check-section h3{font-size:.86rem;font-weight:700;color:#fff;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
+    .check-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .check-item{display:flex;align-items:flex-start;gap:10px}
+    .check-item::before{content:'✓';color:#4ADE80;font-weight:700;flex-shrink:0;margin-top:2px}
+    .check-item span{font-size:.83rem;color:rgba(255,255,255,.85);line-height:1.5}
+    /* HORIZON */
+    .horizon-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}
+    .horizon-card{border-radius:8px;padding:20px;border:1px solid var(--bdr)}
+    .h1{background:#EFF6FF;border-color:#BFDBFE}.h2{background:#F0FDF4;border-color:#BBF7D0}.h3{background:#FFF7ED;border-color:#FED7AA}
+    .hl{font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+    .h1 .hl{color:#1D4ED8}.h2 .hl{color:#15803D}.h3 .hl{color:#C2410C}
+    .ht{font-size:.86rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+    .horizon-card p{font-size:.8rem;color:var(--mu);line-height:1.55;margin:0}
+    .sources{background:var(--bg);border-radius:8px;padding:18px 22px;margin:0 0 32px;border:1px solid var(--bdr)}
+    .sources h4{font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:12px}
+    .sources ul{list-style:none}
+    .sources li{font-size:.78rem;color:var(--mu);padding:4px 0;border-bottom:1px solid var(--bdr);line-height:1.55}
+    .sources li:last-child{border-bottom:none}
+    .sources a{color:var(--lb);text-decoration:none}
+    .acta{background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:10px;padding:36px;text-align:center;margin-bottom:48px}
+    .acta h3{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;margin-bottom:10px}
+    .acta p{font-size:.88rem;color:rgba(255,255,255,.78);margin-bottom:20px;line-height:1.65}
+    .btn-cta{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--blue);font-weight:700;font-size:.88rem;padding:12px 24px;border-radius:6px;text-decoration:none}
+    .site-footer{background:var(--blue);color:#fff;text-align:center;padding:36px 24px}
+    .ft{font-size:.9rem;color:rgba(255,255,255,.9);font-weight:600;letter-spacing:.5px;margin-bottom:10px}
+    .fl{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+    .fl a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.78rem}
+    .fc{font-size:.73rem;color:rgba(255,255,255,.5)}
+    @media(max-width:720px){.hero h1{font-size:1.8rem}.abody{padding:28px 22px}.prog-body{grid-template-columns:1fr}.check-grid{grid-template-columns:1fr}.horizon-grid{grid-template-columns:1fr}.topnav{padding:0 14px}.nav-links a{padding:5px 7px;font-size:.76rem}}
+  </style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="https://panamaeddie.github.io/" class="nav-brand"><div class="nav-logo-mark">RC<sup>2</sup></div><span class="nav-brand-name">Consulting</span></a>
+  <ul class="nav-links">
+    <li><a href="https://panamaeddie.github.io/">Home</a></li>
+    <li><a href="https://panamaeddie.github.io/services.html">Services</a></li>
+    <li><a href="https://panamaeddie.github.io/who-we-help.html">Who We Help</a></li>
+    <li><a href="https://panamaeddie.github.io/about.html">About</a></li>
+    <li><a href="https://panamaeddie.github.io/RC2_Resources_Page.html" class="active">Resources</a></li>
+    <li><a href="https://panamaeddie.github.io/contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="atag">Government Contracting</span>
+    <h1>SBA Special Programs: A Complete Guide to Every Certification and What It Actually Unlocks</h1>
+    <p class="hero-sub">The SBA administers six distinct federal programs that create statutory preference in federal contracting for eligible businesses. Understanding which programs apply, what they unlock, and what compliance obligations follow is the foundation of any serious government market entry strategy.</p>
+    <div class="hmeta"><span>RC2 Consulting</span><span class="hdiv">|</span><span>February 2026</span><span class="hdiv">|</span><span>Government Contracting</span><span class="hdiv">|</span><span>14 min read</span></div>
+  </div>
+</section>
+
+<div class="awrap">
+  <a href="https://panamaeddie.github.io/RC2_Resources_Page.html" class="btn-back">← Back to Resources</a>
+
+  <div class="abstract-box">
+    <h3>Executive Summary</h3>
+    <p>The SBA's special programs — 8(a) Business Development, Women-Owned Small Business (WOSB/EDWOSB), Historically Underutilized Business Zones (HUBZone), Service-Disabled Veteran-Owned Small Business (SDVOSB), Veteran-Owned Small Business (VOSB), and the Mentor-Protégé Program — are not simply labels. Each represents a distinct statutory framework with specific eligibility criteria, separate application pathways, different set-aside thresholds, and ongoing compliance obligations that must be maintained throughout the certification period. This article examines each program in depth — what it takes to qualify, what it unlocks in the federal marketplace, and the operational and legal obligations that follow certification. It also covers the Mentor-Protégé Program, which is the most underutilized and highest-leverage opportunity for newly certified small businesses pursuing large government contracts.</p>
+  </div>
+
+  <div class="abody">
+    <h2>The Architecture of SBA Special Programs</h2>
+    <p>SBA special programs exist because Congress recognized that certain classes of businesses face structural disadvantages in competing for federal contracts in the open market. The statutory mandate creating these programs is found in the <strong>Small Business Act (15 U.S.C. § 631 et seq.)</strong>, with specific program authorizations scattered across the Act and subsequent amendments including the National Defense Authorization Acts, the Women's Business Ownership Act, and the Veterans Benefits, Health Care, and Information Technology Act.</p>
+    <p>All SBA special program certifications are now administered through the <strong>MySBA Certifications platform</strong> at certify.sba.gov, replacing the fragmented legacy systems (CVE verification, WOSB repository, HUBZone portal) that previously operated independently. The consolidation, completed between 2020 and 2023, means a single platform governs eligibility determinations, annual recertification, decertification actions, and status updates to SAM.gov.</p>
+    <p>Understanding the architecture matters because the programs are not mutually exclusive. A business can simultaneously hold 8(a) certification, SDVOSB status, and HUBZone certification — and compete across all three set-aside pools simultaneously. Strategic stacking of certifications is a legitimate and often under-exploited competitive advantage.</p>
+
+    <div class="callout"><p>Each SBA certification is a separate legal determination that must be separately applied for, separately maintained, and separately renewed. Holding one certification does not confer or accelerate eligibility for another.</p></div>
+
+    <h2>The 8(a) Business Development Program</h2>
+    <div class="prog-card">
+      <div class="prog-hdr c8a"><div class="prog-name">8(a) Business Development Program</div><span class="prog-abbr">8(a)</span></div>
+      <div class="prog-body">
+        <div class="prog-col">
+          <h4>Eligibility Requirements</h4>
+          <ul>
+            <li class="crit">U.S. citizen owner — socially disadvantaged individual (race/ethnicity presumption applies to certain groups)</li>
+            <li class="crit">Economically disadvantaged — personal net worth under $850,000 (excluding primary residence equity and business ownership value)</li>
+            <li>Unconditional ownership of 51% or more of the business</li>
+            <li>Owner must manage day-to-day operations and have the highest officer title</li>
+            <li>Business must be small under SBA size standards for primary NAICS code</li>
+            <li>Business must have been in operation for a minimum of 2 years prior to application</li>
+            <li class="crit">Demonstrate potential for success — business plan, capability, and revenue history reviewed</li>
+          </ul>
+        </div>
+        <div class="prog-col">
+          <h4>What It Unlocks</h4>
+          <ul>
+            <li>Sole-source contract awards up to $4.5M for services and $7M for manufacturing — no competition required</li>
+            <li>Competitive set-aside awards — compete only against other 8(a) firms</li>
+            <li>Access to SBA business development mentoring, training, and technical assistance</li>
+            <li>Eligibility for the SBA Mentor-Protégé Program (see below)</li>
+            <li>Joint ventures with non-8(a) firms that retain 8(a) set-aside eligibility under the SBA's Mentor-Protégé and JV rules</li>
+            <li>Business development assistance: surety bonding, specialized training, management counseling</li>
+          </ul>
+        </div>
+      </div>
+      <div class="prog-stat">
+        <span class="stat-pill">9-Year Program Maximum</span>
+        <span class="stat-pill">4 Years Developmental Stage + 5 Years Transitional</span>
+        <span class="stat-pill">Annual Review Required</span>
+        <span class="stat-pill">No Re-entry After Graduation or Early Termination</span>
+      </div>
+    </div>
+    <p>The 8(a) program is uniquely powerful because of the sole-source authority it grants. A contracting officer can award a contract directly to any 8(a) firm — without competition — for awards under the threshold limits. This means a single relationship with a contracting officer can generate consistent revenue with no competition. Businesses that understand this dynamic and invest in relationship development with specific agencies dramatically outperform those that passively wait for solicitations.</p>
+    <p>The 9-year clock is non-negotiable. There is no extension, no pause, and no re-entry. Businesses should enter the program with a specific growth agenda designed to be self-sustaining by the time they graduate. The SBA reviews annual revenue benchmarks in the transitional stage — businesses that fail to demonstrate adequate growth may face early graduation or termination.</p>
+
+    <h2>Women-Owned Small Business (WOSB) and EDWOSB</h2>
+    <div class="prog-card">
+      <div class="prog-hdr cwosb"><div class="prog-name">Women-Owned Small Business / Economically Disadvantaged WOSB</div><span class="prog-abbr">WOSB / EDWOSB</span></div>
+      <div class="prog-body">
+        <div class="prog-col">
+          <h4>Eligibility Requirements</h4>
+          <ul>
+            <li class="crit">51% unconditional ownership by one or more women who are U.S. citizens</li>
+            <li class="crit">Women must manage day-to-day operations and hold the highest officer title</li>
+            <li>Business must be small under SBA size standards for primary NAICS code</li>
+            <li>EDWOSB adds: personal net worth under $850,000, adjusted gross income average under $400,000 over 3 years, personal assets under $6.5 million</li>
+            <li>SBA certification now required — self-certification eliminated as of October 2020</li>
+          </ul>
+        </div>
+        <div class="prog-col">
+          <h4>What It Unlocks</h4>
+          <ul>
+            <li>Set-aside contracts in NAICS codes where women-owned businesses are deemed substantially underrepresented (designated by SBA annually)</li>
+            <li>EDWOSB: sole-source awards up to $4.5M for services, $7M for manufacturing in any underrepresented NAICS code</li>
+            <li>WOSB sole-source (non-EDWOSB): available in industries where women-owned businesses are underrepresented but not substantially so</li>
+            <li>Access to SBA Mentor-Protégé Program</li>
+          </ul>
+        </div>
+      </div>
+      <div class="prog-stat">
+        <span class="stat-pill">No Term Limit — Maintain While Eligible</span>
+        <span class="stat-pill">Annual Recertification Required</span>
+        <span class="stat-pill">NAICS Code Eligibility List Updated Annually by SBA</span>
+      </div>
+    </div>
+
+    <h2>Historically Underutilized Business Zones (HUBZone)</h2>
+    <div class="prog-card">
+      <div class="prog-hdr chub"><div class="prog-name">Historically Underutilized Business Zone Program</div><span class="prog-abbr">HUBZone</span></div>
+      <div class="prog-body">
+        <div class="prog-col">
+          <h4>Eligibility Requirements</h4>
+          <ul>
+            <li class="crit">Principal office must be located in a designated HUBZone — verify at sba.gov/hubzone-maps</li>
+            <li class="crit">At least 35% of employees must reside in a HUBZone at time of application and continuously thereafter</li>
+            <li>Business must be small under SBA size standards for primary NAICS code</li>
+            <li>U.S. citizens, Community Development Corporations, agricultural cooperatives, or Indian tribes must own and control 51%+ of business</li>
+            <li>HUBZone maps are updated annually — an address may enter or exit HUBZone status</li>
+          </ul>
+        </div>
+        <div class="prog-col">
+          <h4>What It Unlocks</h4>
+          <ul>
+            <li>Competitive set-aside contracts — compete only against other HUBZone firms</li>
+            <li>Sole-source awards up to $4.5M for services, $7M for manufacturing</li>
+            <li>10% price evaluation preference in full-and-open competitions — your bid is evaluated as if it were 10% lower, giving a meaningful advantage when competing against large businesses</li>
+            <li>Access to SBA Mentor-Protégé Program</li>
+          </ul>
+        </div>
+      </div>
+      <div class="prog-stat">
+        <span class="stat-pill">Annual Recertification Required</span>
+        <span class="stat-pill">35% Employee Residency — Continuous Obligation</span>
+        <span class="stat-pill">Address Must Remain in HUBZone — Monitor Map Updates</span>
+      </div>
+    </div>
+    <p>HUBZone is operationally the most demanding certification to maintain. The 35% employee residency requirement is a <strong>continuous obligation</strong> — it applies not just at certification but throughout the life of the certification. Every new hire affects the calculation. If workforce expansion or turnover drops you below 35% HUBZone residency, you must report the change to SBA and take immediate corrective action. Failure to maintain the residency percentage is grounds for decertification and potential False Claims Act exposure on contracts awarded under the certification.</p>
+
+    <h2>Service-Disabled Veteran-Owned Small Business (SDVOSB)</h2>
+    <div class="prog-card">
+      <div class="prog-hdr csdv"><div class="prog-name">Service-Disabled Veteran-Owned Small Business</div><span class="prog-abbr">SDVOSB</span></div>
+      <div class="prog-body">
+        <div class="prog-col">
+          <h4>Eligibility Requirements</h4>
+          <ul>
+            <li class="crit">One or more service-disabled veterans must own 51%+ unconditionally and control the business</li>
+            <li class="crit">Service-connected disability must be documented by VA or DoD determination</li>
+            <li>Owner must hold the highest officer title and manage day-to-day operations</li>
+            <li>Business must be small under SBA size standards</li>
+            <li>SBA certification required for all federal SDVOSB set-asides — former CVE verification no longer valid</li>
+            <li>VA contracts: SDVOSB/VOSB SBA certification now required for VA Vets First Program eligibility</li>
+          </ul>
+        </div>
+        <div class="prog-col">
+          <h4>What It Unlocks</h4>
+          <ul>
+            <li>Set-aside and sole-source contracts across all federal agencies for SDVOSB-eligible acquisitions</li>
+            <li>Sole-source awards up to $4.5M for services, $7M for manufacturing</li>
+            <li>Priority access to VA contracts under the Veterans First Contracting Program — VA must consider SDVOSB firms before any other set-aside category</li>
+            <li>Access to SBA Mentor-Protégé Program</li>
+          </ul>
+        </div>
+      </div>
+      <div class="prog-stat">
+        <span class="stat-pill">No Term Limit — Annual Recertification Required</span>
+        <span class="stat-pill">VA Priority: SDVOSB → VOSB → Other Small Business</span>
+        <span class="stat-pill">Separate VA & DoD Programs — Both Administered by SBA Since 2023</span>
+      </div>
+    </div>
+
+    <h2>Veteran-Owned Small Business (VOSB)</h2>
+    <div class="prog-card">
+      <div class="prog-hdr cvosb"><div class="prog-name">Veteran-Owned Small Business</div><span class="prog-abbr">VOSB</span></div>
+      <div class="prog-body">
+        <div class="prog-col">
+          <h4>Eligibility Requirements</h4>
+          <ul>
+            <li class="crit">One or more veterans (honorable discharge) must own 51%+ unconditionally and control the business</li>
+            <li>Veteran status based on DD-214 or equivalent discharge documentation — no service-connected disability required</li>
+            <li>Owner must hold the highest officer title and manage day-to-day operations</li>
+            <li>Business must be small under SBA size standards</li>
+            <li>SBA certification required — former VA CVE VOSB verification consolidated into SBA process in 2023</li>
+          </ul>
+        </div>
+        <div class="prog-col">
+          <h4>What It Unlocks</h4>
+          <ul>
+            <li>VA contract set-asides under the Veterans First Contracting Program — VA must consider VOSB before opening to other small businesses (after SDVOSB priority)</li>
+            <li>VOSB set-asides are VA-specific — they do not apply to other federal agencies</li>
+            <li>Access to SBA Mentor-Protégé Program</li>
+            <li>Strategic note: If you qualify for SDVOSB, certify at the SDVOSB level — it includes all VOSB benefits plus federal-wide set-aside access</li>
+          </ul>
+        </div>
+      </div>
+      <div class="prog-stat">
+        <span class="stat-pill">VA Contracts Only — Not Federal-Wide</span>
+        <span class="stat-pill">Annual Recertification Required</span>
+        <span class="stat-pill">Always Certify SDVOSB Instead If Eligible</span>
+      </div>
+    </div>
+
+    <h2>The SBA Mentor-Protégé Program — The Most Underutilized Advantage</h2>
+    <div class="prog-card">
+      <div class="prog-hdr cmentor"><div class="prog-name">SBA All Small Mentor-Protégé Program</div><span class="prog-abbr">Mentor-Protégé</span></div>
+      <div class="prog-body">
+        <div class="prog-col">
+          <h4>Who Qualifies</h4>
+          <ul>
+            <li>Any small business (not just SBA-certified) can be a Protégé</li>
+            <li>SBA-certified small businesses get priority access</li>
+            <li>Mentor can be any business — large or small — with relevant capability and financial strength</li>
+            <li>Mentor and Protégé must not have an identity of interest (common ownership, excessive financial dependence)</li>
+            <li>SBA approves the mentor-protégé agreement before it becomes effective</li>
+          </ul>
+        </div>
+        <div class="prog-col">
+          <h4>What It Unlocks</h4>
+          <ul>
+            <li>Joint Venture eligibility — Mentor and Protégé can form a joint venture that retains the Protégé's small business/SBA certification status for set-aside contract awards</li>
+            <li>Access to large prime contracts the Protégé could not win alone — through the JV, the combined team performs work previously out of reach</li>
+            <li>Technical, financial, management, and BD assistance from the Mentor</li>
+            <li>Past performance accumulation on large contracts — most valuable long-term asset for federal market growth</li>
+          </ul>
+        </div>
+      </div>
+      <div class="prog-stat">
+        <span class="stat-pill">3-Year Agreement (Renewable)</span>
+        <span class="stat-pill">JV Can Compete for 8(a) Set-Asides</span>
+        <span class="stat-pill">SBA Approval Required Before Award</span>
+      </div>
+    </div>
+    <p>The Mentor-Protégé Program is the single most powerful tool for accelerating government contract revenue for a newly certified small business — and the least understood. The Joint Venture mechanism allows a small business Protégé to team with a large experienced prime contractor and bid on large, complex contracts as a JV entity that retains the Protégé's set-aside eligibility. This means the government sees a certified small business performing a major contract — with a large contractor's operational capacity behind it. For an 8(a) firm, this can generate multi-million dollar sole-source opportunities with a competent Mentor managing execution risk.</p>
+
+    <h2>Stacking Certifications — Strategic Multi-Program Positioning</h2>
+    <p>Because the SBA certification programs are independent, a business that qualifies for more than one should pursue all applicable certifications simultaneously. The competitive advantages multiply across different agency pools and procurement categories. Common high-value stacking combinations include:</p>
+    <table class="comp-table">
+      <thead><tr><th>Set-Aside Type</th><th>8(a)</th><th>WOSB</th><th>HUBZone</th><th>SDVOSB</th><th>Sole-Source</th><th>Federal-Wide</th></tr></thead>
+      <tbody>
+        <tr><td>8(a) Competitive Set-Aside</td><td class="yes">●</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="yes">Up to $4.5M/$7M</td><td class="yes">Yes</td></tr>
+        <tr><td>WOSB Set-Aside</td><td class="lim">If eligible</td><td class="yes">●</td><td class="no">—</td><td class="no">—</td><td class="lim">EDWOSB only</td><td class="yes">Yes</td></tr>
+        <tr><td>HUBZone Set-Aside</td><td class="no">—</td><td class="no">—</td><td class="yes">●</td><td class="no">—</td><td class="yes">Up to $4.5M/$7M</td><td class="yes">Yes</td></tr>
+        <tr><td>SDVOSB Set-Aside</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="yes">●</td><td class="yes">Up to $4.5M/$7M</td><td class="yes">Yes</td></tr>
+        <tr><td>VA Vets First (SDVOSB)</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="yes">●</td><td class="yes">VA Priority</td><td class="lim">VA Only</td></tr>
+        <tr><td>HUBZone Price Preference</td><td class="no">—</td><td class="no">—</td><td class="yes">● 10%</td><td class="no">—</td><td class="no">—</td><td class="yes">Full & Open</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Post-Certification Compliance — What You Must Maintain</h2>
+    <div class="check-section">
+      <h3>Ongoing Compliance Obligations — All Certified Businesses</h3>
+      <div class="check-grid">
+        <div class="check-item"><span>Annual recertification through MySBA — before the anniversary date for each certification held</span></div>
+        <div class="check-item"><span>SAM.gov registration active and current — certifications must appear correctly in SAM.gov entity profile</span></div>
+        <div class="check-item"><span>Eligibility conditions maintained continuously — changes in ownership, management, or financial status must be reported</span></div>
+        <div class="check-item"><span>8(a): Annual review submission — financial statements, business activity report, and compliance questionnaire submitted to SBA district office</span></div>
+        <div class="check-item"><span>HUBZone: 35% employee residency monitored with every hire — documentation maintained for potential SBA audit</span></div>
+        <div class="check-item"><span>Change reports filed with SBA within 30 days of: ownership change, management change, address change, business structure change</span></div>
+        <div class="check-item"><span>Contract novation or assignment requires SBA approval for 8(a) contracts — not unilateral</span></div>
+        <div class="check-item"><span>Revenue thresholds monitored — exceeding SBA size standard for primary NAICS code triggers required self-reporting</span></div>
+      </div>
+    </div>
+
+    <h2>Triple-Horizon Outlook — SBA Special Programs</h2>
+    <div class="horizon-grid">
+      <div class="horizon-card h1">
+        <div class="hl">Horizon 1 — Now (2025–2026)</div>
+        <div class="ht">MySBA Consolidation Fully Operational</div>
+        <p>All five SBA certification programs are now fully operational through MySBA Certifications at certify.sba.gov. Legacy CVE VOSB/SDVOSB verifications expired in 2023 — any business still operating on pre-SBA VA verification is in violation and must immediately reapply. Processing times for SDVOSB, WOSB, and VOSB have stabilized at 15–45 days for complete applications.</p>
+      </div>
+      <div class="horizon-card h2">
+        <div class="hl">Horizon 2 — Near Term (2026–2028)</div>
+        <div class="ht">SBA Program Expansion & Funding Priority</div>
+        <p>Congressional interest in domestic manufacturing, supply chain resilience, and veteran business support has driven increased appropriations for SBA business development programs. 8(a) Business Development Program funding and SBA district office staffing have been increased in recent appropriations cycles. The Mentor-Protégé Program is being actively promoted by SBA as the preferred mechanism for small business growth into large contracts.</p>
+      </div>
+      <div class="horizon-card h3">
+        <div class="hl">Horizon 3 — Strategic (2028–2032)</div>
+        <div class="ht">NAICS Code Realignment & Program Evolution</div>
+        <p>The Office of Management and Budget conducts NAICS code revisions on a 5-year cycle — the 2027 revision will affect WOSB eligibility determinations (which are NAICS-code-specific), HUBZone designations, and SBA size standard tables. Businesses should monitor the 2027 NAICS revision process beginning in 2025–2026 to anticipate impacts to existing certifications and set-aside eligibility pools.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sources">
+    <h4>Sources & Regulatory References</h4>
+    <ul>
+      <li>Small Business Act — 15 U.S.C. § 631 et seq. (program authority)</li>
+      <li>SBA — MySBA Certifications Portal — <a href="https://certify.sba.gov" target="_blank">certify.sba.gov</a></li>
+      <li>SBA — 8(a) Business Development Program Regulations — 13 CFR Part 124</li>
+      <li>SBA — WOSB Federal Contract Program Regulations — 13 CFR Part 127</li>
+      <li>SBA — HUBZone Program Regulations — 13 CFR Part 126</li>
+      <li>SBA — SDVOSB/VOSB Program Regulations — 13 CFR Part 128</li>
+      <li>SBA — All Small Mentor-Protégé Program — 13 CFR Part 125.9</li>
+      <li>FAR Subpart 19 — Small Business Programs — <a href="https://www.acquisition.gov" target="_blank">acquisition.gov</a></li>
+      <li>National Defense Authorization Act FY2021 — Section 862 (SDVOSB/VOSB SBA certification mandate)</li>
+      <li>SBA — HUBZone Map — <a href="https://maps.certify.sba.gov/hubzone/map" target="_blank">maps.certify.sba.gov</a></li>
+    </ul>
+  </div>
+
+  <div class="acta">
+    <h3>Determining Which SBA Programs Apply to Your Business?</h3>
+    <p>RC2 Consulting helps businesses assess SBA program eligibility, prepare for the operational and compliance requirements that follow certification, and build the infrastructure needed to perform successfully on government contracts.</p>
+    <a href="https://panamaeddie.github.io/contact.html" class="btn-cta">Schedule a Certification Strategy Review →</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="ft">Operational Clarity. Compliance Confidence. Systems That Scale.</div>
+  <div class="fl"><a href="https://panamaeddie.github.io/">Home</a><a href="https://panamaeddie.github.io/services.html">Services</a><a href="https://panamaeddie.github.io/who-we-help.html">Who We Help</a><a href="https://panamaeddie.github.io/about.html">About</a><a href="https://panamaeddie.github.io/RC2_Resources_Page.html">Resources</a><a href="https://panamaeddie.github.io/contact.html">Contact</a></div>
+  <div class="fc">© 2026 RC2 Consulting, LLC &nbsp;|&nbsp; Privacy Policy &nbsp;|&nbsp; Terms of Service</div>
+</footer>
+</body>
+</html>
