@@ -228,7 +228,7 @@
     .p-sba-size   { background-image: linear-gradient(rgba(11,37,69,0.50),rgba(11,37,69,0.40)), url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&q=70'); }
     .p-naics      { background-image: linear-gradient(rgba(11,37,69,0.50),rgba(11,37,69,0.40)), url('https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=400&q=70'); }
     .p-far        { background-image: linear-gradient(rgba(11,37,69,0.55),rgba(11,37,69,0.45)), url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&q=70'); }
-    .p-kpi-exec   { background-image: linear-gradient(rgba(11,37,69,0.50),rgba(11,37,69,0.40)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=70'); }
+    .p-kpi-exec   { background-image: linear-gradient(rgba(11,37,69,0.50),rgba(11,37,69,0.40)), url('https://images.unsplash.com/photo-1543286386-713bdd548da4?w=400&q=70'); }
     .p-kpi-tool   { background-image: linear-gradient(rgba(11,37,69,0.55),rgba(11,37,69,0.45)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=70'); }
 
     .card-body {
@@ -258,6 +258,10 @@
       color: var(--text-muted);
       line-height: 1.55;
       margin-bottom: 14px;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
     .coming-tag {
       font-size: 0.63rem;
@@ -500,6 +504,7 @@
         <div class="card-desc">The federal government awards over $161B annually to certified small businesses. Most eligible companies never compete — because they don't understand how the certification process works or what compliance infrastructure is required to perform.</div>
         <a href="https://panamaeddie.github.io/RC2_Article_SBA_Certification.html" target="_blank" class="btn-blue">Read Article ›</a>
       </div>
+    </div>
 
     <div class="card">
       <div class="photo p-kpi-exec"></div>
