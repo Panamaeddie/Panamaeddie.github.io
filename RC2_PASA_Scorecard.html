@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PASA Pre-Audit Risk Scorecard | RC2 Consulting</title>
+  <meta name="description" content="The PASA Pre-Audit Self-Assessment — a structured scorecard for organizations preparing for WRAP or social compliance audits. Identify your highest-risk gaps before an auditor does." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:#0B2545; --blue:#1A4A8A; --light-blue:#2563EB;
+      --light-bg:#F4F6FA; --white:#FFFFFF;
+      --text:#1C2B3A; --text-muted:#4A5568; --border:#E2E8F0;
+      --success:#1A7A4E; --success-bg:#EBF7F2;
+      --warn:#854D0E; --warn-bg:#FFFBEB;
+      --danger:#9B1C1C; --danger-bg:#FEF2F2;
+    }
+    body { font-family:'Source Sans 3',sans-serif; background:var(--light-bg); color:var(--text); margin:0; line-height:1.7; }
+
+    /* NAV */
+    .topnav { background:var(--navy); padding:0 40px; display:flex; align-items:center; justify-content:space-between; height:52px; position:sticky; top:0; z-index:200; box-shadow:0 2px 8px rgba(0,0,0,0.25); }
+    .nav-brand { display:flex; align-items:center; gap:8px; text-decoration:none; }
+    .nav-logo-mark { background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); color:white; font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; width:32px; height:32px; border-radius:6px; display:flex; align-items:center; justify-content:center; }
+    .nav-logo-mark sup { font-size:0.5rem; vertical-align:super; }
+    .nav-brand-name { font-size:0.88rem; font-weight:600; color:rgba(255,255,255,0.9); }
+    .nav-links { display:flex; gap:4px; list-style:none; }
+    .nav-links a { color:rgba(255,255,255,0.78); text-decoration:none; font-size:0.83rem; font-weight:600; padding:6px 12px; border-radius:4px; transition:all 0.2s; white-space:nowrap; }
+    .nav-links a:hover { color:white; background:rgba(255,255,255,0.1); }
+    .nav-links a.active { color:white; background:rgba(255,255,255,0.12); }
+
+    /* HERO */
+    .hero { background:linear-gradient(to bottom, rgba(11,37,69,0.82) 0%, rgba(11,37,69,0.65) 100%), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1400&q=80') center/cover no-repeat; padding:64px 40px 56px; }
+    .hero-inner { max-width:900px; margin:0 auto; }
+    .article-tag { display:inline-block; font-size:0.65rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.7); background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); padding:4px 12px; border-radius:10px; margin-bottom:16px; }
+    .hero h1 { font-family:'Playfair Display',serif; font-size:2.4rem; font-weight:700; color:white; line-height:1.2; margin-bottom:10px; }
+    .hero-sub { font-size:0.95rem; color:rgba(255,255,255,0.78); margin-bottom:16px; max-width:600px; }
+    .hero-meta { display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+    .hero-meta span { font-size:0.82rem; color:rgba(255,255,255,0.65); }
+    .hero-meta .divider { color:rgba(255,255,255,0.3); }
+
+    /* LAYOUT */
+    .article-wrap { max-width:900px; margin:0 auto; padding:0 28px; }
+    .btn-back { display:inline-flex; align-items:center; gap:6px; color:var(--light-blue); text-decoration:none; font-size:0.85rem; font-weight:600; margin:28px 0 0; }
+
+    /* ABSTRACT */
+    .abstract-box { background:var(--white); border-left:4px solid var(--light-blue); border-radius:0 8px 8px 0; padding:24px 28px; margin:40px 0; box-shadow:0 2px 8px rgba(11,37,69,0.07); }
+    .abstract-box h3 { font-size:0.7rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--light-blue); margin-bottom:10px; }
+    .abstract-box p { font-size:0.92rem; color:var(--text-muted); line-height:1.75; font-style:italic; }
+
+    /* INTRO CARD */
+    .intro-body { background:var(--white); border-radius:10px; border:1px solid var(--border); box-shadow:0 2px 8px rgba(11,37,69,0.06); padding:40px 48px; margin-bottom:28px; }
+    .intro-body p { font-size:0.93rem; color:var(--text-muted); line-height:1.8; margin-bottom:14px; }
+    .intro-body p strong { color:var(--navy); }
+    .intro-body h2 { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--navy); margin:28px 0 12px; border-top:2px solid var(--border); padding-top:8px; }
+    .intro-body h2:first-child { border-top:none; padding-top:0; margin-top:0; }
+
+    /* HOW TO USE */
+    .how-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:16px 0; }
+    .how-card { background:var(--light-bg); border:1px solid var(--border); border-radius:8px; padding:16px; text-align:center; }
+    .how-num { font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--light-blue); font-weight:700; line-height:1; margin-bottom:6px; }
+    .how-card p { font-size:0.82rem; color:var(--text-muted); line-height:1.5; margin:0; }
+
+    /* SCORE KEY */
+    .score-key { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:16px 0; }
+    .key-item { border-radius:6px; padding:10px 12px; text-align:center; border:1px solid; }
+    .key-item.k4 { background:var(--success-bg); border-color:#BBF7D0; }
+    .key-item.k3 { background:#F0FDF4; border-color:#D1FAE5; }
+    .key-item.k2 { background:var(--warn-bg); border-color:#FDE68A; }
+    .key-item.k1 { background:var(--danger-bg); border-color:#FECACA; }
+    .key-score { font-size:1.2rem; font-weight:700; font-family:'Playfair Display',serif; }
+    .k4 .key-score { color:var(--success); }
+    .k3 .key-score { color:#15803D; }
+    .k2 .key-score { color:var(--warn); }
+    .k1 .key-score { color:var(--danger); }
+    .key-label { font-size:0.72rem; font-weight:700; margin-top:3px; }
+    .key-desc { font-size:0.72rem; color:var(--text-muted); margin-top:3px; }
+
+    /* SCORECARD SECTION */
+    .scorecard-section { background:var(--white); border-radius:10px; border:1px solid var(--border); box-shadow:0 2px 8px rgba(11,37,69,0.06); margin-bottom:20px; overflow:hidden; }
+    .section-header { background:var(--navy); padding:14px 24px; display:flex; align-items:center; justify-content:space-between; }
+    .section-title { font-size:0.88rem; font-weight:700; color:white; }
+    .section-wrap-ref { font-size:0.72rem; color:rgba(255,255,255,0.55); }
+    .scorecard-table { width:100%; border-collapse:collapse; }
+    .scorecard-table th { background:var(--light-bg); padding:10px 16px; text-align:left; font-size:0.75rem; font-weight:700; color:var(--text-muted); letter-spacing:0.5px; border-bottom:2px solid var(--border); }
+    .scorecard-table th.score-col { text-align:center; width:80px; }
+    .scorecard-table td { padding:12px 16px; border-bottom:1px solid var(--border); font-size:0.84rem; color:var(--text-muted); vertical-align:top; line-height:1.5; }
+    .scorecard-table tr:last-child td { border-bottom:none; }
+    .scorecard-table td.item-num { color:var(--blue); font-weight:700; width:32px; }
+    .score-cell { text-align:center; }
+    .score-box { display:inline-flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:6px; font-size:0.85rem; font-weight:700; border:2px solid var(--border); background:var(--light-bg); color:var(--text-muted); }
+    .section-total { background:var(--light-bg); padding:12px 24px; display:flex; align-items:center; justify-content:space-between; border-top:2px solid var(--border); }
+    .section-total-label { font-size:0.8rem; font-weight:700; color:var(--navy); }
+    .section-total-score { display:flex; align-items:center; gap:8px; }
+    .total-blank { display:inline-block; width:80px; border-bottom:2px solid var(--navy); height:24px; text-align:center; font-weight:700; }
+    .total-max { font-size:0.78rem; color:var(--text-muted); }
+
+    /* RESULTS MATRIX */
+    .results-matrix { background:var(--white); border-radius:10px; border:1px solid var(--border); box-shadow:0 2px 8px rgba(11,37,69,0.06); overflow:hidden; margin-bottom:28px; }
+    .matrix-header { background:var(--navy); padding:14px 24px; }
+    .matrix-header h3 { font-size:0.88rem; font-weight:700; color:white; }
+    .matrix-rows { padding:0; }
+    .matrix-row { display:grid; grid-template-columns:100px 1fr 200px; gap:0; border-bottom:1px solid var(--border); }
+    .matrix-row:last-child { border-bottom:none; }
+    .matrix-range { padding:16px; font-size:1rem; font-weight:700; font-family:'Playfair Display',serif; display:flex; align-items:center; border-right:1px solid var(--border); }
+    .range-pass { color:var(--success); }
+    .range-conditional { color:var(--warn); }
+    .range-fail { color:var(--danger); }
+    .matrix-content { padding:14px 16px; }
+    .matrix-content h4 { font-size:0.85rem; font-weight:700; color:var(--navy); margin-bottom:4px; }
+    .matrix-content p { font-size:0.8rem; color:var(--text-muted); line-height:1.5; margin:0; }
+    .matrix-action { padding:14px 16px; border-left:1px solid var(--border); display:flex; align-items:center; }
+    .matrix-action p { font-size:0.78rem; color:var(--text-muted); line-height:1.5; margin:0; }
+
+    /* PRIORITY SECTION */
+    .priority-box { background:linear-gradient(135deg,var(--navy),var(--blue)); border-radius:10px; padding:28px 32px; margin-bottom:28px; }
+    .priority-box h3 { font-size:0.88rem; font-weight:700; color:white; letter-spacing:1px; text-transform:uppercase; margin-bottom:16px; }
+    .priority-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .priority-item { display:flex; align-items:flex-start; gap:10px; }
+    .priority-item::before { content:'→'; color:#93C5FD; font-weight:700; flex-shrink:0; margin-top:2px; }
+    .priority-item span { font-size:0.84rem; color:rgba(255,255,255,0.85); line-height:1.5; }
+
+    /* SOURCES */
+    .sources { background:var(--light-bg); border-radius:8px; padding:20px 24px; margin:0 0 28px; border:1px solid var(--border); }
+    .sources h4 { font-size:0.72rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); margin-bottom:12px; }
+    .sources ul { list-style:none; }
+    .sources ul li { font-size:0.78rem; color:var(--text-muted); padding:4px 0; border-bottom:1px solid var(--border); }
+    .sources ul li:last-child { border-bottom:none; }
+    .sources ul li a { color:var(--light-blue); text-decoration:none; }
+
+    /* CTA */
+    .article-cta { background:linear-gradient(135deg,var(--navy),var(--blue)); border-radius:10px; padding:36px; text-align:center; margin-bottom:48px; }
+    .article-cta h3 { font-family:'Playfair Display',serif; font-size:1.4rem; color:white; margin-bottom:10px; }
+    .article-cta p { font-size:0.88rem; color:rgba(255,255,255,0.78); margin-bottom:20px; }
+    .btn-cta { display:inline-flex; align-items:center; gap:8px; background:white; color:var(--blue); font-weight:700; font-size:0.88rem; padding:12px 24px; border-radius:6px; text-decoration:none; }
+    .btn-cta:hover { background:var(--light-bg); }
+
+    /* FOOTER */
+    .site-footer { background:var(--blue); color:white; text-align:center; padding:40px 24px; }
+    .footer-tagline { font-size:0.92rem; color:rgba(255,255,255,0.9); font-weight:600; letter-spacing:0.5px; margin-bottom:12px; }
+    .footer-links { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-bottom:14px; }
+    .footer-links a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.8rem; }
+    .footer-links a:hover { color:white; }
+    .footer-copy { font-size:0.75rem; color:rgba(255,255,255,0.5); }
+
+    @media (max-width:700px) {
+      .hero h1 { font-size:1.8rem; }
+      .intro-body { padding:24px 18px; }
+      .how-grid { grid-template-columns:1fr; }
+      .score-key { grid-template-columns:repeat(2,1fr); }
+      .matrix-row { grid-template-columns:1fr; }
+      .matrix-range { border-right:none; border-bottom:1px solid var(--border); }
+      .matrix-action { border-left:none; border-top:1px solid var(--border); }
+      .priority-grid { grid-template-columns:1fr; }
+      .topnav { padding:0 16px; }
+      .nav-links a { padding:5px 8px; font-size:0.78rem; }
+    }
+    @media print {
+      .topnav, .btn-back, .article-cta, .site-footer { display:none; }
+      body { background:white; }
+      .scorecard-section, .results-matrix { box-shadow:none; border:1px solid #ccc; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="https://rc2consulting.github.io/" class="nav-brand">
+    <div class="nav-logo-mark">RC<sup>2</sup></div>
+    <span class="nav-brand-name">Consulting</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://rc2consulting.github.io/">Home</a></li>
+    <li><a href="https://rc2consulting.github.io/services.html">Services</a></li>
+    <li><a href="https://rc2consulting.github.io/who-we-help.html">Who We Help</a></li>
+    <li><a href="https://rc2consulting.github.io/about.html">About</a></li>
+    <li><a href="https://rc2consulting.github.io/RC2_Resources_Page.html" class="active">Resources</a></li>
+    <li><a href="https://rc2consulting.github.io/contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="article-tag">Compliance Tool</span>
+    <h1>PASA Pre-Audit Risk Scorecard</h1>
+    <p class="hero-sub">Pre-Audit Self-Assessment — A structured scoring tool for organizations preparing for WRAP or social compliance audits. Identify your highest-risk gaps before an auditor does.</p>
+    <div class="hero-meta">
+      <span>RC2 Consulting</span>
+      <span class="divider">|</span>
+      <span>February 2026</span>
+      <span class="divider">|</span>
+      <span>Printable Tool</span>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <a href="https://rc2consulting.github.io/RC2_Resources_Page.html" class="btn-back">← Back to Resources</a>
+
+  <div class="abstract-box">
+    <h3>About This Tool</h3>
+    <p>The PASA Pre-Audit Self-Assessment is a structured scoring tool designed to give organizations an honest, scored picture of their audit readiness before a WRAP or equivalent social compliance audit is conducted. It is not a substitute for a professional compliance assessment — but it is the most important first step any organization can take in understanding where their risk is concentrated and where their preparation effort should be focused.</p>
+  </div>
+
+  <div class="intro-body">
+    <h2>What Is the PASA Scorecard?</h2>
+    <p>The <strong>Pre-Audit Self-Assessment (PASA)</strong> is a facility-level readiness diagnostic built around the 12 core principles of the WRAP certification standard. Each principle is broken down into its most commonly audited components — documentation, systems, training, and physical compliance. Each component is scored on a 1–4 scale reflecting current readiness level.</p>
+    <p>The PASA does not replace a WRAP audit or a professional gap assessment. What it does is give facility managers, compliance officers, and leadership teams a structured, scored framework for understanding where gaps exist — and how significant those gaps are — before an external auditor arrives.</p>
+    <p>Organizations that conduct a PASA self-assessment and act on its findings before their formal audit consistently perform better — because they arrive at the audit having already identified and addressed their highest-risk areas.</p>
+
+    <h2>How to Use This Scorecard</h2>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-num">1</div>
+        <p>Score each item honestly using the 1–4 scale. Do not score what you intend to do — score what exists and is verifiable today.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-num">2</div>
+        <p>Total each section. Record your section scores and calculate your overall PASA score out of 160 points.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-num">3</div>
+        <p>Use the results matrix to determine your readiness tier and identify which sections require immediate corrective action.</p>
+      </div>
+    </div>
+
+    <h2>Scoring Key</h2>
+    <div class="score-key">
+      <div class="key-item k4">
+        <div class="key-score">4</div>
+        <div class="key-label">Fully Compliant</div>
+        <div class="key-desc">Documented, current, verifiable</div>
+      </div>
+      <div class="key-item k3">
+        <div class="key-score">3</div>
+        <div class="key-label">Mostly Compliant</div>
+        <div class="key-desc">In place but minor gaps</div>
+      </div>
+      <div class="key-item k2">
+        <div class="key-score">2</div>
+        <div class="key-label">Partially Compliant</div>
+        <div class="key-desc">Exists but incomplete</div>
+      </div>
+      <div class="key-item k1">
+        <div class="key-score">1</div>
+        <div class="key-label">Not Compliant</div>
+        <div class="key-desc">Absent or unverifiable</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="scorecard-section">
+    <div class="section-header">
+      <span class="section-title">Section 1 — Compliance With Laws & Workplace Regulations</span>
+      <span class="section-wrap-ref">WRAP Principle 1</span>
+    </div>
+    <table class="scorecard-table">
+      <thead><tr><th>#</th><th>Assessment Item</th><th class="score-col">Score (1–4)</th></tr></thead>
+      <tbody>
+        <tr><td class="item-num">1.1</td><td>Written policy confirming commitment to comply with all applicable local laws and regulations</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">1.2</td><td>Legal business registration, licenses, and operating permits current and on file</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">1.3</td><td>Regular legal compliance review process documented and executed</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">1.4</td><td>Management accountability for legal compliance assigned in writing</td><td class="score-cell"><div class="score-box"></div></td></tr>
+      </tbody>
+    </table>
+    <div class="section-total">
+      <span class="section-total-label">Section 1 Total</span>
+      <div class="section-total-score"><span class="total-blank"></span><span class="total-max">/ 16</span></div>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="scorecard-section">
+    <div class="section-header">
+      <span class="section-title">Section 2 — Prohibition of Forced Labor</span>
+      <span class="section-wrap-ref">WRAP Principle 2</span>
+    </div>
+    <table class="scorecard-table">
+      <thead><tr><th>#</th><th>Assessment Item</th><th class="score-col">Score (1–4)</th></tr></thead>
+      <tbody>
+        <tr><td class="item-num">2.1</td><td>Written anti-forced labor policy posted and accessible to all workers</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">2.2</td><td>No worker deposits, document retention, or debt bondage arrangements exist</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">2.3</td><td>Workers free to leave premises and terminate employment without penalty</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">2.4</td><td>Recruitment and hiring practices documented and reviewed for forced labor indicators</td><td class="score-cell"><div class="score-box"></div></td></tr>
+      </tbody>
+    </table>
+    <div class="section-total">
+      <span class="section-total-label">Section 2 Total</span>
+      <div class="section-total-score"><span class="total-blank"></span><span class="total-max">/ 16</span></div>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="scorecard-section">
+    <div class="section-header">
+      <span class="section-title">Section 3 — Prohibition of Child Labor</span>
+      <span class="section-wrap-ref">WRAP Principle 3</span>
+    </div>
+    <table class="scorecard-table">
+      <thead><tr><th>#</th><th>Assessment Item</th><th class="score-col">Score (1–4)</th></tr></thead>
+      <tbody>
+        <tr><td class="item-num">3.1</td><td>Written child labor prohibition policy in place and communicated to all staff</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">3.2</td><td>Age verification documentation collected and maintained for all workers at hiring</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">3.3</td><td>Minimum age compliance confirmed for all current workers — records retrievable</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">3.4</td><td>Remediation procedure documented for cases where underage employment is discovered</td><td class="score-cell"><div class="score-box"></div></td></tr>
+      </tbody>
+    </table>
+    <div class="section-total">
+      <span class="section-total-label">Section 3 Total</span>
+      <div class="section-total-score"><span class="total-blank"></span><span class="total-max">/ 16</span></div>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="scorecard-section">
+    <div class="section-header">
+      <span class="section-title">Section 4 — Prohibition of Harassment & Abuse</span>
+      <span class="section-wrap-ref">WRAP Principle 4</span>
+    </div>
+    <table class="scorecard-table">
+      <thead><tr><th>#</th><th>Assessment Item</th><th class="score-col">Score (1–4)</th></tr></thead>
+      <tbody>
+        <tr><td class="item-num">4.1</td><td>Written anti-harassment and anti-abuse policy posted in worker language</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">4.2</td><td>Confidential grievance procedure documented and communicated to all workers</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">4.3</td><td>Anti-harassment training records maintained with dates, attendees, and content</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">4.4</td><td>Documented investigation and corrective action process for complaints</td><td class="score-cell"><div class="score-box"></div></td></tr>
+      </tbody>
+    </table>
+    <div class="section-total">
+      <span class="section-total-label">Section 4 Total</span>
+      <div class="section-total-score"><span class="total-blank"></span><span class="total-max">/ 16</span></div>
+    </div>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="scorecard-section">
+    <div class="section-header">
+      <span class="section-title">Section 5 — Compensation & Benefits</span>
+      <span class="section-wrap-ref">WRAP Principle 5</span>
+    </div>
+    <table class="scorecard-table">
+      <thead><tr><th>#</th><th>Assessment Item</th><th class="score-col">Score (1–4)</th></tr></thead>
+      <tbody>
+        <tr><td class="item-num">5.1</td><td>All workers compensated at or above legally mandated minimum wage — payroll records confirm</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">5.2</td><td>Overtime hours and overtime pay rates documented and compliant with local law</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">5.3</td><td>Pay stubs or wage statements provided to workers each pay period</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">5.4</td><td>Benefits provided per local legal requirements — documentation current and retrievable</td><td class="score-cell"><div class="score-box"></div></td></tr>
+      </tbody>
+    </table>
+    <div class="section-total">
+      <span class="section-total-label">Section 5 Total</span>
+      <div class="section-total-score"><span class="total-blank"></span><span class="total-max">/ 16</span></div>
+    </div>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="scorecard-section">
+    <div class="section-header">
+      <span class="section-title">Section 6 — Hours of Work</span>
+      <span class="section-wrap-ref">WRAP Principle 6</span>
+    </div>
+    <table class="scorecard-table">
+      <thead><tr><th>#</th><th>Assessment Item</th><th class="score-col">Score (1–4)</th></tr></thead>
+      <tbody>
+        <tr><td class="item-num">6.1</td><td>Working hours for all workers comply with local legal maximums — time records confirm</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">6.2</td><td>Time and attendance records maintained, complete, and retrievable for 12+ months</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">6.3</td><td>Rest periods, meal breaks, and weekly days off documented and provided as required</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">6.4</td><td>Voluntary overtime confirmed — no evidence of coerced or mandatory excessive overtime</td><td class="score-cell"><div class="score-box"></div></td></tr>
+      </tbody>
+    </table>
+    <div class="section-total">
+      <span class="section-total-label">Section 6 Total</span>
+      <div class="section-total-score"><span class="total-blank"></span><span class="total-max">/ 16</span></div>
+    </div>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="scorecard-section">
+    <div class="section-header">
+      <span class="section-title">Section 7 — Prohibition of Discrimination</span>
+      <span class="section-wrap-ref">WRAP Principle 7</span>
+    </div>
+    <table class="scorecard-table">
+      <thead><tr><th>#</th><th>Assessment Item</th><th class="score-col">Score (1–4)</th></tr></thead>
+      <tbody>
+        <tr><td class="item-num">7.1</td><td>Written non-discrimination policy covering hiring, promotion, pay, and termination</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">7.2</td><td>Non-discrimination training documented with attendance records</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">7.3</td><td>Hiring and personnel records demonstrate non-discriminatory practices</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">7.4</td><td>Mechanism for reporting discrimination complaints documented and accessible</td><td class="score-cell"><div class="score-box"></div></td></tr>
+      </tbody>
+    </table>
+    <div class="section-total">
+      <span class="section-total-label">Section 7 Total</span>
+      <div class="section-total-score"><span class="total-blank"></span><span class="total-max">/ 16</span></div>
+    </div>
+  </div>
+
+  <!-- SECTION 8 -->
+  <div class="scorecard-section">
+    <div class="section-header">
+      <span class="section-title">Section 8 — Health & Safety</span>
+      <span class="section-wrap-ref">WRAP Principle 8</span>
+    </div>
+    <table class="scorecard-table">
+      <thead><tr><th>#</th><th>Assessment Item</th><th class="score-col">Score (1–4)</th></tr></thead>
+      <tbody>
+        <tr><td class="item-num">8.1</td><td>Written health and safety policy in place — management accountability assigned</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">8.2</td><td>Fire safety equipment inspected, documented, and current — evacuation routes posted</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">8.3</td><td>Emergency evacuation drills conducted and documented with dates and participant counts</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">8.4</td><td>First aid resources available, certified personnel identified, and records current</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">8.5</td><td>Health and safety training records maintained for all workers</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">8.6</td><td>Chemical handling, PPE, and equipment safety documentation current</td><td class="score-cell"><div class="score-box"></div></td></tr>
+      </tbody>
+    </table>
+    <div class="section-total">
+      <span class="section-total-label">Section 8 Total</span>
+      <div class="section-total-score"><span class="total-blank"></span><span class="total-max">/ 24</span></div>
+    </div>
+  </div>
+
+  <!-- SECTION 9 -->
+  <div class="scorecard-section">
+    <div class="section-header">
+      <span class="section-title">Section 9 — Freedom of Association & Collective Bargaining</span>
+      <span class="section-wrap-ref">WRAP Principle 9</span>
+    </div>
+    <table class="scorecard-table">
+      <thead><tr><th>#</th><th>Assessment Item</th><th class="score-col">Score (1–4)</th></tr></thead>
+      <tbody>
+        <tr><td class="item-num">9.1</td><td>Written policy respecting workers' rights to freedom of association per local law</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">9.2</td><td>No evidence of interference with lawful worker organizing or representation activities</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">9.3</td><td>Where unions are restricted by law, alternative worker representation mechanisms documented</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">9.4</td><td>Communication channels between management and workers documented and active</td><td class="score-cell"><div class="score-box"></div></td></tr>
+      </tbody>
+    </table>
+    <div class="section-total">
+      <span class="section-total-label">Section 9 Total</span>
+      <div class="section-total-score"><span class="total-blank"></span><span class="total-max">/ 16</span></div>
+    </div>
+  </div>
+
+  <!-- SECTION 10 -->
+  <div class="scorecard-section">
+    <div class="section-header">
+      <span class="section-title">Section 10 — Environment</span>
+      <span class="section-wrap-ref">WRAP Principle 10</span>
+    </div>
+    <table class="scorecard-table">
+      <thead><tr><th>#</th><th>Assessment Item</th><th class="score-col">Score (1–4)</th></tr></thead>
+      <tbody>
+        <tr><td class="item-num">10.1</td><td>Environmental compliance policy documented and management accountability assigned</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">10.2</td><td>Required environmental permits current — wastewater, air emissions, waste disposal</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">10.3</td><td>Chemical storage, handling, and disposal procedures documented and followed</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">10.4</td><td>Environmental inspection records maintained and current</td><td class="score-cell"><div class="score-box"></div></td></tr>
+      </tbody>
+    </table>
+    <div class="section-total">
+      <span class="section-total-label">Section 10 Total</span>
+      <div class="section-total-score"><span class="total-blank"></span><span class="total-max">/ 16</span></div>
+    </div>
+  </div>
+
+  <!-- SECTION 11 -->
+  <div class="scorecard-section">
+    <div class="section-header">
+      <span class="section-title">Section 11 — Customs Compliance</span>
+      <span class="section-wrap-ref">WRAP Principle 11</span>
+    </div>
+    <table class="scorecard-table">
+      <thead><tr><th>#</th><th>Assessment Item</th><th class="score-col">Score (1–4)</th></tr></thead>
+      <tbody>
+        <tr><td class="item-num">11.1</td><td>Import/export documentation systems compliant with applicable customs regulations</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">11.2</td><td>Country-of-origin documentation accurate, complete, and maintained on file</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">11.3</td><td>Facility security procedures documented and compliant with applicable trade programs</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">11.4</td><td>Staff responsible for customs compliance identified and trained</td><td class="score-cell"><div class="score-box"></div></td></tr>
+      </tbody>
+    </table>
+    <div class="section-total">
+      <span class="section-total-label">Section 11 Total</span>
+      <div class="section-total-score"><span class="total-blank"></span><span class="total-max">/ 16</span></div>
+    </div>
+  </div>
+
+  <!-- SECTION 12 -->
+  <div class="scorecard-section">
+    <div class="section-header">
+      <span class="section-title">Section 12 — Drug & Alcohol Policy</span>
+      <span class="section-wrap-ref">WRAP Principle 12</span>
+    </div>
+    <table class="scorecard-table">
+      <thead><tr><th>#</th><th>Assessment Item</th><th class="score-col">Score (1–4)</th></tr></thead>
+      <tbody>
+        <tr><td class="item-num">12.1</td><td>Written drug and alcohol-free workplace policy in place and communicated to all workers</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">12.2</td><td>Policy posted in worker language in visible workplace locations</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">12.3</td><td>Training on drug and alcohol policy documented with attendance records</td><td class="score-cell"><div class="score-box"></div></td></tr>
+        <tr><td class="item-num">12.4</td><td>Enforcement and disciplinary procedure for violations documented</td><td class="score-cell"><div class="score-box"></div></td></tr>
+      </tbody>
+    </table>
+    <div class="section-total">
+      <span class="section-total-label">Section 12 Total</span>
+      <div class="section-total-score"><span class="total-blank"></span><span class="total-max">/ 16</span></div>
+    </div>
+  </div>
+
+  <!-- RESULTS MATRIX -->
+  <div class="results-matrix">
+    <div class="matrix-header">
+      <h3>PASA Results Interpretation Matrix — Total Score Out of 160</h3>
+    </div>
+    <div class="matrix-rows">
+      <div class="matrix-row">
+        <div class="matrix-range"><span class="range-pass">136–160</span></div>
+        <div class="matrix-content">
+          <h4>Audit Ready</h4>
+          <p>Strong documentation and systems across all 12 principles. Minor gaps exist but do not represent material audit risk. Organization is prepared to enter the formal WRAP audit process.</p>
+        </div>
+        <div class="matrix-action"><p>Schedule WRAP pre-audit with registered monitor. Focus on closing remaining minor gaps before submission.</p></div>
+      </div>
+      <div class="matrix-row">
+        <div class="matrix-range"><span class="range-conditional">100–135</span></div>
+        <div class="matrix-content">
+          <h4>Conditionally Ready</h4>
+          <p>Meaningful gaps exist in one or more sections. Documentation or systems deficiencies would likely generate audit findings. Additional preparation is required before formal audit.</p>
+        </div>
+        <div class="matrix-action"><p>Identify lowest-scoring sections. Build a 60–90 day corrective action plan targeting all items scored 1 or 2. Conduct follow-up PASA before proceeding.</p></div>
+      </div>
+      <div class="matrix-row">
+        <div class="matrix-range"><span class="range-fail">Below 100</span></div>
+        <div class="matrix-content">
+          <h4>Not Ready — Significant Gaps</h4>
+          <p>Significant documentation, systems, or policy gaps across multiple sections. Proceeding to formal audit without remediation will result in failure and corrective action requirements.</p>
+        </div>
+        <div class="matrix-action"><p>Engage professional compliance support. Build a structured 90–180 day remediation plan. Do not submit for formal audit until PASA score exceeds 120.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRIORITY ACTION -->
+  <div class="priority-box">
+    <h3>Priority Action Areas — Where Most Facilities Score Lowest</h3>
+    <div class="priority-grid">
+      <div class="priority-item"><span>Training records — health & safety, harassment, onboarding</span></div>
+      <div class="priority-item"><span>Written policies — missing or undated in multiple sections</span></div>
+      <div class="priority-item"><span>Payroll and hours documentation — gaps and inconsistencies</span></div>
+      <div class="priority-item"><span>Emergency evacuation drill records — absent or outdated</span></div>
+      <div class="priority-item"><span>Grievance procedure — not documented or not communicated</span></div>
+      <div class="priority-item"><span>Environmental permits and inspection records — not current</span></div>
+      <div class="priority-item"><span>Internal audit history — no prior self-assessment on file</span></div>
+      <div class="priority-item"><span>Age verification documentation — incomplete at hiring file level</span></div>
+    </div>
+  </div>
+
+  <div class="sources">
+    <h4>Sources & Standards Referenced</h4>
+    <ul>
+      <li>WRAP — 12 Principles Program Standards, Certification Criteria & Audit Protocols (2024) — <a href="https://www.wrapcompliance.org" target="_blank">wrapcompliance.org</a></li>
+      <li>International Labour Organization — Core Labour Standards Reference (2024) — <a href="https://www.ilo.org" target="_blank">ilo.org</a></li>
+      <li>U.S. Department of Labor — Bureau of International Labor Affairs, Social Compliance Audit Methodology (2024) — <a href="https://www.dol.gov/agencies/ilab" target="_blank">dol.gov/ilab</a></li>
+      <li>Social Accountability International — SA8000 Audit Criteria Cross-Reference (2023) — <a href="https://www.sa-intl.org" target="_blank">sa-intl.org</a></li>
+    </ul>
+  </div>
+
+  <div class="article-cta">
+    <h3>Want a Professional Gap Assessment?</h3>
+    <p>The PASA is a powerful starting point. RC2 Consulting conducts structured pre-audit gap assessments that go deeper — identifying documentation gaps, policy deficiencies, and training system weaknesses with a corrective action plan built into the deliverable.</p>
+    <a href="https://rc2consulting.github.io/contact.html" class="btn-cta">Schedule a Pre-Audit Assessment →</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-tagline">Operational Clarity. Compliance Confidence. Systems That Scale.</div>
+  <div class="footer-links">
+    <a href="https://rc2consulting.github.io/">Home</a>
+    <a href="https://rc2consulting.github.io/services.html">Services</a>
+    <a href="https://rc2consulting.github.io/who-we-help.html">Who We Help</a>
+    <a href="https://rc2consulting.github.io/about.html">About</a>
+    <a href="https://rc2consulting.github.io/RC2_Resources_Page.html">Resources</a>
+    <a href="https://rc2consulting.github.io/contact.html">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 RC2 Consulting, LLC &nbsp;|&nbsp; Privacy Policy &nbsp;|&nbsp; Terms of Service</div>
+</footer>
+
+</body>
+</html>

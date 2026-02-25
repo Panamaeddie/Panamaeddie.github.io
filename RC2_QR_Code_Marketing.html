@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>RC2 Consulting — QR Code Marketing Assets</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --navy:#0B2545;--blue:#1A4A8A;--lb:#2563EB;
+      --gold:#C8922A;--gold-lt:#F0B429;
+      --bg:#F4F6FA;--w:#FFFFFF;--txt:#1C2B3A;--mu:#4A5568;--bdr:#E2E8F0;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap');
+    body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--txt);margin:0;line-height:1.5}
+
+    /* ─── SCREEN HEADER ──────────────────────────────────────── */
+    .screen-only{padding:28px 40px 0}
+    .screen-hdr{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+    .logo-mark{background:var(--navy);color:#fff;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center}
+    .logo-mark sup{font-size:.55rem;vertical-align:super}
+    .hdr-title{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--navy)}
+    .hdr-sub{font-size:.82rem;color:var(--mu);margin-bottom:20px}
+    .print-note{background:#EFF6FF;border:1px solid #BFDBFE;border-radius:8px;padding:12px 18px;font-size:.82rem;color:#1D4ED8;margin-bottom:28px;display:flex;align-items:center;gap:10px}
+    .btn-print-all{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;font-weight:700;font-size:.84rem;padding:10px 22px;border-radius:6px;border:none;cursor:pointer;font-family:'Source Sans 3',sans-serif;margin-left:auto}
+    .btn-print-all:hover{background:var(--blue)}
+
+    /* ─── CARD GRID ─────────────────────────────────────────── */
+    .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;padding:0 40px 48px;align-items:start}
+
+    /* ─── SHARED CARD STYLES ───────────────────────────────── */
+    .qr-card{background:var(--w);border-radius:14px;border:1px solid var(--bdr);box-shadow:0 4px 20px rgba(11,37,69,.10);overflow:hidden;break-inside:avoid}
+    .card-label{font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mu);padding:10px 18px 0;text-align:center}
+
+    /* ─── CARD 1 — MINIMAL NAVY ─────────────────────────────── */
+    .card-navy{background:var(--navy)}
+    .card-navy .card-label{color:rgba(255,255,255,.5)}
+    .card-navy .card-inner{padding:24px;display:flex;flex-direction:column;align-items:center;gap:16px}
+    .card-navy .brand-row{display:flex;align-items:center;gap:10px}
+    .card-navy .brand-mark{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;width:36px;height:36px;border-radius:6px;display:flex;align-items:center;justify-content:center}
+    .card-navy .brand-mark sup{font-size:.5rem;vertical-align:super}
+    .card-navy .brand-name{font-size:.9rem;font-weight:700;color:rgba(255,255,255,.9);letter-spacing:.3px}
+    .card-navy .qr-box{background:#fff;border-radius:10px;padding:12px;display:flex;align-items:center;justify-content:center}
+    .card-navy .tagline{font-size:.75rem;color:rgba(255,255,255,.65);text-align:center;line-height:1.5}
+    .card-navy .url-text{font-size:.7rem;font-weight:700;color:rgba(255,255,255,.5);letter-spacing:.5px;padding-bottom:4px}
+    .card-navy .divider{width:100%;height:1px;background:rgba(255,255,255,.12)}
+
+    /* ─── CARD 2 — WHITE + GOLD ACCENT ─────────────────────── */
+    .card-white .card-inner{padding:20px;display:flex;flex-direction:column;align-items:center;gap:14px}
+    .card-white .top-bar{width:100%;height:6px;background:linear-gradient(90deg,var(--navy),var(--gold));border-radius:3px}
+    .card-white .brand-row-w{display:flex;align-items:center;gap:10px}
+    .card-white .brand-mark-w{background:var(--navy);color:#fff;font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;width:36px;height:36px;border-radius:6px;display:flex;align-items:center;justify-content:center}
+    .card-white .brand-mark-w sup{font-size:.5rem;vertical-align:super}
+    .card-white .brand-name-w{font-size:.9rem;font-weight:700;color:var(--navy)}
+    .card-white .qr-box-w{background:var(--bg);border-radius:10px;padding:10px;border:1.5px solid var(--bdr);display:flex;align-items:center;justify-content:center}
+    .card-white .tagline-w{font-size:.73rem;color:var(--mu);text-align:center;line-height:1.55}
+    .card-white .url-chip{background:var(--navy);color:#fff;font-size:.66rem;font-weight:700;padding:5px 14px;border-radius:20px;letter-spacing:.4px}
+    .card-white .cta-strip{width:100%;background:linear-gradient(90deg,var(--navy),var(--blue));border-radius:8px;padding:10px;text-align:center}
+    .card-white .cta-text{font-size:.72rem;font-weight:700;color:#fff;letter-spacing:.3px}
+
+    /* ─── CARD 3 — GOLD GRADIENT ────────────────────────────── */
+    .card-gold{background:linear-gradient(145deg,#1A3A6B,var(--navy))}
+    .card-gold .card-inner{padding:22px;display:flex;flex-direction:column;align-items:center;gap:14px}
+    .card-gold .gold-bar{width:60px;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-lt));border-radius:2px}
+    .card-gold .rc2-big{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:800;color:#fff;letter-spacing:1px;line-height:1}
+    .card-gold .rc2-big sup{font-size:.7rem;vertical-align:super;color:var(--gold-lt)}
+    .card-gold .co-name{font-size:.72rem;font-weight:700;color:rgba(255,255,255,.6);letter-spacing:2px;text-transform:uppercase;margin-top:-8px}
+    .card-gold .qr-box-g{background:#fff;border-radius:10px;padding:12px;display:flex;align-items:center;justify-content:center}
+    .card-gold .scan-text{font-size:.72rem;font-weight:700;color:var(--gold-lt);letter-spacing:1px;text-transform:uppercase}
+    .card-gold .specialties{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+    .card-gold .spec-tag{font-size:.62rem;font-weight:700;padding:3px 8px;border-radius:10px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.15)}
+    .card-gold .url-g{font-size:.66rem;color:rgba(255,255,255,.45);letter-spacing:.4px;padding-bottom:2px}
+
+    /* ─── CARD SIZING LABELS ────────────────────────────────── */
+    .size-badge{display:inline-block;font-size:.6rem;font-weight:700;padding:2px 8px;border-radius:8px;background:var(--bg);color:var(--mu);border:1px solid var(--bdr);margin:8px auto 0;display:block;text-align:center;width:fit-content;margin:8px auto}
+
+    /* ─── PRINT STYLES ──────────────────────────────────────── */
+    @media print{
+      body{background:#fff}
+      .screen-only{display:none}
+      .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:20px;page-break-inside:avoid}
+      .qr-card{box-shadow:none;border:1.5px solid #ddd}
+      .size-badge{display:none}
+      @page{margin:15mm;size:A4 landscape}
+    }
+  </style>
+</head>
+<body>
+
+<!-- SCREEN HEADER (hidden on print) -->
+<div class="screen-only">
+  <div class="screen-hdr">
+    <div class="logo-mark">RC<sup>2</sup></div>
+    <div>
+      <div class="hdr-title">RC2 Consulting — QR Code Marketing Assets</div>
+    </div>
+    <button class="btn-print-all" onclick="window.print()">🖨 Print All Cards</button>
+  </div>
+  <div class="hdr-sub">Three branded QR code variations — scan to verify they work, then print for business cards, flyers, handouts, and trade show materials.</div>
+  <div class="print-note">
+    💡 <span><strong>To print:</strong> Click "Print All Cards" → set paper to <strong>Landscape</strong> → enable <strong>Background graphics</strong> in print settings → set margins to <strong>Minimum</strong>. Right-click any card to save as image.</span>
+  </div>
+</div>
+
+<!-- CARD GRID -->
+<div class="card-grid">
+
+  <!-- CARD 1 — NAVY DARK -->
+  <div class="qr-card card-navy">
+    <div class="card-label">Variation 1 — Navy Dark</div>
+    <div class="card-inner">
+      <div class="brand-row">
+        <div class="brand-mark">RC<sup>2</sup></div>
+        <div class="brand-name">RC2 Consulting</div>
+      </div>
+      <div class="divider"></div>
+      <div class="qr-box">
+        <div id="qr1"></div>
+      </div>
+      <div class="tagline">Operational Clarity.<br>Compliance Confidence.<br>Systems That Scale.</div>
+      <div class="divider"></div>
+      <div class="url-text">rc2consulting.github.io</div>
+    </div>
+    <div class="size-badge">Recommended: Business Card / Postcard</div>
+  </div>
+
+  <!-- CARD 2 — WHITE + GOLD -->
+  <div class="qr-card card-white">
+    <div class="card-label">Variation 2 — White + Gold Accent</div>
+    <div class="card-inner">
+      <div class="top-bar"></div>
+      <div class="brand-row-w">
+        <div class="brand-mark-w">RC<sup>2</sup></div>
+        <div class="brand-name-w">RC2 Consulting</div>
+      </div>
+      <div class="qr-box-w">
+        <div id="qr2"></div>
+      </div>
+      <div class="tagline-w">Operations &amp; Compliance Consulting<br>SBA · WRAP · Supply Chain · Government Contracting</div>
+      <div class="cta-strip">
+        <div class="cta-text">📱 SCAN TO VISIT OUR RESOURCE CENTER</div>
+      </div>
+      <div class="url-chip">rc2consulting.github.io</div>
+    </div>
+    <div class="size-badge">Recommended: Flyer Insert / Trade Show</div>
+  </div>
+
+  <!-- CARD 3 — GOLD GRADIENT -->
+  <div class="qr-card card-gold">
+    <div class="card-label" style="color:rgba(255,255,255,.4)">Variation 3 — Premium Dark</div>
+    <div class="card-inner">
+      <div class="gold-bar"></div>
+      <div class="rc2-big">RC<sup>2</sup></div>
+      <div class="co-name">Consulting</div>
+      <div class="qr-box-g">
+        <div id="qr3"></div>
+      </div>
+      <div class="scan-text">Scan to Access Free Tools &amp; Resources</div>
+      <div class="specialties">
+        <span class="spec-tag">WRAP Compliance</span>
+        <span class="spec-tag">Gov Contracting</span>
+        <span class="spec-tag">Supply Chain</span>
+        <span class="spec-tag">Operations</span>
+      </div>
+      <div class="url-g">rc2consulting.github.io</div>
+    </div>
+    <div class="size-badge">Recommended: Premium Print / Folder Insert</div>
+  </div>
+
+</div>
+
+<script>
+  const URL = "https://rc2consulting.github.io";
+
+  // QR 1 — navy card, dark modules on white
+  new QRCode(document.getElementById("qr1"), {
+    text: URL,
+    width: 180,
+    height: 180,
+    colorDark: "#0B2545",
+    colorLight: "#FFFFFF",
+    correctLevel: QRCode.CorrectLevel.H
+  });
+
+  // QR 2 — white card
+  new QRCode(document.getElementById("qr2"), {
+    text: URL,
+    width: 180,
+    height: 180,
+    colorDark: "#0B2545",
+    colorLight: "#F4F6FA",
+    correctLevel: QRCode.CorrectLevel.H
+  });
+
+  // QR 3 — gold card, navy modules on white
+  new QRCode(document.getElementById("qr3"), {
+    text: URL,
+    width: 180,
+    height: 180,
+    colorDark: "#1A3A6B",
+    colorLight: "#FFFFFF",
+    correctLevel: QRCode.CorrectLevel.H
+  });
+</script>
+</body>
+</html>
