@@ -124,7 +124,7 @@
 <div class="wrap">
   <a href="https://rc2consulting.github.io/RC2_Resources_Page.html" class="btn-back">← Volver a Recursos</a>
 
-  <div class="callout" style="margin-top:24px"><p>Your NAICS code determines your SBA size standard, which set-aside categories you can access, and how contracting officers find your business in SAM.gov. Most businesses can legitimately register multiple NAICS codes — but your <em>primary</em> code must reflect your highest-revenue activity. Misrepresenting your primary code to access a more favorable size standard is a federal certification violation.</p></div>
+  <div class="callout" style="margin-top:24px"><p>Su código NAICS determina su estándar de tamaño SBA, a qué categorías de contratos reservados puede acceder y cómo los oficiales de contratación encuentran su negocio en SAM.gov. La mayoría de los negocios puede registrar legítimamente múltiples códigos NAICS — pero su código <em>principal</em> debe reflejar su actividad de mayor ingreso. Tergiversar su código principal para acceder a un estándar de tamaño más favorable es una violación de certificación federal.</p></div>
 
   <!-- SEARCH BAR -->
   <div class="search-bar">
@@ -136,21 +136,21 @@
       <label class="sb-label">Sector</label>
       <select class="sb-sel" id="sector-filter" onchange="filterTable()">
         <option value="">Todos los Sectores</option>
-        <option value="Agriculture">Agricultura (11)</option>
-        <option value="Construction">Construcción (23)</option>
-        <option value="Manufacturing">Manufactura (31–33)</option>
-        <option value="Wholesale">Comercio Mayorista (42)</option>
-        <option value="Retail">Comercio Minorista (44–45)</option>
-        <option value="Transportation">Transporte (48–49)</option>
-        <option value="Information">Información (51)</option>
-        <option value="Finance">Finanzas y Seguros (52)</option>
-        <option value="Real Estate">Bienes Raíces (53)</option>
-        <option value="Professional">Servicios Profesionales (54)</option>
+        <option value="Agricultura">Agricultura (11)</option>
+        <option value="Construcción">Construcción (23)</option>
+        <option value="Manufactura">Manufactura (31–33)</option>
+        <option value="Mayorista">Comercio Mayorista (42)</option>
+        <option value="Minorista">Comercio Minorista (44–45)</option>
+        <option value="Transporte">Transporte (48–49)</option>
+        <option value="Información">Información (51)</option>
+        <option value="Finanzas">Finanzas y Seguros (52)</option>
+        <option value="Bienes Raíces">Bienes Raíces (53)</option>
+        <option value="Profesional">Servicios Profesionales (54)</option>
         <option value="Admin">Administración y Apoyo (56)</option>
-        <option value="Education">Servicios Educativos (61)</option>
-        <option value="Healthcare">Salud (62)</option>
-        <option value="Arts">Artes y Entretenimiento (71)</option>
-        <option value="Food">Servicios de Alimentos (72)</option>
+        <option value="Educación">Servicios Educativos (61)</option>
+        <option value="Salud">Salud (62)</option>
+        <option value="Artes">Artes y Entretenimiento (71)</option>
+        <option value="Alimentos">Servicios de Alimentos (72)</option>
         <option value="Otros Servicios">Otros Servicios (81)</option>
       </select>
     </div>
@@ -158,8 +158,8 @@
       <label class="sb-label">Base</label>
       <select class="sb-sel" id="basis-filter" onchange="filterTable()">
         <option value="">Todos</option>
-        <option value="Revenue">Basado en Ingresos</option>
-        <option value="Employees">Basado en Empleados</option>
+        <option value="Ingresos">Basado en Ingresos</option>
+        <option value="Empleados">Basado en Empleados</option>
       </select>
     </div>
     <div class="sb-group">
@@ -219,102 +219,102 @@
 <script>
 // [naics, description, sector, sizeStd, basis, gcRelevance, notes]
 const NAICS_DATA = [
-  ['111','Crop Production','Agriculture','$2M–$3M','Revenue','Low','Niche federal purchase programs'],
-  ['112','Animal Production','Agriculture','$2M–$3.5M','Revenue','Low','USDA programs'],
-  ['115','Agricultural Support Activities','Agriculture','$8.5M','Revenue','Low',''],
-  ['2361','Residential Building Construction','Construction','$45M','Revenue','Medium','DoD housing, federal facilities'],
-  ['2362','Nonresidential Building Construction','Construction','$45M','Revenue','High','Federal construction, GSA building projects'],
-  ['2371','Utility System Construction','Construction','$45M','Revenue','High','DoD, federal infrastructure'],
-  ['2372','Land Subdivision','Construction','$45M','Revenue','Low',''],
-  ['2373','Highway, Street & Bridge Construction','Construction','$45M','Revenue','High','FHWA, DoT contracts'],
-  ['2381','Foundation, Structure Contractors','Construction','$22M','Revenue','Medium','Subcontract-heavy'],
-  ['2382','Building Equipment Contractors','Construction','$22M','Revenue','High','HVAC, electrical — federal buildings'],
-  ['2383','Building Finishing Contractors','Construction','$22M','Revenue','Medium','Interior fit-out — federal'],
-  ['2389','Other Specialty Trade Contractors','Construction','$22M','Revenue','Medium',''],
-  ['311','Food Manufacturing','Manufacturing','$47M','Revenue','Medium','USDA, military commissary programs'],
-  ['3133','Textile Mills','Manufacturing','1,000','Employees','Medium','DoD fabric requirements'],
-  ['3141','Textile Product Mills','Manufacturing','500','Employees','Medium','Military bedding, textiles'],
-  ['3151','Apparel Knitting Mills','Manufacturing','500','Employees','Medium','Military knitwear — Berry Amendment'],
-  ['3159','Apparel Accessories Mfg','Manufacturing','500','Employees','Medium',''],
-  ['3161','Leather & Hide Tanning','Manufacturing','500','Employees','Low',''],
-  ['3162','Footwear Manufacturing','Manufacturing','500','Employees','Medium','Military boots — Berry Amendment'],
-  ['3169','Other Leather Products','Manufacturing','500','Employees','Low',''],
-  ['3211','Sawmills & Wood Preservation','Manufacturing','500','Employees','Low',''],
-  ['3219','Other Wood Product Mfg','Manufacturing','500','Employees','Low',''],
-  ['3241','Petroleum & Coal Products','Manufacturing','1,500','Employees','High','DoD fuel and energy contracts'],
-  ['3251','Basic Chemical Manufacturing','Manufacturing','750–1,000','Employees','Medium','DoD chemical programs'],
-  ['3329','Other Fabricated Metal Products','Manufacturing','500','Employees','High','DoD hardware, components'],
-  ['3341','Computer & Peripheral Equipment','Manufacturing','1,000','Employees','High','IT hardware — federal procurement'],
-  ['3345','Electronic Instruments Mfg','Manufacturing','1,000','Employees','High','Sensors, defense electronics'],
-  ['3364','Aerospace Products & Parts','Manufacturing','1,500','Employees','High','DoD — primary defense manufacturing NAICS'],
-  ['3391','Medical Equipment & Supplies','Manufacturing','500–1,000','Employees','High','VA, DoD medical supply'],
-  ['4231','Motor Vehicle Wholesale','Wholesale','250','Employees','Medium','GSA fleet programs'],
-  ['4234','Professional Equipment Wholesale','Wholesale','250','Employees','High','IT equipment — federal supply'],
-  ['4241','Paper & Paper Products Wholesale','Wholesale','250','Employees','Medium','Office supplies — GSA'],
-  ['4245','Apparel & Piece Goods Wholesale','Wholesale','500','Employees','Medium','Military clothing sales points'],
-  ['4251','Electronic Markets & Agents','Wholesale','250','Employees','High','Technology resellers — GSA Schedule'],
-  ['4411','Auto Dealers','Retail','$34M','Revenue','Low',''],
-  ['4441','Building Material & Supplies','Retail','$47M','Revenue','Medium','Maintenance/repair supplies'],
-  ['4451','Grocery Stores','Retail','$34M','Revenue','Low','Commissary — separate program'],
-  ['4481','Clothing Stores','Retail','$34M','Revenue','Low',''],
-  ['4511','Sporting Goods Stores','Retail','$34M','Revenue','Low',''],
-  ['4521','Department Stores','Retail','$47M','Revenue','Low',''],
-  ['4811','Scheduled Air Transportation','Transportation','1,500','Employees','High','DoD air charter, CRAF'],
-  ['4812','Nonscheduled Air Transportation','Transportation','1,500','Employees','High','DoD logistics, charter'],
-  ['4841','General Freight Trucking','Transportation','$34M','Revenue','High','Military moves, SDDC contracts'],
-  ['4842','Specialized Freight Trucking','Transportation','$34M','Revenue','High','Hazmat, defense cargo'],
-  ['4881','Air Transportation Support','Transportation','$34M','Revenue','Medium',''],
-  ['4931','Warehousing & Storage','Transportation','$34M','Revenue','High','DLA distribution, logistics'],
-  ['5111','Newspaper Publishers','Information','$47M','Revenue','Low',''],
-  ['5121','Motion Picture / Video Production','Information','$47M','Revenue','Low',''],
-  ['5151','Radio & TV Broadcasting','Information','$47M','Revenue','Low',''],
-  ['5179','Other Telecom Carriers','Information','1,500','Employees','High','DoD telecom contracts'],
-  ['5182','Data Processing & Hosting','Information','$34M','Revenue','High','Federal cloud, IT infrastructure'],
-  ['5191','Other Information Services','Information','$34M','Revenue','High','Online info, data analytics'],
-  ['5221','Depository Credit Intermediation','Finance','$850M','Revenue','Low',''],
-  ['5241','Insurance Carriers','Finance','$47M','Revenue','Low',''],
-  ['5311','Lessors of Real Estate','Real Estate','$34M','Revenue','Low',''],
-  ['5321','Auto Rental & Leasing','Real Estate','$34M','Revenue','Medium','GSA fleet leasing'],
-  ['5411','Legal Services','Professional','$19M','Revenue','High','Government legal support'],
-  ['5412','Accounting & Tax Preparation','Professional','$22M','Revenue','High','DCAA, federal accounting support'],
-  ['5413','Architectural & Engineering','Professional','$19M','Revenue','High','Federal design-build, DoD A&E'],
-  ['5414','Specialized Design Services','Professional','$19M','Revenue','Medium','Federal graphics, design'],
-  ['5415','Computer Systems Design','Professional','$34M','Revenue','High','IT services — top federal NAICS'],
-  ['54151','Custom Computer Programming','Professional','$34M','Revenue','High','Software development — federal'],
-  ['54152','Computer Systems Design Services','Professional','$34M','Revenue','High','Systems integration — federal'],
-  ['54161','Management Consulting','Professional','$19M','Revenue','High','Federal advisory, program management'],
-  ['54162','Environmental Consulting','Professional','$19M','Revenue','High','EPA, DoD environmental programs'],
-  ['54169','Other Scientific Consulting','Professional','$19M','Revenue','High','DoD R&D support'],
-  ['5417','Scientific R&D Services','Professional','$34M–$47M','Revenue','High','DARPA, NIH, DoD research'],
-  ['5418','Advertising & PR','Professional','$19M','Revenue','Medium','Federal communications'],
-  ['5419','Other Professional Services','Professional','$19M','Revenue','Medium',''],
-  ['5611','Office Admin Services','Admin','$19M','Revenue','High','Federal back-office support'],
-  ['5612','Facilities Support Services','Admin','$47M','Revenue','High','Federal building O&M — top NAICS'],
-  ['5613','Employment Placement & Staffing','Admin','$34M','Revenue','High','Federal staffing contracts'],
-  ['5614','Business Support Services','Admin','$19M','Revenue','High','Federal help desk, call center'],
-  ['5615','Travel Arrangement Services','Admin','$19M','Revenue','Medium','Federal travel management'],
-  ['5616','Investigation & Security','Admin','$25.5M','Revenue','High','Federal security contracts'],
-  ['5617','Services to Buildings','Admin','$19M','Revenue','High','Federal janitorial, grounds maintenance'],
-  ['5621','Waste Collection','Admin','$19M','Revenue','Medium','Federal waste management'],
-  ['6111','Elementary & Secondary Schools','Education','$12M','Revenue','Medium','DoD DODEA, educational services'],
-  ['6112','Junior Colleges','Education','$47M','Revenue','Low',''],
-  ['6113','Colleges & Universities','Education','$47M','Revenue','Medium','DoD university programs'],
-  ['6116','Vocational & Technical Schools','Education','$12M','Revenue','High','Federal training programs'],
-  ['6119','Other Education Services','Education','$19M','Revenue','High','Federal professional training'],
-  ['6211','Offices of Physicians','Healthcare','$19M','Revenue','High','VA, DoD medical contracts'],
-  ['6213','Offices Allied Health Professionals','Healthcare','$19M','Revenue','High','VA health support'],
-  ['6215','Medical & Diagnostic Labs','Healthcare','$19M','Revenue','High','Federal lab services'],
-  ['6216','Home Health Care Services','Healthcare','$19M','Revenue','High','VA in-home care programs'],
-  ['6219','Other Ambulatory Care','Healthcare','$19M','Revenue','High',''],
-  ['6221','General Medical & Surgical Hospitals','Healthcare','1,500','Employees','High','VA hospital support'],
-  ['7111','Performing Arts Companies','Arts','$12M','Revenue','Low',''],
-  ['7115','Independent Artists & Writers','Arts','$12M','Revenue','Low',''],
-  ['7211','Traveler Accommodation','Food','$34M','Revenue','Medium','Federal lodging contracts'],
-  ['7223','Special Food Services','Food','$19M','Revenue','Medium','Federal food service, catering'],
-  ['8111','Automotive Repair & Maintenance','Other Services','$9M','Revenue','Low',''],
-  ['8121','Personal Care Services','Other Services','$9M','Revenue','Low',''],
-  ['8131','Religious Organizations','Other Services','$12M','Revenue','Low',''],
-  ['8141','Private Households','Other Services','$9M','Revenue','Low',''],
+  ['111','Producción Agrícola','Agricultura','$2M–$3M','Ingresos','Baja','Programas federales de compra especializados'],
+  ['112','Producción Animal','Agricultura','$2M–$3.5M','Ingresos','Baja','Programas USDA'],
+  ['115','Actividades de Apoyo Agrícola','Agricultura','$8.5M','Ingresos','Baja',''],
+  ['2361','Construcción de Edificios Residenciales','Construcción','$45M','Ingresos','Media','Vivienda DoD, instalaciones federales'],
+  ['2362','Construcción de Edificios No Residenciales','Construcción','$45M','Ingresos','Alta','Construcción federal, proyectos de edificios GSA'],
+  ['2371','Construcción de Sistemas de Servicios Públicos','Construcción','$45M','Ingresos','Alta','DoD, infraestructura federal'],
+  ['2372','Subdivisión de Terrenos','Construcción','$45M','Ingresos','Baja',''],
+  ['2373','Construcción de Autopistas, Calles y Puentes','Construcción','$45M','Ingresos','Alta','Contratos FHWA, DoT'],
+  ['2381','Contratistas de Cimentación y Estructura','Construcción','$22M','Ingresos','Media','Alto uso de subcontratos'],
+  ['2382','Contratistas de Equipos de Edificios','Construcción','$22M','Ingresos','Alta','HVAC, eléctrico — edificios federales'],
+  ['2383','Contratistas de Acabados de Edificios','Construcción','$22M','Ingresos','Media','Acabados interiores — federal'],
+  ['2389','Otros Contratistas Especializados','Construcción','$22M','Ingresos','Media',''],
+  ['311','Manufactura de Alimentos','Manufactura','$47M','Ingresos','Media','USDA, programas de economato militar'],
+  ['3133','Industria Textil','Manufactura','1,000','Empleados','Media','Requisitos de tela del DoD'],
+  ['3141','Fabricación de Productos Textiles','Manufactura','500','Empleados','Media','Ropa de cama militar, textiles'],
+  ['3151','Fabricación de Prendas de Punto','Manufactura','500','Empleados','Media','Tejidos militares — Enmienda Berry'],
+  ['3159','Fabricación de Accesorios de Prendas','Manufactura','500','Empleados','Media',''],
+  ['3161','Curtido de Cuero y Pieles','Manufactura','500','Empleados','Baja',''],
+  ['3162','Fabricación de Calzado','Manufactura','500','Empleados','Media','Botas militares — Enmienda Berry'],
+  ['3169','Otros Productos de Cuero','Manufactura','500','Empleados','Baja',''],
+  ['3211','Aserraderos y Preservación de Madera','Manufactura','500','Empleados','Baja',''],
+  ['3219','Otras Manufacturas de Madera','Manufactura','500','Empleados','Baja',''],
+  ['3241','Productos Petrolíferos y de Carbón','Manufactura','1,500','Empleados','Alta','Contratos de combustible y energía del DoD'],
+  ['3251','Manufactura de Productos Químicos Básicos','Manufactura','750–1,000','Empleados','Media','Programas químicos del DoD'],
+  ['3329','Otros Productos Metálicos Fabricados','Manufactura','500','Empleados','Alta','Hardware y componentes del DoD'],
+  ['3341','Computadoras y Equipo Periférico','Manufactura','1,000','Empleados','Alta','Hardware TI — adquisición federal'],
+  ['3345','Fabricación de Instrumentos Electrónicos','Manufactura','1,000','Empleados','Alta','Sensores, electrónica de defensa'],
+  ['3364','Productos y Piezas Aeroespaciales','Manufactura','1,500','Empleados','Alta','DoD — NAICS principal de manufactura de defensa'],
+  ['3391','Equipos y Suministros Médicos','Manufactura','500–1,000','Empleados','Alta','Suministros médicos VA, DoD'],
+  ['4231','Mayorista de Vehículos Motorizados','Mayorista','250','Empleados','Media','Programas de flota GSA'],
+  ['4234','Mayorista de Equipos Profesionales','Mayorista','250','Empleados','Alta','Equipos TI — suministro federal'],
+  ['4241','Mayorista de Papel y Productos de Papel','Mayorista','250','Empleados','Media','Suministros de oficina — GSA'],
+  ['4245','Mayorista de Prendas y Telas','Mayorista','500','Empleados','Media','Puntos de venta de ropa militar'],
+  ['4251','Mercados Electrónicos y Agentes','Mayorista','250','Empleados','Alta','Revendedores de tecnología — GSA Schedule'],
+  ['4411','Distribuidores de Autos','Minorista','$34M','Ingresos','Baja',''],
+  ['4441','Materiales y Suministros de Construcción','Minorista','$47M','Ingresos','Media','Suministros de mantenimiento/reparación'],
+  ['4451','Tiendas de Comestibles','Minorista','$34M','Ingresos','Baja','Economato — programa separado'],
+  ['4481','Tiendas de Ropa','Minorista','$34M','Ingresos','Baja',''],
+  ['4511','Tiendas de Artículos Deportivos','Minorista','$34M','Ingresos','Baja',''],
+  ['4521','Grandes Almacenes','Minorista','$47M','Ingresos','Baja',''],
+  ['4811','Transporte Aéreo Programado','Transporte','1,500','Empleados','Alta','Chárter aéreo DoD, CRAF'],
+  ['4812','Transporte Aéreo No Programado','Transporte','1,500','Empleados','Alta','Logística DoD, chárter'],
+  ['4841','Transporte de Carga General','Transporte','$34M','Ingresos','Alta','Mudanzas militares, contratos SDDC'],
+  ['4842','Transporte de Carga Especializada','Transporte','$34M','Ingresos','Alta','Materiales peligrosos, carga de defensa'],
+  ['4881','Apoyo al Transporte Aéreo','Transporte','$34M','Ingresos','Media',''],
+  ['4931','Almacenamiento y Bodegaje','Transporte','$34M','Ingresos','Alta','Distribución DLA, logística'],
+  ['5111','Editores de Periódicos','Información','$47M','Ingresos','Baja',''],
+  ['5121','Producción de Cine y Video','Información','$47M','Ingresos','Baja',''],
+  ['5151','Radiodifusión y Televisión','Información','$47M','Ingresos','Baja',''],
+  ['5179','Otros Operadores de Telecomunicaciones','Información','1,500','Empleados','Alta','Contratos de telecomunicaciones DoD'],
+  ['5182','Procesamiento de Datos y Alojamiento','Información','$34M','Ingresos','Alta','Nube federal, infraestructura TI'],
+  ['5191','Otros Servicios de Información','Información','$34M','Ingresos','Alta','Información en línea, análisis de datos'],
+  ['5221','Intermediación de Crédito Depositario','Finanzas','$850M','Ingresos','Baja',''],
+  ['5241','Aseguradoras','Finanzas','$47M','Ingresos','Baja',''],
+  ['5311','Arrendadores de Bienes Raíces','Bienes Raíces','$34M','Ingresos','Baja',''],
+  ['5321','Alquiler y Arrendamiento de Autos','Bienes Raíces','$34M','Ingresos','Media','Arrendamiento de flota GSA'],
+  ['5411','Servicios Legales','Profesional','$19M','Ingresos','Alta','Apoyo legal gubernamental'],
+  ['5412','Contabilidad y Preparación de Impuestos','Profesional','$22M','Ingresos','Alta','DCAA, apoyo contable federal'],
+  ['5413','Arquitectura e Ingeniería','Profesional','$19M','Ingresos','Alta','Diseño-construcción federal, A&E DoD'],
+  ['5414','Servicios de Diseño Especializado','Profesional','$19M','Ingresos','Media','Gráficos y diseño federal'],
+  ['5415','Diseño de Sistemas Informáticos','Profesional','$34M','Ingresos','Alta','Servicios TI — NAICS federal principal'],
+  ['54151','Programación de Computadoras a Medida','Profesional','$34M','Ingresos','Alta','Desarrollo de software — federal'],
+  ['54152','Servicios de Diseño de Sistemas Informáticos','Profesional','$34M','Ingresos','Alta','Integración de sistemas — federal'],
+  ['54161','Consultoría Gerencial','Profesional','$19M','Ingresos','Alta','Asesoría federal, gestión de programas'],
+  ['54162','Consultoría Ambiental','Profesional','$19M','Ingresos','Alta','Programas ambientales EPA, DoD'],
+  ['54169','Otra Consultoría Científica','Profesional','$19M','Ingresos','Alta','Apoyo I&D DoD'],
+  ['5417','Servicios de I&D Científica','Profesional','$34M–$47M','Ingresos','Alta','Investigación DARPA, NIH, DoD'],
+  ['5418','Publicidad y Relaciones Públicas','Profesional','$19M','Ingresos','Media','Comunicaciones federales'],
+  ['5419','Otros Servicios Profesionales','Profesional','$19M','Ingresos','Media',''],
+  ['5611','Servicios de Administración de Oficinas','Admin','$19M','Ingresos','Alta','Apoyo de gestión interna federal'],
+  ['5612','Servicios de Apoyo a Instalaciones','Admin','$47M','Ingresos','Alta','O&M de edificios federales — NAICS principal'],
+  ['5613','Colocación de Empleo y Personal','Admin','$34M','Ingresos','Alta','Contratos de personal federal'],
+  ['5614','Servicios de Apoyo Empresarial','Admin','$19M','Ingresos','Alta','Mesa de ayuda federal, call center'],
+  ['5615','Servicios de Arreglos de Viaje','Admin','$19M','Ingresos','Media','Gestión de viajes federales'],
+  ['5616','Investigación y Seguridad','Admin','$25.5M','Ingresos','Alta','Contratos de seguridad federal'],
+  ['5617','Servicios para Edificios','Admin','$19M','Ingresos','Alta','Conserjería federal, mantenimiento de terrenos'],
+  ['5621','Recolección de Residuos','Admin','$19M','Ingresos','Media','Gestión de residuos federal'],
+  ['6111','Escuelas Primarias y Secundarias','Educación','$12M','Ingresos','Media','DoD DODEA, servicios educativos'],
+  ['6112','Institutos Técnicos','Educación','$47M','Ingresos','Baja',''],
+  ['6113','Colegios y Universidades','Educación','$47M','Ingresos','Media','Programas universitarios DoD'],
+  ['6116','Escuelas Vocacionales y Técnicas','Educación','$12M','Ingresos','Alta','Programas de capacitación federal'],
+  ['6119','Otros Servicios Educativos','Educación','$19M','Ingresos','Alta','Capacitación profesional federal'],
+  ['6211','Consultorios Médicos','Salud','$19M','Ingresos','Alta','Contratos médicos VA, DoD'],
+  ['6213','Consultorios de Profesionales de Salud Afines','Salud','$19M','Ingresos','Alta','Apoyo de salud VA'],
+  ['6215','Laboratorios Médicos y de Diagnóstico','Salud','$19M','Ingresos','Alta','Servicios de laboratorio federal'],
+  ['6216','Servicios de Atención Médica en el Hogar','Salud','$19M','Ingresos','Alta','Programas de atención en el hogar VA'],
+  ['6219','Otra Atención Ambulatoria','Salud','$19M','Ingresos','Alta',''],
+  ['6221','Hospitales Generales y Quirúrgicos','Salud','1,500','Empleados','Alta','Apoyo hospitalario VA'],
+  ['7111','Compañías de Artes Escénicas','Artes','$12M','Ingresos','Baja',''],
+  ['7115','Artistas y Escritores Independientes','Artes','$12M','Ingresos','Baja',''],
+  ['7211','Alojamiento para Viajeros','Alimentos','$34M','Ingresos','Media','Contratos de alojamiento federal'],
+  ['7223','Servicios Especiales de Alimentos','Alimentos','$19M','Ingresos','Media','Servicio de alimentos federal, catering'],
+  ['8111','Reparación y Mantenimiento de Autos','Otros Servicios','$9M','Ingresos','Baja',''],
+  ['8121','Servicios de Cuidado Personal','Otros Servicios','$9M','Ingresos','Baja',''],
+  ['8131','Organizaciones Religiosas','Otros Servicios','$12M','Ingresos','Baja',''],
+  ['8141','Hogares Privados','Otros Servicios','$9M','Ingresos','Baja',''],
 ];
 
 let sortCol=-1, sortDir=1;
@@ -325,12 +325,12 @@ function buildTable(data){
   data.forEach(row=>{
     const tr=document.createElement('tr');
     const gc=row[5];
-    const gcChip=gc==='High'?`<span class="gc-chip gc-high">★ High</span>`:gc==='Medium'?`<span class="gc-chip gc-med">◈ Medium</span>`:`<span class="gc-chip gc-low">Low</span>`;
-    const basis=row[4]==='Employees'?`<span class="std-chip sc-emp">👥 Employees</span>`:`<span class="std-chip sc-rev">💰 Revenue</span>`;
+    const gcChip=gc==='Alta'?`<span class="gc-chip gc-high">★ High</span>`:gc==='Media'?`<span class="gc-chip gc-med">◈ Media</span>`:`<span class="gc-chip gc-low">Baja</span>`;
+    const basis=row[4]==='Empleados'?`<span class="std-chip sc-emp">👥 Employees</span>`:`<span class="std-chip sc-rev">💰 Ingresos</span>`;
     tr.innerHTML=`<td class="code">${row[0]}</td><td class="title">${row[1]}${row[6]?`<div style="font-size:.7rem;color:var(--mu);margin-top:3px;font-style:italic">${row[6]}</div>`:''}</td><td style="font-size:.76rem">${row[2]}</td><td style="font-size:.8rem;font-weight:600;color:var(--navy)">${row[3]}</td><td>${basis}</td><td>${gcChip}</td>`;
     tbody.appendChild(tr);
   });
-  document.getElementById('result-count').textContent=data.length+' codes';
+  document.getElementById('result-count').textContent=data.length+' códigos';
   document.getElementById('no-results').style.display=data.length===0?'block':'none';
   document.querySelector('.naics-wrap').style.display=data.length===0?'none':'block';
   if(data.length===0) document.querySelector('.naics-wrap').style.display='';
