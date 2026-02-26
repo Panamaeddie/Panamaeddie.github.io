@@ -453,6 +453,11 @@
     .footer-links a:hover { color:white; }
     .footer-copy { font-size:0.75rem; color:rgba(255,255,255,0.5); }
 
+
+    .nav-lang { display:flex; gap:4px; margin-left:16px; }
+    .lang-btn { color:rgba(255,255,255,0.6); text-decoration:none; font-size:0.78rem; font-weight:700; padding:4px 8px; border-radius:4px; border:1px solid transparent; transition:all 0.2s; }
+    .lang-btn:hover { color:white; border-color:rgba(255,255,255,0.3); }
+    .lang-btn.active { color:white; background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.3); }
   </style>
 </head>
 <body>
@@ -469,6 +474,10 @@
     <li><a href="https://rc2consulting.github.io/RC2_Resources_Page.html">Resources</a></li>
     <li><a href="https://rc2consulting.github.io/contact.html">Contact</a></li>
   </ul>
+  <div class="nav-lang">
+    <a href="#" class="lang-btn active">EN</a>
+    <a href="https://rc2consulting.github.io/RC2_WRAP_12_Principles_Guide-es.html" class="lang-btn">ES</a>
+  </div>
 </nav>
 
 <!-- ─── HERO ─── -->

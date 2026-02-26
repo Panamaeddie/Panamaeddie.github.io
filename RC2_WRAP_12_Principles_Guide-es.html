@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guía de los 12 Principios WRAP | RC2 Consulting</title>
+  <meta name="description" content="Complete guide to WRAP's 12 Principles — plain English explanations, audit requirements, compliance gaps, best practices, and real facility examples." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:        #0B2545;
+      --blue:        #1A4A8A;
+      --light-blue:  #4A90E2;
+      --accent:      #C8922A;
+      --accent-light:#F0B429;
+      --light-bg:    #F4F6FA;
+      --white:       #FFFFFF;
+      --text:        #1C2B3A;
+      --text-muted:  #4A5568;
+      --border:      #D1D9E6;
+      --success:     #1A7A4E;
+      --success-bg:  #EBF7F2;
+      --warn:        #92400E;
+      --warn-bg:     #FEF3C7;
+      --info-bg:     #EFF6FF;
+      --gap-bg:      #FFF5F5;
+      --gap-color:   #9B1C1C;
+    }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--light-bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: linear-gradient(to bottom, rgba(11,37,69,0.72) 0%, rgba(11,37,69,0.55) 50%, rgba(11,37,69,0.72) 100%), url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1400&q=80') center/cover no-repeat;
+      color: var(--white);
+      text-align: center;
+      padding: 60px 24px 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 75% 50%, rgba(74,144,226,0.18) 0%, transparent 65%);
+    }
+    .rc2-badge {
+      display: inline-block;
+      background: rgba(74,144,226,0.2);
+      border: 1px solid rgba(74,144,226,0.45);
+      color: #A8C8F0;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 6px 20px;
+      border-radius: 24px;
+      margin-bottom: 18px;
+      position: relative;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      line-height: 1.2;
+      position: relative;
+    }
+    .hero h1 span { color: #FFFFFF; }
+    .hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.75);
+      max-width: 580px;
+      margin: 0 auto 28px;
+      position: relative;
+    }
+
+    /* Stats bar */
+    .hero-stats {
+      display: inline-flex;
+      gap: 32px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      padding: 16px 32px;
+      position: relative;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      display: block;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent-light);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .stat-divider {
+      width: 1px;
+      background: rgba(255,255,255,0.2);
+      align-self: stretch;
+    }
+
+    /* ─── INTRO CARD ─── */
+    .intro-wrap {
+      max-width: 900px;
+      margin: -32px auto 0;
+      padding: 0 24px;
+      position: relative;
+      z-index: 10;
+    }
+    .intro-card {
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(11,37,69,0.14);
+      padding: 32px 40px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .intro-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .intro-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .icon-blue { background: var(--info-bg); }
+    .icon-green { background: var(--success-bg); }
+    .icon-gold { background: rgba(200,146,42,0.1); }
+    .icon-red { background: var(--gap-bg); }
+    .intro-item strong {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
+    .intro-item span {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* ─── MAIN CONTENT ─── */
+    .main {
+      max-width: 900px;
+      margin: 48px auto 64px;
+      padding: 0 24px;
+    }
+
+    /* Progress indicator */
+    .progress-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      background: var(--white);
+      border-radius: 10px;
+      padding: 16px 24px;
+      box-shadow: 0 2px 8px rgba(11,37,69,0.08);
+      border: 1px solid var(--border);
+    }
+    .progress-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .progress-text strong { color: var(--navy); }
+    .btn-expand-all {
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-expand-all:hover { background: var(--blue); }
+
+    /* ─── ACCORDION ─── */
+    .accordion { display: flex; flex-direction: column; gap: 12px; }
+
+    .principle {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 8px rgba(11,37,69,0.06);
+      overflow: hidden;
+      transition: box-shadow 0.25s;
+    }
+    .principle:hover { box-shadow: 0 4px 16px rgba(11,37,69,0.12); }
+    .principle.open { border-color: var(--light-blue); box-shadow: 0 4px 20px rgba(26,74,138,0.15); }
+
+    .principle-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s;
+    }
+    .principle-header:hover { background: var(--light-bg); }
+    .principle.open .principle-header { background: linear-gradient(to right, #EFF6FF, var(--white)); }
+
+    .p-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--navy);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    .principle.open .p-number { background: var(--blue); }
+
+    .p-header-text { flex: 1; }
+    .p-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.3;
+    }
+    .p-subtitle {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .p-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .p-tag {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 8px;
+    }
+    .tag-labor   { background: rgba(26,74,138,0.1); color: var(--blue); }
+    .tag-safety  { background: rgba(26,122,78,0.1); color: var(--success); }
+    .tag-hr      { background: rgba(200,146,42,0.1); color: var(--accent); }
+    .tag-legal   { background: rgba(155,28,28,0.1); color: var(--gap-color); }
+    .tag-env     { background: rgba(16,85,58,0.1); color: #16553A; }
+    .tag-security{ background: rgba(11,37,69,0.1); color: var(--navy); }
+
+    .p-chevron {
+      font-size: 1rem;
+      color: var(--text-muted);
+      transition: transform 0.3s;
+      flex-shrink: 0;
+    }
+    .principle.open .p-chevron { transform: rotate(180deg); color: var(--blue); }
+
+    /* Panel */
+    .principle-panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .principle.open .principle-panel { max-height: 2000px; }
+
+    .panel-inner {
+      padding: 0 24px 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    /* Section boxes inside panel */
+    .p-section {
+      border-radius: 10px;
+      padding: 18px;
+    }
+    .p-section.full-width { grid-column: 1 / -1; }
+
+    .p-section-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Meaning */
+    .sec-meaning { background: var(--info-bg); border-left: 3px solid var(--light-blue); }
+    .sec-meaning .p-section-title { color: var(--blue); }
+    .sec-meaning p { font-size: 0.88rem; color: var(--text); line-height: 1.65; }
+
+    /* Auditors */
+    .sec-audit { background: var(--light-bg); border-left: 3px solid var(--navy); }
+    .sec-audit .p-section-title { color: var(--navy); }
+    .sec-audit ul { list-style: none; }
+    .sec-audit ul li {
+      font-size: 0.85rem;
+      color: var(--text);
+      padding: 5px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .sec-audit ul li:last-child { border-bottom: none; }
+    .sec-audit ul li::before { content: '🔍'; font-size: 0.75rem; flex-shrink: 0; margin-top: 2px; }
+
+    /* Gaps */
+    .sec-gaps { background: var(--gap-bg); border-left: 3px solid var(--gap-color); }
+    .sec-gaps .p-section-title { color: var(--gap-color); }
+    .sec-gaps ul { list-style: none; }
+    .sec-gaps ul li {
+      font-size: 0.85rem;
+      color: var(--text);
+      padding: 5px 0;
+      border-bottom: 1px solid #FECACA;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .sec-gaps ul li:last-child { border-bottom: none; }
+    .sec-gaps ul li::before { content: '⚠️'; font-size: 0.75rem; flex-shrink: 0; margin-top: 2px; }
+
+    /* Best Practices */
+    .sec-best { background: var(--success-bg); border-left: 3px solid var(--success); }
+    .sec-best .p-section-title { color: var(--success); }
+    .sec-best ol { list-style: none; counter-reset: steps; }
+    .sec-best ol li {
+      counter-increment: steps;
+      font-size: 0.85rem;
+      color: var(--text);
+      padding: 5px 0;
+      border-bottom: 1px solid #C6F6E0;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .sec-best ol li:last-child { border-bottom: none; }
+    .sec-best ol li::before {
+      content: counter(steps);
+      background: var(--success);
+      color: white;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      font-size: 0.7rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Example */
+    .sec-example { background: var(--warn-bg); border-left: 3px solid var(--accent); grid-column: 1 / -1; }
+    .sec-example .p-section-title { color: var(--accent); }
+    .sec-example p { font-size: 0.88rem; color: var(--text); line-height: 1.65; }
+    .sec-example p strong { color: var(--navy); }
+
+    /* ─── CTA FOOTER ─── */
+    .cta-section {
+      background: #1A4A8A;
+      color: var(--white);
+      text-align: center;
+      padding: 56px 24px;
+      margin-top: 40px;
+    }
+    .cta-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      margin-bottom: 12px;
+    }
+    .cta-section p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.78);
+      max-width: 520px;
+      margin: 0 auto 28px;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 16px 36px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .cta-btn:hover { background: var(--accent-light); color: var(--navy); transform: translateY(-2px); }
+
+    footer {
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    footer strong { color: var(--blue); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 700px) {
+      .hero h1 { font-size: 2rem; }
+      .hero-stats { gap: 16px; padding: 14px 20px; }
+      .intro-card { grid-template-columns: 1fr; padding: 24px; }
+      .panel-inner { grid-template-columns: 1fr; }
+      .sec-example { grid-column: 1; }
+      .sec-meaning.full-width { grid-column: 1; }
+      .p-tags { display: none; }
+    }
+  
+    /* ══ SHARED NAV ══ */
+    .topnav { background: #0B2545; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 52px; position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 8px rgba(0,0,0,0.25); }
+    .nav-brand { display:flex; align-items:center; gap:8px; text-decoration:none; }
+    .nav-logo-mark { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: white; font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+    .nav-logo-mark sup { font-size:0.5rem; vertical-align:super; }
+    .nav-brand-name { font-size:0.88rem; font-weight:600; color:rgba(255,255,255,0.9); }
+    .nav-links { display:flex; gap:4px; list-style:none; }
+    .nav-links a { color:rgba(255,255,255,0.78); text-decoration:none; font-size:0.83rem; font-weight:600; padding:6px 12px; border-radius:4px; transition:all 0.2s; white-space:nowrap; }
+    .nav-links a:hover { color:white; background:rgba(255,255,255,0.1); }
+    .nav-links a.active { color:white; background:rgba(255,255,255,0.12); }
+    /* ══ SHARED FOOTER ══ */
+    .site-footer { background: #1A4A8A; color: white; text-align: center; padding: 40px 24px; }
+    .footer-tagline { font-size:0.92rem; color:rgba(255,255,255,0.9); font-weight:600; letter-spacing:0.5px; margin-bottom:12px; }
+    .footer-links { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-bottom:14px; }
+    .footer-links a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.8rem; transition:color 0.2s; }
+    .footer-links a:hover { color:white; }
+    .footer-copy { font-size:0.75rem; color:rgba(255,255,255,0.5); }
+
+
+    .nav-lang { display:flex; gap:4px; margin-left:16px; }
+    .lang-btn { color:rgba(255,255,255,0.6); text-decoration:none; font-size:0.78rem; font-weight:700; padding:4px 8px; border-radius:4px; border:1px solid transparent; transition:all 0.2s; }
+    .lang-btn:hover { color:white; border-color:rgba(255,255,255,0.3); }
+    .lang-btn.active { color:white; background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.3); }
+  </style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="https://rc2consulting.github.io/" class="nav-brand">
+    <div class="nav-logo-mark">RC<sup>2</sup></div>
+    <span class="nav-brand-name">Consulting</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://rc2consulting.github.io/index-es.html">Inicio</a></li>
+    <li><a href="https://rc2consulting.github.io/services-es.html">Servicios</a></li>
+    <li><a href="https://rc2consulting.github.io/who-we-help-es.html">A Quién Ayudamos</a></li>
+    <li><a href="https://rc2consulting.github.io/about-es.html">Nosotros</a></li>
+    <li><a href="https://rc2consulting.github.io/RC2_Resources_Page-es.html">Recursos</a></li>
+    <li><a href="https://rc2consulting.github.io/contact-es.html">Contacto</a></li>
+  </ul>
+  <div class="nav-lang">
+    <a href="https://rc2consulting.github.io/RC2_WRAP_12_Principles_Guide.html" class="lang-btn">EN</a>
+    <a href="#" class="lang-btn active">ES</a>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="rc2-badge">RC2 CONSULTING</div>
+  <h1>Guía de los <span>12 Principios</span> WRAP</h1>
+  <p>Referencia completa para la certificación de manufactura ética — explicaciones claras, requisitos de auditoría, brechas de cumplimiento y mejores prácticas para cada principio.</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-num">12</span>
+      <span class="stat-label">Principios</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-num-wrap stat">
+      <span class="stat-num">5</span>
+      <span class="stat-label">Secciones c/u</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <span class="stat-num">50+</span>
+      <span class="stat-label">Países</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <span class="stat-num">Free</span>
+      <span class="stat-label">Recurso</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── INTRO CARD ─── -->
+<div class="intro-wrap">
+  <div class="intro-card">
+    <div class="intro-item">
+      <div class="intro-icon icon-blue">📋</div>
+      <div>
+        <strong>Explicaciones en Lenguaje Simple</strong>
+        <span>Lo que cada principio realmente significa — sin jerga legal</span>
+      </div>
+    </div>
+    <div class="intro-item">
+      <div class="intro-icon icon-blue">🔍</div>
+      <div>
+        <strong>Qué Buscan los Auditores</strong>
+        <span>Exactamente qué se revisa el día de la auditoría</span>
+      </div>
+    </div>
+    <div class="intro-item">
+      <div class="intro-icon icon-red">⚠️</div>
+      <div>
+        <strong>Brechas de Cumplimiento Comunes</strong>
+        <span>Errores que cometen las instalaciones — aprenda antes que los auditores los encuentren</span>
+      </div>
+    </div>
+    <div class="intro-item">
+      <div class="intro-icon icon-green">✅</div>
+      <div>
+        <strong>Pasos de Mejores Prácticas</strong>
+        <span>Orientación práctica de implementación para su instalación</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── MAIN ACCORDION ─── -->
+<div class="main">
+
+  <div class="progress-bar">
+    <div class="progress-text"><strong>12 Principios</strong> — Haga clic en cualquier principio para expandir</div>
+    <button class="btn-expand-all" onclick="toggleAll()">Expandir Todo</button>
+  </div>
+
+  <div class="accordion" id="accordion">
+
+    <!-- ══════════════════════════════════════
+         PRINCIPLE 1: Compliance with Laws
+    ══════════════════════════════════════ -->
+    <div class="principle" id="p1">
+      <div class="principle-header" onclick="toggle('p1')">
+        <div class="p-number">01</div>
+        <div class="p-header-text">
+          <div class="p-title">Cumplimiento de Leyes y Reglamentos Laborales</div>
+          <div class="p-subtitle">La base de la certificación WRAP</div>
+        </div>
+        <div class="p-tags">
+          <span class="p-tag tag-legal">Legal</span>
+          <span class="p-tag tag-labor">Laboral</span>
+        </div>
+        <div class="p-chevron">▼</div>
+      </div>
+      <div class="principle-panel">
+        <div class="panel-inner">
+          <div class="p-section sec-meaning full-width">
+            <div class="p-section-title">📖 Qué Significa Esto</div>
+            <p>Su instalación debe cumplir todas las leyes nacionales y locales que rigen su funcionamiento — incluyendo leyes laborales, regulaciones ambientales, códigos de construcción, requisitos de seguridad contra incendios y cualquier norma específica de la industria. WRAP usa esto como punto de partida: si no cumple la ley, nada más importa. Este principio aplica en todos los países donde opera su instalación, lo que significa que lo que es legal en un país puede aún violar los estándares WRAP si contradice las normas internacionales.</p>
+          </div>
+          <div class="p-section sec-audit">
+            <div class="p-section-title">🔍 Qué Verifican los Auditores</div>
+            <ul>
+              <li>Licencias comerciales y permisos de operación vigentes publicados en el sitio</li>
+              <li>Evidencia de revisiones regulares de cumplimiento legal</li>
+              <li>Contratos de trabajo que cumplen o superan los mínimos legales locales</li>
+              <li>Registros de nómina que coinciden con los requisitos de salario mínimo</li>
+              <li>Certificados de seguridad contra incendios vigentes y válidos</li>
+              <li>Evidencia de que la gerencia está al tanto de cambios recientes en la ley</li>
+            </ul>
+          </div>
+          <div class="p-section sec-gaps">
+            <div class="p-section-title">⚠️ Brechas de Cumplimiento Comunes</div>
+            <ul>
+              <li>Licencias de operación vencidas o faltantes no renovadas a tiempo</li>
+              <li>Instalación no informada de cambios recientes en la ley laboral local</li>
+              <li>Contratos de trabajo con cláusulas legales requeridas faltantes</li>
+              <li>Sin proceso documentado para rastrear cambios regulatorios</li>
+              <li>Subcontratistas utilizados sin verificar su cumplimiento legal</li>
+            </ul>
+          </div>
+          <div class="p-section sec-best">
+            <div class="p-section-title">✅ Pasos de Mejores Prácticas</div>
+            <ol>
+              <li>Cree un calendario de cumplimiento con todas las fechas de renovación de licencias y permisos</li>
+              <li>Asigne una persona para monitorear actualizaciones regulatorias mensualmente</li>
+              <li>Revise todos los contratos de trabajo contra la ley vigente anualmente</li>
+              <li>Publique todas las licencias requeridas de forma visible en la instalación</li>
+              <li>Documente cada revisión de cumplimiento con fecha y hallazgos</li>
+            </ol>
+          </div>
+          <div class="p-section sec-example">
+            <div class="p-section-title">🏭 Ejemplo Real de Instalación</div>
+            <p><strong>Situación:</strong> Una fábrica de ropa en Bangladesh aprobó los Principios 2–12 pero falló su auditoría WRAP porque su licencia de operación había vencido 6 meses antes y la gerencia no lo sabía. <strong>Lección:</strong> RC2 recomienda un calendario de cumplimiento digital compartido (Google Calendar funciona bien) con recordatorios de renovación a 90, 60 y 30 días para cada permiso. Una renovación perdida puede hacer fallar toda una auditoría sin importar qué tan bien funcione el resto de la instalación.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PRINCIPLE 2: Prohibition of Forced Labor
+    ══════════════════════════════════════ -->
+    <div class="principle" id="p2">
+      <div class="principle-header" onclick="toggle('p2')">
+        <div class="p-number">02</div>
+        <div class="p-header-text">
+          <div class="p-title">Prohibición del Trabajo Forzoso</div>
+          <div class="p-subtitle">Los trabajadores deben poder entrar y salir libremente — sin coerción de ningún tipo</div>
+        </div>
+        <div class="p-tags">
+          <span class="p-tag tag-labor">Laboral</span>
+          <span class="p-tag tag-legal">Derechos Humanos</span>
+        </div>
+        <div class="p-chevron">▼</div>
+      </div>
+      <div class="principle-panel">
+        <div class="panel-inner">
+          <div class="p-section sec-meaning full-width">
+            <div class="p-section-title">📖 Qué Significa Esto</div>
+            <p>Ningún trabajador en su instalación puede ser forzado, amenazado o coaccionado a trabajar en contra de su voluntad. Esto incluye el trabajo penitenciario, el trabajo por deuda (trabajar para pagar una deuda con el empleador) y cualquier situación donde los trabajadores no puedan abandonar libremente su empleo. También significa que las instalaciones no pueden retener documentos de identidad, pasaportes ni propiedades personales de los trabajadores como forma de control. Los trabajadores deben ser libres de renunciar en cualquier momento con un aviso razonable según su contrato.</p>
+          </div>
+          <div class="p-section sec-audit">
+            <div class="p-section-title">🔍 Qué Verifican los Auditores</div>
+            <ul>
+              <li>Entrevistas con trabajadores confirmando libertad para dejar el empleo</li>
+              <li>Sin evidencia de retención de documentos (pasaportes, identificaciones retenidas por el empleador)</li>
+              <li>Políticas de renuncia y terminación documentadas y accesibles</li>
+              <li>Sin honorarios de reclutamiento cobrados a los trabajadores</li>
+              <li>Los trabajadores en dormitorios pueden salir libremente fuera de horario</li>
+              <li>Los contratos establecen claramente los términos de empleo voluntario</li>
+            </ul>
+          </div>
+          <div class="p-section sec-gaps">
+            <div class="p-section-title">⚠️ Brechas de Cumplimiento Comunes</div>
+            <ul>
+              <li>La instalación retiene pasaportes de trabajadores "para guardarlos" sin consentimiento escrito del trabajador</li>
+              <li>Agencias de reclutamiento que cobran honorarios a los trabajadores antes de contratar — la instalación no lo sabe</li>
+              <li>Trabajadores en dormitorios encerrados durante las horas nocturnas</li>
+              <li>Los trabajadores sienten que no pueden renunciar debido a acuerdos informales de deuda</li>
+              <li>El proceso de renuncia no se comunica a los trabajadores en su idioma</li>
+            </ul>
+          </div>
+          <div class="p-section sec-best">
+            <div class="p-section-title">✅ Pasos de Mejores Prácticas</div>
+            <ol>
+              <li>Establezca una política escrita que prohíba la retención de documentos — publíquela en todos los idiomas usados en la instalación</li>
+              <li>Audite sus agencias de reclutamiento anualmente — confirme cero honorarios a trabajadores</li>
+              <li>Incluya una declaración de empleo voluntario en cada contrato de trabajo</li>
+              <li>Realice encuestas anónimas a trabajadores dos veces al año sobre libertad de movimiento</li>
+              <li>Capacite a todos los supervisores en indicadores de trabajo forzoso y proceso de denuncia</li>
+            </ol>
+          </div>
+          <div class="p-section sec-example">
+            <div class="p-section-title">🏭 Ejemplo Real de Instalación</div>
+            <p><strong>Situación:</strong> Una fábrica de calzado en Vietnam falló este principio porque su agencia de reclutamiento externa cobraba a trabajadores migrantes un honorario de colocación de $200, creando una deuda informal con el empleador. La gerencia no lo sabía porque nunca había auditado a la agencia. <strong>Lección:</strong> RC2 recomienda incluir una cláusula de cero honorarios de reclutamiento en todos los contratos de agencias Y exigir confirmación escrita de los nuevos empleados de que no se cobró ningún honorario.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PRINCIPLE 3: Prohibition of Child Labor
+    ══════════════════════════════════════ -->
+    <div class="principle" id="p3">
+      <div class="principle-header" onclick="toggle('p3')">
+        <div class="p-number">03</div>
+        <div class="p-header-text">
+          <div class="p-title">Prohibición del Trabajo Infantil</div>
+          <div class="p-subtitle">Sin trabajadores menores de la edad mínima legal — sin excepciones</div>
+        </div>
+        <div class="p-tags">
+          <span class="p-tag tag-labor">Laboral</span>
+          <span class="p-tag tag-legal">Derechos Humanos</span>
+        </div>
+        <div class="p-chevron">▼</div>
+      </div>
+      <div class="principle-panel">
+        <div class="panel-inner">
+          <div class="p-section sec-meaning full-width">
+            <div class="p-section-title">📖 Qué Significa Esto</div>
+            <p>WRAP prohíbe emplear a cualquier persona menor de 14 años, o la edad mínima legal de trabajo del país si es superior a 14. Las fábricas deben tener un sistema confiable para verificar las edades de los trabajadores antes de contratar. Los trabajadores jóvenes (de 15 a 17 años) pueden emplearse en algunos países pero no pueden trabajar turnos nocturnos, empleos peligrosos ni horas extra. Si una instalación descubre trabajadores menores de edad después de contratarlos, WRAP exige un plan de remediación — no simplemente despedir al niño — que incluya apoyo educativo y asistencia familiar.</p>
+          </div>
+          <div class="p-section sec-audit">
+            <div class="p-section-title">🔍 Qué Verifican los Auditores</div>
+            <ul>
+              <li>Documentos de verificación de edad en archivo para cada trabajador</li>
+              <li>Política escrita que prohíbe el trabajo infantil — publicada y traducida</li>
+              <li>Procedimientos de RRHH para verificar la edad antes de iniciar el empleo</li>
+              <li>Registro de trabajadores jóvenes (si hay trabajadores de 15 a 17 años empleados)</li>
+              <li>Sin trabajadores jóvenes en roles peligrosos o turnos nocturnos</li>
+              <li>Existe política de remediación para trabajadores menores descubiertos</li>
+            </ul>
+          </div>
+          <div class="p-section sec-gaps">
+            <div class="p-section-title">⚠️ Brechas de Cumplimiento Comunes</div>
+            <ul>
+              <li>Aceptar fotocopias de identificación en lugar de verificar documentos originales</li>
+              <li>Sin proceso para manejar situaciones donde los documentos parecen alterados</li>
+              <li>Trabajadores jóvenes (16–17) asignados a maquinaria o manejo de químicos</li>
+              <li>La política de trabajo infantil existe pero nunca se comunicó a los gerentes de contratación</li>
+              <li>Red de subcontratistas o trabajadores a domicilio usando trabajo infantil sin conocimiento de la instalación</li>
+            </ul>
+          </div>
+          <div class="p-section sec-best">
+            <div class="p-section-title">✅ Pasos de Mejores Prácticas</div>
+            <ol>
+              <li>Exija identificación oficial con foto emitida por el gobierno para todos los nuevos empleados — sin excepciones</li>
+              <li>Capacite al personal de RRHH para identificar documentos potencialmente alterados</li>
+              <li>Mantenga un archivo separado de trabajadores jóvenes de 15 a 17 años con restricciones de turno y rol documentadas</li>
+              <li>Extienda los requisitos de verificación de edad a los subcontratistas por escrito</li>
+              <li>Cree un procedimiento de remediación — incluya asistencia educativa, no solo terminación</li>
+            </ol>
+          </div>
+          <div class="p-section sec-example">
+            <div class="p-section-title">🏭 Ejemplo Real de Instalación</div>
+            <p><strong>Situación:</strong> Un molino textil en Honduras contrató sin saberlo a un joven de 15 años usando los documentos de identidad de un hermano mayor. La instalación pasó la verificación de edad porque solo verificó una fotocopia. El problema fue descubierto durante el proceso de entrevistas a trabajadores de WRAP. <strong>Lección:</strong> RC2 recomienda exigir documentos originales Y verificar con una segunda forma de identificación (registros escolares, acta de nacimiento) para cualquier trabajador que parezca joven. La instalación desarrolló una asociación biométrica de verificación de edad con el registro civil nacional como solución a largo plazo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PRINCIPLE 4: Harassment & Abuse
+    ══════════════════════════════════════ -->
+    <div class="principle" id="p4">
+      <div class="principle-header" onclick="toggle('p4')">
+        <div class="p-number">04</div>
+        <div class="p-header-text">
+          <div class="p-title">Prohibición del Acoso o Abuso</div>
+          <div class="p-subtitle">Cada trabajador merece un lugar de trabajo seguro y respetuoso</div>
+        </div>
+        <div class="p-tags">
+          <span class="p-tag tag-hr">RRHH</span>
+          <span class="p-tag tag-legal">Derechos Humanos</span>
+        </div>
+        <div class="p-chevron">▼</div>
+      </div>
+      <div class="principle-panel">
+        <div class="panel-inner">
+          <div class="p-section sec-meaning full-width">
+            <div class="p-section-title">📖 Qué Significa Esto</div>
+            <p>Ningún trabajador debe experimentar acoso o abuso verbal, físico, sexual o psicológico en el lugar de trabajo. Esto abarca no solo el comportamiento de gerente a trabajador, sino también la conducta entre compañeros. Las instalaciones deben tener una política clara contra el acoso, un mecanismo confidencial de denuncia (sistema de quejas) y un proceso documentado para investigar y resolver las quejas. Los trabajadores deben sentirse seguros para informar problemas sin temor a represalias — esto es lo que los auditores WRAP prestan más atención en este principio.</p>
+          </div>
+          <div class="p-section sec-audit">
+            <div class="p-section-title">🔍 Qué Verifican los Auditores</div>
+            <ul>
+              <li>Política escrita contra el acoso/abuso — publicada en todos los idiomas</li>
+              <li>Existe un mecanismo de quejas y los trabajadores saben cómo usarlo</li>
+              <li>Registros de quejas que muestran que se realizaron investigaciones</li>
+              <li>La política contra represalias está documentada y comunicada</li>
+              <li>Entrevistas con trabajadores confirmando conocimiento del proceso de quejas</li>
+              <li>Registros de capacitación gerencial sobre prevención del acoso</li>
+            </ul>
+          </div>
+          <div class="p-section sec-gaps">
+            <div class="p-section-title">⚠️ Brechas de Cumplimiento Comunes</div>
+            <ul>
+              <li>Existe un buzón de quejas pero los trabajadores no confían en él — las quejas van a su supervisor (el problema)</li>
+              <li>Política publicada solo en inglés en una instalación de habla no inglesa</li>
+              <li>Quejas recibidas pero sin investigación ni resolución documentadas</li>
+              <li>Supervisores usando presión de cuotas o insultos para motivar la producción — no reconocido como abuso</li>
+              <li>Sin registros de capacitación que muestren que los supervisores fueron capacitados en la política</li>
+            </ul>
+          </div>
+          <div class="p-section sec-best">
+            <div class="p-section-title">✅ Pasos de Mejores Prácticas</div>
+            <ol>
+              <li>Instale un sistema anónimo de quejas — digital o físico — no administrado por supervisores</li>
+              <li>Traduzca todas las políticas a todos los idiomas hablados en la instalación</li>
+              <li>Capacite a todos los supervisores en definiciones de acoso, ejemplos y consecuencias</li>
+              <li>Documente cada queja con fecha recibida, pasos de investigación y resolución</li>
+              <li>Realice encuestas anuales confidenciales de clima laboral para detectar problemas no reportados</li>
+            </ol>
+          </div>
+          <div class="p-section sec-example">
+            <div class="p-section-title">🏭 Ejemplo Real de Instalación</div>
+            <p><strong>Situación:</strong> Una fábrica de ropa deportiva en Sri Lanka tenía una política publicada y un buzón de quejas instalado — pero durante las entrevistas con los trabajadores, 8 de 12 trabajadores entrevistados no sabían que existía el buzón. El buzón estaba cerca de la oficina del gerente, lo que hacía incómodo su uso. <strong>Lección:</strong> RC2 recomienda colocar los mecanismos de quejas en ubicaciones neutras y privadas (cerca de baños, salas de descanso) y realizar actualizaciones trimestrales de orientación de 5 minutos recordando a todos los trabajadores cómo y dónde presentar quejas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PRINCIPLE 5: Compensation & Benefits
+    ══════════════════════════════════════ -->
+    <div class="principle" id="p5">
+      <div class="principle-header" onclick="toggle('p5')">
+        <div class="p-number">05</div>
+        <div class="p-header-text">
+          <div class="p-title">Compensación y Beneficios</div>
+          <div class="p-subtitle">Los trabajadores deben ser pagados de manera legal, precisa y puntual</div>
+        </div>
+        <div class="p-tags">
+          <span class="p-tag tag-labor">Laboral</span>
+          <span class="p-tag tag-hr">RRHH</span>
+        </div>
+        <div class="p-chevron">▼</div>
+      </div>
+      <div class="principle-panel">
+        <div class="panel-inner">
+          <div class="p-section sec-meaning full-width">
+            <div class="p-section-title">📖 Qué Significa Esto</div>
+            <p>Cada trabajador debe recibir como mínimo el salario mínimo legal de su país y región. Las horas extra deben pagarse a la tasa premium legalmente requerida. Todos los beneficios legalmente obligatorios — contribuciones al seguro social, seguro médico, licencia remunerada, pago de días festivos — deben proporcionarse. Los descuentos de salarios solo pueden ocurrir cuando lo permite la ley o cuando el trabajador ha dado su consentimiento por escrito. Los trabajadores deben recibir recibos de sueldo claros y comprensibles que desglosen sus salarios, horas, descuentos y beneficios.</p>
+          </div>
+          <div class="p-section sec-audit">
+            <div class="p-section-title">🔍 Qué Verifican los Auditores</div>
+            <ul>
+              <li>Registros de nómina cruzados con registros de tiempo y asistencia</li>
+              <li>Cumplimiento del salario mínimo — incluyendo aumentos recientes de tarifas legales</li>
+              <li>Horas extra pagadas a la tasa premium correcta</li>
+              <li>Recibos de sueldo proporcionados y comprensibles para los trabajadores</li>
+              <li>Contribuciones al seguro social y beneficios siendo remitidas</li>
+              <li>Sin descuentos ilegales o no autorizados del salario del trabajador</li>
+            </ul>
+          </div>
+          <div class="p-section sec-gaps">
+            <div class="p-section-title">⚠️ Brechas de Cumplimiento Comunes</div>
+            <ul>
+              <li>La instalación no está informada de un aumento del salario mínimo que entró en vigor recientemente</li>
+              <li>Horas extra calculadas solo sobre el salario base — excluye bonos o asignaciones requeridas por ley</li>
+              <li>Descuentos por daños, herramientas o uniformes no permitidos legalmente</li>
+              <li>Contribuciones al seguro social siendo retenidas pero no remitidas al gobierno</li>
+              <li>Recibos de sueldo confusos — los trabajadores no entienden cuánto les pagan</li>
+            </ul>
+          </div>
+          <div class="p-section sec-best">
+            <div class="p-section-title">✅ Pasos de Mejores Prácticas</div>
+            <ol>
+              <li>Suscríbase a actualizaciones del ministerio de trabajo para detectar cambios de salario mínimo de inmediato</li>
+              <li>Concilie los registros de tiempo con los de nómina mensualmente — antes de que los auditores lo hagan</li>
+              <li>Simplifique los recibos de sueldo — pruebe con un trabajador de producción para confirmar que los entiende</li>
+              <li>Verifique que los recibos de remisión al seguro social estén archivados y accesibles para auditoría</li>
+              <li>Revise todos los tipos de descuentos anualmente contra los permisos legales vigentes</li>
+            </ol>
+          </div>
+          <div class="p-section sec-example">
+            <div class="p-section-title">🏭 Ejemplo Real de Instalación</div>
+            <p><strong>Situación:</strong> Una instalación de costura en Guatemala calculaba las horas extra solo sobre el salario base, excluyendo la asignación de transporte legalmente requerida de la base de horas extra. Los trabajadores estaban siendo subpagados en cada hora extra trabajada. La instalación había operado así durante 3 años sin darse cuenta. <strong>Lección:</strong> RC2 recomienda una revisión anual de cumplimiento de nómina por terceros — el costo de la revisión siempre es menor que el costo de la responsabilidad de pago retroactivo y la falla de auditoría.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PRINCIPLE 6: Hours of Work
+    ══════════════════════════════════════ -->
+    <div class="principle" id="p6">
+      <div class="principle-header" onclick="toggle('p6')">
+        <div class="p-number">06</div>
+        <div class="p-header-text">
+          <div class="p-title">Horas de Trabajo</div>
+          <div class="p-subtitle">Las horas extra deben ser voluntarias, legales y gestionadas adecuadamente</div>
+        </div>
+        <div class="p-tags">
+          <span class="p-tag tag-labor">Laboral</span>
+          <span class="p-tag tag-hr">RRHH</span>
+        </div>
+        <div class="p-chevron">▼</div>
+      </div>
+      <div class="principle-panel">
+        <div class="panel-inner">
+          <div class="p-section sec-meaning full-width">
+            <div class="p-section-title">📖 Qué Significa Esto</div>
+            <p>Las instalaciones deben cumplir con las leyes locales sobre horas máximas de trabajo — típicamente 48 horas regulares por semana y no más de 12 horas extra por semana. Los trabajadores no pueden ser forzados a trabajar horas extra y deben ser libres de negarse sin penalización. WRAP exige que los trabajadores reciban al menos un día completo de descanso en cada período de siete días. Durante las temporadas pico de producción, muchas instalaciones violan este principio sin saberlo al permitir que las horas superen los límites legales. Los registros precisos de tiempo y asistencia son evidencia esencial del cumplimiento.</p>
+          </div>
+          <div class="p-section sec-audit">
+            <div class="p-section-title">🔍 Qué Verifican los Auditores</div>
+            <ul>
+              <li>Registros de tiempo y asistencia por un período continuo de 12 meses</li>
+              <li>Horas semanales máximas no superadas — incluyendo horas extra</li>
+              <li>Al menos un día de descanso por período de 7 días para todos los trabajadores</li>
+              <li>Horas extra registradas como voluntarias — trabajadores firmaron consentimiento o solicitud</li>
+              <li>Política escrita sobre horas máximas publicada y comunicada</li>
+              <li>Sin patrón de horas extra excesivas sistemáticas durante períodos pico</li>
+            </ul>
+          </div>
+          <div class="p-section sec-gaps">
+            <div class="p-section-title">⚠️ Brechas de Cumplimiento Comunes</div>
+            <ul>
+              <li>Horas extra obligatorias durante temporada pico — los trabajadores tienen miedo de negarse</li>
+              <li>Los registros de tiempo muestran trabajadores marcando entrada 7 días a la semana por semanas seguidas</li>
+              <li>Tarjetas de tiempo en papel fáciles de alterar — los registros no coinciden con las horas reales</li>
+              <li>Trabajadores a destajo que se quedan voluntariamente tarde — la instalación lo cuenta como voluntario pero las horas aún superan los límites legales</li>
+              <li>Guardias de seguridad y personal de dormitorios pasados por alto — sus horas no se rastrean de la misma manera</li>
+            </ul>
+          </div>
+          <div class="p-section sec-best">
+            <div class="p-section-title">✅ Pasos de Mejores Prácticas</div>
+            <ol>
+              <li>Implemente seguimiento de tiempo biométrico o electrónico — elimina la manipulación manual de registros</li>
+              <li>Configure alertas automáticas cuando cualquier trabajador se acerque al máximo semanal legal</li>
+              <li>Cree un proceso formal de solicitud de horas extra — los trabajadores firman indicando participación voluntaria</li>
+              <li>Revise todas las categorías de personal para cumplimiento de horas — incluyendo seguridad, limpieza y mantenimiento</li>
+              <li>Desarrolle capacidad de planificación de producción para reducir la dependencia de horas extra excesivas durante los picos</li>
+            </ol>
+          </div>
+          <div class="p-section sec-example">
+            <div class="p-section-title">🏭 Ejemplo Real de Instalación</div>
+            <p><strong>Situación:</strong> Una fábrica de tejidos en Camboya tenía registros limpios que mostraban un máximo de 60 horas semanales — pero las entrevistas con trabajadores revelaron que durante la temporada de festividades de octubre a diciembre, los trabajadores trabajaban regularmente más de 80 horas en períodos de 7 días sin día de descanso por 3 a 4 semanas consecutivas. La gerencia creía genuinamente que los trabajadores elegían esto voluntariamente. <strong>Lección:</strong> RC2 recomienda implementar un modelo de planificación de producción que limite la dependencia de las horas extra extendidas — y RC2 trabaja con las instalaciones para desarrollar esa capacidad como parte de nuestros servicios de preparación de auditoría.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PRINCIPLE 7: Prohibition of Discrimination
+    ══════════════════════════════════════ -->
+    <div class="principle" id="p7">
+      <div class="principle-header" onclick="toggle('p7')">
+        <div class="p-number">07</div>
+        <div class="p-header-text">
+          <div class="p-title">Prohibición de la Discriminación</div>
+          <div class="p-subtitle">Contratación, salario y promoción basados en habilidades — no en características personales</div>
+        </div>
+        <div class="p-tags">
+          <span class="p-tag tag-hr">RRHH</span>
+          <span class="p-tag tag-legal">Derechos Humanos</span>
+        </div>
+        <div class="p-chevron">▼</div>
+      </div>
+      <div class="principle-panel">
+        <div class="panel-inner">
+          <div class="p-section sec-meaning full-width">
+            <div class="p-section-title">📖 Qué Significa Esto</div>
+            <p>Las decisiones de empleo — contratación, salario, promoción, disciplina, terminación — deben basarse en calificaciones y desempeño relacionados con el trabajo, nunca en raza, género, religión, edad, nacionalidad, opinión política, orientación sexual ni ninguna otra característica personal. Esto incluye la discriminación por embarazo, que sigue siendo una de las violaciones más comunes en la manufactura de prendas a nivel mundial. Todos los trabajadores merecen trato igualitario e igual acceso a oportunidades dentro de la instalación.</p>
+          </div>
+          <div class="p-section sec-audit">
+            <div class="p-section-title">🔍 Qué Verifican los Auditores</div>
+            <ul>
+              <li>Política escrita de igualdad de oportunidades/antidiscriminación publicada visiblemente</li>
+              <li>Datos demográficos de la fuerza laboral revisados en busca de patrones de exclusión</li>
+              <li>Registros de contratación y promoción verificados en busca de patrones discriminatorios</li>
+              <li>Requisitos de prueba de embarazo — los auditores buscan esto específicamente</li>
+              <li>Entrevistas con trabajadores confirmando trato equitativo</li>
+              <li>Registros disciplinarios revisados en busca de acciones desproporcionadas contra grupos protegidos</li>
+            </ul>
+          </div>
+          <div class="p-section sec-gaps">
+            <div class="p-section-title">⚠️ Brechas de Cumplimiento Comunes</div>
+            <ul>
+              <li>Prueba de embarazo requerida como condición de empleo o trabajo continuo — ilegal en todas partes</li>
+              <li>Práctica informal de no contratar trabajadores mayores de cierta edad en ciertos roles</li>
+              <li>Trabajadoras excluidas de roles calificados mejor pagados por suposiciones de género</li>
+              <li>Trabajadores migrantes pagados menos que los locales por trabajo idéntico</li>
+              <li>Disciplina aplicada más estrictamente a trabajadores de grupos étnicos o nacionales específicos</li>
+            </ul>
+          </div>
+          <div class="p-section sec-best">
+            <div class="p-section-title">✅ Pasos de Mejores Prácticas</div>
+            <ol>
+              <li>Prohíba explícitamente las pruebas de embarazo en la política de contratación — por escrito, firmado por RRHH</li>
+              <li>Estandarice las descripciones de puestos con criterios de calificación objetivos y medibles</li>
+              <li>Realice un análisis anual de equidad salarial — compare salarios por género, nacionalidad y etnia</li>
+              <li>Capacite a todos los gerentes de contratación en leyes de discriminación y sesgo inconsciente</li>
+              <li>Establezca un canal de quejas específico para discriminación, separado de las quejas generales</li>
+            </ol>
+          </div>
+          <div class="p-section sec-example">
+            <div class="p-section-title">🏭 Ejemplo Real de Instalación</div>
+            <p><strong>Situación:</strong> Una fábrica de bolsos en China falló este principio porque las publicaciones de empleo para puestos de supervisión decían "se prefieren candidatos masculinos." La gerencia lo consideró como una preferencia práctica, no discriminación. Durante las entrevistas con trabajadores, las trabajadoras confirmaron que nunca habían sido consideradas para roles de supervisora a pesar de su antigüedad. <strong>Lección:</strong> RC2 recomienda una auditoría completa de publicaciones de empleo — eliminando todo lenguaje que haga referencia a preferencias de género, edad o nacionalidad — y reemplazándolo solo con requisitos objetivos específicos del rol.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PRINCIPLE 8: Health and Safety
+    ══════════════════════════════════════ -->
+    <div class="principle" id="p8">
+      <div class="principle-header" onclick="toggle('p8')">
+        <div class="p-number">08</div>
+        <div class="p-header-text">
+          <div class="p-title">Salud y Seguridad</div>
+          <div class="p-subtitle">El principio WRAP más detallado y de mayor peso</div>
+        </div>
+        <div class="p-tags">
+          <span class="p-tag tag-safety">Seguridad</span>
+          <span class="p-tag tag-legal">Legal</span>
+        </div>
+        <div class="p-chevron">▼</div>
+      </div>
+      <div class="principle-panel">
+        <div class="panel-inner">
+          <div class="p-section sec-meaning full-width">
+            <div class="p-section-title">📖 Qué Significa Esto</div>
+            <p>Las instalaciones deben proporcionar un ambiente de trabajo seguro y saludable. Este es el principio WRAP más completo — cubriendo seguridad contra incendios, salidas de emergencia, manejo de químicos, equipo de protección personal (EPP), protección de maquinaria, iluminación, ventilación, agua potable, instalaciones sanitarias, primeros auxilios y capacitación de salud y seguridad para trabajadores. Debe designarse un oficial de salud y seguridad. Las inspecciones de seguridad deben realizarse y documentarse regularmente. Los incidentes deben ser reportados e investigados. Este principio es la fuente de hallazgos de auditoría más citada mundialmente.</p>
+          </div>
+          <div class="p-section sec-audit">
+            <div class="p-section-title">🔍 Qué Verifican los Auditores</div>
+            <ul>
+              <li>Rutas de salidas de emergencia despejadas, desbloqueadas durante horas de trabajo y debidamente señalizadas</li>
+              <li>Etiquetas de servicio de extintores vigentes y accesibles</li>
+              <li>Registros de simulacros de evacuación de emergencia — mínimo dos veces al año</li>
+              <li>Hojas de seguridad de materiales químicos (SDS) publicadas en todos los puntos de almacenamiento de químicos</li>
+              <li>EPP proporcionado y trabajadores capacitados para usarlo correctamente</li>
+              <li>Botiquines de primeros auxilios equipados y personal capacitado en primeros auxilios presente en cada turno</li>
+              <li>Protectores de maquinaria instalados — sin sistemas de seguridad eludidos</li>
+              <li>Registro de accidentes/incidentes mantenido y reportado</li>
+            </ul>
+          </div>
+          <div class="p-section sec-gaps">
+            <div class="p-section-title">⚠️ Brechas de Cumplimiento Comunes</div>
+            <ul>
+              <li>Salidas de emergencia bloqueadas por inventario durante horas de producción</li>
+              <li>Existen registros de simulacros pero los trabajadores no pueden describir el procedimiento de evacuación</li>
+              <li>EPP proporcionado pero trabajadores sin capacitación — usándolo incorrectamente</li>
+              <li>Hojas SDS de químicos desactualizadas o faltantes para químicos recientemente introducidos</li>
+              <li>Protectores de maquinaria removidos para aumentar la velocidad de producción — nunca reemplazados</li>
+              <li>Incidentes casi accidentales no registrados — solo se registran lesiones con tiempo perdido</li>
+            </ul>
+          </div>
+          <div class="p-section sec-best">
+            <div class="p-section-title">✅ Pasos de Mejores Prácticas</div>
+            <ol>
+              <li>Realice inspecciones internas mensuales de S&S — use una lista de verificación estandarizada y documente los hallazgos</li>
+              <li>Asigne un oficial dedicado de S&S con autoridad para detener la producción por violaciones de seguridad</li>
+              <li>Implemente un sistema de reporte de casi accidentes — recompense el reporte para crear una cultura de seguridad</li>
+              <li>Cree un inventario de químicos vinculado a las hojas SDS actuales — revise trimestralmente</li>
+              <li>Publique mapas de evacuación de emergencia en cada salida y en cada puesto de trabajo</li>
+              <li>Capacite a los nuevos trabajadores en los procedimientos de S&S antes de comenzar a trabajar — documente con firma</li>
+            </ol>
+          </div>
+          <div class="p-section sec-example">
+            <div class="p-section-title">🏭 Ejemplo Real de Instalación</div>
+            <p><strong>Situación:</strong> Una importante instalación de mezclilla en México obtuvo buenos resultados en todos los demás principios pero recibió un hallazgo mayor en S&S: las salidas de emergencia del segundo piso eran accesibles pero la escalera se usaba para almacenar rollos de tela de temporada, reduciendo el ancho de la salida por debajo del mínimo legal. Además, 4 de 6 extintores tenían etiquetas de inspección vencidas. Ambos problemas se descubrieron en los 10 minutos antes de que el auditor recorriera el piso. <strong>Lección:</strong> RC2 recomienda un recorrido previo a la auditoría de 48 horas usando la lista de verificación real de S&S de WRAP — esta práctica única elimina la mayoría de los hallazgos de S&S antes de que llegue el auditor.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PRINCIPLE 9: Freedom of Association
+    ══════════════════════════════════════ -->
+    <div class="principle" id="p9">
+      <div class="principle-header" onclick="toggle('p9')">
+        <div class="p-number">09</div>
+        <div class="p-header-text">
+          <div class="p-title">Libertad de Asociación y Negociación Colectiva</div>
+          <div class="p-subtitle">Los derechos de los trabajadores a organizarse deben respetarse — incluso donde la ley los restringe</div>
+        </div>
+        <div class="p-tags">
+          <span class="p-tag tag-labor">Laboral</span>
+          <span class="p-tag tag-legal">Derechos Humanos</span>
+        </div>
+        <div class="p-chevron">▼</div>
+      </div>
+      <div class="principle-panel">
+        <div class="panel-inner">
+          <div class="p-section sec-meaning full-width">
+            <div class="p-section-title">📖 Qué Significa Esto</div>
+            <p>Los trabajadores tienen derecho a formar o unirse a organizaciones de su elección — incluidos los sindicatos — y a negociar colectivamente con la gerencia. Las instalaciones no pueden tomar represalias contra los trabajadores por membresía sindical o actividades organizativas. Este principio es complejo porque en algunos países (como China), los sindicatos independientes están legalmente restringidos. WRAP lo reconoce y en cambio exige que las instalaciones cumplan la ley local mientras aún proporcionan a los trabajadores canales alternativos legítimos para comunicar inquietudes — como comités de trabajadores, políticas de puertas abiertas o sistemas formales de sugerencias.</p>
+          </div>
+          <div class="p-section sec-audit">
+            <div class="p-section-title">🔍 Qué Verifican los Auditores</div>
+            <ul>
+              <li>Política escrita sobre libertad de asociación publicada y comunicada</li>
+              <li>Sin evidencia de discriminación antisindical en registros de contratación o disciplina</li>
+              <li>Los representantes de trabajadores tienen acceso para comunicarse con la gerencia</li>
+              <li>Convenio colectivo en archivo (donde existan sindicatos)</li>
+              <li>Canales alternativos de comunicación de trabajadores donde los sindicatos están restringidos por ley</li>
+              <li>Entrevistas con trabajadores confirmando la capacidad de plantear inquietudes libremente</li>
+            </ul>
+          </div>
+          <div class="p-section sec-gaps">
+            <div class="p-section-title">⚠️ Brechas de Cumplimiento Comunes</div>
+            <ul>
+              <li>Trabajadores despedidos después de intentar organizarse — sin documentación de causa legítima</li>
+              <li>No existe ningún canal de comunicación de trabajadores — sin sindicato Y sin comité de trabajadores</li>
+              <li>La política existe pero los trabajadores no saben que tienen el derecho a organizarse</li>
+              <li>La gerencia interfiere en las elecciones de representantes de trabajadores</li>
+              <li>Instalación en un país con restricciones legales sin mecanismo alternativo de comunicación</li>
+            </ul>
+          </div>
+          <div class="p-section sec-best">
+            <div class="p-section-title">✅ Pasos de Mejores Prácticas</div>
+            <ol>
+              <li>Establezca un comité de bienestar de trabajadores con representantes elegidos — incluso donde los sindicatos están restringidos</li>
+              <li>Programe reuniones trimestrales del comité gerencia-trabajadores — documente las actas</li>
+              <li>Capacite a la gerencia sobre no interferencia en actividades organizativas de trabajadores</li>
+              <li>Documente todas las acciones disciplinarias que involucren a miembros sindicales conocidos con especial cuidado por la justificación legal</li>
+              <li>Publique la política de libertad de asociación en todos los idiomas de los trabajadores con explicación clara de sus derechos</li>
+            </ol>
+          </div>
+          <div class="p-section sec-example">
+            <div class="p-section-title">🏭 Ejemplo Real de Instalación</div>
+            <p><strong>Situación:</strong> Una instalación en Bangladesh sin sindicato activo tuvo este principio marcado porque no tenía ningún mecanismo de comunicación de trabajadores — sin comité, sin sistema de sugerencias, sin política de puertas abiertas. Los trabajadores no tenían ninguna forma formal de plantear inquietudes a la gerencia más allá de renunciar. WRAP requirió que se estableciera un comité de trabajadores antes de que la certificación pudiera continuar. <strong>Lección:</strong> RC2 recomienda establecer un comité formal de bienestar de trabajadores como uno de los primeros pasos en la preparación WRAP — satisface este principio Y genera retroalimentación valiosa de los trabajadores que evita que los problemas escalen a hallazgos de auditoría.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PRINCIPLE 10: Environment
+    ══════════════════════════════════════ -->
+    <div class="principle" id="p10">
+      <div class="principle-header" onclick="toggle('p10')">
+        <div class="p-number">10</div>
+        <div class="p-header-text">
+          <div class="p-title">Medio Ambiente</div>
+          <div class="p-subtitle">Cumpla las leyes ambientales y minimice el impacto de su instalación</div>
+        </div>
+        <div class="p-tags">
+          <span class="p-tag tag-env">Medio Ambiente</span>
+          <span class="p-tag tag-legal">Legal</span>
+        </div>
+        <div class="p-chevron">▼</div>
+      </div>
+      <div class="principle-panel">
+        <div class="panel-inner">
+          <div class="p-section sec-meaning full-width">
+            <div class="p-section-title">📖 Qué Significa Esto</div>
+            <p>Las instalaciones deben cumplir todas las leyes y regulaciones ambientales locales — cubriendo descarga de aguas residuales, emisiones al aire, eliminación de residuos peligrosos y gestión de químicos. WRAP no requiere que las instalaciones vayan más allá de la ley, pero sí requiere evidencia documentada de que se cumplen los requisitos legales. Esto incluye permisos adecuados para el tratamiento de aguas residuales, procedimientos documentados de eliminación de residuos y registros que muestren cumplimiento con cualquier regulación ambiental específica de su país o municipio. Las presiones ESG de las marcas están elevando rápidamente la importancia de este principio.</p>
+          </div>
+          <div class="p-section sec-audit">
+            <div class="p-section-title">🔍 Qué Verifican los Auditores</div>
+            <ul>
+              <li>Permisos ambientales vigentes y publicados (aguas residuales, emisiones al aire)</li>
+              <li>Registros de tratamiento de aguas residuales y resultados de pruebas de descarga</li>
+              <li>Registros de eliminación de residuos peligrosos con documentación de contratista autorizado</li>
+              <li>Almacenamiento de químicos que cumple los códigos ambientales locales</li>
+              <li>Plan de prevención de derrames documentado y trabajadores capacitados</li>
+              <li>Sin violaciones ambientales pendientes ni sanciones de reguladores</li>
+            </ul>
+          </div>
+          <div class="p-section sec-gaps">
+            <div class="p-section-title">⚠️ Brechas de Cumplimiento Comunes</div>
+            <ul>
+              <li>Aguas residuales descargadas sin tratamiento o con permiso de descarga vencido</li>
+              <li>Residuos peligrosos (tintes, químicos, solventes) eliminados por basura municipal — no por contratista autorizado</li>
+              <li>Sin procedimiento de respuesta a derrames — los trabajadores no saben qué hacer si se derrama un químico</li>
+              <li>Los permisos ambientales existen pero no se han renovado en años</li>
+              <li>La instalación no sabe que una nueva regulación aplica a sus operaciones</li>
+            </ul>
+          </div>
+          <div class="p-section sec-best">
+            <div class="p-section-title">✅ Pasos de Mejores Prácticas</div>
+            <ol>
+              <li>Cree un registro de permisos ambientales con fechas de renovación — agréguelo a su calendario de cumplimiento</li>
+              <li>Contrate con una empresa autorizada de eliminación de residuos peligrosos — conserve todos los manifiestos en archivo por 3+ años</li>
+              <li>Pruebe la descarga de aguas residuales trimestralmente y archive los registros — no espere la inspección regulatoria</li>
+              <li>Capacite a los trabajadores que manejan químicos en respuesta a derrames — documente la capacitación</li>
+              <li>Realice una revisión anual de cumplimiento ambiental contra las regulaciones vigentes</li>
+            </ol>
+          </div>
+          <div class="p-section sec-example">
+            <div class="p-section-title">🏭 Ejemplo Real de Instalación</div>
+            <p><strong>Situación:</strong> Una instalación de teñido y acabado en India había estado eliminando tambores de residuos químicos a través de su contratista regular de residuos municipales — el contratista estaba autorizado para residuos generales pero no para materiales peligrosos. La instalación había hecho esto durante años sin problemas con las autoridades locales. WRAP lo marcó como un hallazgo mayor porque la cadena de eliminación no cumplía con la ley de residuos peligrosos. <strong>Lección:</strong> RC2 recomienda auditar a sus contratistas de eliminación de residuos anualmente — solicite su licencia de manejo de residuos peligrosos y confirme que cubre sus tipos específicos de residuos. El riesgo de responsabilidad por eliminación inadecuada supera con creces el costo de un contratista autorizado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PRINCIPLE 11: Customs Compliance
+    ══════════════════════════════════════ -->
+    <div class="principle" id="p11">
+      <div class="principle-header" onclick="toggle('p11')">
+        <div class="p-number">11</div>
+        <div class="p-header-text">
+          <div class="p-title">Cumplimiento Aduanero</div>
+          <div class="p-subtitle">Todas las importaciones y exportaciones deben ser legales, documentadas y declaradas completamente</div>
+        </div>
+        <div class="p-tags">
+          <span class="p-tag tag-legal">Legal</span>
+          <span class="p-tag tag-security">Comercio</span>
+        </div>
+        <div class="p-chevron">▼</div>
+      </div>
+      <div class="principle-panel">
+        <div class="panel-inner">
+          <div class="p-section sec-meaning full-width">
+            <div class="p-section-title">📖 Qué Significa Esto</div>
+            <p>Todos los bienes importados y exportados por la instalación deben cumplir con las leyes aduaneras aplicables — incluyendo declaraciones precisas de país de origen, valoración correcta, clasificación arancelaria precisa y documentación adecuada. Las instalaciones no deben participar en contrabando, subfacturación, etiquetado incorrecto de país de origen ni ningún otro fraude aduanero. Este principio se ha vuelto significativamente más importante desde 2018, ya que las disputas arancelarias globales (particularmente las tensiones comerciales EE.UU.-China y las escaladas arancelarias actuales de 2025–2026) han aumentado la presión sobre las instalaciones para declarar con precisión el origen y cumplir con las reglas de país de origen.</p>
+          </div>
+          <div class="p-section sec-audit">
+            <div class="p-section-title">🔍 Qué Verifican los Auditores</div>
+            <ul>
+              <li>Registros de importación/exportación con declaraciones precisas de país de origen</li>
+              <li>Facturas comerciales que coinciden con órdenes de compra y documentos de embarque</li>
+              <li>Relación con agente aduanal documentada — agente autorizado utilizado</li>
+              <li>Sin evidencia de subfacturación, doble facturación o manipulación de precios</li>
+              <li>Declaraciones de país de origen respaldadas por registros de producción</li>
+              <li>Sin violaciones aduaneras pendientes ni investigaciones</li>
+            </ul>
+          </div>
+          <div class="p-section sec-gaps">
+            <div class="p-section-title">⚠️ Brechas de Cumplimiento Comunes</div>
+            <ul>
+              <li>País de origen mal etiquetado para aprovechar tratamiento arancelario preferencial</li>
+              <li>Valores de facturas subestimados para reducir aranceles de importación — especialmente para envíos de muestra</li>
+              <li>La instalación no sabe que la clasificación arancelaria de su producto cambió bajo nuevas reglas comerciales</li>
+              <li>Sin proceso documentado para verificar el cumplimiento aduanero de los envíos</li>
+              <li>El agente aduanal maneja todo — la instalación no tiene conocimiento interno ni supervisión de las declaraciones</li>
+            </ul>
+          </div>
+          <div class="p-section sec-best">
+            <div class="p-section-title">✅ Pasos de Mejores Prácticas</div>
+            <ol>
+              <li>Trabaje solo con agentes aduanales autorizados y de buena reputación — verifique su licencia anualmente</li>
+              <li>Designe una persona interna responsable de la supervisión del cumplimiento aduanero</li>
+              <li>Concilie las facturas comerciales con los valores reales de transacción trimestralmente</li>
+              <li>Mantenga un registro de clasificación arancelaria para todos los productos — revise después de cualquier cambio en política comercial</li>
+              <li>Conserve todos los documentos aduaneros por un mínimo de 5 años — muchos países requieren más tiempo</li>
+            </ol>
+          </div>
+          <div class="p-section sec-example">
+            <div class="p-section-title">🏭 Ejemplo Real de Instalación</div>
+            <p><strong>Situación:</strong> Se descubrió que una instalación de ropa deportiva en Jordania etiquetaba productos terminados como "Fabricado en Jordania" — calificando para acceso libre de aranceles al mercado de EE.UU. — mientras que más del 50% del valor manufacturado real se agregaba en un tercer país. Las reglas de la Zona Industrial Calificada (QIZ) requieren un umbral específico de contenido de insumos de EE.UU./Israel que la instalación no cumplía. <strong>Lección:</strong> RC2 recomienda una revisión anual de cumplimiento de reglas de país de origen — particularmente importante en 2025–2026 dada la rápida evolución de la política arancelaria de EE.UU. — para garantizar que sus declaraciones de origen sigan siendo válidas bajo las reglas comerciales vigentes. Este es un servicio que RC2 proporciona directamente.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PRINCIPLE 12: Security
+    ══════════════════════════════════════ -->
+    <div class="principle" id="p12">
+      <div class="principle-header" onclick="toggle('p12')">
+        <div class="p-number">12</div>
+        <div class="p-header-text">
+          <div class="p-title">Seguridad</div>
+          <div class="p-subtitle">Protegiendo su instalación, sus trabajadores y la cadena de suministro global</div>
+        </div>
+        <div class="p-tags">
+          <span class="p-tag tag-security">Security</span>
+          <span class="p-tag tag-legal">Comercio</span>
+        </div>
+        <div class="p-chevron">▼</div>
+      </div>
+      <div class="principle-panel">
+        <div class="panel-inner">
+          <div class="p-section sec-meaning full-width">
+            <div class="p-section-title">📖 Qué Significa Esto</div>
+            <p>Las instalaciones deben mantener procedimientos de seguridad razonables para protegerse contra la introducción de materiales no autorizados — incluyendo drogas ilegales, armas, polizones y, lo más crítico, materiales terroristas — en los envíos salientes. Este principio está estrechamente alineado con el programa C-TPAT (Asociación Aduanera Comercial Contra el Terrorismo) de la Aduana y Protección Fronteriza de EE.UU. Cubre seguridad física (perímetro, controles de acceso, cerraduras), seguridad de personal (verificaciones de antecedentes, verificación de identificación), seguridad procedimental (inspección de contenedores, gestión de sellos) y seguridad informática. Muchas marcas y minoristas exigen este principio como condición de abastecimiento.</p>
+          </div>
+          <div class="p-section sec-audit">
+            <div class="p-section-title">🔍 Qué Verifican los Auditores</div>
+            <ul>
+              <li>Seguridad física del perímetro — cercado, iluminación, control de acceso</li>
+              <li>Registro de visitantes y procedimientos de identificación de visitantes</li>
+              <li>Procedimientos de inspección de contenedores/cajas antes de la carga</li>
+              <li>Gestión de sellos — sellos de alta seguridad usados, números registrados</li>
+              <li>Política de verificación de antecedentes de empleados para nuevos contratados</li>
+              <li>Registros de capacitación en seguridad para todo el personal relevante</li>
+              <li>Procedimiento de reporte de incidentes para brechas de seguridad</li>
+            </ul>
+          </div>
+          <div class="p-section sec-gaps">
+            <div class="p-section-title">⚠️ Brechas de Cumplimiento Comunes</div>
+            <ul>
+              <li>Existe registro de visitantes pero no se les exige mostrar identificación ni ser escoltados</li>
+              <li>Inspección de contenedores realizada pero no documentada — sin registro de quién inspeccionó qué</li>
+              <li>Números de sellos no registrados ni conciliados contra documentos de embarque</li>
+              <li>Iluminación perimetral inadecuada — áreas oscuras alrededor de los muelles de carga por la noche</li>
+              <li>Guardias de seguridad sin capacitación sobre qué buscar — sin registros formales de capacitación en seguridad</li>
+              <li>Verificaciones de antecedentes realizadas verbalmente — sin documentación ni verificación por terceros</li>
+            </ul>
+          </div>
+          <div class="p-section sec-best">
+            <div class="p-section-title">✅ Pasos de Mejores Prácticas</div>
+            <ol>
+              <li>Implemente una lista de verificación de inspección de contenedores — mínimo 7 puntos de inspección — documente cada inspección con fecha, hora y nombre del inspector</li>
+              <li>Use solo sellos de alta seguridad que cumplan ISO 17712 — registre cada número de sello emitido y aplicado</li>
+              <li>Establezca un sistema formal de gestión de visitantes — identificación requerida, credencial de visitante emitida, escolta requerida en áreas de producción</li>
+              <li>Realice una evaluación anual de vulnerabilidades de seguridad — documente hallazgos y acciones correctivas</li>
+              <li>Capacite anualmente a todo el personal de seguridad y al personal de envío/recepción — documente con listas de asistencia</li>
+              <li>Considere la certificación C-TPAT como complemento de WRAP — fortalece significativamente este principio</li>
+            </ol>
+          </div>
+          <div class="p-section sec-example">
+            <div class="p-section-title">🏭 Ejemplo Real de Instalación</div>
+            <p><strong>Situación:</strong> Una instalación de artículos de cuero en Colombia tenía una seguridad física sólida — cámaras, guardias, cercado — pero falló este principio porque su proceso de inspección de contenedores no tenía documentación. Los guardias confirmaron que inspeccionaban cada contenedor antes de la carga, pero no había ningún registro escrito. La posición del auditor: si no está documentado, no ocurrió. <strong>Lección:</strong> RC2 proporciona una plantilla completa de Registro de Inspección de Contenedores como parte de nuestro paquete de cumplimiento de seguridad. El paso de documentación toma 3 minutos por contenedor y convierte una inspección aprobada en evidencia verificable y lista para auditoría. Contacte a RC2 para acceder a esta plantilla directamente.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end accordion -->
+</div><!-- end main -->
+
+<!-- ─── FOOTER CTA ─── -->
+<section class="cta-section">
+  <h3>¿Listo para Prepararse para su Auditoría WRAP?</h3>
+  <p>RC2 Consulting proporciona preparación práctica de auditorías, desarrollo de SOPs, análisis de brechas e infraestructura de cumplimiento — para que entre a su auditoría con confianza.</p>
+  <a href="/cdn-cgi/l/email-protection#4a23242c250a382978292524393f263e23242d64292527" class="cta-btn">📅 Agendar una Consulta Gratuita</a>
+</section>
+
+
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function toggle(id) {
+    const el = document.getElementById(id);
+    const isOpen = el.classList.contains('open');
+    el.classList.toggle('open', !isOpen);
+  }
+
+  let allOpen = false;
+  function toggleAll() {
+    allOpen = !allOpen;
+    document.querySelectorAll('.principle').forEach(p => {
+      p.classList.toggle('open', allOpen);
+    });
+    document.querySelector('.btn-expand-all').textContent = allOpen ? 'Colapsar Todo' : 'Expandir Todo';
+  }
+</script>
+
+<footer class="site-footer">
+  <div class="footer-tagline">Claridad Operacional. Confianza en el Cumplimiento. Sistemas que Escalan.</div>
+  <div class="footer-links">
+    <a href="https://rc2consulting.github.io/index-es.html">Inicio</a>
+    <a href="https://rc2consulting.github.io/services-es.html">Servicios</a>
+    <a href="https://rc2consulting.github.io/who-we-help-es.html">A Quién Ayudamos</a>
+    <a href="https://rc2consulting.github.io/about-es.html">Nosotros</a>
+    <a href="https://rc2consulting.github.io/RC2_Resources_Page-es.html">Recursos</a>
+    <a href="https://rc2consulting.github.io/contact-es.html">Contacto</a>
+  <
