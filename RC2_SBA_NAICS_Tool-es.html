@@ -129,8 +129,8 @@
   <!-- SEARCH BAR -->
   <div class="search-bar">
     <div class="sb-group" style="flex:2">
-      <label class="sb-label">Search by code, description, or keyword</label>
-      <input class="sb-input" id="search-input" type="text" placeholder="e.g. apparel, consulting, 5416, construction..." oninput="filterTable()"/>
+      <label class="sb-label">Buscar por código, descripción o palabra clave</label>
+      <input class="sb-input" id="search-input" type="text" placeholder="Ej. prendas, consultoría, 5416, construcción..." oninput="filterTable()"/>
     </div>
     <div class="sb-group">
       <label class="sb-label">Sector</label>
@@ -181,11 +181,11 @@
       <thead>
         <tr>
           <th onclick="sortTable(0)" style="width:90px">NAICS <span class="sort-arrow">↕</span></th>
-          <th onclick="sortTable(1)">Industry / Description <span class="sort-arrow">↕</span></th>
+          <th onclick="sortTable(1)">Industria / Descripción <span class="sort-arrow">↕</span></th>
           <th onclick="sortTable(2)" style="width:100px">Sector <span class="sort-arrow">↕</span></th>
-          <th onclick="sortTable(3)" style="width:160px">Size Standard <span class="sort-arrow">↕</span></th>
-          <th onclick="sortTable(4)" style="width:100px">Basis <span class="sort-arrow">↕</span></th>
-          <th onclick="sortTable(5)" style="width:110px">GovCon Use <span class="sort-arrow">↕</span></th>
+          <th onclick="sortTable(3)" style="width:160px">Estándar de Tamaño <span class="sort-arrow">↕</span></th>
+          <th onclick="sortTable(4)" style="width:100px">Base <span class="sort-arrow">↕</span></th>
+          <th onclick="sortTable(5)" style="width:110px">Uso GovCon <span class="sort-arrow">↕</span></th>
         </tr>
       </thead>
       <tbody id="naics-tbody"></tbody>
@@ -194,13 +194,13 @@
   </div>
 
   <div class="sources">
-    <h4>Sources & References</h4>
+    <h4>Fuentes y Referencias</h4>
     <ul>
-      <li>U.S. Census Bureau — NAICS 2022 Manual — <a href="https://www.census.gov/naics" target="_blank">census.gov/naics</a></li>
-      <li>SBA — Table of Small Business Size Standards (Effective March 2023) — <a href="https://www.sba.gov/document/support--table-size-standards" target="_blank">sba.gov</a></li>
-      <li>SAM.gov — NAICS Code Registration Guidance — <a href="https://sam.gov" target="_blank">sam.gov</a></li>
-      <li>USASpending.gov — Federal Contract Award Data by NAICS — <a href="https://www.usaspending.gov" target="_blank">usaspending.gov</a></li>
-      <li>FAR 19.102 — Size Standards for Small Business Concerns — <a href="https://www.acquisition.gov" target="_blank">acquisition.gov</a></li>
+      <li>Oficina del Censo de EE.UU. — Manual NAICS 2022 — <a href="https://www.census.gov/naics" target="_blank">census.gov/naics</a></li>
+      <li>SBA — Tabla de Estándares de Tamaño para Pequeñas Empresas (Vigente Marzo 2023) — <a href="https://www.sba.gov/document/support--table-size-standards" target="_blank">sba.gov</a></li>
+      <li>SAM.gov — Guía de Registro de Códigos NAICS — <a href="https://sam.gov" target="_blank">sam.gov</a></li>
+      <li>USASpending.gov — Datos de Adjudicaciones de Contratos Federales por NAICS — <a href="https://www.usaspending.gov" target="_blank">usaspending.gov</a></li>
+      <li>FAR 19.102 — Estándares de Tamaño para Pequeñas Empresas — <a href="https://www.acquisition.gov" target="_blank">acquisition.gov</a></li>
     </ul>
   </div>
   <div class="acta">
@@ -325,8 +325,8 @@ function buildTable(data){
   data.forEach(row=>{
     const tr=document.createElement('tr');
     const gc=row[5];
-    const gcChip=gc==='Alta'?`<span class="gc-chip gc-high">★ High</span>`:gc==='Media'?`<span class="gc-chip gc-med">◈ Media</span>`:`<span class="gc-chip gc-low">Baja</span>`;
-    const basis=row[4]==='Empleados'?`<span class="std-chip sc-emp">👥 Employees</span>`:`<span class="std-chip sc-rev">💰 Ingresos</span>`;
+    const gcChip=gc==='Alta'?`<span class="gc-chip gc-high">★ Alta</span>`:gc==='Media'?`<span class="gc-chip gc-med">◈ Media</span>`:`<span class="gc-chip gc-low">Baja</span>`;
+    const basis=row[4]==='Empleados'?`<span class="std-chip sc-emp">👥 Empleados</span>`:`<span class="std-chip sc-rev">💰 Ingresos</span>`;
     tr.innerHTML=`<td class="code">${row[0]}</td><td class="title">${row[1]}${row[6]?`<div style="font-size:.7rem;color:var(--mu);margin-top:3px;font-style:italic">${row[6]}</div>`:''}</td><td style="font-size:.76rem">${row[2]}</td><td style="font-size:.8rem;font-weight:600;color:var(--navy)">${row[3]}</td><td>${basis}</td><td>${gcChip}</td>`;
     tbody.appendChild(tr);
   });
