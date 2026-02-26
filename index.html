@@ -165,6 +165,26 @@
       .topnav { padding: 0 16px; }
       .nav-links a { padding: 5px 8px; font-size: 0.78rem; }
     }
+
+    .btn-espanol {
+      display:inline-flex;align-items:center;gap:8px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.3);
+      color:rgba(255,255,255,.9);
+      font-weight:700;font-size:.82rem;
+      padding:10px 20px;border-radius:7px;
+      text-decoration:none;margin-top:12px;
+      transition:all .2s;width:100%;justify-content:center;
+      letter-spacing:.3px;
+    }
+    .btn-espanol:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.5);color:#fff}
+    .btn-espanol .es-flag{font-size:1rem}
+  
+    .lang-toggle{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.25);border-radius:6px;overflow:hidden;margin-left:8px}
+    .lang-btn{font-size:.72rem;font-weight:700;padding:5px 10px;text-decoration:none;transition:all .2s;letter-spacing:.5px}
+    .lang-btn.inactive{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6)}
+    .lang-btn.inactive:hover{background:rgba(255,255,255,.15);color:#fff}
+    .lang-btn.active{background:#C8922A;color:#0B2545}
   </style>
 </head>
 <body>
@@ -182,6 +202,12 @@
     <li><a href="https://rc2consulting.github.io/about.html">About</a></li>
     <li><a href="https://rc2consulting.github.io/RC2_Resources_Page.html">Resources</a></li>
     <li><a href="https://rc2consulting.github.io/contact.html">Contact</a></li>
+      <li>
+      <div class="lang-toggle">
+        <a href="https://rc2consulting.github.io/index.html" class="lang-btn active">EN</a>
+        <a href="https://rc2consulting.github.io/index-es.html" class="lang-btn inactive">ES</a>
+      </div>
+    </li>
   </ul>
 </nav>
 
@@ -195,6 +221,9 @@
     <div class="hero-card">
       <p>Submit a brief intake and we'll determine the right engagement path for your organization.</p>
       <a href="https://rc2consulting.github.io/contact.html" class="btn-get-started">Get Started</a>
+      <a href="https://rc2consulting.github.io/contact-es.html" class="btn-espanol">
+        <span class="es-flag">🇪🇸</span> Hablamos Español — Reserve su Consulta
+      </a>
     </div>
   </div>
 </section>

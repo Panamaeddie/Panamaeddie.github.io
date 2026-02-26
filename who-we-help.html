@@ -81,6 +81,12 @@
       .topnav { padding:0 16px; }
       .nav-links a { padding:5px 8px; font-size:0.78rem; }
     }
+  
+    .lang-toggle{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.25);border-radius:6px;overflow:hidden;margin-left:8px}
+    .lang-btn{font-size:.72rem;font-weight:700;padding:5px 10px;text-decoration:none;transition:all .2s;letter-spacing:.5px}
+    .lang-btn.inactive{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6)}
+    .lang-btn.inactive:hover{background:rgba(255,255,255,.15);color:#fff}
+    .lang-btn.active{background:#C8922A;color:#0B2545}
   </style>
 </head>
 <body>
@@ -97,6 +103,12 @@
     <li><a href="https://rc2consulting.github.io/about.html">About</a></li>
     <li><a href="https://rc2consulting.github.io/RC2_Resources_Page.html">Resources</a></li>
     <li><a href="https://rc2consulting.github.io/contact.html">Contact</a></li>
+      <li>
+      <div class="lang-toggle">
+        <a href="https://rc2consulting.github.io/who-we-help.html" class="lang-btn active">EN</a>
+        <a href="https://rc2consulting.github.io/who-we-help-es.html" class="lang-btn inactive">ES</a>
+      </div>
+    </li>
   </ul>
 </nav>
 
