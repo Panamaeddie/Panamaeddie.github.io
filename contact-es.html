@@ -32,7 +32,7 @@
     .lang-btn.active{background:var(--gold);color:var(--navy)}
 
     /* HERO */
-    .hero{background:linear-gradient(160deg,var(--navy) 0%,#1A3A6B 55%,#0D2E5C 100%);padding:52px 40px 44px;position:relative;overflow:hidden}
+    .hero{background:linear-gradient(to bottom, rgba(11,37,69,0.75) 0%, rgba(11,37,69,0.55) 50%, rgba(11,37,69,0.75) 100%), url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1400&q=80') center/cover no-repeat;padding:52px 40px 44px;position:relative;overflow:hidden}
     .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 75% 50%,rgba(200,146,42,.08) 0%,transparent 60%);pointer-events:none}
     .hero-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;position:relative;z-index:1}
     .hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.75);font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:16px}
@@ -141,7 +141,7 @@
     <li><a href="https://rc2consulting.github.io/services.html">Servicios</a></li>
     <li><a href="https://rc2consulting.github.io/who-we-help.html">A Quién Ayudamos</a></li>
     <li><a href="https://rc2consulting.github.io/about.html">Nosotros</a></li>
-    <li><a href="https://rc2consulting.github.io/RC2_Resources_Page.html">Recursos</a></li>
+    <li><a href="https://rc2consulting.github.io/RC2_Resources_Page-es.html">Recursos</a></li>
     <li><a href="https://rc2consulting.github.io/contact-es.html" class="active">Contacto</a></li>
     <li>
       <div class="lang-toggle">
@@ -295,7 +295,7 @@
       <div class="cs-icon">📧</div>
       <div>
         <div class="cs-title">Correo Electrónico</div>
-        <div class="cs-val"><a href="mailto:info@rc2salesconsulting.com">info@rc2salesconsulting.com</a><br/>Respuesta en 1 día hábil</div>
+        <div class="cs-val"><a href="/cdn-cgi/l/email-protection#cda4a3aba28dbfaeffbeaca1a8beaea2a3beb8a1b9a4a3aae3aea2a0"><span class="__cf_email__" data-cfemail="e68f888089a69485d495878a839585898895938a928f8881c885898b">[email&#160;protected]</span></a><br/>Respuesta en 1 día hábil</div>
       </div>
     </div>
     <div class="cs-chip">
@@ -309,7 +309,7 @@
       <div class="cs-icon">📚</div>
       <div>
         <div class="cs-title">Recursos Gratuitos</div>
-        <div class="cs-val"><a href="https://rc2consulting.github.io/RC2_Resources_Page.html">Acceda a herramientas y artículos →</a><br/>Sin necesidad de registrarse</div>
+        <div class="cs-val"><a href="https://rc2consulting.github.io/RC2_Resources_Page-es.html">Acceda a herramientas y artículos →</a><br/>Sin necesidad de registrarse</div>
       </div>
     </div>
   </div>
@@ -323,13 +323,13 @@
     <a href="https://rc2consulting.github.io/services.html">Servicios</a>
     <a href="https://rc2consulting.github.io/who-we-help.html">A Quién Ayudamos</a>
     <a href="https://rc2consulting.github.io/about.html">Nosotros</a>
-    <a href="https://rc2consulting.github.io/RC2_Resources_Page.html">Recursos</a>
+    <a href="https://rc2consulting.github.io/RC2_Resources_Page-es.html">Recursos</a>
     <a href="https://rc2consulting.github.io/contact-es.html">Contacto</a>
   </div>
   <div class="fc">© 2026 RC2 Consulting, LLC &nbsp;|&nbsp; Política de Privacidad &nbsp;|&nbsp; Términos de Servicio</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function showPanel(id, tab) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.path-tab').forEach(t => t.classList.remove('active'));
@@ -342,15 +342,4 @@ function updateCounter(el) {
 function setUrgency(btn, val) {
   document.querySelectorAll('.urgency-btn').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
-  document.getElementById('urgencia-val').value = val;
-}
-// Check hash for deep linking
-window.addEventListener('DOMContentLoaded', () => {
-  if (window.location.hash === '#mensaje') {
-    const tabs = document.querySelectorAll('.path-tab');
-    showPanel('message', tabs[1]);
-  }
-});
-</script>
-</body>
-</html>
+  document.getElementById('urgencia-val').value = va
