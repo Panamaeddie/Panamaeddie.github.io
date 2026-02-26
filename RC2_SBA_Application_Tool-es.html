@@ -97,7 +97,7 @@
     .ctext{font-size:.8rem;color:var(--txt);line-height:1.45}
     .check-item.checked .ctext{color:var(--sg)}
     .crit-item{border-color:#FECACA !important;background:var(--dbg) !important}
-    .crit-item .ctext::after{content:' ★ CRITICAL';font-size:.62rem;font-weight:700;color:var(--dg);margin-left:4px}
+    .crit-item .ctext::after{content:' ★ CRÍTICO';font-size:.62rem;font-weight:700;color:var(--dg);margin-left:4px}
     .crit-item.checked{background:var(--sbg) !important;border-color:var(--sg) !important}
     .crit-item.checked .ctext::after{color:var(--sg) !important}
 
@@ -187,7 +187,7 @@
       <div class="dash-cell overall"><div class="dash-val" id="dvtot">0%</div><div class="dash-label">Total</div></div>
     </div>
     <div class="master-bar"><div class="master-fill" id="master-fill" style="width:0%"></div></div>
-    <div class="bar-labels"><span>0%</span><span>Fase 1 Pre-App</span><span>Fase 2 Submit</span><span>Fase 3 Review</span><span>100%</span></div>
+    <div class="bar-labels"><span>0%</span><span>Fase 1 Pre-Solicitud</span><span>Fase 2 Envío</span><span>Fase 3 Revisión</span><span>100%</span></div>
     <div class="status-bar" id="status-bar">
       <div><div class="status-text">Seleccione su programa de certificación arriba, luego marque los elementos completados</div><div class="status-sub">0 de 48 elementos completados en las cuatro fases</div></div>
       <div class="overall-pct" id="ovpct">0%</div>
@@ -212,12 +212,12 @@
     <div class="phase-hdr ph1-bg">
       <span class="phase-num ph1">01</span>
       <div class="phase-title-wrap">
-        <h3>Pre-Application Preparation</h3>
+        <h3>Preparación Pre-Solicitud</h3>
         <p>Complete todos los elementos antes de abrir el portal MySBA — las presentaciones incompletas son la causa #1 de demora</p>
       </div>
       <div class="phase-badge">
         <div class="phase-pct" id="pp1">0%</div>
-        <div class="phase-sub" id="ps1">0 / 12 items</div>
+        <div class="phase-sub" id="ps1">0 / 12 elementos</div>
         <div class="phase-progbar"><div class="phase-fill ph1" id="pf1" style="width:0%"></div></div>
       </div>
     </div>
@@ -251,14 +251,14 @@
         <table class="doc-table">
           <thead><tr><th>Documento</th><th>8(a)</th><th>WOSB/EDWOSB</th><th>HUBZone</th><th>SDVOSB/VOSB</th></tr></thead>
           <tbody>
-            <tr><td>Documentos de constitución empresarial</td><td><span class="doc-req dr-req">Required</span></td><td><span class="doc-req dr-req">Required</span></td><td><span class="doc-req dr-req">Required</span></td><td><span class="doc-req dr-req">Required</span></td></tr>
-            <tr><td>3 años de declaraciones fiscales empresariales</td><td><span class="doc-req dr-req">Required</span></td><td><span class="doc-req dr-req">Required</span></td><td><span class="doc-req dr-req">Required</span></td><td><span class="doc-req dr-req">Required</span></td></tr>
-            <tr><td>3 años de declaraciones fiscales personales</td><td><span class="doc-req dr-req">Required</span></td><td><span class="doc-req dr-cond">EDWOSB Only</span></td><td>No requerido</td><td>No requerido</td></tr>
-            <tr><td>Estado financiero personal</td><td><span class="doc-req dr-req">Required</span></td><td><span class="doc-req dr-cond">EDWOSB Only</span></td><td>No requerido</td><td>No requerido</td></tr>
-            <tr><td>Narrativa de desventaja social</td><td><span class="doc-req dr-req">Required</span></td><td>No aplica</td><td>No aplica</td><td>No aplica</td></tr>
-            <tr><td>DD-214 / Documentos de discapacidad VA</td><td>No requerido</td><td>No requerido</td><td>No requerido</td><td><span class="doc-req dr-req">Required</span></td></tr>
-            <tr><td>Prueba de dirección/arrendamiento empleados (HUBZone)</td><td>No requerido</td><td>No requerido</td><td><span class="doc-req dr-req">Required</span></td><td>No requerido</td></tr>
-            <tr><td>Registros de nómina (prueba 35% HUBZone)</td><td>No requerido</td><td>No requerido</td><td><span class="doc-req dr-req">Required</span></td><td>No requerido</td></tr>
+            <tr><td>Documentos de constitución empresarial</td><td><span class="doc-req dr-req">Requerido</span></td><td><span class="doc-req dr-req">Requerido</span></td><td><span class="doc-req dr-req">Requerido</span></td><td><span class="doc-req dr-req">Requerido</span></td></tr>
+            <tr><td>3 años de declaraciones fiscales empresariales</td><td><span class="doc-req dr-req">Requerido</span></td><td><span class="doc-req dr-req">Requerido</span></td><td><span class="doc-req dr-req">Requerido</span></td><td><span class="doc-req dr-req">Requerido</span></td></tr>
+            <tr><td>3 años de declaraciones fiscales personales</td><td><span class="doc-req dr-req">Requerido</span></td><td><span class="doc-req dr-cond">Solo EDWOSB</span></td><td>No requerido</td><td>No requerido</td></tr>
+            <tr><td>Estado financiero personal</td><td><span class="doc-req dr-req">Requerido</span></td><td><span class="doc-req dr-cond">Solo EDWOSB</span></td><td>No requerido</td><td>No requerido</td></tr>
+            <tr><td>Narrativa de desventaja social</td><td><span class="doc-req dr-req">Requerido</span></td><td>No aplica</td><td>No aplica</td><td>No aplica</td></tr>
+            <tr><td>DD-214 / Documentos de discapacidad VA</td><td>No requerido</td><td>No requerido</td><td>No requerido</td><td><span class="doc-req dr-req">Requerido</span></td></tr>
+            <tr><td>Prueba de dirección/arrendamiento empleados (HUBZone)</td><td>No requerido</td><td>No requerido</td><td><span class="doc-req dr-req">Requerido</span></td><td>No requerido</td></tr>
+            <tr><td>Registros de nómina (prueba 35% HUBZone)</td><td>No requerido</td><td>No requerido</td><td><span class="doc-req dr-req">Requerido</span></td><td>No requerido</td></tr>
           </tbody>
         </table>
       </div>
@@ -270,12 +270,12 @@
     <div class="phase-hdr ph2-bg">
       <span class="phase-num ph2">02</span>
       <div class="phase-title-wrap">
-        <h3>Application Submission — MySBA Portal</h3>
+        <h3>Envío de Solicitud — Portal MySBA</h3>
         <p>certify.sba.gov — complete totalmente antes de enviar; los guardados parciales no pausan el reloj del SBA</p>
       </div>
       <div class="phase-badge">
         <div class="phase-pct" id="pp2">0%</div>
-        <div class="phase-sub" id="ps2">0 / 12 items</div>
+        <div class="phase-sub" id="ps2">0 / 12 elementos</div>
         <div class="phase-progbar"><div class="phase-fill ph2" id="pf2" style="width:0%"></div></div>
       </div>
     </div>
@@ -307,17 +307,17 @@
     <div class="phase-hdr ph3-bg">
       <span class="phase-num ph3">03</span>
       <div class="phase-title-wrap">
-        <h3>SBA Review & Analyst Communication</h3>
+        <h3>Revisión SBA y Comunicación con el Analista</h3>
         <p>Período de revisión activa — responda a todas las solicitudes del SBA dentro de los plazos indicados o arriesgue la denegación</p>
       </div>
       <div class="phase-badge">
         <div class="phase-pct" id="pp3">0%</div>
-        <div class="phase-sub" id="ps3">0 / 12 items</div>
+        <div class="phase-sub" id="ps3">0 / 12 elementos</div>
         <div class="phase-progbar"><div class="phase-fill ph3" id="pf3" style="width:0%"></div></div>
       </div>
     </div>
     <div class="phase-body">
-      <div class="group-title">During SBA Revisión</div>
+      <div class="group-title">Durante la Revisión del SBA</div>
       <div class="check-grid" data-phase="3">
         <div class="check-item" onclick="toggle(this)"><div class="cbox"></div><span class="ctext">Número de solicitud y fecha de envío registrados — utilícelos para todas las comunicaciones con el SBA</span></div>
         <div class="check-item" onclick="toggle(this)"><div class="cbox"></div><span class="ctext">Sistema de monitoreo de correo en lugar — ninguna comunicación del SBA perdida</span></div>
@@ -343,12 +343,12 @@
     <div class="phase-hdr ph4-bg">
       <span class="phase-num ph4">04</span>
       <div class="phase-title-wrap">
-        <h3>Post-Certification — Market Entry & Compliance</h3>
+        <h3>Post-Certificación — Entrada al Mercado y Cumplimiento</h3>
         <p>La certificación es el comienzo, no la línea de llegada — ahora construya su infraestructura de contratación</p>
       </div>
       <div class="phase-badge">
         <div class="phase-pct" id="pp4">0%</div>
-        <div class="phase-sub" id="ps4">0 / 12 items</div>
+        <div class="phase-sub" id="ps4">0 / 12 elementos</div>
         <div class="phase-progbar"><div class="phase-fill ph4" id="pf4" style="width:0%"></div></div>
       </div>
     </div>
@@ -375,7 +375,7 @@
   </div>
 
   <div class="sources">
-    <h4>Sources & Regulatory References</h4>
+    <h4>Fuentes y Referencias Regulatorias</h4>
     <ul>
       <li>SBA — MySBA Certifications Portal — <a href="https://certify.sba.gov" target="_blank">certify.sba.gov</a></li>
       <li>SBA — 8(a) Program Regulations, 13 CFR Part 124 — <a href="https://www.ecfr.gov" target="_blank">ecfr.gov</a></li>
@@ -396,16 +396,16 @@
 <footer class="site-footer">
   <div class="ft">Claridad Operacional. Confianza en el Cumplimiento. Sistemas que Escalan.</div>
   <div class="fl"><a href="https://rc2consulting.github.io/">Inicio</a><a href="https://rc2consulting.github.io/services-es.html">Servicios</a><a href="https://rc2consulting.github.io/who-we-help-es.html">A Quién Ayudamos</a><a href="https://rc2consulting.github.io/about-es.html">Nosotros</a><a href="https://rc2consulting.github.io/RC2_Resources_Page-es.html">Recursos</a><a href="https://rc2consulting.github.io/contact-es.html">Contacto</a></div>
-  <div class="fc">© 2026 RC2 Consulting, LLC &nbsp;|&nbsp; Privacy Policy &nbsp;|&nbsp; Terms of Service</div>
+  <div class="fc">© 2026 RC2 Consulting, LLC &nbsp;|&nbsp; Política de Privacidad &nbsp;|&nbsp; Términos de Servicio</div>
 </footer>
 
 <script>
 const PROG_INFO={
-  '8a':'<strong>8(a) Business Development Program</strong> — 9-year developmental program. Requires social disadvantage narrative, economic disadvantage (net worth &lt; $850K), 51%+ ownership by qualifying individual, and minimum 2 years in business. Provides sole-source awards up to $4.5M (services) / $7M (manufacturing) and competitive set-asides. Annual reporting and SBA District Office review required throughout program term. <strong>Most complex application — budget 60–90 days for preparation.</strong>',
-  'wosb':'<strong>WOSB / EDWOSB (Women-Owned Small Business)</strong> — Requires 51%+ unconditional ownership and day-to-day management by women who are U.S. citizens. EDWOSB adds economic disadvantage test (net worth &lt; $850K). Self-certification eliminated in 2020 — SBA certification required. Provides set-aside and sole-source access in industries where women-owned businesses are underrepresented. <strong>Moderate complexity — budget 30–45 days for preparation.</strong>',
-  'hubzone':'<strong>HUBZone (Historically Underutilized Business Zone)</strong> — Principal office must be in a designated HUBZone. 35% of employees must reside in a HUBZone at all times. Annual recertification required — HUBZone maps update periodically. Provides 10% price evaluation preference and set-aside access. Employee turnover and relocation can trigger decertification. <strong>Moderate complexity — 35% employee tracking is an ongoing compliance obligation, not a one-time check.</strong>',
-  'sdvosb':'<strong>SDVOSB (Service-Disabled Veteran-Owned Small Business)</strong> — Service-disabled veteran (VA or DoD verified) must own 51%+ and control daily operations. NDAA 2021 transferred certification from VA CVE to SBA — all legacy CVE verifications expired. Required for SDVOSB set-asides across all federal agencies. VA also uses SDVOSB for VA-specific Veterans First contracting. <strong>Lower complexity for clean applications — budget 3–4 weeks for documentation.</strong>',
-  'vosb':'<strong>VOSB (Veteran-Owned Small Business)</strong> — Honorable discharge and 51%+ ownership and daily control by veteran required. No service-connected disability required (unlike SDVOSB). Certification through SBA MySBA portal. Provides access to VA set-aside contracts under the Veterans First Contracting Program. VOSB set-asides are VA contracts only — not federal-wide. <strong>Similar process to SDVOSB — budget 3–4 weeks for documentation.</strong>'
+  '8a':'<strong>Programa de Desarrollo Empresarial 8(a)</strong> — Programa de desarrollo de 9 años. Requiere narrativa de desventaja social, desventaja económica (patrimonio neto &lt; $850K), 51%+ de propiedad por individuo calificado y mínimo 2 años en operación. Proporciona adjudicaciones de fuente única hasta $4.5M (servicios) / $7M (manufactura) y contratos reservados competitivos. Se requieren informes anuales y revisión de la Oficina del Distrito SBA durante todo el programa. <strong>Solicitud más compleja — presupueste 60–90 días para la preparación.</strong>',
+  'wosb':'<strong>WOSB / EDWOSB (Pequeña Empresa de Propiedad Femenina)</strong> — Requiere 51%+ de propiedad incondicional y gestión diaria por mujeres ciudadanas estadounidenses. EDWOSB agrega prueba de desventaja económica (patrimonio neto &lt; $850K). La autocertificación fue eliminada en 2020 — se requiere certificación SBA. Proporciona acceso a contratos reservados y fuente única en industrias donde las empresas de propiedad femenina están subrepresentadas. <strong>Complejidad moderada — presupueste 30–45 días para la preparación.</strong>',
+  'hubzone':'<strong>HUBZone (Zona de Negocios Históricamente No Aprovechada)</strong> — La oficina principal debe estar en una HUBZone designada. El 35% de los empleados debe residir en una HUBZone en todo momento. Se requiere recertificación anual — los mapas HUBZone se actualizan periódicamente. Proporciona preferencia de evaluación de precio del 10% y acceso a contratos reservados. La rotación y reubicación de empleados puede desencadenar la descertificación. <strong>Complejidad moderada — el seguimiento del 35% de empleados es una obligación de cumplimiento continua, no una verificación única.</strong>',
+  'sdvosb':'<strong>SDVOSB (Pequeña Empresa de Propiedad de Veterano con Discapacidad de Servicio)</strong> — El veterano con discapacidad de servicio (verificado por VA o DoD) debe poseer 51%+ y controlar las operaciones diarias. La NDAA 2021 transfirió la certificación del VA CVE al SBA — todas las verificaciones CVE anteriores expiraron. Requerida para contratos reservados SDVOSB en todas las agencias federales. El VA también usa SDVOSB para la contratación Veterans First específica del VA. <strong>Menor complejidad para solicitudes limpias — presupueste 3–4 semanas para documentación.</strong>',
+  'vosb':'<strong>VOSB (Pequeña Empresa de Propiedad de Veterano)</strong> — Se requiere baja honorable y 51%+ de propiedad y control diario por el veterano. No se requiere discapacidad relacionada con el servicio (a diferencia del SDVOSB). Certificación a través del portal SBA MySBA. Proporciona acceso a contratos reservados del VA bajo el Programa de Contratación Veterans First. Los contratos reservados VOSB son solo para el VA — no son a nivel federal. <strong>Proceso similar al SDVOSB — presupueste 3–4 semanas para documentación.</strong>'
 };
 
 const PHASE_ITEMS={1:12,2:12,3:12,4:12};
@@ -432,7 +432,7 @@ function calcAll(){
     const pct=Math.round(checked/PHASE_ITEMS[p]*100);
     grand+=checked;
     document.getElementById('pp'+p).textContent=pct+'%';
-    document.getElementById('ps'+p).textContent=checked+' / '+PHASE_ITEMS[p]+' items';
+    document.getElementById('ps'+p).textContent=checked+' / '+PHASE_ITEMS[p]+' elementos';
     document.getElementById('pf'+p).style.width=pct+'%';
     document.getElementById('dv'+p).textContent=pct+'%';
     document.getElementById('dp'+p).style.width=pct+'%';
@@ -444,9 +444,9 @@ function calcAll(){
   const sbar=document.getElementById('status-bar');
   let cls='status-bar',txt='',sub=grand+' de '+total+' elementos completados across all four phases';
   if(overall===0){txt='Seleccione su programa de certificación arriba, luego marque los elementos completados';}
-  else if(overall<33){txt='🟡 Early Stage — Focus on completing Fase 1 documentation before opening the portal';cls+=' early';}
-  else if(overall<66){txt='🔵 In Progress — Application preparation underway. Keep working through Phases 2 and 3.';cls+=' progressing';}
-  else if(overall<90){txt='🟢 Advanced — Strong readiness. Complete Fase 4 post-certification infrastructure items.';cls+=' ready';}
+  else if(overall<33){txt='🟡 Etapa Inicial — Enfóquese en completar la Fase 1: documentación antes de abrir el portal.';cls+=' early';}
+  else if(overall<66){txt='🔵 En Progreso — Preparación de solicitud en curso. Continúe trabajando en las Fases 2 y 3.';cls+=' progressing';}
+  else if(overall<90){txt='🟢 Avanzado — Sólida preparación. Complete los elementos de la Fase 4 de infraestructura post-certificación.';cls+=' ready';}
   else{txt='✅ High Readiness — '+overall+'% complete. Your SBA certification and contracting infrastructure are solid.';cls+=' ready';}
   sbar.className=cls;
   sbar.innerHTML='<div><div class="status-text">'+txt+'</div><div class="status-sub">'+sub+'</div></div><div class="overall-pct" id="ovpct">'+overall+'%</div>';
