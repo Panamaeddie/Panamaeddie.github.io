@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Nosotros | RC2 Consulting</title>
+  <meta name="description" content="RC2 Consulting es una firma de asesoría estratégica que convierte la estrategia, el cumplimiento y la ejecución en sistemas estructurados con resultados medibles."/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --navy:#0B2545;--blue:#1A4A8A;--light-blue:#2563EB;
+      --gold:#C8922A;--gold-lt:#F0B429;
+      --bg:#F4F6FA;--white:#FFFFFF;--text:#1C2B3A;--muted:#4A5568;--border:#E2E8F0;
+    }
+    body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--text);margin:0}
+
+    /* NAV */
+    .topnav{background:var(--navy);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+    .nav-brand{display:flex;align-items:center;gap:8px;text-decoration:none}
+    .nav-logo-mark{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center}
+    .nav-logo-mark sup{font-size:.5rem;vertical-align:super}
+    .nav-brand-name{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.9)}
+    .nav-links{display:flex;gap:4px;list-style:none;align-items:center}
+    .nav-links a{color:rgba(255,255,255,.78);text-decoration:none;font-size:.83rem;font-weight:600;padding:6px 12px;border-radius:4px;transition:all .2s}
+    .nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,.12)}
+    .lang-toggle{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.25);border-radius:6px;overflow:hidden;margin-left:8px}
+    .lang-btn{font-size:.72rem;font-weight:700;padding:5px 10px;text-decoration:none;transition:all .2s;letter-spacing:.5px}
+    .lang-btn.inactive{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6)}
+    .lang-btn.inactive:hover{background:rgba(255,255,255,.15);color:#fff}
+    .lang-btn.active{background:var(--gold);color:var(--navy)}
+
+    /* HERO */
+    .hero{background:linear-gradient(135deg,var(--navy),#1A3A6B);padding:52px 40px 44px;text-align:center}
+    .hero h1{font-family:'Playfair Display',serif;font-size:2.2rem;color:#fff;font-weight:700;margin-bottom:14px;letter-spacing:2px}
+    .hero p{font-size:.95rem;color:rgba(255,255,255,.78);max-width:600px;margin:0 auto;line-height:1.7}
+
+    /* CONTENT */
+    .page{max-width:900px;margin:0 auto;padding:48px 40px}
+    .section{display:flex;flex-direction:column;gap:36px}
+    .about-block{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:32px 36px;box-shadow:0 2px 8px rgba(11,37,69,.06)}
+    .about-block h3{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--navy);margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--gold);display:inline-block}
+    .about-block p{font-size:.9rem;color:var(--muted);line-height:1.75}
+
+    /* TEAM */
+    .team-section{background:var(--navy);padding:52px 40px}
+    .team-inner{max-width:900px;margin:0 auto}
+    .team-inner h2{font-family:'Playfair Display',serif;font-size:1.6rem;color:#fff;text-align:center;margin-bottom:32px}
+    .team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+    .team-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:28px;display:flex;flex-direction:column;gap:14px}
+    .team-photo{width:100%;height:220px;border-radius:10px;overflow:hidden;background:#1A3A6B;display:flex;align-items:center;justify-content:center}
+    .team-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+    .team-name{font-family:'Playfair Display',serif;font-size:1.1rem;color:#fff;font-weight:700}
+    .team-title{font-size:.78rem;font-weight:700;color:var(--gold-lt);letter-spacing:.8px;text-transform:uppercase;margin-bottom:4px}
+    .team-bio{font-size:.82rem;color:rgba(255,255,255,.72);line-height:1.65}
+    .team-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+    .team-tag{font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:12px;background:rgba(200,146,42,.15);color:var(--gold-lt);border:1px solid rgba(200,146,42,.3)}
+
+    /* WHO SERVES */
+    .who-section{max-width:900px;margin:0 auto;padding:48px 40px}
+    .who-section h2{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--navy);margin-bottom:24px;text-align:center}
+    .who-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .who-item{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:20px 24px;display:flex;align-items:flex-start;gap:12px;box-shadow:0 1px 4px rgba(11,37,69,.05)}
+    .who-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px}
+    .who-text h4{font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:4px}
+    .who-text p{font-size:.8rem;color:var(--muted);line-height:1.55}
+
+    /* CTA BAR */
+    .cta-bar{background:linear-gradient(135deg,var(--navy),var(--blue));padding:52px 40px;text-align:center}
+    .cta-bar h3{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;margin-bottom:12px}
+    .cta-bar p{font-size:.9rem;color:rgba(255,255,255,.75);margin-bottom:24px}
+    .btn-cta{background:var(--gold);color:var(--navy);font-weight:700;font-size:.9rem;padding:13px 28px;border-radius:8px;text-decoration:none;display:inline-block;transition:all .2s}
+    .btn-cta:hover{background:var(--gold-lt);transform:translateY(-2px)}
+
+    /* FOOTER */
+    .site-footer{background:var(--blue);color:#fff;text-align:center;padding:36px 24px}
+    .ft{font-size:.9rem;color:rgba(255,255,255,.9);font-weight:600;letter-spacing:.5px;margin-bottom:10px}
+    .fl{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+    .fl a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.78rem}
+    .fc{font-size:.73rem;color:rgba(255,255,255,.5)}
+
+    @media(max-width:780px){
+      .team-grid,.who-grid{grid-template-columns:1fr}
+      .page,.team-section,.who-section,.cta-bar{padding-left:20px;padding-right:20px}
+      .topnav{padding:0 14px}
+      .nav-links a{font-size:.74rem;padding:5px 7px}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="https://rc2consulting.github.io/index-es.html" class="nav-brand">
+    <div class="nav-logo-mark">RC<sup>2</sup></div>
+    <span class="nav-brand-name">Consulting</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://rc2consulting.github.io/index-es.html">Inicio</a></li>
+    <li><a href="https://rc2consulting.github.io/services-es.html">Servicios</a></li>
+    <li><a href="https://rc2consulting.github.io/who-we-help-es.html">A Quién Ayudamos</a></li>
+    <li><a href="https://rc2consulting.github.io/about-es.html" class="active">Nosotros</a></li>
+    <li><a href="https://rc2consulting.github.io/RC2_Resources_Page.html">Recursos</a></li>
+    <li><a href="https://rc2consulting.github.io/contact-es.html">Contacto</a></li>
+    <li>
+      <div class="lang-toggle">
+        <a href="https://rc2consulting.github.io/about.html" class="lang-btn inactive">EN</a>
+        <a href="https://rc2consulting.github.io/about-es.html" class="lang-btn active">ES</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <h1>RC2 CONSULTING</h1>
+  <p>Una firma de asesoría estratégica que convierte la estrategia, el cumplimiento y la ejecución en sistemas estructurados que generan resultados medibles.</p>
+</section>
+
+<div class="page"><div class="section">
+
+  <div class="about-block">
+    <h3>Acerca de RC2 Consulting</h3>
+    <p>RC2 Consulting, LLC es una firma de asesoría estratégica que convierte la estrategia, el cumplimiento y la ejecución en sistemas estructurados que generan resultados medibles.</p>
+    <p style="margin-top:12px">Fundada por Jill Coleman, RC2 integra más de 35 años de experiencia ejecutiva en consultoría de ventas, desarrollo empresarial, capacitación, expansión a mercados globales y asesoría operativa.</p>
+    <p style="margin-top:12px">Hoy, RC2 opera en la intersección del crecimiento de ingresos, la disciplina operativa, la preparación para el cumplimiento y la escalabilidad estructurada — sirviendo a organizaciones que requieren claridad, documentación y ejecución medible en diversas industrias.</p>
+  </div>
+
+  <div class="about-block">
+    <h3>Nuestra Misión</h3>
+    <p>Alinear los objetivos de crecimiento con la claridad operativa y la integridad del cumplimiento mediante una implementación disciplinada y una rendición de cuentas medible.</p>
+    <p style="margin-top:10px"><strong style="color:var(--navy)">No entregamos teoría. Construimos sistemas prácticos que las organizaciones pueden ejecutar.</strong></p>
+  </div>
+
+  <div class="about-block">
+    <h3>Nuestro Enfoque</h3>
+    <p>RC2 utiliza herramientas estructuradas de preparación y evaluaciones operativas para ayudar a las organizaciones a prepararse para entornos de auditoría, certificación y revisión de desempeño.</p>
+    <p style="margin-top:10px">Identificamos brechas en la documentación, fortalecemos la infraestructura de cumplimiento, implementamos sistemas basados en SOPs y alineamos a los equipos de liderazgo en torno a estándares de ejecución medibles. Nuestro enfoque garantiza que las organizaciones no solo estén preparadas para la revisión, sino estructuradas para un desempeño operativo sostenido.</p>
+  </div>
+
+</div></div>
+
+<div class="team-section">
+  <div class="team-inner">
+    <h2>Nuestro Equipo</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-photo" style="background:none;">
+          <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhw" alt="Jill Coleman" style="width:100%;height:220px;object-fit:cover;object-position:center top;border-radius:10px;display:block;"/>
+        </div>
+        <div>
+          <div class="team-title">Fundadora y Directora Principal</div>
+          <div class="team-name">Jill Coleman</div>
+          <div class="team-bio">Con más de 35 años de experiencia ejecutiva, Jill lidera el trabajo de RC2 en operaciones, cumplimiento y estrategia de crecimiento. Su experiencia abarca consultoría de ventas, desarrollo empresarial, capacitación y expansión a mercados globales.</div>
+          <div class="team-tags">
+            <span class="team-tag">Operaciones</span>
+            <span class="team-tag">Cumplimiento WRAP</span>
+            <span class="team-tag">Contratos Gubernamentales</span>
+            <span class="team-tag">Cadena de Suministro</span>
+          </div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo">
+          <div style="display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,.3);font-size:.85rem;text-align:center;padding:20px">Foto del Consultor<br/>Próximamente</div>
+        </div>
+        <div>
+          <div class="team-title">Consultor Senior de Operaciones</div>
+          <div class="team-name">Equipo RC2</div>
+          <div class="team-bio">Nuestros consultores senior aportan experiencia especializada en documentación de cumplimiento, desarrollo de SOPs, gestión de cadena de suministro y preparación para contratos gubernamentales.</div>
+          <div class="team-tags">
+            <span class="team-tag">SOPs</span>
+            <span class="team-tag">Documentación</span>
+            <span class="team-tag">Escalabilidad</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="who-section">
+  <h2>A Quién Servimos</h2>
+  <div class="who-grid">
+    <div class="who-item">
+      <div class="who-icon">🏭</div>
+      <div class="who-text">
+        <h4>Empresas de Manufactura</h4>
+        <p>Preparación para auditorías WRAP, cumplimiento de cadena de suministro y sistemas operativos escalables.</p>
+      </div>
+    </div>
+    <div class="who-item">
+      <div class="who-icon">🏛️</div>
+      <div class="who-text">
+        <h4>Contratistas Gubernamentales</h4>
+        <p>Certificación SBA, registro SAM, cumplimiento FAR/DCAA y documentación de propuestas.</p>
+      </div>
+    </div>
+    <div class="who-item">
+      <div class="who-icon">📈</div>
+      <div class="who-text">
+        <h4>Empresas en Crecimiento</h4>
+        <p>Organizaciones que superan sus sistemas actuales y necesitan infraestructura operativa repetible.</p>
+      </div>
+    </div>
+    <div class="who-item">
+      <div class="who-icon">🌎</div>
+      <div class="who-text">
+        <h4>Operaciones Globales</h4>
+        <p>Empresas que gestionan cadenas de suministro internacionales, nearshoring y cumplimiento de importación/exportación.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-bar">
+  <h3>¿Listo para Construir con Estructura?</h3>
+  <p>Cuéntenos sobre su organización y determinaremos el camino de trabajo adecuado.</p>
+  <a href="https://rc2consulting.github.io/contact-es.html" class="btn-cta">Iniciar la Conversación →</a>
+</div>
+
+<footer class="site-footer">
+  <div class="ft">Claridad Operacional. Confianza en el Cumplimiento. Sistemas que Escalan.</div>
+  <div class="fl">
+    <a href="https://rc2consulting.github.io/index-es.html">Inicio</a>
+    <a href="https://rc2consulting.github.io/services-es.html">Servicios</a>
+    <a href="https://rc2consulting.github.io/who-we-help-es.html">A Quién Ayudamos</a>
+    <a href="https://rc2consulting.github.io/about-es.html">Nosotros</a>
+    <a href="https://rc2consulting.github.io/RC2_Resources_Page.html">Recursos</a>
+    <a href="https://rc2consulting.github.io/contact-es.html">Contacto</a>
+  </div>
+  <div class="fc">© 2026 RC2 Consulting, LLC &nbsp;|&nbsp; Política de Privacidad &nbsp;|&nbsp; Términos de Servicio</div>
+</footer>
+
+</body>
+</html>
