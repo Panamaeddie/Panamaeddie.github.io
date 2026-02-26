@@ -1,90 +1,104 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nosotros | RC2 Consulting</title>
-  <meta name="description" content="RC2 Consulting es una firma de asesoría estratégica que convierte la estrategia, el cumplimiento y la ejecución en sistemas estructurados con resultados medibles."/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <meta name="description" content="RC2 Consulting — a strategic advisory firm that converts strategy, compliance, and execution into structured systems that deliver measurable results." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --navy:#0B2545;--blue:#1A4A8A;--light-blue:#2563EB;
-      --gold:#C8922A;--gold-lt:#F0B429;
-      --bg:#F4F6FA;--white:#FFFFFF;--text:#1C2B3A;--muted:#4A5568;--border:#E2E8F0;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:#0B2545; --blue:#1A4A8A; --light-blue:#2563EB;
+      --light-bg:#F4F6FA; --white:#FFFFFF;
+      --text:#1C2B3A; --text-muted:#4A5568; --border:#E2E8F0;
     }
-    body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--text);margin:0}
+    body { font-family:'Source Sans 3',sans-serif; background:var(--white); color:var(--text); margin:0; line-height:1.6; }
 
     /* NAV */
-    .topnav{background:var(--navy);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,.25)}
-    .nav-brand{display:flex;align-items:center;gap:8px;text-decoration:none}
-    .nav-logo-mark{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center}
-    .nav-logo-mark sup{font-size:.5rem;vertical-align:super}
-    .nav-brand-name{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.9)}
-    .nav-links{display:flex;gap:4px;list-style:none;align-items:center}
-    .nav-links a{color:rgba(255,255,255,.78);text-decoration:none;font-size:.83rem;font-weight:600;padding:6px 12px;border-radius:4px;transition:all .2s}
-    .nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,.12)}
+    .topnav { background:var(--navy); padding:0 40px; display:flex; align-items:center; justify-content:space-between; height:52px; position:sticky; top:0; z-index:200; box-shadow:0 2px 8px rgba(0,0,0,0.25); }
+    .nav-brand { display:flex; align-items:center; gap:8px; text-decoration:none; }
+    .nav-logo-mark { background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); color:white; font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; width:32px; height:32px; border-radius:6px; display:flex; align-items:center; justify-content:center; }
+    .nav-logo-mark sup { font-size:0.5rem; vertical-align:super; }
+    .nav-brand-name { font-size:0.88rem; font-weight:600; color:rgba(255,255,255,0.9); }
+    .nav-links { display:flex; gap:4px; list-style:none; }
+    .nav-links a { color:rgba(255,255,255,0.78); text-decoration:none; font-size:0.83rem; font-weight:600; padding:6px 12px; border-radius:4px; transition:all 0.2s; }
+    .nav-links a:hover { color:white; background:rgba(255,255,255,0.1); }
+    .nav-links a.active { color:white; background:rgba(255,255,255,0.12); }
+
+    /* HERO */
+    .hero { background:linear-gradient(to bottom, rgba(11,37,69,0.75) 0%, rgba(11,37,69,0.55) 50%, rgba(11,37,69,0.75) 100%), url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1400&q=80') center/cover no-repeat; padding:72px 40px; text-align:center; }
+    .hero h1 { font-family:'Playfair Display',serif; font-size:2.6rem; font-weight:700; color:white; margin-bottom:14px; }
+    .hero p { font-size:1rem; color:rgba(255,255,255,0.82); max-width:560px; margin:0 auto; line-height:1.7; }
+
+    /* ABOUT CONTENT */
+    .page { max-width:900px; margin:0 auto; padding:0 28px; }
+    .section { padding:56px 0; }
+
+    .about-block { margin-bottom:36px; }
+    .about-block h3 { font-size:1rem; font-weight:700; color:var(--light-blue); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
+    .about-block p { font-size:0.92rem; color:var(--text-muted); line-height:1.75; }
+
+    /* TEAM */
+    .team-section { background:var(--light-bg); padding:56px 28px; }
+    .team-inner { max-width:900px; margin:0 auto; }
+    .team-inner h2 { font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--navy); margin-bottom:28px; text-align:center; }
+    .team-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:28px; }
+    .team-card {
+      background:var(--white); border-radius:10px; border:1px solid var(--border);
+      box-shadow:0 2px 8px rgba(11,37,69,0.07); padding:28px;
+      display:grid; grid-template-columns:auto 1fr; gap:20px; align-items:start;
+    }
+    .team-photo {
+      width:80px; height:80px; border-radius:50%; overflow:hidden;
+      border:3px solid var(--border); flex-shrink:0;
+      background:var(--border); display:flex; align-items:center; justify-content:center;
+    }
+    .team-photo img { width:100%; height:100%; object-fit:cover; }
+    .team-photo-placeholder { font-size:1.8rem; }
+    .team-name { font-family:'Playfair Display',serif; font-size:1.05rem; color:var(--navy); margin-bottom:3px; }
+    .team-role { font-size:0.78rem; color:var(--light-blue); font-style:italic; margin-bottom:12px; }
+    .team-list { list-style:none; }
+    .team-list li { font-size:0.8rem; color:var(--text-muted); padding:4px 0; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:6px; }
+    .team-list li:last-child { border-bottom:none; }
+    .team-list li::before { content:'›'; color:var(--blue); font-size:1rem; flex-shrink:0; }
+
+    /* WHO WE SERVE */
+    .serve-section { padding:56px 28px; }
+    .serve-inner { max-width:900px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; }
+    .serve-left h3 { font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--navy); margin-bottom:16px; }
+    .serve-list { list-style:none; }
+    .serve-list li { font-size:0.88rem; color:var(--text-muted); padding:7px 0; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:8px; }
+    .serve-list li:last-child { border-bottom:none; }
+    .serve-list li::before { content:'•'; color:var(--blue); font-weight:700; flex-shrink:0; }
+    .serve-right { background:var(--navy); border-radius:10px; padding:28px; }
+    .serve-right h3 { font-family:'Playfair Display',serif; font-size:1.1rem; color:white; margin-bottom:14px; }
+    .serve-right p { font-size:0.88rem; color:rgba(255,255,255,0.78); line-height:1.6; margin-bottom:20px; }
+    .btn-start { display:block; background:var(--light-blue); color:white; font-weight:700; font-size:0.88rem; padding:12px 24px; border-radius:6px; text-decoration:none; text-align:center; transition:all 0.2s; }
+    .btn-start:hover { background:#1d4ed8; }
+
+    /* FOOTER */
+    .site-footer { background:var(--blue); color:white; text-align:center; padding:40px 24px; }
+    .footer-tagline { font-size:0.92rem; color:rgba(255,255,255,0.9); font-weight:600; letter-spacing:0.5px; margin-bottom:12px; }
+    .footer-links { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-bottom:14px; }
+    .footer-links a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.8rem; transition:color 0.2s; }
+    .footer-links a:hover { color:white; }
+    .footer-copy { font-size:0.75rem; color:rgba(255,255,255,0.5); }
+
+    @media (max-width:700px) {
+      .team-grid { grid-template-columns:1fr; }
+      .team-card { grid-template-columns:1fr; }
+      .serve-inner { grid-template-columns:1fr; }
+      .hero h1 { font-size:2rem; }
+      .topnav { padding:0 16px; }
+      .nav-links a { padding:5px 8px; font-size:0.78rem; }
+    }
+  
     .lang-toggle{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.25);border-radius:6px;overflow:hidden;margin-left:8px}
     .lang-btn{font-size:.72rem;font-weight:700;padding:5px 10px;text-decoration:none;transition:all .2s;letter-spacing:.5px}
     .lang-btn.inactive{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6)}
     .lang-btn.inactive:hover{background:rgba(255,255,255,.15);color:#fff}
-    .lang-btn.active{background:var(--gold);color:var(--navy)}
-
-    /* HERO */
-    .hero{background:linear-gradient(to bottom, rgba(11,37,69,0.75) 0%, rgba(11,37,69,0.55) 50%, rgba(11,37,69,0.75) 100%), url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1400&q=80') center/cover no-repeat;padding:52px 40px 44px;text-align:center}
-    .hero h1{font-family:'Playfair Display',serif;font-size:2.2rem;color:#fff;font-weight:700;margin-bottom:14px;letter-spacing:2px}
-    .hero p{font-size:.95rem;color:rgba(255,255,255,.78);max-width:600px;margin:0 auto;line-height:1.7}
-
-    /* CONTENT */
-    .page{max-width:900px;margin:0 auto;padding:48px 40px}
-    .section{display:flex;flex-direction:column;gap:36px}
-    .about-block{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:32px 36px;box-shadow:0 2px 8px rgba(11,37,69,.06)}
-    .about-block h3{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--navy);margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--gold);display:inline-block}
-    .about-block p{font-size:.9rem;color:var(--muted);line-height:1.75}
-
-    /* TEAM */
-    .team-section{background:var(--navy);padding:52px 40px}
-    .team-inner{max-width:900px;margin:0 auto}
-    .team-inner h2{font-family:'Playfair Display',serif;font-size:1.6rem;color:#fff;text-align:center;margin-bottom:32px}
-    .team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-    .team-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:28px;display:flex;flex-direction:column;gap:14px}
-    .team-photo{width:100%;height:220px;border-radius:10px;overflow:hidden;background:#1A3A6B;display:flex;align-items:center;justify-content:center}
-    .team-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
-    .team-name{font-family:'Playfair Display',serif;font-size:1.1rem;color:#fff;font-weight:700}
-    .team-title{font-size:.78rem;font-weight:700;color:var(--gold-lt);letter-spacing:.8px;text-transform:uppercase;margin-bottom:4px}
-    .team-bio{font-size:.82rem;color:rgba(255,255,255,.72);line-height:1.65}
-    .team-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
-    .team-tag{font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:12px;background:rgba(200,146,42,.15);color:var(--gold-lt);border:1px solid rgba(200,146,42,.3)}
-
-    /* WHO SERVES */
-    .who-section{max-width:900px;margin:0 auto;padding:48px 40px}
-    .who-section h2{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--navy);margin-bottom:24px;text-align:center}
-    .who-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-    .who-item{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:20px 24px;display:flex;align-items:flex-start;gap:12px;box-shadow:0 1px 4px rgba(11,37,69,.05)}
-    .who-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px}
-    .who-text h4{font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:4px}
-    .who-text p{font-size:.8rem;color:var(--muted);line-height:1.55}
-
-    /* CTA BAR */
-    .cta-bar{background:linear-gradient(135deg,var(--navy),var(--blue));padding:52px 40px;text-align:center}
-    .cta-bar h3{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;margin-bottom:12px}
-    .cta-bar p{font-size:.9rem;color:rgba(255,255,255,.75);margin-bottom:24px}
-    .btn-cta{background:var(--gold);color:var(--navy);font-weight:700;font-size:.9rem;padding:13px 28px;border-radius:8px;text-decoration:none;display:inline-block;transition:all .2s}
-    .btn-cta:hover{background:var(--gold-lt);transform:translateY(-2px)}
-
-    /* FOOTER */
-    .site-footer{background:var(--blue);color:#fff;text-align:center;padding:36px 24px}
-    .ft{font-size:.9rem;color:rgba(255,255,255,.9);font-weight:600;letter-spacing:.5px;margin-bottom:10px}
-    .fl{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
-    .fl a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.78rem}
-    .fc{font-size:.73rem;color:rgba(255,255,255,.5)}
-
-    @media(max-width:780px){
-      .team-grid,.who-grid{grid-template-columns:1fr}
-      .page,.team-section,.who-section,.cta-bar{padding-left:20px;padding-right:20px}
-      .topnav{padding:0 14px}
-      .nav-links a{font-size:.74rem;padding:5px 7px}
-    }
+    .lang-btn.active{background:#C8922A;color:#0B2545}
   </style>
 </head>
 <body>
@@ -101,9 +115,9 @@
     <li><a href="https://rc2consulting.github.io/about-es.html" class="active">Nosotros</a></li>
     <li><a href="https://rc2consulting.github.io/RC2_Resources_Page-es.html">Recursos</a></li>
     <li><a href="https://rc2consulting.github.io/contact-es.html">Contacto</a></li>
-    <li>
+      <li>
       <div class="lang-toggle">
-        <a href="https://rc2consulting.github.io/about.html" class="lang-btn inactive">EN</a>
+        <a href="https://rc2consulting.github.io/about-es.html" class="lang-btn active">EN</a>
         <a href="https://rc2consulting.github.io/about-es.html" class="lang-btn active">ES</a>
       </div>
     </li>
@@ -116,33 +130,30 @@
 </section>
 
 <div class="page"><div class="section">
-
   <div class="about-block">
     <h3>Acerca de RC2 Consulting</h3>
     <p>RC2 Consulting, LLC es una firma de asesoría estratégica que convierte la estrategia, el cumplimiento y la ejecución en sistemas estructurados que generan resultados medibles.</p>
-    <p style="margin-top:12px">Fundada por Jill Coleman, RC2 integra más de 35 años de experiencia ejecutiva en consultoría de ventas, desarrollo empresarial, capacitación, expansión a mercados globales y asesoría operativa.</p>
-    <p style="margin-top:12px">Hoy, RC2 opera en la intersección del crecimiento de ingresos, la disciplina operativa, la preparación para el cumplimiento y la escalabilidad estructurada — sirviendo a organizaciones que requieren claridad, documentación y ejecución medible en diversas industrias.</p>
+    <p style="margin-top:12px;">Fundada por Jill Coleman, RC2 integra más de 35 años de experiencia ejecutiva en consultoría de ventas, desarrollo empresarial, capacitación, expansión global y asesoría operativa.</p>
+    <p style="margin-top:12px;">Hoy, RC2 opera en la intersección del crecimiento de ingresos, la disciplina operativa, la preparación para el cumplimiento y la escalabilidad estructurada — sirviendo a organizaciones que requieren claridad, documentación y ejecución medible en diversas industrias.</p>
   </div>
-
   <div class="about-block">
     <h3>Nuestra Misión</h3>
     <p>Alinear los objetivos de crecimiento con la claridad operativa y la integridad del cumplimiento mediante una implementación disciplinada y una rendición de cuentas medible.</p>
-    <p style="margin-top:10px"><strong style="color:var(--navy)">No entregamos teoría. Construimos sistemas prácticos que las organizaciones pueden ejecutar.</strong></p>
+    <p style="margin-top:10px;"><strong style="color:var(--navy);">No entregamos teoría. Construimos sistemas prácticos que las organizaciones pueden ejecutar.</strong></p>
   </div>
-
   <div class="about-block">
     <h3>Nuestro Enfoque</h3>
     <p>RC2 utiliza herramientas estructuradas de preparación y evaluaciones operativas para ayudar a las organizaciones a prepararse para entornos de auditoría, certificación y revisión de desempeño.</p>
-    <p style="margin-top:10px">Identificamos brechas en la documentación, fortalecemos la infraestructura de cumplimiento, implementamos sistemas basados en SOPs y alineamos a los equipos de liderazgo en torno a estándares de ejecución medibles. Nuestro enfoque garantiza que las organizaciones no solo estén preparadas para la revisión, sino estructuradas para un desempeño operativo sostenido.</p>
+    <p style="margin-top:10px;">Identificamos brechas en la documentación, fortalecemos la infraestructura de cumplimiento, implementamos sistemas basados en SOPs y alineamos a los equipos de liderazgo en torno a estándares de ejecución medibles. Nuestro enfoque garantiza que las organizaciones no solo estén preparadas para la revisión, sino estructuradas para un desempeño operativo sostenido.</p>
   </div>
-
 </div></div>
 
+<!-- TEAM -->
 <div class="team-section">
   <div class="team-inner">
     <h2>Nuestro Equipo</h2>
-    <div class="team-grid" style="justify-content:center;">
-<div class="team-card">
+    <div class="team-grid">
+      <div class="team-card">
         <div class="team-photo" style="background:none;"><img src="data:image/jpeg;base64,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" alt="Edward P. Castleton" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" /></div>
         <div>
           <div class="team-name">Edward P. Castleton</div>
@@ -153,60 +164,38 @@
             <li>Gobernanza Preparada para Auditorías</li>
             <li>Gestión de Riesgos y SOPs</li>
             <li>Implementación Multisectorial</li>
-            <li>Desarrollo de Programas de Capacitación</li>
+            <li>Desarrollo de Programas de Capacitación y Educación</li>
           </ul>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- WHO WE SERVE -->
+<div class="serve-section">
+  <div class="serve-inner">
+    <div class="serve-left">
+      <h3>A Quién Servimos</h3>
+      <ul class="serve-list">
+        <li>Pequeñas y medianas empresas</li>
+        <li>Asociaciones y redes profesionales</li>
+        <li>Organizaciones preparándose para auditoría o certificación</li>
+        <li>Empresas que buscan crecimiento comercial y operativo estructurado</li>
+        <li>Fabricantes de América Latina entrando a cadenas de suministro de EE.UU.</li>
+      </ul>
+    </div>
+    <div class="serve-right">
+      <h3>¿Listo para Construir con Estructura?</h3>
+      <p>Si su organización se está preparando para crecer, escalar operativamente o estar lista para auditorías, lo invitamos a iniciar la conversación.</p>
+      <a href="https://rc2consulting.github.io/contact-es.html" class="btn-start">Comenzar Aquí →</a>
     </div>
   </div>
-</div>
-
-<div class="who-section">
-  <h2>A Quién Servimos</h2>
-  <div class="who-grid">
-    <div class="who-item">
-      <div class="who-icon">🏭</div>
-      <div class="who-text">
-        <h4>Empresas de Manufactura</h4>
-        <p>Preparación para auditorías WRAP, cumplimiento de cadena de suministro y sistemas operativos escalables.</p>
-      </div>
-    </div>
-    <div class="who-item">
-      <div class="who-icon">🏛️</div>
-      <div class="who-text">
-        <h4>Contratistas Gubernamentales</h4>
-        <p>Certificación SBA, registro SAM, cumplimiento FAR/DCAA y documentación de propuestas.</p>
-      </div>
-    </div>
-    <div class="who-item">
-      <div class="who-icon">📈</div>
-      <div class="who-text">
-        <h4>Empresas en Crecimiento</h4>
-        <p>Organizaciones que superan sus sistemas actuales y necesitan infraestructura operativa repetible.</p>
-      </div>
-    </div>
-    <div class="who-item">
-      <div class="who-icon">🌎</div>
-      <div class="who-text">
-        <h4>Operaciones Globales</h4>
-        <p>Empresas que gestionan cadenas de suministro internacionales, nearshoring y cumplimiento de importación/exportación.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="cta-bar">
-  <h3>¿Listo para Construir con Estructura?</h3>
-  <p>Cuéntenos sobre su organización y determinaremos el camino de trabajo adecuado.</p>
-  <a href="https://rc2consulting.github.io/contact-es.html" class="btn-cta">Iniciar la Conversación →</a>
 </div>
 
 <footer class="site-footer">
-  <div class="ft">Claridad Operacional. Confianza en el Cumplimiento. Sistemas que Escalan.</div>
-  <div class="fl">
+  <div class="footer-tagline">Claridad Operacional. Confianza en el Cumplimiento. Sistemas que Escalan.</div>
+  <div class="footer-links">
     <a href="https://rc2consulting.github.io/index-es.html">Inicio</a>
     <a href="https://rc2consulting.github.io/services-es.html">Servicios</a>
     <a href="https://rc2consulting.github.io/who-we-help-es.html">A Quién Ayudamos</a>
@@ -214,7 +203,7 @@
     <a href="https://rc2consulting.github.io/RC2_Resources_Page-es.html">Recursos</a>
     <a href="https://rc2consulting.github.io/contact-es.html">Contacto</a>
   </div>
-  <div class="fc">© 2026 RC2 Consulting, LLC &nbsp;|&nbsp; Política de Privacidad &nbsp;|&nbsp; Términos de Servicio</div>
+  <div class="footer-copy">© 2026 RC2 Consulting, LLC &nbsp;|&nbsp; Política de Privacidad &nbsp;|&nbsp; Términos de Servicio</div>
 </footer>
 
 </body>

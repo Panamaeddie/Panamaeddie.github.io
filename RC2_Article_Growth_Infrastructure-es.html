@@ -1,35 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Por Qué el Crecimiento Supera a la Infraestructura | RC2 Consulting</title>
-  <meta name="description" content="Las cinco brechas de infraestructura que frenan a las empresas en crecimiento y el marco por etapas para cerrarlas antes de que se conviertan en emergencias operativas."/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Por Qué el Crecimiento Supera la Infraestructura — Y Cómo Cerrar la Brecha | RC2 Consulting</title>
+  <meta name="description" content="The single most common operational crisis in scaling businesses is structural failure — when internal systems can no longer support the demands of growth." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --navy:#0B2545; --blue:#1A4A8A; --light-blue:#2563EB;
-      --light-bg:#F4F6FA; --white:#FFFFFF;
-      --text:#1C2B3A; --text-muted:#4A5568; --border:#E2E8F0;
-      --success:#1A7A4E; --success-bg:#EBF7F2;
-    }
-    body { font-family:'Source Sans 3',sans-serif; background:var(--light-bg); color:var(--text); margin:0; line-height:1.7; }
+    :root { --navy:#0B2545; --blue:#1A4A8A; --light-blue:#2563EB; --light-bg:#F4F6FA; --white:#FFFFFF; --text:#1C2B3A; --text-muted:#4A5568; --border:#E2E8F0; }
+    body { font-family:'Source Sans 3',sans-serif; background:var(--light-bg); color:var(--text); margin:0; line-height:1.6; }
     .topnav { background:var(--navy); padding:0 40px; display:flex; align-items:center; justify-content:space-between; height:52px; position:sticky; top:0; z-index:200; box-shadow:0 2px 8px rgba(0,0,0,0.25); }
     .nav-brand { display:flex; align-items:center; gap:8px; text-decoration:none; }
     .nav-logo-mark { background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); color:white; font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; width:32px; height:32px; border-radius:6px; display:flex; align-items:center; justify-content:center; }
     .nav-logo-mark sup { font-size:0.5rem; vertical-align:super; }
     .nav-brand-name { font-size:0.88rem; font-weight:600; color:rgba(255,255,255,0.9); }
-    .nav-links { display:flex; gap:4px; list-style:none; align-items:center; }
+    .nav-links { display:flex; gap:4px; list-style:none; }
     .nav-links a { color:rgba(255,255,255,0.78); text-decoration:none; font-size:0.83rem; font-weight:600; padding:6px 12px; border-radius:4px; transition:all 0.2s; white-space:nowrap; }
     .nav-links a:hover { color:white; background:rgba(255,255,255,0.1); }
     .nav-links a.active { color:white; background:rgba(255,255,255,0.12); }
-    .lang-toggle{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.25);border-radius:6px;overflow:hidden;margin-left:8px}
-    .lang-btn{font-size:.72rem;font-weight:700;padding:5px 10px;text-decoration:none;transition:all .2s;letter-spacing:.5px}
-    .lang-btn.inactive{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6)}
-    .lang-btn.inactive:hover{background:rgba(255,255,255,.15);color:#fff}
-    .lang-btn.active{background:#C8922A;color:#0B2545}
-    .hero { background:linear-gradient(to bottom, rgba(11,37,69,0.75) 0%, rgba(11,37,69,0.55) 50%, rgba(11,37,69,0.75) 100%), url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1400&q=80') center/cover no-repeat; padding:64px 40px 56px; }
+    .hero { background:linear-gradient(to bottom, rgba(11,37,69,0.82) 0%, rgba(11,37,69,0.65) 100%), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1400&q=80') center/cover no-repeat; padding:64px 40px 56px; }
     .hero-inner { max-width:820px; margin:0 auto; }
     .article-tag { display:inline-block; font-size:0.65rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.7); background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); padding:4px 12px; border-radius:10px; margin-bottom:16px; }
     .hero h1 { font-family:'Playfair Display',serif; font-size:2.3rem; font-weight:700; color:white; line-height:1.2; margin-bottom:16px; }
@@ -37,7 +27,6 @@
     .hero-meta span { font-size:0.82rem; color:rgba(255,255,255,0.65); }
     .hero-meta .divider { color:rgba(255,255,255,0.3); }
     .article-wrap { max-width:820px; margin:0 auto; padding:0 28px; }
-    .btn-back { display:inline-flex; align-items:center; gap:6px; color:var(--light-blue); text-decoration:none; font-size:0.85rem; font-weight:600; margin:28px 0 0; }
     .abstract-box { background:var(--white); border-left:4px solid var(--light-blue); border-radius:0 8px 8px 0; padding:24px 28px; margin:40px 0; box-shadow:0 2px 8px rgba(11,37,69,0.07); }
     .abstract-box h3 { font-size:0.7rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--light-blue); margin-bottom:10px; }
     .abstract-box p { font-size:0.92rem; color:var(--text-muted); line-height:1.75; font-style:italic; }
@@ -48,14 +37,17 @@
     .article-body p { font-size:0.93rem; color:var(--text-muted); line-height:1.8; margin-bottom:16px; }
     .article-body p strong { color:var(--navy); }
     .callout { background:var(--light-bg); border-radius:8px; padding:20px 24px; margin:24px 0; border:1px solid var(--border); }
-    .callout p { font-size:0.9rem; color:var(--navy); font-weight:600; line-height:1.7; margin:0; font-style:italic; border-left:3px solid var(--light-blue); padding-left:16px; }
+    .callout p { font-size:0.88rem; color:var(--navy); font-weight:600; line-height:1.65; margin:0; }
+    .callout p::before { content:'"'; font-size:2rem; color:var(--light-blue); line-height:0; vertical-align:-12px; margin-right:6px; }
+
+    /* 5 GAPS */
     .gap-cards { display:flex; flex-direction:column; gap:16px; margin:20px 0; }
-    .gap-card { background:var(--light-bg); border:1px solid var(--border); border-radius:10px; padding:22px 24px; display:grid; grid-template-columns:48px 1fr; gap:16px; align-items:start; }
-    .gap-number { background:var(--navy); color:white; font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; width:48px; height:48px; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-    .gap-content h4 { font-size:0.95rem; font-weight:700; color:var(--navy); margin-bottom:6px; }
-    .gap-content p { font-size:0.84rem; color:var(--text-muted); line-height:1.6; margin-bottom:8px; }
-    .gap-content p:last-child { margin-bottom:0; }
-    .warning { font-size:0.8rem; color:#854D0E; background:#FEF9C3; border:1px solid #FDE68A; border-radius:6px; padding:8px 12px; }
+    .gap-card { display:grid; grid-template-columns:48px 1fr; gap:16px; align-items:start; background:var(--light-bg); border:1px solid var(--border); border-radius:8px; padding:20px; }
+    .gap-number { width:48px; height:48px; background:var(--navy); color:white; font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .gap-content h4 { font-size:0.92rem; font-weight:700; color:var(--navy); margin-bottom:6px; }
+    .gap-content p { font-size:0.85rem; color:var(--text-muted); line-height:1.6; margin:0; }
+    .gap-content .warning { font-size:0.78rem; color:#DC2626; font-weight:600; margin-top:6px; display:flex; align-items:center; gap:4px; }
+
     .horizon-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:24px 0; }
     .horizon-card { border-radius:8px; padding:20px; border:1px solid var(--border); }
     .horizon-card.h1 { background:#EFF6FF; border-color:#BFDBFE; }
@@ -67,13 +59,16 @@
     .h3 .horizon-label { color:#C2410C; }
     .horizon-title { font-size:0.85rem; font-weight:700; color:var(--navy); margin-bottom:8px; }
     .horizon-card p { font-size:0.8rem; color:var(--text-muted); line-height:1.55; margin:0; }
+
+    /* DIAGNOSTIC */
     .diagnostic { background:var(--navy); border-radius:10px; padding:28px 32px; margin:28px 0; }
     .diagnostic h3 { font-size:0.88rem; font-weight:700; color:white; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px; }
     .diagnostic p { font-size:0.82rem; color:rgba(255,255,255,0.65); margin-bottom:16px; }
     .diag-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
     .diag-item { display:flex; align-items:flex-start; gap:10px; }
-    .diag-item::before { content:'?'; color:#FCD34D; font-weight:700; flex-shrink:0; margin-top:2px; }
-    .diag-item span { font-size:0.84rem; color:rgba(255,255,255,0.85); line-height:1.5; }
+    .diag-item::before { content:'?'; background:rgba(255,255,255,0.15); color:white; font-size:0.7rem; font-weight:700; width:18px; height:18px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+    .diag-item span { font-size:0.82rem; color:rgba(255,255,255,0.82); line-height:1.5; }
+
     .sources { background:var(--light-bg); border-radius:8px; padding:20px 24px; margin-top:28px; border:1px solid var(--border); }
     .sources h4 { font-size:0.72rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); margin-bottom:12px; }
     .sources ul { list-style:none; }
@@ -83,12 +78,14 @@
     .article-cta { background:linear-gradient(135deg,var(--navy),var(--blue)); border-radius:10px; padding:36px; text-align:center; margin-bottom:48px; }
     .article-cta h3 { font-family:'Playfair Display',serif; font-size:1.4rem; color:white; margin-bottom:10px; }
     .article-cta p { font-size:0.88rem; color:rgba(255,255,255,0.78); margin-bottom:20px; }
-    .btn-cta { display:inline-flex; align-items:center; gap:8px; background:white; color:var(--blue); font-weight:700; font-size:0.88rem; padding:12px 24px; border-radius:6px; text-decoration:none; }
+    .btn-cta { display:inline-flex; align-items:center; gap:8px; background:white; color:var(--blue); font-weight:700; font-size:0.88rem; padding:12px 24px; border-radius:6px; text-decoration:none; transition:all 0.2s; }
     .btn-cta:hover { background:var(--light-bg); }
+    .btn-back { display:inline-flex; align-items:center; gap:6px; color:var(--light-blue); text-decoration:none; font-size:0.85rem; font-weight:600; margin:28px 0 0; }
     .site-footer { background:var(--blue); color:white; text-align:center; padding:40px 24px; }
     .footer-tagline { font-size:0.92rem; color:rgba(255,255,255,0.9); font-weight:600; letter-spacing:0.5px; margin-bottom:12px; }
     .footer-links { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-bottom:14px; }
     .footer-links a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.8rem; }
+    .footer-links a:hover { color:white; }
     .footer-copy { font-size:0.75rem; color:rgba(255,255,255,0.5); }
     @media (max-width:700px) {
       .hero h1 { font-size:1.75rem; }
@@ -99,6 +96,12 @@
       .topnav { padding:0 16px; }
       .nav-links a { padding:5px 8px; font-size:0.78rem; }
     }
+  
+    .lang-toggle{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.25);border-radius:6px;overflow:hidden;margin-left:8px}
+    .lang-btn{font-size:.72rem;font-weight:700;padding:5px 10px;text-decoration:none;transition:all .2s;letter-spacing:.5px}
+    .lang-btn.inactive{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6)}
+    .lang-btn.inactive:hover{background:rgba(255,255,255,.15);color:#fff}
+    .lang-btn.active{background:#C8922A;color:#0B2545}
   </style>
 </head>
 <body>
@@ -115,9 +118,9 @@
     <li><a href="https://rc2consulting.github.io/about-es.html">Nosotros</a></li>
     <li><a href="https://rc2consulting.github.io/RC2_Resources_Page-es.html" class="active">Recursos</a></li>
     <li><a href="https://rc2consulting.github.io/contact-es.html">Contacto</a></li>
-    <li>
+      <li>
       <div class="lang-toggle">
-        <a href="https://rc2consulting.github.io/RC2_Article_Growth_Infrastructure.html" class="lang-btn inactive">EN</a>
+        <a href="https://rc2consulting.github.io/RC2_Article_Growth_Infrastructure-es.html" class="lang-btn active">EN</a>
         <a href="https://rc2consulting.github.io/RC2_Article_Growth_Infrastructure-es.html" class="lang-btn active">ES</a>
       </div>
     </li>
@@ -126,12 +129,12 @@
 
 <section class="hero">
   <div class="hero-inner">
-    <span class="article-tag">Liderazgo Operacional</span>
-    <h1>Por Qué el Crecimiento Supera a la Infraestructura — Y Cómo Cerrar la Brecha</h1>
+    <span class="article-tag">Operational Leadership</span>
+    <h1>Por Qué el Crecimiento Supera la Infraestructura — Y Cómo Cerrar la Brecha</h1>
     <div class="hero-meta">
       <span>RC2 Consulting</span>
       <span class="divider">|</span>
-      <span>Febrero 2026</span>
+      <span>February 2026</span>
       <span class="divider">|</span>
       <span>9 min de lectura</span>
     </div>
@@ -143,136 +146,136 @@
 
   <div class="abstract-box">
     <h3>Resumen Ejecutivo</h3>
-    <p>El crecimiento de ingresos es visible. Las brechas de infraestructura son invisibles — hasta que dejan de serlo. La crisis operativa más común en las empresas en crecimiento no es el fracaso del mercado ni el fracaso del producto. Es el fracaso estructural: el momento en que los sistemas internos, la documentación, los procesos y la gobernanza ya no pueden soportar el volumen, la complejidad o las demandas de cumplimiento del crecimiento. Este artículo identifica las cinco brechas de infraestructura más propensas a descarrilar a una organización en crecimiento y proporciona un marco práctico y por etapas para cerrar cada una antes de que se conviertan en emergencias operativas.</p>
+    <p>Revenue growth is visible. Infrastructure gaps are invisible — until they aren't. The single most common operational crisis in scaling businesses is not market failure or product failure. It is structural failure: the moment when internal systems, documentation, processes, and governance can no longer support the volume, complexity, or compliance demands of growth. This article identifies the five infrastructure gaps most likely to derail a scaling organization and provides a practical, staged framework for closing each one before they become operational emergencies.</p>
   </div>
 
   <div class="article-body">
 
-    <h2>La Crisis Invisible</h2>
-    <p>Todo fundador conoce el momento en que su negocio comenzó a crecer. Muy pocos pueden identificar el momento en que su infraestructura comenzó a fallar. Eso es porque el crecimiento es ruidoso — nuevos clientes, nuevos ingresos, nuevas contrataciones, nuevas ubicaciones. El fallo de la infraestructura es silencioso. Se acumula en procesos no documentados, en el conocimiento institucional que vive solo en la cabeza de una persona, en la brecha de cumplimiento que nadie identificó hasta que un auditor lo hizo.</p>
-    <p>La <strong>Harvard Business Review</strong> informa que <strong>más del 70% de las empresas que no logran escalar exitosamente</strong> citan la infraestructura operativa — no las condiciones del mercado ni el capital — como la restricción principal. El <strong>McKinsey Global Institute</strong> identifica de manera similar la estandarización de procesos y la documentación como el diferenciador más significativo entre las empresas que sostienen el crecimiento más allá del umbral de $10M en ingresos y las que se estancan. <em>(Fuente: HBR, Escalando para el Impacto, 2024; McKinsey Global Institute, Informe de Excelencia en Operaciones, 2023)</em></p>
+    <h2>The Invisible Crisis</h2>
+    <p>Every founder knows the moment their business started to grow. Very few can identify the moment their infrastructure started to fail. That is because growth is loud — new clients, new revenue, new hires, new locations. Infrastructure failure is silent. It accumulates in undocumented processes, in the institutional knowledge that lives only in one person's head, in the compliance gap that nobody identified until an auditor did.</p>
+    <p>The <strong>Harvard Business Review</strong> reports that <strong>over 70% of companies that fail to scale successfully</strong> cite operational infrastructure — not market conditions or capital — as the primary constraint. The <strong>McKinsey Global Institute</strong> similarly identifies process standardization and documentation as the most significant differentiator between companies that sustain growth beyond the $10M revenue threshold and those that plateau. <em>(Source: HBR, Scaling for Impact, 2024; McKinsey Global Institute, Operations Excellence Report, 2023)</em></p>
 
     <div class="callout">
-      <p>El crecimiento de ingresos es un indicador rezagado del impulso. El fracaso de la infraestructura es un indicador adelantado del colapso. Las empresas que confunden los dos raramente ven venir la crisis.</p>
+      <p>Revenue growth is a lagging indicator of momentum. Infrastructure failure is a leading indicator of collapse. The companies that confuse the two rarely see the crisis coming.</p>
     </div>
 
-    <h2>Las Cinco Brechas de Infraestructura Que Descarrilan a las Empresas en Crecimiento</h2>
-    <p>En nuestro trabajo con organizaciones en etapa de crecimiento en manufactura, servicios profesionales y operaciones de cadena de suministro, cinco brechas de infraestructura aparecen con abrumadora consistencia. Cada una es invisible durante el crecimiento temprano. Cada una se convierte en una crisis a escala.</p>
+    <h2>The Five Infrastructure Gaps That Derail Scaling Companies</h2>
+    <p>In our work with growth-stage organizations across manufacturing, professional services, and supply chain operations, five infrastructure gaps appear with overwhelming consistency. Each one is invisible during early growth. Each one becomes a crisis at scale.</p>
 
     <div class="gap-cards">
       <div class="gap-card">
         <div class="gap-number">1</div>
         <div class="gap-content">
-          <h4>Ausencia de Documentación</h4>
-          <p>Cuando una empresa es pequeña, todos saben cómo funcionan las cosas. Los procesos viven en la memoria, no por escrito. Esto funciona con 10 empleados. Se rompe con 50. Colapsa con 100. Cuando no se puede incorporar a un nuevo empleado sin que un empleado senior se siente junto a ellos durante dos semanas, su proceso vive en una persona — no en un sistema. Y las personas se van.</p>
-          <p class="warning">⚠ Señal de Alerta: La incorporación de nuevos empleados tarda más de 5 días y requiere la participación de personal senior durante todo el proceso.</p>
+          <h4>Documentation Absence</h4>
+          <p>When a company is small, everyone knows how things work. Processes live in memory, not in writing. This works at 10 employees. It breaks at 50. It collapses at 100. When you cannot onboard a new hire without a senior employee sitting next to them for two weeks, your process lives in a person — not in a system. And persons leave.</p>
+          <p class="warning">⚠ Red Flag: New employee onboarding takes more than 5 days and requires senior staff involvement throughout.</p>
         </div>
       </div>
       <div class="gap-card">
         <div class="gap-number">2</div>
         <div class="gap-content">
-          <h4>Dependencia de Procesos Individuales</h4>
-          <p>La persona más peligrosa en una empresa en crecimiento es la que es irremplazable. No porque sea excepcional — sino porque el proceso que ejecuta no existe en ningún lugar excepto en su cabeza. Cuando esa persona no está disponible — enfermedad, salida, promoción — la operación queda expuesta. Esto no es un problema de personal. Es un problema de documentación.</p>
-          <p class="warning">⚠ Señal de Alerta: Uno o más miembros del equipo son descritos internamente como "el único que sabe cómo hacer" una función crítica.</p>
+          <h4>Individual Process Dependency</h4>
+          <p>The most dangerous person in a scaling company is the one who is irreplaceable. Not because they are exceptional — but because the process they execute exists nowhere except in their head. When that person is unavailable — illness, departure, promotion — the operation is exposed. This is not a personnel problem. It is a documentation problem.</p>
+          <p class="warning">⚠ Red Flag: One or more team members are described internally as "the only one who knows how to do" a critical function.</p>
         </div>
       </div>
       <div class="gap-card">
         <div class="gap-number">3</div>
         <div class="gap-content">
-          <h4>Exposición al Cumplimiento</h4>
-          <p>Las empresas en crecimiento acumulan deuda de cumplimiento de la misma manera que las ciudades en crecimiento acumulan tráfico. Lentamente, luego de repente. Políticas de RR.HH. nunca escritas. Protocolos de seguridad nunca documentados. Capacitación nunca registrada. El momento en que un comprador importante, auditor o agencia gubernamental solicita documentación, la exposición se vuelve inmediata, costosa y a menudo definitiva para la relación.</p>
-          <p class="warning">⚠ Señal de Alerta: No podría producir sus políticas escritas de RR.HH., registros de capacitación y protocolos de seguridad en 24 horas si se lo solicitaran.</p>
+          <h4>Compliance Exposure</h4>
+          <p>Growing companies accumulate compliance debt the way growing cities accumulate traffic. Slowly, then suddenly. HR policies never written. Safety protocols never documented. Training never recorded. Environmental requirements never assessed. The moment a major buyer, auditor, or government agency requests documentation, the exposure becomes immediate, expensive, and often relationship-ending.</p>
+          <p class="warning">⚠ Red Flag: You could not produce your written HR policies, training records, and safety protocols within 24 hours if asked.</p>
         </div>
       </div>
       <div class="gap-card">
         <div class="gap-number">4</div>
         <div class="gap-content">
-          <h4>Colapso del Ancho de Banda de Liderazgo</h4>
-          <p>Las empresas lideradas por fundadores crecen hasta un punto donde el fundador se convierte en el cuello de botella. Cada decisión se enruta a través de una persona. Cada problema escala a la cima. Esto no es un fracaso de liderazgo — es un fracaso de sistemas. Cuando no hay marcos de decisión documentados, no hay estructuras de autoridad delegada, y no hay libros de jugadas operativos, el ancho de banda de liderazgo se convierte en el techo del crecimiento organizacional.</p>
-          <p class="warning">⚠ Señal de Alerta: Las decisiones que requieren más de $500 en gasto o cualquier desviación de la rutina requieren aprobación del fundador o liderazgo senior.</p>
+          <h4>Leadership Bandwidth Collapse</h4>
+          <p>Founder-led companies grow to a point where the founder becomes the bottleneck. Every decision routes through one person. Every problem escalates to the top. This is not a leadership failure — it is a systems failure. When there are no documented decision frameworks, no delegated authority structures, and no operational playbooks, leadership bandwidth becomes the ceiling of organizational growth.</p>
+          <p class="warning">⚠ Red Flag: Decisions requiring more than $500 in spend or any deviation from routine require founder or senior leadership approval.</p>
         </div>
       </div>
       <div class="gap-card">
         <div class="gap-number">5</div>
         <div class="gap-content">
-          <h4>Ceguera ante los KPIs</h4>
-          <p>No se puede gestionar lo que no se puede medir. Sin embargo, la mayoría de las empresas en etapa de crecimiento operan sin un marco formal de KPIs — dependiendo de los ingresos como el único indicador de desempeño mientras las métricas operativas críticas quedan sin rastrear. Las tasas de defectos, la entrega a tiempo, la rotación de empleados — estos son indicadores adelantados de la salud operativa. Sin ellos, la gestión está navegando a ciegas en la oscuridad.</p>
-          <p class="warning">⚠ Señal de Alerta: Su equipo no puede declarar inmediatamente el desempeño del mes actual contra al menos 5 KPIs operativos más allá de los ingresos.</p>
+          <h4>KPI Blindness</h4>
+          <p>You cannot manage what you cannot measure. Yet the majority of growth-stage companies operate without a formal KPI framework — relying on revenue as the sole performance indicator while critical operational metrics go untracked. Defect rates, on-time delivery, employee turnover, compliance incident frequency — these are leading indicators of operational health. Without them, management is navigating by feel in the dark.</p>
+          <p class="warning">⚠ Red Flag: Your team cannot immediately state the current month's performance against at least 5 operational KPIs beyond revenue.</p>
         </div>
       </div>
     </div>
 
-    <h2>El Marco para Cerrar las Brechas — Un Enfoque por Etapas</h2>
-    <p>Las brechas de infraestructura no pueden cerrarse todas simultáneamente — e intentarlo crea más disrupciones de las que resuelve. El enfoque más efectivo es por etapas: priorizar por exposición al riesgo, construir sistemáticamente y medir el progreso contra hitos definidos.</p>
+    <h2>The Framework for Closing the Gaps — A Staged Approach</h2>
+    <p>Infrastructure gaps cannot all be closed simultaneously — and attempting to do so creates more disruption than it resolves. The most effective approach is staged: prioritize by risk exposure, build systematically, and measure progress against defined milestones.</p>
 
-    <h3>Etapa 1 — Estabilizar (0–90 Días)</h3>
-    <p>Realice una evaluación de brechas operativas. Identifique sus 10 procesos principales por exposición al riesgo — los que tienen más probabilidades de causar un fracaso de cliente, cumplimiento u operativo si se rompen. Documente cada uno a un nivel básico. Asigne responsabilidad. Esto solo elimina la mayor parte del riesgo de dependencia individual y crea la base para todo lo que sigue.</p>
+    <h3>Stage 1 — Stabilize (0–90 Days)</h3>
+    <p>Conduct an operational gap assessment. Identify your top 10 processes by risk exposure — the ones most likely to cause a client, compliance, or operational failure if they break down. Document each one at a basic level. Assign ownership. This alone eliminates the majority of individual dependency risk and creates the foundation for everything that follows.</p>
 
-    <h3>Etapa 2 — Estandarizar (90–180 Días)</h3>
-    <p>Convierta los procesos documentados en SOPs formales. Construya su biblioteca de políticas — RR.HH., seguridad, cumplimiento, calidad. Establezca un panel de KPIs con cadencia de informes semanal. Defina su matriz de autoridad de decisiones para que las decisiones rutinarias ya no requieran la participación del liderazgo.</p>
+    <h3>Stage 2 — Standardize (90–180 Days)</h3>
+    <p>Convert documented processes into formal SOPs. Build your policy library — HR, safety, compliance, quality. Establish a KPI dashboard with weekly reporting cadence. Define your decision authority matrix so that routine decisions no longer require leadership involvement.</p>
 
-    <h3>Etapa 3 — Sistematizar (180–365 Días)</h3>
-    <p>Construya su programa de capacitación sobre sus SOPs. Implemente protocolos de auditoría interna. Cree su calendario de cumplimiento. Establezca un sistema de seguimiento de acciones correctivas. En esta etapa, su organización ha pasado de una operación que funciona con personas a una que funciona con sistemas.</p>
+    <h3>Stage 3 — Systematize (180–365 Days)</h3>
+    <p>Build your training program on top of your SOPs. Implement internal audit protocols. Create your compliance calendar. Establish a corrective action tracking system. At this stage, your organization has converted from an operation that runs on people to one that runs on systems.</p>
 
-    <h2>Análisis de Triple Horizonte — La Infraestructura como Activo de Crecimiento</h2>
+    <h2>Triple-Horizon Analysis — Infrastructure as a Growth Asset</h2>
     <div class="horizon-grid">
       <div class="horizon-card h1">
-        <div class="horizon-label">Horizonte 1 — Ahora</div>
-        <div class="horizon-title">Identificar y Estabilizar</div>
-        <p>Mapee sus 10 procesos de mayor exposición al riesgo. Documente a un nivel básico. Asigne propietarios. Identifique su mayor exposición de cumplimiento y resuélvala inmediatamente.</p>
+        <div class="horizon-label">Horizon 1 — Now</div>
+        <div class="horizon-title">Identify & Stabilize</div>
+        <p>Map your top 10 risk-exposure processes. Document at a basic level. Assign owners. Identify your single largest compliance exposure and address it immediately.</p>
       </div>
       <div class="horizon-card h2">
-        <div class="horizon-label">Horizonte 2 — 6–12 Meses</div>
-        <div class="horizon-title">Construir Sistemas</div>
-        <p>Complete su biblioteca de SOPs. Construya su panel de KPIs. Escriba su registro de políticas. Implemente auditoría interna. Capacite a su equipo en los nuevos sistemas. Mida la adopción.</p>
+        <div class="horizon-label">Horizon 2 — 6–12 Months</div>
+        <div class="horizon-title">Build Systems</div>
+        <p>Complete your SOP library. Build your KPI dashboard. Write your policy register. Implement internal audit. Train your team on the new systems. Measure adoption.</p>
       </div>
       <div class="horizon-card h3">
-        <div class="horizon-label">Horizonte 3 — 12–36 Meses</div>
-        <div class="horizon-title">Escalar con Confianza</div>
-        <p>La infraestructura apoya el crecimiento en lugar de restringirlo. Nuevas ubicaciones, nuevas contrataciones y nueva complejidad son absorbidas por sistemas — no por el ancho de banda de liderazgo. El cumplimiento es una ventaja competitiva, no un pasivo.</p>
+        <div class="horizon-label">Horizon 3 — 12–36 Months</div>
+        <div class="horizon-title">Scale with Confidence</div>
+        <p>Infrastructure supports growth rather than constraining it. New locations, new hires, and new complexity are absorbed by systems — not by leadership bandwidth. Compliance is a competitive advantage, not a liability.</p>
       </div>
     </div>
 
-    <h2>La Ventaja de la Infraestructura</h2>
-    <p>Las empresas que cierran sus brechas de infraestructura antes de que se conviertan en crisis ganan algo que no se puede comprar: confianza operativa. La confianza de aceptar a un cliente importante sin preocuparse de si la operación puede manejar el volumen. La confianza de entrar a una auditoría sin pánico. La confianza de promover a un empleado clave sin temor de que la operación se rompa cuando avance.</p>
-    <p>Esto no es teoría. Es la experiencia documentada de cada empresa que ha realizado la transición de dependiente del fundador a dependiente del sistema. Y está disponible para cualquier organización dispuesta a priorizar la infraestructura con la misma intensidad que prioriza los ingresos.</p>
+    <h2>The Infrastructure Advantage</h2>
+    <p>Companies that close their infrastructure gaps before they become crises gain something that cannot be purchased: operational confidence. The confidence to take on a major client without worrying whether the operation can handle the volume. The confidence to enter an audit without panic. The confidence to promote a key employee without fear that the operation breaks when they step up.</p>
+    <p>This is not theory. It is the documented experience of every company that has made the transition from founder-dependent to system-dependent. And it is available to any organization willing to prioritize infrastructure with the same intensity they prioritize revenue.</p>
 
     <div class="diagnostic">
-      <h3>Diagnóstico de Infraestructura — 10 Preguntas para Líderes en Crecimiento</h3>
-      <p>Si no puede responder "sí" a más de 7 de estas, su brecha de infraestructura ya está afectando su techo de crecimiento.</p>
+      <h3>Infrastructure Diagnostic — 10 Questions for Scaling Leaders</h3>
+      <p>If you cannot answer "yes" to more than 7 of these, your infrastructure gap is already affecting your growth ceiling.</p>
       <div class="diag-grid">
-        <div class="diag-item"><span>¿Sus 10 procesos principales están documentados por escrito?</span></div>
-        <div class="diag-item"><span>¿Puede un nuevo empleado incorporarse con mínima participación senior?</span></div>
-        <div class="diag-item"><span>¿Están vigentes políticas escritas de RR.HH. y seguridad?</span></div>
-        <div class="diag-item"><span>¿Rastrea al menos 5 KPIs no relacionados con ingresos semanalmente?</span></div>
-        <div class="diag-item"><span>¿Existe una matriz de autoridad de decisiones en su lugar?</span></div>
-        <div class="diag-item"><span>¿Ha realizado una auditoría interna de cumplimiento?</span></div>
-        <div class="diag-item"><span>¿Se mantienen registros de capacitación para todo el personal?</span></div>
-        <div class="diag-item"><span>¿Puede producir documentos de cumplimiento en 24 horas?</span></div>
-        <div class="diag-item"><span>¿Existe un sistema de seguimiento de acciones correctivas?</span></div>
-        <div class="diag-item"><span>¿El crecimiento se siente respaldado o restringido por los sistemas?</span></div>
+        <div class="diag-item"><span>Are your top 10 processes documented in writing?</span></div>
+        <div class="diag-item"><span>Can a new hire onboard with minimal senior involvement?</span></div>
+        <div class="diag-item"><span>Are written HR and safety policies in place?</span></div>
+        <div class="diag-item"><span>Do you track at least 5 non-revenue KPIs weekly?</span></div>
+        <div class="diag-item"><span>Is there a decision authority matrix in place?</span></div>
+        <div class="diag-item"><span>Have you conducted an internal compliance audit?</span></div>
+        <div class="diag-item"><span>Are training records maintained for all staff?</span></div>
+        <div class="diag-item"><span>Can you produce compliance docs within 24 hours?</span></div>
+        <div class="diag-item"><span>Is there a corrective action tracking system?</span></div>
+        <div class="diag-item"><span>Does growth feel supported or constrained by systems?</span></div>
       </div>
     </div>
 
     <h2>Conclusión</h2>
-    <p>El crecimiento es el objetivo. La infraestructura es el cimiento que hace que el crecimiento sea sostenible. Las empresas que escalan exitosamente — y sostienen esa escala a través de la disrupción, el escrutinio de cumplimiento, las transiciones de liderazgo y la presión del mercado — son las que trataron la infraestructura como una inversión estratégica en lugar de una carga administrativa.</p>
-    <p>La brecha entre su infraestructura actual y la infraestructura que su crecimiento requiere no es fija. Se puede cerrar. Y cerrarla ahora — antes de la crisis — es exponencialmente menos costoso que cerrarla después.</p>
+    <p>Growth is the goal. Infrastructure is the foundation that makes growth sustainable. The companies that scale successfully — and sustain that scale through disruption, compliance scrutiny, leadership transitions, and market pressure — are the ones that treated infrastructure as a strategic investment rather than an administrative burden.</p>
+    <p>The gap between your current infrastructure and the infrastructure your growth requires is not fixed. It is closeable. And closing it now — before the crisis — is exponentially less expensive than closing it after.</p>
 
     <div class="sources">
-      <h4>Fuentes y Referencias</h4>
+      <h4>Sources & References</h4>
       <ul>
-        <li>Harvard Business Review — Escalando para el Impacto: Por Qué las Operaciones Determinan los Resultados (2024) — <a href="https://hbr.org" target="_blank">hbr.org</a></li>
-        <li>McKinsey Global Institute — Excelencia Operativa en Empresas en Etapa de Crecimiento (2023) — <a href="https://www.mckinsey.com/mgi" target="_blank">mckinsey.com/mgi</a></li>
-        <li>Deloitte Insights — El Imperativo de la Infraestructura: Construyendo Sistemas que Soporten la Escala (2024) — <a href="https://www2.deloitte.com/insights" target="_blank">deloitte.com/insights</a></li>
-        <li>U.S. Small Business Administration — Sistemas Operativos y Tasas de Supervivencia de Pequeñas Empresas (2023) — <a href="https://www.sba.gov/advocacy" target="_blank">sba.gov/advocacy</a></li>
+        <li>Harvard Business Review — Scaling for Impact: Why Operations Determine Outcomes (2024) — <a href="https://hbr.org" target="_blank">hbr.org</a></li>
+        <li>McKinsey Global Institute — Operations Excellence in Growth-Stage Companies (2023) — <a href="https://www.mckinsey.com/mgi" target="_blank">mckinsey.com/mgi</a></li>
+        <li>Deloitte Insights — The Infrastructure Imperative: Building Systems That Support Scale (2024) — <a href="https://www2.deloitte.com/insights" target="_blank">deloitte.com/insights</a></li>
+        <li>U.S. Small Business Administration — Operational Systems and Small Business Survival Rates (2023) — <a href="https://www.sba.gov/advocacy" target="_blank">sba.gov/advocacy</a></li>
       </ul>
     </div>
   </div>
 
   <div class="article-cta">
-    <h3>¿Está Su Infraestructura Lista para Su Próxima Etapa de Crecimiento?</h3>
-    <p>RC2 Consulting realiza evaluaciones de brechas operativas y construye los sistemas de documentación, cumplimiento y KPIs que le permiten escalar con confianza.</p>
-    <a href="https://rc2consulting.github.io/contact-es.html" class="btn-cta">Agendar una Evaluación Operativa →</a>
+    <h3>Is Your Infrastructure Ready for Your Next Stage of Growth?</h3>
+    <p>RC2 Consulting conducts operational gap assessments and builds the documentation, compliance, and KPI systems that let you scale with confidence.</p>
+    <a href="https://rc2consulting.github.io/contact-es.html" class="btn-cta">Schedule an Operational Assessment →</a>
   </div>
 </div>
 

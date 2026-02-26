@@ -1,93 +1,92 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Certificación SBA y Contratos Gubernamentales | RC2 Consulting</title>
-  <meta name="description" content="Lo que todo empresario necesita saber sobre la certificación SBA, los 5 programas principales, el proceso de solicitud, y cómo construir la infraestructura operativa para ganar contratos federales."/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Certificación SBA y Contratos Gubernamentales: Lo Que los Empresarios Deben Saber | RC2 Consulting</title>
+  <meta name="description" content="An executive-level guide to SBA small business certifications — 8(a), WOSB, HUBZone, SDVOSB, and VOSB — and what operations and compliance leaders need to do before pursuing government contracts." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --navy:#0B2545; --blue:#1A4A8A; --light-blue:#2563EB;
-      --light-bg:#F4F6FA; --white:#FFFFFF;
-      --text:#1C2B3A; --text-muted:#4A5568; --border:#E2E8F0;
-      --success:#1A7A4E; --success-bg:#EBF7F2;
-      --danger:#9B1C1C; --danger-bg:#FEF2F2;
-      --accent:#C8922A;
+      --navy: #0B2545; --blue: #1A4A8A; --light-blue: #2563EB;
+      --accent: #C8922A; --light-bg: #F4F6FA; --white: #FFFFFF;
+      --text: #1C2B3A; --text-muted: #4A5568; --border: #E2E8F0;
+      --success: #1A7A4E; --success-bg: #EBF7F2;
+      --warn: #854D0E; --warn-bg: #FFFBEB;
+      --danger: #9B1C1C; --danger-bg: #FEF2F2;
     }
-    body { font-family:'Source Sans 3',sans-serif; background:var(--light-bg); color:var(--text); margin:0; line-height:1.7; }
-    .topnav { background:var(--navy); padding:0 40px; display:flex; align-items:center; justify-content:space-between; height:52px; position:sticky; top:0; z-index:200; box-shadow:0 2px 8px rgba(0,0,0,0.25); }
+    body { font-family: 'Source Sans 3', sans-serif; background: var(--light-bg); color: var(--text); margin: 0; line-height: 1.6; }
+
+    /* NAV */
+    .topnav { background: var(--navy); padding: 0 40px; display:flex; align-items:center; justify-content:space-between; height:52px; position:sticky; top:0; z-index:200; box-shadow:0 2px 8px rgba(0,0,0,0.25); }
     .nav-brand { display:flex; align-items:center; gap:8px; text-decoration:none; }
     .nav-logo-mark { background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); color:white; font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; width:32px; height:32px; border-radius:6px; display:flex; align-items:center; justify-content:center; }
     .nav-logo-mark sup { font-size:0.5rem; vertical-align:super; }
     .nav-brand-name { font-size:0.88rem; font-weight:600; color:rgba(255,255,255,0.9); }
-    .nav-links { display:flex; gap:4px; list-style:none; align-items:center; }
+    .nav-links { display:flex; gap:4px; list-style:none; }
     .nav-links a { color:rgba(255,255,255,0.78); text-decoration:none; font-size:0.83rem; font-weight:600; padding:6px 12px; border-radius:4px; transition:all 0.2s; white-space:nowrap; }
     .nav-links a:hover { color:white; background:rgba(255,255,255,0.1); }
     .nav-links a.active { color:white; background:rgba(255,255,255,0.12); }
-    .lang-toggle{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.25);border-radius:6px;overflow:hidden;margin-left:8px}
-    .lang-btn{font-size:.72rem;font-weight:700;padding:5px 10px;text-decoration:none;transition:all .2s;letter-spacing:.5px}
-    .lang-btn.inactive{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6)}
-    .lang-btn.inactive:hover{background:rgba(255,255,255,.15);color:#fff}
-    .lang-btn.active{background:#C8922A;color:#0B2545}
-    .hero { background:linear-gradient(to bottom, rgba(11,37,69,0.75) 0%, rgba(11,37,69,0.55) 50%, rgba(11,37,69,0.75) 100%), url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1400&q=80') center/cover no-repeat; padding:64px 40px 56px; }
-    .hero-inner { max-width:820px; margin:0 auto; }
+
+    /* HERO */
+    .hero { background: linear-gradient(to bottom, rgba(11,37,69,0.88) 0%, rgba(11,37,69,0.72) 100%), url('https://images.unsplash.com/photo-1568992688065-536aad8a12f6?w=1400&q=80') center/cover no-repeat; padding: 64px 40px 56px; }
+    .hero-inner { max-width: 820px; margin: 0 auto; }
     .article-tag { display:inline-block; font-size:0.65rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.7); background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); padding:4px 12px; border-radius:10px; margin-bottom:16px; }
-    .hero h1 { font-family:'Playfair Display',serif; font-size:2.1rem; font-weight:700; color:white; line-height:1.2; margin-bottom:12px; }
-    .hero-sub { font-size:0.95rem; color:rgba(255,255,255,0.78); line-height:1.65; margin-bottom:16px; max-width:680px; }
+    .hero h1 { font-family:'Playfair Display',serif; font-size:2.3rem; font-weight:700; color:white; line-height:1.2; margin-bottom:14px; }
+    .hero-sub { font-size:0.93rem; color:rgba(255,255,255,0.78); line-height:1.65; margin-bottom:18px; max-width:680px; }
     .hero-meta { display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
     .hero-meta span { font-size:0.82rem; color:rgba(255,255,255,0.65); }
     .hero-meta .divider { color:rgba(255,255,255,0.3); }
+
+    /* LAYOUT */
     .article-wrap { max-width:820px; margin:0 auto; padding:0 28px; }
-    .btn-back { display:inline-flex; align-items:center; gap:6px; color:var(--light-blue); text-decoration:none; font-size:0.85rem; font-weight:600; margin:28px 0 0; }
-    .abstract-box { background:var(--white); border-left:4px solid var(--light-blue); border-radius:0 8px 8px 0; padding:24px 28px; margin:40px 0; box-shadow:0 2px 8px rgba(11,37,69,0.07); }
+    .btn-back { display:inline-flex; align-items:center; gap:6px; color:var(--light-blue); text-decoration:none; font-size:0.84rem; font-weight:600; margin:24px 0 0; }
+
+    /* ABSTRACT */
+    .abstract-box { background:var(--white); border-left:4px solid var(--light-blue); border-radius:0 8px 8px 0; padding:24px 28px; margin:38px 0 32px; box-shadow:0 2px 8px rgba(11,37,69,0.07); }
     .abstract-box h3 { font-size:0.7rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--light-blue); margin-bottom:10px; }
     .abstract-box p { font-size:0.92rem; color:var(--text-muted); line-height:1.75; font-style:italic; }
+
+    /* ARTICLE BODY */
     .article-body { background:var(--white); border-radius:10px; border:1px solid var(--border); box-shadow:0 2px 8px rgba(11,37,69,0.06); padding:48px; margin-bottom:32px; }
-    .article-body h2 { font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--navy); margin:36px 0 14px; padding-top:8px; border-top:2px solid var(--border); }
+    .article-body h2 { font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--navy); margin:40px 0 14px; padding-top:10px; border-top:2px solid var(--border); }
     .article-body h2:first-child { margin-top:0; border-top:none; padding-top:0; }
-    .article-body h3 { font-size:1rem; font-weight:700; color:var(--blue); margin:24px 0 10px; }
-    .article-body p { font-size:0.93rem; color:var(--text-muted); line-height:1.8; margin-bottom:16px; }
+    .article-body h3 { font-size:1rem; font-weight:700; color:var(--blue); margin:26px 0 10px; }
+    .article-body p { font-size:0.93rem; color:var(--text-muted); line-height:1.82; margin-bottom:16px; }
+    .article-body p:last-child { margin-bottom:0; }
     .article-body p strong { color:var(--navy); }
+
+    /* CALLOUT */
     .callout { background:var(--light-bg); border-radius:8px; padding:20px 24px; margin:24px 0; border:1px solid var(--border); }
-    .callout p { font-size:0.9rem; color:var(--navy); font-weight:600; line-height:1.7; margin:0; font-style:italic; border-left:3px solid var(--light-blue); padding-left:16px; }
-    /* Certification cards */
-    .cert-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin:20px 0; }
-    .cert-card { border-radius:10px; padding:22px 24px; border:2px solid; }
-    .c8a   { background:#EFF6FF; border-color:#BFDBFE; }
-    .cwosb { background:#FDF4FF; border-color:#E9D5FF; }
-    .chub  { background:#F0FDF4; border-color:#BBF7D0; }
-    .csdv  { background:#FFF7ED; border-color:#FED7AA; }
-    .cvosb { background:#F8FAFC; border-color:#CBD5E1; }
-    .cert-label { font-size:0.62rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); margin-bottom:4px; }
-    .cert-name { font-size:1rem; font-weight:700; color:var(--navy); margin-bottom:10px; line-height:1.3; }
-    .cert-card p { font-size:0.83rem; color:var(--text-muted); line-height:1.6; margin-bottom:10px; }
-    .cert-tag { display:inline-block; font-size:0.65rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; background:rgba(11,37,69,0.08); color:var(--navy); padding:3px 10px; border-radius:10px; }
-    /* Timeline */
-    .timeline { display:flex; flex-direction:column; gap:0; margin:20px 0; }
-    .tl-item { display:grid; grid-template-columns:52px 1fr; gap:16px; align-items:start; position:relative; padding-bottom:24px; }
-    .tl-item:last-child { padding-bottom:0; }
-    .tl-item::before { content:''; position:absolute; left:26px; top:52px; bottom:0; width:2px; background:var(--border); }
-    .tl-item:last-child::before { display:none; }
-    .tl-num { background:var(--navy); color:white; font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; z-index:1; }
-    .tl-body h4 { font-size:0.95rem; font-weight:700; color:var(--navy); margin-bottom:6px; }
-    .tl-body p { font-size:0.84rem; color:var(--text-muted); line-height:1.6; margin-bottom:8px; }
-    .tl-tag { display:inline-block; font-size:0.63rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; background:var(--light-bg); color:var(--light-blue); border:1px solid var(--border); padding:3px 10px; border-radius:10px; }
-    /* Pitfall box */
-    .pitfall-box { background:var(--danger-bg); border:1px solid #FECACA; border-radius:10px; padding:24px 28px; margin:20px 0; }
-    .pitfall-box h4 { font-size:0.88rem; font-weight:700; color:var(--danger); margin-bottom:14px; }
-    .pitfall-list { list-style:none; display:flex; flex-direction:column; gap:10px; }
-    .pitfall-list li { font-size:0.84rem; color:#7F1D1D; line-height:1.6; padding-left:20px; position:relative; }
-    .pitfall-list li::before { content:'⚠'; position:absolute; left:0; }
-    /* Checklist */
-    .check-section { background:var(--navy); border-radius:10px; padding:28px 32px; margin:28px 0; }
-    .check-section h3 { font-size:0.88rem; font-weight:700; color:white; letter-spacing:1px; text-transform:uppercase; margin-bottom:16px; }
-    .check-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-    .check-item { display:flex; align-items:flex-start; gap:10px; }
-    .check-item::before { content:'✓'; color:#4ADE80; font-weight:700; flex-shrink:0; margin-top:2px; }
-    .check-item span { font-size:0.84rem; color:rgba(255,255,255,0.85); line-height:1.5; }
-    /* Horizon */
+    .callout p { font-size:0.88rem; color:var(--navy); font-weight:600; line-height:1.68; margin:0; }
+    .callout p::before { content:'"'; font-size:2rem; color:var(--light-blue); line-height:0; vertical-align:-12px; margin-right:6px; }
+
+    /* CERTIFICATION MATRIX */
+    .cert-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0; }
+    .cert-card { border-radius:8px; padding:20px 22px; border:1px solid; }
+    .cert-card.c8a { background:#EFF6FF; border-color:#BFDBFE; }
+    .cert-card.cwosb { background:#FDF4FF; border-color:#E9D5FF; }
+    .cert-card.chub { background:#F0FDF4; border-color:#BBF7D0; }
+    .cert-card.csdv { background:#FFF7ED; border-color:#FED7AA; }
+    .cert-card.cvosb { background:#FFFBEB; border-color:#FDE68A; }
+    .cert-label { font-size:0.65rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:6px; }
+    .c8a .cert-label { color:#1D4ED8; }
+    .cwosb .cert-label { color:#7E22CE; }
+    .chub .cert-label { color:#15803D; }
+    .csdv .cert-label { color:#C2410C; }
+    .cvosb .cert-label { color:#92400E; }
+    .cert-name { font-size:0.92rem; font-weight:700; color:var(--navy); margin-bottom:8px; }
+    .cert-card p { font-size:0.8rem; color:var(--text-muted); line-height:1.55; margin-bottom:8px; }
+    .cert-card p:last-child { margin-bottom:0; }
+    .cert-tag { display:inline-block; font-size:0.66rem; font-weight:700; padding:2px 8px; border-radius:10px; margin-top:4px; }
+    .c8a .cert-tag { background:#BFDBFE; color:#1D4ED8; }
+    .cwosb .cert-tag { background:#E9D5FF; color:#6D28D9; }
+    .chub .cert-tag { background:#BBF7D0; color:#15803D; }
+    .csdv .cert-tag { background:#FED7AA; color:#92400E; }
+    .cvosb .cert-tag { background:#FDE68A; color:#78350F; }
+
+    /* HORIZON */
     .horizon-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:24px 0; }
     .horizon-card { border-radius:8px; padding:20px; border:1px solid var(--border); }
     .horizon-card.h1 { background:#EFF6FF; border-color:#BFDBFE; }
@@ -97,37 +96,74 @@
     .h1 .horizon-label { color:#1D4ED8; }
     .h2 .horizon-label { color:#15803D; }
     .h3 .horizon-label { color:#C2410C; }
-    .horizon-title { font-size:0.85rem; font-weight:700; color:var(--navy); margin-bottom:8px; }
+    .horizon-title { font-size:0.86rem; font-weight:700; color:var(--navy); margin-bottom:8px; }
     .horizon-card p { font-size:0.8rem; color:var(--text-muted); line-height:1.55; margin:0; }
-    /* Sources */
-    .sources { background:var(--light-bg); border-radius:8px; padding:20px 24px; margin-top:28px; border:1px solid var(--border); }
-    .sources h4 { font-size:0.72rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); margin-bottom:12px; }
+
+    /* CHECKLIST */
+    .check-section { background:var(--navy); border-radius:10px; padding:28px 32px; margin:28px 0; }
+    .check-section h3 { font-size:0.86rem; font-weight:700; color:white; letter-spacing:1px; text-transform:uppercase; margin-bottom:16px; }
+    .check-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .check-item { display:flex; align-items:flex-start; gap:10px; }
+    .check-item::before { content:'✓'; color:#4ADE80; font-weight:700; flex-shrink:0; margin-top:2px; }
+    .check-item span { font-size:0.83rem; color:rgba(255,255,255,0.85); line-height:1.5; }
+
+    /* PITFALL BOX */
+    .pitfall-box { background:var(--danger-bg); border:1px solid #FECACA; border-radius:8px; padding:20px 24px; margin:24px 0; }
+    .pitfall-box h4 { font-size:0.72rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--danger); margin-bottom:12px; }
+    .pitfall-list { list-style:none; }
+    .pitfall-list li { font-size:0.84rem; color:var(--text-muted); padding:5px 0; border-bottom:1px solid #FECACA; display:flex; align-items:flex-start; gap:8px; line-height:1.5; }
+    .pitfall-list li:last-child { border-bottom:none; }
+    .pitfall-list li::before { content:'⚠'; font-size:0.8rem; color:var(--danger); flex-shrink:0; margin-top:2px; }
+
+    /* PROCESS TIMELINE */
+    .timeline { margin:24px 0; }
+    .tl-item { display:grid; grid-template-columns:60px 1fr; gap:16px; margin-bottom:16px; }
+    .tl-num { background:var(--navy); color:white; border-radius:50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; flex-shrink:0; margin-top:4px; }
+    .tl-body h4 { font-size:0.9rem; font-weight:700; color:var(--navy); margin-bottom:5px; }
+    .tl-body p { font-size:0.84rem; color:var(--text-muted); line-height:1.6; margin:0; }
+    .tl-tag { display:inline-block; font-size:0.66rem; font-weight:700; padding:2px 8px; border-radius:10px; background:var(--light-bg); color:var(--text-muted); margin-top:4px; border:1px solid var(--border); }
+
+    /* SOURCES */
+    .sources { background:var(--light-bg); border-radius:8px; padding:18px 22px; margin:0 0 32px; border:1px solid var(--border); }
+    .sources h4 { font-size:0.68rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); margin-bottom:12px; }
     .sources ul { list-style:none; }
-    .sources ul li { font-size:0.78rem; color:var(--text-muted); padding:4px 0; border-bottom:1px solid var(--border); }
+    .sources ul li { font-size:0.78rem; color:var(--text-muted); padding:4px 0; border-bottom:1px solid var(--border); line-height:1.55; }
     .sources ul li:last-child { border-bottom:none; }
     .sources ul li a { color:var(--light-blue); text-decoration:none; }
+
     /* CTA */
     .article-cta { background:linear-gradient(135deg,var(--navy),var(--blue)); border-radius:10px; padding:36px; text-align:center; margin-bottom:48px; }
-    .article-cta h3 { font-family:'Playfair Display',serif; font-size:1.4rem; color:white; margin-bottom:10px; }
-    .article-cta p { font-size:0.88rem; color:rgba(255,255,255,0.78); margin-bottom:20px; }
+    .article-cta h3 { font-family:'Playfair Display',serif; font-size:1.5rem; color:white; margin-bottom:10px; }
+    .article-cta p { font-size:0.88rem; color:rgba(255,255,255,0.78); margin-bottom:20px; line-height:1.65; }
     .btn-cta { display:inline-flex; align-items:center; gap:8px; background:white; color:var(--blue); font-weight:700; font-size:0.88rem; padding:12px 24px; border-radius:6px; text-decoration:none; }
-    .btn-cta:hover { background:var(--light-bg); }
-    /* Footer */
-    .site-footer { background:var(--blue); color:white; text-align:center; padding:40px 24px; }
-    .footer-tagline { font-size:0.92rem; color:rgba(255,255,255,0.9); font-weight:600; letter-spacing:0.5px; margin-bottom:12px; }
-    .footer-links { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-bottom:14px; }
-    .footer-links a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.8rem; }
-    .footer-copy { font-size:0.75rem; color:rgba(255,255,255,0.5); }
-    @media (max-width:700px) {
-      .hero h1 { font-size:1.75rem; }
-      .article-body { padding:24px 18px; }
+
+    /* FOOTER */
+    .site-footer { background:var(--blue); color:white; text-align:center; padding:36px 24px; }
+    .footer-tagline { font-size:0.9rem; color:rgba(255,255,255,0.9); font-weight:600; letter-spacing:0.5px; margin-bottom:10px; }
+    .footer-links { display:flex; gap:18px; justify-content:center; flex-wrap:wrap; margin-bottom:12px; }
+    .footer-links a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.78rem; }
+    .footer-copy { font-size:0.73rem; color:rgba(255,255,255,0.5); }
+
+    @media (max-width:720px) {
+      .hero h1 { font-size:1.8rem; }
+      .article-body { padding:28px 22px; }
       .cert-grid { grid-template-columns:1fr; }
       .horizon-grid { grid-template-columns:1fr; }
       .check-grid { grid-template-columns:1fr; }
-      .tl-item { grid-template-columns:40px 1fr; }
-      .topnav { padding:0 16px; }
-      .nav-links a { padding:5px 8px; font-size:0.78rem; }
+      .topnav { padding:0 14px; }
+      .nav-links a { padding:5px 7px; font-size:0.76rem; }
     }
+    @media print {
+      .topnav, .btn-back, .article-cta, .site-footer { display:none; }
+      body { background:white; }
+      .article-body { box-shadow:none; }
+    }
+  
+    .lang-toggle{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.25);border-radius:6px;overflow:hidden;margin-left:8px}
+    .lang-btn{font-size:.72rem;font-weight:700;padding:5px 10px;text-decoration:none;transition:all .2s;letter-spacing:.5px}
+    .lang-btn.inactive{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6)}
+    .lang-btn.inactive:hover{background:rgba(255,255,255,.15);color:#fff}
+    .lang-btn.active{background:#C8922A;color:#0B2545}
   </style>
 </head>
 <body>
@@ -144,9 +180,9 @@
     <li><a href="https://rc2consulting.github.io/about-es.html">Nosotros</a></li>
     <li><a href="https://rc2consulting.github.io/RC2_Resources_Page-es.html" class="active">Recursos</a></li>
     <li><a href="https://rc2consulting.github.io/contact-es.html">Contacto</a></li>
-    <li>
+      <li>
       <div class="lang-toggle">
-        <a href="https://rc2consulting.github.io/RC2_Article_SBA_Certification.html" class="lang-btn inactive">EN</a>
+        <a href="https://rc2consulting.github.io/RC2_Article_SBA_Certification-es.html" class="lang-btn active">EN</a>
         <a href="https://rc2consulting.github.io/RC2_Article_SBA_Certification-es.html" class="lang-btn active">ES</a>
       </div>
     </li>
@@ -156,14 +192,14 @@
 <section class="hero">
   <div class="hero-inner">
     <span class="article-tag">Contratos Gubernamentales</span>
-    <h1>Certificación SBA y Contratos Gubernamentales: Lo Que Todo Empresario Necesita Saber</h1>
-    <p class="hero-sub">El gobierno federal es el mayor comprador individual de bienes y servicios en el mundo — con compras superiores a $700 mil millones anuales. Sin embargo, la mayoría de las pequeñas empresas elegibles nunca compiten por ese mercado porque no entienden cómo se abre la puerta. Se abre con la certificación.</p>
+    <h1>Certificación SBA y Contratos Gubernamentales: Lo Que los Empresarios Deben Saber</h1>
+    <p class="hero-sub">The federal government is the single largest buyer of goods and services in the world — purchasing over $700 billion annually. Yet most eligible small businesses never compete for that market because they do not understand how the door opens. It opens with certification.</p>
     <div class="hero-meta">
       <span>RC2 Consulting</span>
       <span class="divider">|</span>
-      <span>Febrero 2026</span>
+      <span>February 2026</span>
       <span class="divider">|</span>
-      <span>Resumen Ejecutivo</span>
+      <span>Executive Summary</span>
       <span class="divider">|</span>
       <span>12 min de lectura</span>
     </div>
@@ -173,200 +209,207 @@
 <div class="article-wrap">
   <a href="https://rc2consulting.github.io/RC2_Resources_Page-es.html" class="btn-back">← Volver a Recursos</a>
 
+  <!-- ABSTRACT -->
   <div class="abstract-box">
-    <h3>Resumen Ejecutivo</h3>
-    <p>El gobierno federal de EE.UU. tiene el mandato legal de otorgar un mínimo del 23% de todos los dólares de contratos primarios a pequeñas empresas anualmente — representando más de $161 mil millones en gasto dirigido. Los programas de certificación SBA — incluyendo el Programa de Desarrollo Empresarial 8(a), Empresa de Propiedad de Mujeres (WOSB), HUBZone, Empresa de Propiedad de Veteranos con Discapacidad de Servicio (SDVOSB) y Empresa de Propiedad de Veteranos (VOSB) — crean oportunidades de set-aside estatutarias que reducen dramáticamente el campo competitivo para las empresas elegibles. Pero la certificación no es una estrategia por sí sola. Las empresas que persiguen contratos gubernamentales sin la infraestructura operativa y de cumplimiento subyacente consistentemente no logran convertir la certificación en ingresos contractuales sostenidos.</p>
+    <h3>Executive Summary</h3>
+    <p>The U.S. federal government is legally mandated to award a minimum of 23% of all prime contract dollars to small businesses annually — representing over $161 billion in targeted spend. SBA certification programs — including the 8(a) Business Development Program, Women-Owned Pequeña Empresa (WOSB), HUBZone, Service-Disabled Veteran-Owned Pequeña Empresa (SDVOSB), and Veteran-Owned Pequeña Empresa (VOSB) — create statutory set-aside opportunities that dramatically reduce the competitive field for eligible companies. But certification is not a strategy by itself. Businesses that pursue government contracting without the underlying operational and compliance infrastructure in place consistently fail to convert certification into sustained contract revenue. This article outlines what every business owner needs to understand before pursuing SBA certification, and what the work actually looks like on the inside.</p>
   </div>
 
   <div class="article-body">
 
-    <h2>La Oportunidad de Mercado — y Por Qué la Mayoría de las Empresas Elegibles la Pierden</h2>
-    <p>El mandato de contratación de pequeñas empresas del gobierno federal es uno de los programas de acceso económico más subutilizados en los Estados Unidos. Bajo la Ley de Pequeñas Empresas, las agencias federales deben establecer objetivos anuales de contratación específicos: <strong>23% de contratos primarios a pequeñas empresas</strong>, 5% a Empresas de Propiedad de Mujeres, 5% a Pequeñas Empresas en Desventaja (incluyendo participantes 8(a)), 3% a empresas HUBZone y 3% a empresas de propiedad de veteranos con discapacidad de servicio.</p>
-    <p>En el año fiscal 2024, el gobierno federal otorgó aproximadamente <strong>$710 mil millones en obligaciones contractuales totales</strong>. Eso significa que más de $160 mil millones fueron dirigidos — por ley — hacia pequeñas empresas y empresas certificadas. Solo el Departamento de Defensa obligó más de $400 mil millones en contratos durante ese período, con requisitos significativos de set-aside para pequeñas empresas integrados en sus regulaciones de adquisición.</p>
-    <p>A pesar de estos mandatos, la mayoría de las empresas elegibles no participan. Las barreras son reales: el sistema de adquisición es complejo, los requisitos de documentación son extensos y las expectativas de cumplimiento dentro de un contrato gubernamental son sustancialmente más altas que en los negocios comerciales.</p>
+    <!-- SECTION 1 -->
+    <h2>The Market Opportunity — and Why Most Eligible Businesses Miss It</h2>
+    <p>The federal government's small business contracting mandate is one of the most underutilized economic access programs in the United States. Under the Pequeña Empresa Act, federal agencies are required to set specific annual contracting goals: <strong>23% of prime contracts to small businesses</strong>, 5% to Women-Owned Pequeña Empresaes, 5% to Small Disadvantaged Businesses (including 8(a) participants), 3% to HUBZone businesses, and 3% to Service-Disabled Veteran-Owned businesses.</p>
+    <p>In fiscal year 2024, the federal government awarded approximately <strong>$710 billion in total contract obligations</strong>. That means over $160 billion was directed — by law — toward small and certified businesses. The Department of Defense alone obligated more than $400 billion in contracts during that period, with significant small business set-aside requirements embedded throughout its acquisition regulations.</p>
+    <p>Despite these mandates, the majority of eligible businesses do not participate. The barriers are real: the procurement system is complex, the documentation requirements are extensive, and the compliance expectations inside a government contract are substantially higher than in commercial business. Most small businesses that attempt to enter the federal market do so unprepared — and either never win a contract or win one they cannot successfully perform.</p>
 
     <div class="callout">
-      <p>La certificación lo pone en la sala. La infraestructura operativa y de cumplimiento que construye antes de entrar determina si puede quedarse allí — y si el gobierno lo volverá a llamar.</p>
+      <p>Certification gets you into the room. The operational and compliance infrastructure you build before entering determines whether you can stay there — and whether the government will bring you back.</p>
     </div>
 
-    <h2>Los Cinco Programas Principales de Certificación SBA</h2>
-    <p>La SBA administra cinco programas principales de certificación, cada uno dirigido a una categoría de elegibilidad distinta. Entender qué certificaciones aplican a su negocio — y qué grupos de set-aside desbloquean — es la primera decisión estratégica en un plan de entrada a contratos gubernamentales.</p>
+    <!-- SECTION 2 -->
+    <h2>The Five Core Certificación SBA Programs</h2>
+    <p>The SBA administers five primary certification programs, each targeting a distinct eligibility category. Understanding which certifications apply to your business — and which set-aside pools they unlock — is the first strategic decision in a government contracting entry plan.</p>
 
     <div class="cert-grid">
       <div class="cert-card c8a">
-        <div class="cert-label">Programa SBA</div>
-        <div class="cert-name">Programa de Desarrollo Empresarial 8(a)</div>
-        <p>Un programa de desarrollo de 9 años para propietarios de negocios social y económicamente en desventaja. Proporciona acceso a adjudicaciones de contratos de fuente única (hasta $4.5M para servicios, $7M para manufactura) y set-asides competitivos. Incluye tutoría de desarrollo empresarial y asistencia técnica de la SBA.</p>
-        <p><strong>Elegibilidad clave:</strong> El propietario debe ser ciudadano de EE.UU., en desventaja social (raza o etnia presumida para ciertos grupos), en desventaja económica (patrimonio neto menor a $850K excluyendo residencia principal y capital empresarial), y debe poseer y controlar al menos el 51% del negocio.</p>
-        <span class="cert-tag">Límite de 9 Años del Programa</span>
+        <div class="cert-label">SBA Program</div>
+        <div class="cert-name">8(a) Business Development Program</div>
+        <p>A 9-year developmental program for socially and economically disadvantaged business owners. Provides access to sole-source contract awards (up to $4.5M for services, $7M for manufacturing) and competitive set-asides. Includes business development mentoring and technical assistance from SBA.</p>
+        <p><strong>Eligibility key:</strong> Owner must be a U.S. citizen, socially disadvantaged (race or ethnicity presumed for certain groups), economically disadvantaged (net worth under $850K excluding primary residence and business equity), and must own and control at least 51% of the business.</p>
+        <span class="cert-tag">9-Year Program Limit</span>
       </div>
       <div class="cert-card cwosb">
-        <div class="cert-label">Programa SBA</div>
-        <div class="cert-name">Empresa de Propiedad de Mujeres (WOSB) y EDWOSB</div>
-        <p>Proporciona acceso de set-aside y fuente única a contratos federales en industrias donde las empresas de propiedad de mujeres están subrepresentadas. El subconjunto Económicamente en Desventaja (EDWOSB) proporciona acceso adicional a adjudicaciones de fuente única en una gama más amplia de códigos NAICS.</p>
-        <p><strong>Elegibilidad clave:</strong> 51% de propiedad incondicional y gestión cotidiana por una o más mujeres que sean ciudadanas de EE.UU. EDWOSB agrega una prueba de patrimonio neto personal de desventaja económica (menos de $850K).</p>
-        <span class="cert-tag">Autocertificación Eliminada — Certificación SBA Requerida</span>
+        <div class="cert-label">SBA Program</div>
+        <div class="cert-name">Women-Owned Pequeña Empresa (WOSB) & EDWOSB</div>
+        <p>Provides set-aside and sole-source access to federal contracts in industries where women-owned businesses are underrepresented. The Economically Disadvantaged subset (EDWOSB) provides additional access to sole-source awards in a broader range of NAICS codes.</p>
+        <p><strong>Eligibility key:</strong> 51% unconditional ownership and day-to-day management by one or more women who are U.S. citizens. EDWOSB adds an economic disadvantage personal net worth test (under $850K).</p>
+        <span class="cert-tag">Self-Certification Eliminated — Certificación SBA Required</span>
       </div>
       <div class="cert-card chub">
-        <div class="cert-label">Programa SBA</div>
-        <div class="cert-name">Zonas de Negocios Históricamente Subutilizadas (HUBZone)</div>
-        <p>Diseñado para estimular el desarrollo económico en áreas geográficas históricamente subutilizadas. Las empresas certificadas reciben una preferencia de evaluación de precio del 10% en competencias abiertas y acceso a contratos de set-aside HUBZone.</p>
-        <p><strong>Elegibilidad clave:</strong> La oficina principal del negocio debe estar ubicada en una HUBZone designada, y al menos el 35% de los empleados deben residir en una HUBZone. El negocio debe ser pequeño según los estándares de tamaño SBA.</p>
-        <span class="cert-tag">Recertificación Anual Requerida</span>
+        <div class="cert-label">SBA Program</div>
+        <div class="cert-name">Historically Underutilized Business Zones (HUBZone)</div>
+        <p>Designed to stimulate economic development in historically underutilized geographic areas. Certified businesses receive a 10% price evaluation preference in full-and-open competitions and access to HUBZone set-aside contracts.</p>
+        <p><strong>Eligibility key:</strong> Business principal office must be located in a designated HUBZone, and at least 35% of employees must reside in a HUBZone. Business must be small under SBA size standards. HUBZone maps update annually — verify your address at sba.gov/hubzone-maps.</p>
+        <span class="cert-tag">Annual Recertification Required</span>
       </div>
       <div class="cert-card csdv">
-        <div class="cert-label">Programa SBA</div>
-        <div class="cert-name">Empresa de Propiedad de Veteranos con Discapacidad (SDVOSB)</div>
-        <p>Proporciona acceso de set-aside y fuente única en todas las agencias federales para negocios propiedad y controlados por veteranos con discapacidad de servicio. La VA administra adicionalmente el programa VA-específico VOSB/SDVOSB (Programa de Contratación Vets First) para contratos de VA.</p>
-        <p><strong>Elegibilidad clave:</strong> Un veterano con una discapacidad relacionada con el servicio, determinada por la VA o el DoD, debe poseer (51%+) y controlar el negocio. La certificación SBA ahora se requiere para todos los set-asides federales SDVOSB.</p>
-        <span class="cert-tag">Programas VA y SBA Separados — Verificar Ambos Si Apunta a VA</span>
+        <div class="cert-label">SBA Program</div>
+        <div class="cert-name">Service-Disabled Veteran-Owned Pequeña Empresa (SDVOSB)</div>
+        <p>Provides set-aside and sole-source access across all federal agencies for businesses owned and controlled by service-disabled veterans. The VA additionally administers the VA-specific VOSB/SDVOSB program (Vets First Contracting Program) for VA contracts.</p>
+        <p><strong>Eligibility key:</strong> Veteran with a service-connected disability as determined by the VA or DoD must own (51%+) and control the business. SBA certification now required for all federal SDVOSB set-asides under the National Defense Authorization Act 2021 implementation.</p>
+        <span class="cert-tag">VA & SBA Programs Separate — Verify Both If Targeting VA</span>
       </div>
       <div class="cert-card cvosb" style="grid-column:1/-1">
-        <div class="cert-label">Programa SBA</div>
-        <div class="cert-name">Empresa de Propiedad de Veteranos (VOSB)</div>
-        <p>Proporciona acceso de set-aside específicamente para contratos de VA bajo el Programa de Contratación Veterans First. A diferencia de SDVOSB, no se requiere discapacidad relacionada con el servicio — la baja honrosa y la propiedad del 51%+ y el control por un veterano es el umbral. La certificación VOSB es administrada por la SBA y es distinta del programa heredado de verificación CVE de la VA, que fue consolidado en la certificación SBA en 2023.</p>
-        <p><strong>Nota estratégica:</strong> Si su negocio de propiedad de veteranos no califica para SDVOSB (sin discapacidad relacionada con el servicio), la certificación VOSB proporciona acceso a los set-asides de la VA — un grupo de adquisición de miles de millones de dólares — que de otro modo es inaccesible para los negocios no veteranos.</p>
-        <span class="cert-tag">Solo Contratos VA — No Federal General</span>
+        <div class="cert-label">SBA Program</div>
+        <div class="cert-name">Veteran-Owned Pequeña Empresa (VOSB)</div>
+        <p>Provides set-aside access specifically for VA contracts under the Veterans First Contracting Program. Unlike SDVOSB, no service-connected disability is required — honorable discharge and 51%+ ownership and control by a veteran is the threshold. VOSB certification is administered by SBA and is distinct from the legacy VA CVE verification program, which was consolidated into SBA certification in 2023.</p>
+        <p><strong>Strategic note:</strong> If your veteran-owned business does not qualify for SDVOSB (no service-connected disability), VOSB certification provides access to VA set-asides — a multi-billion dollar procurement pool — that is otherwise inaccessible to non-veteran businesses.</p>
+        <span class="cert-tag">VA Contracts Only — Not Federal-Wide</span>
       </div>
     </div>
 
-    <h2>El Proceso de Certificación — Cómo Se Ve el Cronograma en Realidad</h2>
-    <p>El proceso de certificación SBA se realiza a través del <strong>portal MySBA Certifications</strong> en certify.sba.gov. Los cinco programas ahora se gestionan a través de una plataforma unificada. Las solicitudes son revisadas por analistas de la SBA, y los tiempos de procesamiento varían significativamente según el programa, la calidad de la solicitud y la integridad de los documentos.</p>
+    <!-- SECTION 3 -->
+    <h2>The Certification Process — What the Timeline Actually Looks Like</h2>
+    <p>The SBA certification process is conducted through the <strong>MyCertificación SBAs portal</strong> at certify.sba.gov. All five programs are now managed through a unified platform, replacing the legacy paper-based and program-specific portals that were phased out between 2020 and 2023. Applications are reviewed by SBA analysts, and processing times vary significantly by program, application quality, and document completeness.</p>
 
     <div class="timeline">
       <div class="tl-item">
         <div class="tl-num">1</div>
         <div class="tl-body">
-          <h4>Preparación Pre-Solicitud — 30 a 90 Días</h4>
-          <p>Reúna y organice toda la documentación requerida antes de iniciar la solicitud. Esto incluye documentos de formación corporativa, declaraciones de impuestos (3 años), estados financieros personales, organigramas, documentación de propiedad, registros de nómina y declaraciones narrativas que explican la propiedad, el control y la desventaja (para 8(a) y EDWOSB). Las solicitudes incompletas son la principal causa de demoras y denegaciones.</p>
-          <span class="tl-tag">Aquí Se Pierde la Mayor Parte del Tiempo</span>
+          <h4>Pre-Application Preparation — 30 to 90 Days</h4>
+          <p>Gather and organize all required documentation before initiating the application. This includes corporate formation documents, tax returns (3 years), personal financial statements, organizational charts, ownership documentation, payroll records, and narrative statements explaining ownership, control, and disadvantage (for 8(a) and EDWOSB). Incomplete applications are a leading cause of delay and denial — most businesses underestimate this phase significantly.</p>
+          <span class="tl-tag">Most Time Is Lost Here</span>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-num">2</div>
         <div class="tl-body">
-          <h4>Presentación de la Solicitud — 1 a 5 Días Hábiles</h4>
-          <p>Presente a través del portal MySBA. Para 8(a), los componentes narrativos (narrativa de desventaja social, historial personal, plan de desarrollo empresarial) requieren un tiempo de preparación significativo y son evaluados de manera holística por los revisores de la SBA. Los errores en la solicitud del portal son comunes y pueden reiniciar el reloj de revisión.</p>
+          <h4>Application Submission — 1 to 5 Business Days</h4>
+          <p>Submit through the MySBA portal. Each program has a distinct application workflow within the platform. For 8(a), the narrative components (social disadvantage narrative, personal history, business development plan) require significant preparation time and are evaluated holistically by SBA reviewers. Errors in the portal application are common and can reset the review clock.</p>
           <span class="tl-tag">certify.sba.gov</span>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-num">3</div>
         <div class="tl-body">
-          <h4>Revisión SBA y Asignación de Analista — 15 a 90 Días</h4>
-          <p>Los tiempos de procesamiento varían según el programa. A partir de 2025, la SBA tiene como objetivo 90 días para las solicitudes iniciales 8(a), aunque los casos complejos pueden extenderse significativamente. Las solicitudes WOSB, HUBZone, SDVOSB y VOSB han estado procesando entre 15 y 60 días para presentaciones completas y limpias. Espere solicitudes de seguimiento del analista para documentación adicional — responda con prontitud, ya que las demoras extienden su cronograma.</p>
-          <span class="tl-tag">Objetivo SBA de 90 Días para 8(a)</span>
+          <h4>SBA Review & Analyst Assignment — 15 to 90 Days</h4>
+          <p>Processing times vary by program. As of 2025, SBA targets 90 days for 8(a) initial applications, though complex cases can extend significantly. WOSB, HUBZone, SDVOSB, and VOSB applications have been processing in 15 to 60 days for complete, clean submissions. Expect analyst follow-up requests for additional documentation — respond promptly, as delays extend your clock.</p>
+          <span class="tl-tag">90-Day SBA Target for 8(a)</span>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-num">4</div>
         <div class="tl-body">
-          <h4>Decisión, Fecha Efectiva y Registro SAM.gov</h4>
-          <p>Tras la aprobación, su estado de certificación se refleja en SAM.gov (Sistema de Gestión de Adjudicaciones) — la base de datos de contratistas federales que los oficiales de contratación buscan al identificar negocios elegibles para set-aside. Su registro SAM.gov debe estar activo y actualizado antes de que la certificación sea útil. Se requiere renovación anual de SAM.gov.</p>
-          <span class="tl-tag">SAM.gov Debe Estar Activo al Momento de la Adjudicación</span>
+          <h4>Decision, Effective Date & SAM.gov Registration</h4>
+          <p>Upon approval, your certification status is reflected in SAM.gov (System for Award Management) — the federal contractor database that contracting officers search when identifying set-aside eligible businesses. Your SAM.gov registration must be active and current before certification is useful. Annual SAM.gov renewal is required. Your certifications appear under your entity's profile and are visible to all federal agencies and prime contractors.</p>
+          <span class="tl-tag">SAM.gov Must Be Active at Time of Award</span>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-num">5</div>
         <div class="tl-body">
-          <h4>Recertificación Anual y Cumplimiento Continuo</h4>
-          <p>Todas las certificaciones requieren recertificación anual para mantener el estado. Las condiciones de elegibilidad deben cumplirse continuamente — cambios en la propiedad, gestión, ingresos o residencia de empleados (HUBZone) pueden resultar en descertificación. Para los participantes 8(a), se requieren revisiones anuales, informes financieros y evaluaciones de actividad empresarial a lo largo del término del programa de 9 años.</p>
-          <span class="tl-tag">Anual — Nunca Olvide Esto</span>
+          <h4>Annual Recertification & Continued Compliance</h4>
+          <p>All certifications require annual recertification to maintain status. Eligibility conditions must be continuously met — changes in ownership, management, revenue, or employee residence (HUBZone) can result in decertification. For 8(a) participants, annual reviews, financial reporting, and business activity assessments are required throughout the 9-year program term. Decertification after contract award creates serious legal and financial risk.</p>
+          <span class="tl-tag">Annual — Never Miss This</span>
         </div>
       </div>
     </div>
 
-    <h2>Lo Que la Certificación NO Hace — La Brecha Que la Mayoría No Ve</h2>
-    <p>La certificación es una credencial — prueba la elegibilidad para una categoría de contratos. No genera ingresos por sí sola, ni entrega desempeño, ni protege a un negocio de las demandas de cumplimiento y operativas que impone la contratación federal. Esta distinción es donde la mayoría de las pequeñas empresas recién certificadas tropiezan.</p>
-    <p>El Reglamento Federal de Adquisiciones (FAR) — que rige los términos, condiciones y requisitos de desempeño de prácticamente todos los contratos federales — crea obligaciones que son materialmente diferentes de los requisitos de contratos comerciales. Estas incluyen cláusulas de flujo obligatorio a subcontratistas, estándares de contabilidad de costos para ciertos tipos de contratos, requisitos de cumplimiento de derecho laboral (Ley Davis-Bacon, Ley de Contratos de Servicios), marcos de ciberseguridad (CMMC para contratistas del DoD), y rigurosos requisitos de mantenimiento de registros y derechos de auditoría para organismos de supervisión gubernamental incluyendo la GAO, oficinas de IG y la DCAA.</p>
+    <!-- SECTION 4 -->
+    <h2>What Certification Does Not Do — The Gap Most Businesses Do Not See</h2>
+    <p>Certification is a credential — it proves eligibility for a category of contracts. It does not, by itself, generate revenue, deliver performance, or protect a business from the compliance and operational demands that federal contracting imposes. This distinction is where the majority of newly certified small businesses falter.</p>
+    <p>The Federal Acquisition Regulation (FAR) — which governs the terms, conditions, and performance requirements of virtually all federal contracts — creates obligations that are materially different from commercial contract requirements. These include mandatory flow-down clauses to subcontractors, cost accounting standards for certain contract types, labor law compliance requirements (Davis-Bacon Act, Service Contract Act, Executive Order minimum wage requirements), cybersecurity frameworks (CMMC for DoD contractors), and rigorous record-keeping and audit rights for government oversight bodies including the GAO, IG offices, and DCAA.</p>
 
     <div class="pitfall-box">
-      <h4>⚠ Los 5 Fracasos de Cumplimiento Más Comunes en Nuevos Contratistas Gubernamentales</h4>
+      <h4>⚠ The 5 Most Common Compliance Failures in New Government Contractors</h4>
       <ul class="pitfall-list">
-        <li>Sistemas de mantenimiento de registros inadecuados — los contratos federales requieren estándares de documentación que exceden significativamente las normas comerciales. Los registros de tiempo y asistencia, el rastreo de costos por contrato y la documentación de entregables deben estar listos para auditoría en todo momento.</li>
-        <li>Cláusulas de flujo a subcontratistas faltantes o no conformes — los contratistas primarios están legalmente obligados a fluir ciertas cláusulas FAR y DFARS a los subcontratistas. No hacerlo constituye una violación del contrato incluso cuando el subcontratista se desempeña correctamente.</li>
-        <li>Brechas de calificación del personal — muchos contratos especifican calificaciones mínimas para el personal clave. Sustituir personal sin la aprobación del oficial de contratación constituye un incumplimiento material.</li>
-        <li>Prácticas de facturación incorrectas — la facturación federal sigue formatos específicos (SF1034, envíos WAWF/Tungsten) con requisitos de documentación de costos. Las facturas que carecen del respaldo adecuado son rechazadas o desencadenan auditorías, retrasando el flujo de caja para negocios que no pueden permitirse el retraso.</li>
-        <li>Fracasos de integridad del programa — presentar negocios inelegibles para contratos de set-aside (certificación falsa) o no mantener la elegibilidad de certificación después de la adjudicación desencadena exposición bajo la Ley de Reclamaciones Falsas, posible suspensión e inhabilitación, y derivación penal. Las penalidades son severas y frecuentemente fatales para el negocio.</li>
+        <li>Inadequate record-keeping systems — federal contracts require documentation standards that significantly exceed commercial norms. Time-and-attendance records, cost tracking by contract, and deliverable documentation must be audit-ready at all times.</li>
+        <li>Missing or non-compliant subcontract flow-down clauses — prime contractors are legally required to flow certain FAR and DFARS clauses to subcontractors. Failure to do so is a contract violation even when the subcontractor performs correctly.</li>
+        <li>Personnel qualification gaps — many contracts specify minimum qualifications for key personnel. Substituting personnel without contracting officer approval, or performing with unqualified staff, constitutes a material breach.</li>
+        <li>Improper invoicing practices — federal invoicing follows specific formats (SF1034, WAWF/Tungsten submissions) with cost documentation requirements. Invoices that lack proper support are rejected or trigger audit, delaying cash flow for businesses that cannot afford the lag.</li>
+        <li>Program integrity failures — submitting ineligible businesses for set-aside contracts (false certification) or failing to maintain certification eligibility after award triggers False Claims Act exposure, potential suspension and debarment, and criminal referral. The penalties are severe and frequently fatal to the business.</li>
       </ul>
     </div>
 
-    <h2>Lo Que Debe Construir Antes de Perseguir Contratos Gubernamentales</h2>
-    <p>Los negocios que tienen éxito en el mercado federal — y crecen dentro de él — no son necesariamente los que tienen los mejores productos o servicios. Son los que construyeron la infraestructura operativa y de cumplimiento antes de perseguir contratos, no después de ganarlos. La contratación gubernamental recompensa el proceso, la documentación y la consistencia de una manera que los negocios comerciales raramente demandan al mismo nivel de rigor.</p>
+    <!-- SECTION 5 -->
+    <h2>What You Must Build Before You Pursue Government Contracts</h2>
+    <p>The businesses that succeed in the federal market — and grow within it — are not necessarily the ones with the best products or services. They are the ones that built the operational and compliance infrastructure before pursuing contracts, not after winning them. Government contracting rewards process, documentation, and consistency in a way that commercial business rarely demands at the same level of rigor.</p>
 
     <div class="check-section">
-      <h3>Lista de Verificación de Preparación Operativa Pre-Persecución</h3>
+      <h3>Pre-Pursuit Operational Readiness Checklist</h3>
       <div class="check-grid">
-        <div class="check-item"><span>Registro SAM.gov activo, actualizado y preciso — códigos NAICS, certificaciones de tamaño y representaciones verificadas</span></div>
-        <div class="check-item"><span>Código CAGE obtenido y vinculado a su registro de entidad SAM.gov</span></div>
-        <div class="check-item"><span>Sistema de contabilidad escrito capaz de rastrear costos por contrato, proyecto y categoría indirecta — adecuado para DCAA o trabajando hacia ello</span></div>
-        <div class="check-item"><span>Sistema de registro de tiempo y asistencia para todos los empleados — basado en papel o software, con disciplina de entrada diaria o semanal</span></div>
-        <div class="check-item"><span>SOPs para procesos operativos centrales — contratos, compras, facturación, personal y retención de registros</span></div>
-        <div class="check-item"><span>Personal clave identificado y documentado — con currículums, calificaciones y cartas de compromiso listos para presentaciones de propuestas</span></div>
-        <div class="check-item"><span>Referencias de desempeño pasado documentadas — incluso de trabajo comercial — en formato CPARS o narrativo equivalente usado en propuestas federales</span></div>
-        <div class="check-item"><span>Línea base de ciberseguridad evaluada — autoevaluación NIST SP 800-171 completada para cualquier contrato que involucre Información No Clasificada Controlada (CUI)</span></div>
-        <div class="check-item"><span>Política de conflicto de intereses escrita, código de conducta y procedimiento de gestión de subcontratos en su lugar</span></div>
-        <div class="check-item"><span>Cobertura de seguro confirmada — responsabilidad general, responsabilidad profesional (E&O), compensación laboral y cualquier requisito específico del contrato</span></div>
+        <div class="check-item"><span>SAM.gov registration active, current, and accurate — NAICS codes, size certifications, and representations verified</span></div>
+        <div class="check-item"><span>CAGE code obtained and linked to your SAM.gov entity registration</span></div>
+        <div class="check-item"><span>Written accounting system capable of tracking costs by contract, project, and indirect category — DCAA-adequate or working toward it</span></div>
+        <div class="check-item"><span>Time-and-attendance recording system for all employees — paper or software-based, with daily or weekly input discipline</span></div>
+        <div class="check-item"><span>Standard Operating Procedures (SOPs) for core operational processes — contracts, purchasing, invoicing, personnel, and record retention</span></div>
+        <div class="check-item"><span>Key personnel identified and documented — with resumes, qualifications, and letters of commitment ready for proposal submissions</span></div>
+        <div class="check-item"><span>Past performance references documented — even from commercial work — in the CPARS or equivalent narrative format used in federal proposals</span></div>
+        <div class="check-item"><span>Cybersecurity baseline assessed — NIST SP 800-171 self-assessment completed for any contract involving Controlled Unclassified Information (CUI)</span></div>
+        <div class="check-item"><span>Written conflict of interest policy, code of conduct, and subcontract management procedure in place</span></div>
+        <div class="check-item"><span>Insurance coverage confirmed — general liability, professional liability (E&O), workers' compensation, and any contract-specific requirements</span></div>
       </div>
     </div>
 
-    <h2>La Estrategia Competitiva — Cómo Ganar Realmente Después de la Certificación</h2>
-    <p>La certificación abre la puerta. Una estrategia de contratación determina si la atraviesa exitosamente. El mercado de adquisición federal opera en relaciones, desempeño pasado y capacidad demostrada — ninguna de las cuales puede crearse en el momento en que cae una solicitud. Los negocios que ganan consistentemente en el mercado federal invierten en inteligencia de mercado, desarrollo de relaciones y posicionamiento estratégico mucho antes de presentar su primera propuesta.</p>
+    <!-- SECTION 6 -->
+    <h2>The Competitive Strategy — How to Actually Win After Certification</h2>
+    <p>Certification opens the door. A contracting strategy determines whether you walk through it successfully. The federal procurement market operates on relationships, past performance, and demonstrated capability — none of which can be created at the moment a solicitation drops. Businesses that win consistently in the federal market invest in market intelligence, relationship development, and strategic positioning long before submitting their first proposal.</p>
+    <h3>Identify Your Target Agencies and Contract Vehicles</h3>
+    <p>Not all federal agencies purchase the same things. The Department of Defense is the largest single buyer, but also among the most complex to navigate as a new contractor. Civilian agencies — including the GSA, DHS, HHS, DoL, DOT, and VA — often represent more accessible entry points for new small businesses. Use <strong>USASpending.gov</strong> and <strong>SAM.gov</strong> to analyze where your NAICS codes are being awarded, which agencies are buying, and which incumbents you would be displacing. This intelligence shapes your entire market entry strategy.</p>
+    <h3>GSA Schedule — The Foundation of Federal Market Access</h3>
+    <p>For many small businesses, securing a <strong>GSA Multiple Award Schedule (MAS)</strong> contract is the most efficient path to consistent federal revenue. The GSA Schedule pre-negotiates your pricing with the federal government, making you available to all federal agencies without requiring individual competitive solicitations for every order. Schedule contract holders appear in GSA Advantage — a searchable catalog used by thousands of contracting officers. Certification status flows through your Schedule profile and amplifies set-aside opportunities across the entire federal market simultaneously.</p>
+    <h3>Teaming and Subcontracting — The Fastest Entry Point</h3>
+    <p>The fastest way for a newly certified small business to build past performance is through subcontracting with established prime contractors. Large prime contractors are legally required under the FAR to have small business subcontracting plans when their contracts exceed certain thresholds. This creates a structured demand for certified small business subcontractors. Developing relationships with prime contractors before certification — and positioning your business as a ready subcontract partner — compresses the timeline from certification to revenue substantially.</p>
 
-    <h3>Identifique Sus Agencias Objetivo y Vehículos de Contratos</h3>
-    <p>No todas las agencias federales compran las mismas cosas. El Departamento de Defensa es el mayor comprador individual, pero también uno de los más complejos de navegar como nuevo contratista. Las agencias civiles — incluyendo la GSA, DHS, HHS, DoL, DOT y VA — a menudo representan puntos de entrada más accesibles para nuevas pequeñas empresas. Use <strong>USASpending.gov</strong> y <strong>SAM.gov</strong> para analizar dónde se están adjudicando sus códigos NAICS, qué agencias están comprando y qué titulares actuales estaría desplazando.</p>
-
-    <h3>Contrato de Horario GSA — La Base del Acceso al Mercado Federal</h3>
-    <p>Para muchas pequeñas empresas, asegurar un contrato de <strong>Horario de Adjudicaciones Múltiples (MAS) de GSA</strong> es el camino más eficiente hacia ingresos federales consistentes. El Horario GSA pre-negocia sus precios con el gobierno federal, haciéndolo disponible para todas las agencias federales sin requerir licitaciones competitivas individuales para cada orden. Los titulares de contratos de Horario aparecen en GSA Advantage — un catálogo buscable utilizado por miles de oficiales de contratación.</p>
-
-    <h3>Formación de Equipos y Subcontratación — El Punto de Entrada Más Rápido</h3>
-    <p>La forma más rápida para que una pequeña empresa recién certificada construya un historial de desempeño pasado es a través de la subcontratación con contratistas primarios establecidos. Los grandes contratistas primarios están legalmente obligados bajo el FAR a tener planes de subcontratación para pequeñas empresas cuando sus contratos superan ciertos umbrales. Esto crea una demanda estructurada de subcontratistas de pequeñas empresas certificadas. Desarrollar relaciones con contratistas primarios antes de la certificación — y posicionar su negocio como un socio de subcontratación listo — comprime significativamente el cronograma desde la certificación hasta los ingresos.</p>
-
-    <h2>Perspectiva de Triple Horizonte — Contratos Gubernamentales para Pequeñas Empresas</h2>
+    <!-- TRIPLE HORIZON -->
+    <h2>Triple-Horizon Outlook — Contratos Gubernamentales for Pequeña Empresaes</h2>
     <div class="horizon-grid">
       <div class="horizon-card h1">
-        <div class="horizon-label">Horizonte 1 — Ahora (2025–2026)</div>
-        <div class="horizon-title">Aceleración del Pipeline de Certificación</div>
-        <p>La consolidación del portal MySBA de la SBA ha simplificado la certificación multi-programa. Los negocios que solicitan ahora se benefician de una plataforma unificada y tiempos de procesamiento más rápidos para solicitudes limpias. El mandato de certificación SBA SDVOSB/VOSB de la NDAA 2021 está completamente implementado — las verificaciones heredadas CVE expiraron. Cualquier negocio que aún opere con estado de certificación heredado debe volver a solicitar a través de la SBA inmediatamente o arriesgar la pérdida de elegibilidad contractual.</p>
+        <div class="horizon-label">Horizon 1 — Now (2025–2026)</div>
+        <div class="horizon-title">Certification Pipeline Acceleration</div>
+        <p>SBA's MySBA portal consolidation has streamlined multi-program certification. Businesses applying now benefit from a unified platform and faster processing times for clean applications. The NDAA 2021 SDVOSB/VOSB SBA certification mandate is fully implemented — legacy CVE verifications expired. Any business still operating on legacy certification status must reapply through SBA immediately or risk loss of contract eligibility.</p>
       </div>
       <div class="horizon-card h2">
-        <div class="horizon-label">Horizonte 2 — Corto Plazo (2026–2028)</div>
-        <div class="horizon-title">Implementación CMMC y Demanda de Cumplimiento</div>
-        <p>El marco de Certificación del Modelo de Madurez de Ciberseguridad (CMMC) se está incorporando en los contratos del DoD a través de 2025–2028. Los contratistas y subcontratistas del DoD de pequeñas empresas que manejan CUI deberán lograr la certificación CMMC Nivel 2 a través de evaluación de terceros. Esto crea una carga de cumplimiento significativa — y un mercado de asesoría significativo — para los negocios que manejan trabajo relacionado con la defensa.</p>
+        <div class="horizon-label">Horizon 2 — Near Term (2026–2028)</div>
+        <div class="horizon-title">CMMC Implementation & Compliance Demand</div>
+        <p>The Cybersecurity Maturity Model Certification (CMMC) framework is being phased into DoD contracts through 2025–2028. Small business DoD contractors and subcontractors that handle CUI will be required to achieve CMMC Level 2 certification through third-party assessment. This creates a significant compliance burden — and a significant advisory market — for businesses that handle defense-related work. Early preparation is a competitive differentiator.</p>
       </div>
       <div class="horizon-card h3">
-        <div class="horizon-label">Horizonte 3 — Estratégico (2028–2032)</div>
-        <div class="horizon-title">Manufactura Doméstica y Prioridades de Cadena de Suministro</div>
-        <p>Las prioridades del Congreso en torno a la manufactura doméstica, el cumplimiento de la Ley Buy American y la resiliencia de la cadena de suministro están remodelando la política de adquisición federal. Las pequeñas empresas con capacidad de manufactura doméstica — particularmente operaciones de producción certificadas WRAP o socialmente conformes — están posicionadas para beneficiarse de las preferencias de adquisición vinculadas a los requisitos de contenido doméstico, cumplimiento de la Enmienda Berry y mandatos de relocalización que se están acelerando en los programas de adquisición del DoD y agencias civiles.</p>
+        <div class="horizon-label">Horizon 3 — Strategic (2028–2032)</div>
+        <div class="horizon-title">Domestic Manufacturing & Supply Chain Priorities</div>
+        <p>Congressional priorities around domestic manufacturing, Buy American Act enforcement, and supply chain resiliency are reshaping federal procurement policy. Small businesses with domestic manufacturing capability — particularly WRAP-certified or socially compliant production operations — are positioned to benefit from procurement preferences tied to domestic content requirements, Berry Amendment compliance, and reshoring mandates that are accelerating across DoD and civilian agency acquisition programs.</p>
       </div>
     </div>
 
-    <h2>Dónde Encaja RC2 Consulting en Este Proceso</h2>
-    <p>RC2 Consulting no prepara solicitudes de certificación SBA — ese trabajo requiere abogados con licencia o asesores aprobados por la SBA que se especializan en el proceso de certificación en sí. Lo que RC2 hace es construir la infraestructura operativa y de cumplimiento que hace que la certificación sea significativa y que el desempeño del contrato sea sostenible.</p>
-    <p>La brecha entre ganar un contrato gubernamental y ejecutarlo exitosamente es un problema de operaciones y cumplimiento. <strong>Los sistemas de documentación que no pueden soportar una auditoría DCAA fallarán en el momento en que llegue un organismo de supervisión.</strong> Los SOPs que no existen no pueden seguirse. Los procedimientos de gestión de subcontratos que nunca fueron escritos no pueden proteger a un contratista primario de violaciones de flujo. Estos son los sistemas que RC2 se especializa en construir — en entornos de manufactura, servicios y cadena de suministro — para negocios que se toman en serio competir en el mercado federal a escala.</p>
-    <p>Si su negocio está persiguiendo la certificación SBA, o la ha recibido recientemente, y está haciendo la pregunta "¿qué necesitamos tener en su lugar operativamente antes de empezar a perseguir contratos?" — esa es exactamente la pregunta para la que RC2 fue construido para responder.</p>
+    <!-- SECTION 7 — RC2 POSITIONING -->
+    <h2>Where RC2 Consulting Fits in This Process</h2>
+    <p>RC2 Consulting does not prepare SBA certification applications — that work requires licensed attorneys or SBA-approved advisors who specialize in the certification process itself. What RC2 does is build the operational and compliance infrastructure that makes certification meaningful and makes contract performance sustainable.</p>
+    <p>The gap between winning a government contract and successfully performing it is an operations and compliance problem. <strong>Documentation systems that cannot support a DCAA audit will fail the moment an oversight body arrives.</strong> SOPs that do not exist cannot be followed. Subcontract management procedures that were never written cannot protect a prime contractor from flow-down violations. These are the systems RC2 specializes in building — across manufacturing, services, and supply chain environments — for businesses that are serious about competing in the federal market at scale.</p>
+    <p>If your business is pursuing SBA certification, or has recently received it, and you are asking the question "what do we need to have in place operationally before we start pursuing contracts" — that is exactly the question RC2 was built to answer.</p>
+  </div>
 
-    <div class="sources">
-      <h4>Fuentes y Referencias Regulatorias</h4>
-      <ul>
-        <li>U.S. Small Business Administration — Resumen de Programas de Certificación (2025) — <a href="https://certify.sba.gov" target="_blank">certify.sba.gov</a></li>
-        <li>U.S. Small Business Administration — Informe de Objetivos de Pequeñas Empresas FY2024 (2025) — <a href="https://www.sba.gov" target="_blank">sba.gov</a></li>
-        <li>Reglamento Federal de Adquisiciones (FAR) — 48 CFR Título, Subparte 19 (Programas de Pequeñas Empresas) — <a href="https://www.acquisition.gov" target="_blank">acquisition.gov</a></li>
-        <li>SAM.gov — Sistema de Gestión de Adjudicaciones, Registro de Entidades y Estado de Certificación — <a href="https://sam.gov" target="_blank">sam.gov</a></li>
-        <li>USASpending.gov — Datos de Adjudicación de Contratos Federales y Análisis de Gasto de Agencias — <a href="https://www.usaspending.gov" target="_blank">usaspending.gov</a></li>
-        <li>GSA — Resumen del Programa de Horario de Adjudicaciones Múltiples (2025) — <a href="https://www.gsa.gov/buy-through-us/purchasing-programs/mas" target="_blank">gsa.gov</a></li>
-        <li>DCAA — Información para Contratistas: Adecuación del Sistema de Contabilidad (2024) — <a href="https://www.dcaa.mil" target="_blank">dcaa.mil</a></li>
-        <li>DoD — Programa de Certificación del Modelo de Madurez de Ciberseguridad (CMMC) (2025) — <a href="https://dodcio.defense.gov/CMMC" target="_blank">dodcio.defense.gov</a></li>
-        <li>Ley de Autorización de Defensa Nacional (NDAA) FY2021 — Sección 862, Transferencia de Certificación SDVOSB/VOSB a SBA</li>
-        <li>Ley de Reclamaciones Falsas de EE.UU. — 31 U.S.C. §§ 3729–3733 — Obligaciones de integridad del programa de contratistas federales</li>
-      </ul>
-    </div>
+  <!-- SOURCES -->
+  <div class="sources">
+    <h4>Sources & Regulatory References</h4>
+    <ul>
+      <li>U.S. Pequeña Empresa Administration — Certification Programs Overview (2025) — <a href="https://certify.sba.gov" target="_blank">certify.sba.gov</a></li>
+      <li>U.S. Pequeña Empresa Administration — FY2024 Pequeña Empresa Goaling Report (2025) — <a href="https://www.sba.gov" target="_blank">sba.gov</a></li>
+      <li>Federal Acquisition Regulation (FAR) — Title 48 CFR, Subpart 19 (Pequeña Empresa Programs) — <a href="https://www.acquisition.gov" target="_blank">acquisition.gov</a></li>
+      <li>SAM.gov — System for Award Management, Entity Registration & Certification Status — <a href="https://sam.gov" target="_blank">sam.gov</a></li>
+      <li>USASpending.gov — Federal Contract Award Data & Agency Spending Analytics — <a href="https://www.usaspending.gov" target="_blank">usaspending.gov</a></li>
+      <li>GSA — Multiple Award Schedule Program Overview (2025) — <a href="https://www.gsa.gov/buy-through-us/purchasing-programs/mas" target="_blank">gsa.gov</a></li>
+      <li>DCAA — Information for Contractors: Accounting System Adequacy (2024) — <a href="https://www.dcaa.mil" target="_blank">dcaa.mil</a></li>
+      <li>DoD — Cybersecurity Maturity Model Certification (CMMC) Program (2025) — <a href="https://dodcio.defense.gov/CMMC" target="_blank">dodcio.defense.gov</a></li>
+      <li>National Defense Authorization Act (NDAA) FY2021 — Section 862, SDVOSB/VOSB Certification Transfer to SBA</li>
+      <li>U.S. False Claims Act — 31 U.S.C. §§ 3729–3733 — Federal contractor program integrity obligations</li>
+    </ul>
   </div>
 
   <div class="article-cta">
-    <h3>¿Construyendo su Base de Contratos Gubernamentales?</h3>
-    <p>RC2 Consulting construye la infraestructura operativa y de cumplimiento que hace que la certificación SBA se traduzca en desempeño contractual gubernamental sostenido — incluyendo sistemas de documentación, SOPs, marcos de auditoría interna y procedimientos de gestión de subcontratos diseñados para resistir la supervisión federal.</p>
-    <a href="https://rc2consulting.github.io/contact-es.html" class="btn-cta">Agendar una Revisión de Preparación para Contratos Gubernamentales →</a>
+    <h3>Building Your Contratos Gubernamentales Foundation?</h3>
+    <p>RC2 Consulting builds the operational and compliance infrastructure that makes SBA certification translate into sustained government contract performance — including documentation systems, SOPs, internal audit frameworks, and subcontract management procedures designed to withstand federal oversight.</p>
+    <a href="https://rc2consulting.github.io/contact-es.html" class="btn-cta">Schedule a Contratos Gubernamentales Readiness Review →</a>
   </div>
 </div>
 

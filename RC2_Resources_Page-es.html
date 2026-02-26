@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Recursos | RC2 Consulting</title>
-  <meta name="description" content="Herramientas interactivas gratuitas y artículos ejecutivos de RC2 Consulting — Auditoría WRAP, Contratos Gubernamentales, Cadena de Suministro, KPIs y más."/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <meta name="description" content="RC2 Consulting Resource Center — Executive insights, compliance tools, and strategic resources for operations leaders." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -31,6 +31,9 @@
       margin: 0;
     }
 
+    /* ══════════════════════════════
+       SHARED NAV — matches Google Sites
+    ══════════════════════════════ */
     .topnav {
       background: var(--navy);
       padding: 0 40px;
@@ -75,7 +78,6 @@
       display: flex;
       gap: 4px;
       list-style: none;
-      align-items: center;
     }
     .nav-links a {
       color: rgba(255,255,255,0.78);
@@ -89,12 +91,10 @@
     }
     .nav-links a:hover { color: white; background: rgba(255,255,255,0.1); }
     .nav-links a.active { color: white; background: rgba(255,255,255,0.12); }
-    .lang-toggle{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.25);border-radius:6px;overflow:hidden;margin-left:8px}
-    .lang-btn{font-size:.72rem;font-weight:700;padding:5px 10px;text-decoration:none;transition:all .2s;letter-spacing:.5px}
-    .lang-btn.inactive{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6)}
-    .lang-btn.inactive:hover{background:rgba(255,255,255,.15);color:#fff}
-    .lang-btn.active{background:#C8922A;color:#0B2545}
 
+    /* ══════════════════════════════
+       HERO — ocean photo style matching Google Sites
+    ══════════════════════════════ */
     .hero {
       background:
         linear-gradient(to bottom, rgba(11,37,69,0.72) 0%, rgba(11,37,69,0.55) 50%, rgba(11,37,69,0.72) 100%),
@@ -102,6 +102,7 @@
       color: white;
       text-align: center;
       padding: 72px 24px 80px;
+      position: relative;
     }
     .hero-inner { max-width: 700px; margin: 0 auto; }
     .hero h1 {
@@ -110,7 +111,9 @@
       font-weight: 700;
       line-height: 1.2;
       margin-bottom: 16px;
+      letter-spacing: -0.3px;
     }
+    .hero h1 span { color: var(--white); }
     .hero p {
       font-size: 1rem;
       color: rgba(255,255,255,0.82);
@@ -131,6 +134,7 @@
       align-items: center;
       gap: 8px;
       transition: all 0.2s;
+      border: 1px solid transparent;
     }
     .btn-hero-solid:hover { background: #1d4ed8; transform: translateY(-1px); }
     .btn-hero-outline {
@@ -149,6 +153,9 @@
     }
     .btn-hero-outline:hover { border-color: white; background: rgba(255,255,255,0.1); }
 
+    /* ══════════════════════════════
+       PAGE LAYOUT
+    ══════════════════════════════ */
     .page { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
     .section { padding: 52px 0; }
 
@@ -185,9 +192,15 @@
       white-space: nowrap;
     }
 
+    /* ══════════════════════════════
+       GRIDS
+    ══════════════════════════════ */
     .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
     .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
 
+    /* ══════════════════════════════
+       CARDS
+    ══════════════════════════════ */
     .card {
       background: var(--white);
       border-radius: 8px;
@@ -200,11 +213,13 @@
     }
     .card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(11,37,69,0.13); }
 
+    /* Photo backgrounds */
     .photo { width:100%; height:150px; background-size:cover; background-position:center; }
     .p-compliance { background-image: linear-gradient(rgba(11,37,69,0.4),rgba(11,37,69,0.4)), url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&q=70'); }
     .p-growth     { background-image: linear-gradient(rgba(11,37,69,0.35),rgba(11,37,69,0.35)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=70'); }
     .p-nearshore  { background-image: linear-gradient(rgba(11,37,69,0.35),rgba(11,37,69,0.35)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=70'); }
     .p-why        { background-image: linear-gradient(rgba(11,37,69,0.35),rgba(11,37,69,0.35)), url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=70'); }
+    .p-pasa       { background-image: linear-gradient(rgba(11,37,69,0.35),rgba(11,37,69,0.35)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=70'); }
     .p-wrap12     { background-image: linear-gradient(rgba(11,37,69,0.4),rgba(11,37,69,0.4)), url('https://images.unsplash.com/photo-1568992688065-536aad8a12f6?w=400&q=70'); }
     .p-cap        { background-image: linear-gradient(rgba(11,37,69,0.35),rgba(11,37,69,0.35)), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&q=70'); }
     .p-gap        { background-image: linear-gradient(rgba(11,37,69,0.35),rgba(11,37,69,0.35)), url('https://images.unsplash.com/photo-1543286386-713bdd548da4?w=400&q=70'); }
@@ -248,6 +263,18 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
+    .coming-tag {
+      font-size: 0.63rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      background: #F1F5F9;
+      color: var(--text-muted);
+      padding: 3px 8px;
+      border-radius: 8px;
+      display: inline-block;
+      margin-bottom: 6px;
+    }
     .card-soon {
       font-size: 0.78rem;
       color: var(--text-muted);
@@ -257,6 +284,7 @@
       line-height: 1.5;
     }
 
+    /* Buttons */
     .btn-blue {
       display: inline-flex;
       align-items: center;
@@ -272,7 +300,22 @@
       align-self: flex-start;
     }
     .btn-blue:hover { background: #1d4ed8; }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 5px;
+      text-decoration: none;
+      align-self: flex-start;
+    }
 
+    /* Center button */
     .center-wrap { text-align:center; padding: 24px 0 0; }
     .btn-outline-blue {
       display: inline-flex;
@@ -290,6 +333,9 @@
     }
     .btn-outline-blue:hover { background: var(--blue); color: white; }
 
+    /* ══════════════════════════════
+       RESOURCE CENTER CARDS
+    ══════════════════════════════ */
     .rc-card {
       background: var(--white);
       border-radius: 8px;
@@ -317,9 +363,13 @@
     .rc-links li a { color: var(--blue); text-decoration: none; font-weight: 600; }
     .rc-links li a:hover { text-decoration: underline; }
 
+    /* Section backgrounds */
     .bg-white { background: var(--white); }
     .bg-light  { background: var(--light-bg); }
 
+    /* ══════════════════════════════
+       SHARED FOOTER — BLUE
+    ══════════════════════════════ */
     .site-footer {
       background: var(--blue);
       color: white;
@@ -344,6 +394,7 @@
       color: rgba(255,255,255,0.7);
       text-decoration: none;
       font-size: 0.8rem;
+      transition: color 0.2s;
     }
     .footer-links a:hover { color: white; }
     .footer-copy {
@@ -351,6 +402,9 @@
       color: rgba(255,255,255,0.5);
     }
 
+    /* ══════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════ */
     @media (max-width: 960px) { .grid-4 { grid-template-columns: repeat(2,1fr); } }
     @media (max-width: 640px) {
       .hero h1 { font-size: 1.9rem; }
@@ -358,11 +412,17 @@
       .topnav { padding: 0 16px; }
       .nav-links a { padding: 5px 8px; font-size: 0.78rem; }
     }
+  
+    .lang-toggle{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.25);border-radius:6px;overflow:hidden;margin-left:8px}
+    .lang-btn{font-size:.72rem;font-weight:700;padding:5px 10px;text-decoration:none;transition:all .2s;letter-spacing:.5px}
+    .lang-btn.inactive{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6)}
+    .lang-btn.inactive:hover{background:rgba(255,255,255,.15);color:#fff}
+    .lang-btn.active{background:#C8922A;color:#0B2545}
   </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ══ SHARED NAV ══ -->
 <nav class="topnav">
   <a href="https://rc2consulting.github.io/index-es.html" class="nav-brand">
     <div class="nav-logo-mark">RC<sup>2</sup></div>
@@ -375,29 +435,29 @@
     <li><a href="https://rc2consulting.github.io/about-es.html">Nosotros</a></li>
     <li><a href="https://rc2consulting.github.io/RC2_Resources_Page-es.html" class="active">Recursos</a></li>
     <li><a href="https://rc2consulting.github.io/contact-es.html">Contacto</a></li>
-    <li>
+      <li>
       <div class="lang-toggle">
-        <a href="https://rc2consulting.github.io/RC2_Resources_Page-es.html" class="lang-btn inactive">EN</a>
+        <a href="https://rc2consulting.github.io/RC2_Resources_Page-es.html" class="lang-btn active">EN</a>
         <a href="https://rc2consulting.github.io/RC2_Resources_Page-es.html" class="lang-btn active">ES</a>
       </div>
     </li>
   </ul>
 </nav>
 
-<!-- HERO -->
+<!-- ══ HERO — Ocean photo matching Google Sites ══ -->
 <section class="hero">
   <div class="hero-inner">
-    <h1>Recursos Estratégicos para<br>Cumplimiento, Infraestructura y Crecimiento</h1>
-    <p>Herramientas prácticas y análisis ejecutivo para ayudarle a construir infraestructura operativa, prepararse para la certificación y escalar con confianza.</p>
+    <h1>Recursos <span>Estratégicos</span> para<br>Cumplimiento, Infraestructura y Crecimiento Escalable</h1>
+    <p>Herramientas prácticas e información ejecutiva para ayudarle a construir infraestructura operativa, prepararse para la certificación y escalar con confianza.</p>
     <div class="hero-btns">
-      <a href="#perspectivas-ejecutivas" class="btn-hero-solid">📰 Explorar Perspectivas Ejecutivas</a>
-      <a href="#herramientas-cumplimiento" class="btn-hero-outline">🔧 Acceder a Herramientas Estratégicas ›</a>
+      <a href="#executive-insights" class="btn-hero-solid">📰 Explorar Perspectivas Ejecutivas</a>
+      <a href="#compliance-tools" class="btn-hero-outline">🔧 Acceder a Herramientas Estratégicas ›</a>
     </div>
   </div>
 </section>
 
-<!-- EXECUTIVE INSIGHTS -->
-<div class="bg-white" id="perspectivas-ejecutivas">
+<!-- ══ EXECUTIVE INSIGHTS ══ -->
+<div class="bg-white" id="executive-insights">
 <div class="page"><div class="section">
   <div class="section-head">
     <div>
@@ -412,9 +472,9 @@
       <div class="photo p-compliance"></div>
       <div class="card-body">
         <div class="card-cat">Análisis de la Industria</div>
-        <div class="card-title">Lo Que La Mayoría de las Empresas Pasa Por Alto Antes de una Auditoría WRAP</div>
-        <div class="card-desc">Un análisis profundo que cubre las 5 brechas críticas de cumplimiento, planes de acción correctiva y preparación para auditorías en 2026.</div>
-        <a href="https://rc2consulting.github.io/RC2_2026_Compliance_Gap.html" target="_blank" class="btn-blue">Leer Artículo ›</a>
+        <div class="card-title">Lo Que Más Empresas Pasan por Alto Antes de una Auditoría WRAP</div>
+        <div class="card-desc">Un análisis profundo de las 5 brechas críticas de cumplimiento, acciones correctivas y preparación para auditorías en 2026.</div>
+        <a href="https://rc2consulting.github.io/RC2_2026_Compliance_Gap-es.html" target="_blank" class="btn-blue">Leer Artículo ›</a>
       </div>
     </div>
 
@@ -422,29 +482,29 @@
       <div class="photo p-growth"></div>
       <div class="card-body">
         <div class="card-cat">Estrategia de Operaciones</div>
-        <div class="card-title">Integrando el Cumplimiento en su Estrategia de Crecimiento</div>
-        <div class="card-soon">Un esquema ejecutivo para empresas que necesitan adoptar un marco de cumplimiento sistemático.</div>
-        <a href="https://rc2consulting.github.io/RC2_Article_Compliance_Growth.html" target="_blank" class="btn-blue">Leer Artículo ›</a>
+        <div class="card-title"><a href="https://rc2consulting.github.io/RC2_Article_Compliance_Growth-es.html" style="color:inherit;text-decoration:none;">Incorporando el Cumplimiento a su Estrategia de Crecimiento</a></div>
+        <div class="card-soon">Una perspectiva ejecutiva neutral outline for companies that need to adopt a systematic compliance framework.</div>
+        <a href="https://rc2consulting.github.io/RC2_Article_Nearshoring-es.html" class="btn-blue">Leer Artículo ›</a>
       </div>
     </div>
 
     <div class="card">
       <div class="photo p-nearshore"></div>
       <div class="card-body">
-        <div class="card-cat">Cadena de Suministro</div>
-        <div class="card-title">Nearshoring a las Américas: Riesgos Operativos y Factores de Preparación</div>
-        <div class="card-soon">Lo que las empresas necesitan saber sobre el panorama de cumplimiento en América Latina antes de trasladar su producción.</div>
-        <a href="https://rc2consulting.github.io/RC2_Article_Nearshoring.html" target="_blank" class="btn-blue">Leer Artículo ›</a>
+        <div class="card-cat">Supply Chain</div>
+        <div class="card-title"><a href="https://rc2consulting.github.io/RC2_Article_Nearshoring-es.html" style="color:inherit;text-decoration:none;">Nearshoring a las Américas: Riesgos Operativos y Factores de Preparación</a></div>
+        <div class="card-soon">What businesses need to know about the Latin America compliance landscape before shifting production.</div>
+        <a href="https://rc2consulting.github.io/RC2_Article_Growth_Infrastructure-es.html" class="btn-blue">Leer Artículo ›</a>
       </div>
     </div>
 
     <div class="card">
       <div class="photo p-why"></div>
       <div class="card-body">
-        <div class="card-cat">Estrategia de Crecimiento</div>
-        <div class="card-title">Por Qué el Crecimiento Supera a la Infraestructura — y Cómo Cerrar la Brecha</div>
-        <div class="card-soon">Los problemas de infraestructura operativa que frenan a las empresas en crecimiento y los marcos para resolverlos.</div>
-        <a href="https://rc2consulting.github.io/RC2_Article_Growth_Infrastructure.html" target="_blank" class="btn-blue">Leer Artículo ›</a>
+        <div class="card-cat">Growth Strategy</div>
+        <div class="card-title"><a href="https://rc2consulting.github.io/RC2_Article_Growth_Infrastructure-es.html" style="color:inherit;text-decoration:none;">Por Qué el Crecimiento Supera la Infraestructura — Y Cómo Cerrar la Brecha</a></div>
+        <div class="card-soon">Operational infrastructure issues that derail scaling businesses and the frameworks that close them.</div>
+        <a href="https://rc2consulting.github.io/RC2_Article_Growth_Infrastructure-es.html" class="btn-blue">Leer Artículo ›</a>
       </div>
     </div>
 
@@ -452,9 +512,9 @@
       <div class="photo p-sba"></div>
       <div class="card-body">
         <div class="card-cat">Contratos Gubernamentales</div>
-        <div class="card-title">Certificación SBA y Contratos Gubernamentales: Lo Que Todo Empresario Necesita Saber</div>
-        <div class="card-desc">El gobierno federal otorga más de $161 mil millones anuales a pequeñas empresas certificadas. La mayoría de las empresas elegibles nunca compiten — porque no comprenden cómo funciona el proceso de certificación ni qué infraestructura de cumplimiento se requiere.</div>
-        <a href="https://rc2consulting.github.io/RC2_Article_SBA_Certification.html" target="_blank" class="btn-blue">Leer Artículo ›</a>
+        <div class="card-title">Certificación SBA y Contratos Gubernamentales: Lo Que los Empresarios Deben Saber</div>
+        <div class="card-desc">The federal government awards over $161B annually to certified small businesses. Most eligible companies never compete — because they don't understand how the certification process works or what compliance infrastructure is required to perform.</div>
+        <a href="https://rc2consulting.github.io/RC2_Article_SBA_Certification-es.html" target="_blank" class="btn-blue">Leer Artículo ›</a>
       </div>
     </div>
 
@@ -462,9 +522,9 @@
       <div class="photo p-kpi-exec"></div>
       <div class="card-body">
         <div class="card-cat">Perspectivas Ejecutivas</div>
-        <div class="card-title">Desarrollo de Marco KPI: Una Guía Estratégica para Medir lo que Realmente Importa</div>
-        <div class="card-desc">La mayoría de las organizaciones miden lo que es fácil, no lo que importa. Este resumen ejecutivo presenta la arquitectura, los principios de diseño y el proceso de implementación para un marco KPI de alto rendimiento.</div>
-        <a href="https://rc2consulting.github.io/RC2_Article_KPI_Framework.html" target="_blank" class="btn-blue">Leer Artículo ›</a>
+        <div class="card-title">KPI Framework Development: A Strategic Guide to Measuring What Actually Matters</div>
+        <div class="card-desc">Most organizations measure what is easy, not what matters. This executive summary presents the architecture, design principles, and implementation process for a high-performance KPI framework — connecting daily operations to long-term strategy, balancing leading and lagging indicators, and driving continuous improvement.</div>
+        <a href="https://rc2consulting.github.io/RC2_Article_KPI_Framework-es.html" target="_blank" class="btn-blue">Leer Artículo ›</a>
       </div>
     </div>
 
@@ -472,13 +532,13 @@
 </div></div>
 </div>
 
-<!-- COMPLIANCE TOOLS -->
-<div class="bg-light" id="herramientas-cumplimiento">
+<!-- ══ COMPLIANCE TOOLS ══ -->
+<div class="bg-light" id="compliance-tools">
 <div class="page"><div class="section">
   <div class="section-head">
     <div>
-      <h2>Herramientas Operativas y de Cumplimiento</h2>
-      <p>Herramientas interactivas desarrolladas para gerentes de instalaciones y responsables de cumplimiento</p>
+      <h2>Operational & Compliance Tools</h2>
+      <p>Interactive tools built for facility managers and compliance officers</p>
     </div>
     <span class="section-pill">Herramientas Interactivas Gratuitas</span>
   </div>
@@ -487,40 +547,40 @@
     <div class="card">
       <div class="photo p-cap"></div>
       <div class="card-body">
-        <div class="card-cat">Plan de Acción Correctiva</div>
-        <div class="card-title">Plan de Acción Correctiva PASA</div>
-        <div class="card-soon">Una plantilla estructurada de CAP alineada al formato de auditoría WRAP. Documente hallazgos, asigne responsabilidades, fije fechas límite y realice seguimiento hasta el cierre verificado.</div>
-        <a href="https://rc2consulting.github.io/RC2_PASA_CAP.html" class="btn-blue">Abrir CAP ›</a>
+        <div class="card-cat">Corrective Action Plan</div>
+        <div class="card-title"><a href="https://rc2consulting.github.io/RC2_PASA_CAP.html" style="color:inherit;text-decoration:none;">PASA Corrective Action Plan</a></div>
+        <div class="card-soon">A structured CAP template aligned to WRAP audit format. Document findings, assign ownership, set deadlines, and track closure to verified completion.</div>
+        <a href="https://rc2consulting.github.io/RC2_PASA_CAP.html" class="btn-blue">Open CAP ›</a>
       </div>
     </div>
 
     <div class="card">
       <div class="photo p-wrap12"></div>
       <div class="card-body">
-        <div class="card-cat">Guía de Certificación</div>
-        <div class="card-title">Lista de Verificación de los 12 Principios WRAP</div>
-        <div class="card-desc">Una herramienta explicativa para abordar críticamente la preparación para auditorías en los 12 principios.</div>
-        <a href="https://rc2consulting.github.io/RC2_WRAP_12_Principles_Guide.html" target="_blank" class="btn-blue">Descargar Herramienta ›</a>
+        <div class="card-cat">Certification Guide</div>
+        <div class="card-title">WRAP 12 Principles Checklist</div>
+        <div class="card-desc">A deep dive and explanatory tool to critically address audit readiness across all 12 principles.</div>
+        <a href="https://rc2consulting.github.io/RC2_WRAP_12_Principles_Guide.html" target="_blank" class="btn-blue">Download Tool ›</a>
       </div>
     </div>
 
     <div class="card">
       <div class="photo p-cap"></div>
       <div class="card-body">
-        <div class="card-cat">Plantilla Interactiva</div>
-        <div class="card-title">Plantilla de Seguimiento de Acciones Correctivas</div>
-        <div class="card-desc">Una herramienta de ejecución práctica para completar y gestionar planes de acción correctiva de auditoría. Imprima o guarde como PDF.</div>
-        <a href="https://rc2consulting.github.io/RC2_CAP_Template.html" target="_blank" class="btn-blue">Descargar Herramienta ›</a>
+        <div class="card-cat">Interactive Template</div>
+        <div class="card-title">Corrective Action Tracking Template</div>
+        <div class="card-desc">A practical execution tool for completing and managing audit corrective action plans. Print or save as PDF.</div>
+        <a href="https://rc2consulting.github.io/RC2_CAP_Template.html" target="_blank" class="btn-blue">Download Tool ›</a>
       </div>
     </div>
 
     <div class="card">
       <div class="photo p-gap"></div>
       <div class="card-body">
-        <div class="card-cat">Herramienta de Evaluación</div>
-        <div class="card-title">Análisis de Brechas en Infraestructura Operativa</div>
-        <div class="card-desc">Evalúe su instalación frente a los 12 principios WRAP. Obtenga un plan de acción priorizado en 10–15 minutos.</div>
-        <a href="https://rc2consulting.github.io/RC2_Gap_Analysis.html" target="_blank" class="btn-blue">Iniciar Análisis ›</a>
+        <div class="card-cat">Assessment Tool</div>
+        <div class="card-title">Operational Infrastructure Gap Analysis</div>
+        <div class="card-desc">Assess your facility against all 12 WRAP principles. Get a prioritized action plan in 10–15 minutes.</div>
+        <a href="https://rc2consulting.github.io/RC2_Gap_Analysis.html" target="_blank" class="btn-blue">Start Analysis ›</a>
       </div>
     </div>
 
@@ -528,8 +588,8 @@
       <div class="photo p-sba-app"></div>
       <div class="card-body">
         <div class="card-cat">Contratos Gubernamentales</div>
-        <div class="card-title">Herramienta Interactiva del Proceso de Solicitud SBA</div>
-        <div class="card-desc">Trabaje en las cuatro fases de la certificación SBA — pre-solicitud, presentación, revisión SBA y post-certificación — con seguimiento de progreso en tiempo real y un selector de programas para 8(a), WOSB, HUBZone, SDVOSB y VOSB.</div>
+        <div class="card-title">SBA Application Process Interactive Tool</div>
+        <div class="card-desc">Work through all four phases of SBA certification — pre-application, submission, SBA review, and post-certification — with real-time phase-by-phase progress tracking and a program selector for 8(a), WOSB, HUBZone, SDVOSB, and VOSB.</div>
         <a href="https://rc2consulting.github.io/RC2_SBA_Application_Tool.html" target="_blank" class="btn-blue">Abrir Herramienta ›</a>
       </div>
     </div>
@@ -538,8 +598,8 @@
       <div class="photo p-sba-size"></div>
       <div class="card-body">
         <div class="card-cat">Contratos Gubernamentales</div>
-        <div class="card-title">Herramienta de Estándares de Tamaño SBA</div>
-        <div class="card-desc">Seleccione su código NAICS, ingrese sus ingresos promedio de 3 años y número de empleados — su determinación de pequeña empresa e insignias de elegibilidad se actualizan en tiempo real. Incluye orientación sobre reglas de afiliación.</div>
+        <div class="card-title">SBA Size Standard Tool</div>
+        <div class="card-desc">Select your NAICS code, enter your 3-year average revenue and employee count — your small business determination, size threshold comparison, and set-aside eligibility badges update in real time. Includes affiliation rule guidance.</div>
         <a href="https://rc2consulting.github.io/RC2_SBA_Size_Standard_Tool.html" target="_blank" class="btn-blue">Abrir Herramienta ›</a>
       </div>
     </div>
@@ -548,8 +608,8 @@
       <div class="photo p-naics"></div>
       <div class="card-body">
         <div class="card-cat">Contratos Gubernamentales</div>
-        <div class="card-title">Herramienta de Códigos SBA–NAICS</div>
-        <div class="card-desc">Busque, filtre y explore más de 80 códigos NAICS con estándares de tamaño SBA, calificaciones de relevancia para contratos gubernamentales y aplicabilidad de set-aside. Encuentre sus códigos antes de certificarse o presentar propuestas.</div>
+        <div class="card-title">SBA–NAICS Codes Tool</div>
+        <div class="card-desc">Search, filter, and browse 80+ NAICS codes with SBA size standards, government contracting relevance ratings, and set-aside applicability. Sortable by sector, basis, and GovCon use — find your codes before certifying or submitting proposals.</div>
         <a href="https://rc2consulting.github.io/RC2_SBA_NAICS_Tool.html" target="_blank" class="btn-blue">Abrir Herramienta ›</a>
       </div>
     </div>
@@ -558,8 +618,8 @@
       <div class="photo p-far"></div>
       <div class="card-body">
         <div class="card-cat">Contratos Gubernamentales</div>
-        <div class="card-title">Herramienta de Preparación para el Cumplimiento FAR / DCAA</div>
-        <div class="card-desc">Evalúe su organización en 6 dominios de cumplimiento de contratos federales — sistema contable, registro de tiempo, compras, laboral/RR.HH., gestión de contratos y ciberseguridad. La puntuación determina su nivel: Listo para Contratos, Condicional o No Listo.</div>
+        <div class="card-title">FAR / DCAA Compliance Readiness Tool</div>
+        <div class="card-desc">Score your organization across 6 federal contracting compliance domains — accounting system, timekeeping, purchasing, labor/HR, contract management, and cybersecurity. Weighted composite score determines your Contract Ready, Conditional, or Not Ready tier.</div>
         <a href="https://rc2consulting.github.io/RC2_FAR_DCAA_Tool.html" target="_blank" class="btn-blue">Abrir Herramienta ›</a>
       </div>
     </div>
@@ -567,109 +627,109 @@
     <div class="card">
       <div class="photo p-kpi-tool"></div>
       <div class="card-body">
-        <div class="card-cat">Gestión del Desempeño</div>
-        <div class="card-title">Constructor de Marco KPI — Herramienta Interactiva</div>
-        <div class="card-desc">Evalúe su organización en 6 dominios de desempeño — Financiero, Cliente, Operaciones, Cumplimiento, Personal y Estratégico. Nombre sus KPIs, califique la madurez actual vs. la importancia estratégica y obtenga una puntuación compuesta en tiempo real con una lista de acciones prioritarias.</div>
+        <div class="card-cat">Performance Management</div>
+        <div class="card-title">KPI Framework Builder — Interactive Tool</div>
+        <div class="card-desc">Score your organization across 6 performance domains — Financial, Customer, Operations, Compliance, People, and Strategic. Name your KPIs, rate current maturity vs. strategic importance, and get a real-time composite score with a priority action list. Works for any industry.</div>
         <a href="https://rc2consulting.github.io/RC2_KPI_Tool.html" target="_blank" class="btn-blue">Abrir Herramienta ›</a>
       </div>
     </div>
 
   </div>
   <div class="center-wrap">
-    <a href="https://rc2consulting.github.io/contact-es.html" class="btn-outline-blue">Solicitar Acceso al Marco ›</a>
+    <a href="/cdn-cgi/l/email-protection#076e6961684775643564686974726b736e69602964686a" class="btn-outline-blue">Request Framework Access ›</a>
   </div>
 </div></div>
 </div>
 
-<!-- RESOURCE CENTERS -->
-<div class="bg-white" id="centros-recursos">
+<!-- ══ RESOURCE CENTERS ══ -->
+<div class="bg-white" id="resource-centers">
 <div class="page"><div class="section">
   <div class="section-head">
     <div>
-      <h2>Centros de Recursos</h2>
-      <p>Colecciones seleccionadas de herramientas, guías y plantillas organizadas por tema</p>
+      <h2>Resource Centers</h2>
+      <p>Curated collections of tools, guides, and templates organized by topic</p>
     </div>
-    <span class="section-pill">Colecciones Seleccionadas</span>
+    <span class="section-pill">Curated Collections</span>
   </div>
   <div class="grid-4">
 
     <div class="rc-card">
       <span class="rc-icon">📋</span>
-      <div class="rc-title">Centro de Recursos de Cumplimiento WRAP</div>
-      <div class="rc-desc">Guías, herramientas y herramientas de preparación para la certificación de cumplimiento.</div>
+      <div class="rc-title">WRAP Compliance Resource Center</div>
+      <div class="rc-desc">Guides, tools, readiness and pre-preparation tools for compliance certification.</div>
       <ul class="rc-links">
-        <li><a href="https://rc2consulting.github.io/RC2_WRAP_12_Principles_Guide.html" target="_blank">Guía de los 12 Principios WRAP</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_Gap_Analysis.html" target="_blank">Herramienta de Análisis de Brechas</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_CAP_Template.html" target="_blank">Plantilla de Plan de Acción Correctiva</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_2026_Compliance_Gap.html" target="_blank">Artículo: La Brecha de Cumplimiento 2026</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_WRAP_12_Principles_Guide.html" target="_blank">WRAP 12 Principles Guide</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_Gap_Analysis.html" target="_blank">Compliance Gap Analysis Tool</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_CAP_Template.html" target="_blank">Corrective Action Plan Template</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_2026_Compliance_Gap-es.html" target="_blank">The 2026 Compliance Gap Article</a></li>
       </ul>
-      <a href="https://rc2consulting.github.io/RC2_WRAP_12_Principles_Guide.html" target="_blank" class="btn-blue">Explorar Recursos ›</a>
+      <a href="https://rc2consulting.github.io/RC2_WRAP_12_Principles_Guide.html" target="_blank" class="btn-blue">Explore Resources ›</a>
     </div>
 
     <div class="rc-card">
       <span class="rc-icon">🛡️</span>
-      <div class="rc-title">Centro de Recursos de Evaluación PASA</div>
-      <div class="rc-desc">Modelos no vinculantes, guías de operaciones y planificación de pasos correctivos para equipos de instalaciones.</div>
+      <div class="rc-title">PASA Assessment Resource Center</div>
+      <div class="rc-desc">Non-binding models, operations tip guides, and corrective step planning for facility teams.</div>
       <ul class="rc-links">
-        <li><a href="https://rc2consulting.github.io/RC2_Gap_Analysis.html" target="_blank">Herramienta de Análisis de Brechas Pre-Auditoría</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_CAP_Template.html" target="_blank">Plantilla de Plan de Acción Correctiva</a></li>
-        <li><span>Tarjeta de Puntuación Pre-Auditoría PASA — Próximamente</span></li>
-        <li><span>Lista de Verificación de Inspección S&H — Próximamente</span></li>
+        <li><a href="https://rc2consulting.github.io/RC2_Gap_Analysis.html" target="_blank">Pre-Audit Gap Analysis Tool</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_CAP_Template.html" target="_blank">Corrective Action Plan Template</a></li>
+        <li><span>PASA Pre-Audit Scorecard — Próximamente</span></li>
+        <li><span>H&S Inspection Checklist — Próximamente</span></li>
       </ul>
-      <a href="https://rc2consulting.github.io/RC2_Gap_Analysis.html" target="_blank" class="btn-blue">Explorar Recursos ›</a>
+      <a href="https://rc2consulting.github.io/RC2_Gap_Analysis.html" target="_blank" class="btn-blue">Explore Resources ›</a>
     </div>
 
     <div class="rc-card">
       <span class="rc-icon">🌐</span>
-      <div class="rc-title">Centro de Estrategia de Cadena de Suministro y Nearshoring</div>
-      <div class="rc-desc">Orientación de preparación operativa para estrategias en América Latina y planificación de cadena de suministro.</div>
+      <div class="rc-title">Supply Chain & Nearshoring Strategy Hub</div>
+      <div class="rc-desc">Operational readiness guidance for Latin America strategies and supply chain planning.</div>
       <ul class="rc-links">
-        <li><span>Guía de Preparación para Nearshoring — Próximamente</span></li>
-        <li><span>Herramienta de Análisis de Impacto de Aranceles — Próximamente</span></li>
-        <li><span>Lista de Verificación de Debida Diligencia de Proveedores — Próximamente</span></li>
-        <li><span>Evaluación de Riesgo País — Próximamente</span></li>
+        <li><span>Nearshoring Readiness Guide — Próximamente</span></li>
+        <li><span>Tariff Impact Analysis Tool — Próximamente</span></li>
+        <li><span>Vendor Due Diligence Checklist — Próximamente</span></li>
+        <li><span>Country Risk Assessment — Próximamente</span></li>
       </ul>
-      <a href="https://rc2consulting.github.io/contact-es.html" class="btn-blue">Solicitar Acceso Anticipado ›</a>
+      <a href="/cdn-cgi/l/email-protection#87eee9e1e8c7f5e4b5e4e8e9f4f2ebf3eee9e0a9e4e8ea" class="btn-blue">Request Early Access ›</a>
     </div>
 
     <div class="rc-card">
       <span class="rc-icon">🏛️</span>
-      <div class="rc-title">Centro de Recursos de Contratos Gubernamentales</div>
-      <div class="rc-desc">Kit de herramientas completo para pequeñas empresas que ingresan al mercado federal — certificación SBA, SAM.gov, códigos NAICS, cumplimiento FAR y acceso a programas especiales.</div>
+      <div class="rc-title">Government Contracting Resource Center</div>
+      <div class="rc-desc">Complete toolkit for small businesses entering the federal market — SBA certification, SAM.gov, NAICS codes, FAR compliance, and special program access.</div>
       <ul class="rc-links">
-        <li><a href="https://rc2consulting.github.io/RC2_Article_SBA_Certification.html" target="_blank">Resumen Ejecutivo de Certificación SBA</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_SBA_Application_Tool.html" target="_blank">Herramienta de Proceso de Solicitud SBA</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_SBA_Size_Standard_Tool.html" target="_blank">Herramienta de Estándar de Tamaño SBA</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_SBA_NAICS_Tool.html" target="_blank">Herramienta de Códigos SBA–NAICS</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_FAR_DCAA_Tool.html" target="_blank">Herramienta de Cumplimiento FAR/DCAA</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_Article_SAM_Registration.html" target="_blank">Registro en SAM.gov — Guía</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_Article_SBA_Special_Programs.html" target="_blank">Programas Especiales SBA — Artículo</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_Article_NAICS_Codes.html" target="_blank">Estrategia de Códigos NAICS — Artículo</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_Article_SBA_Certification-es.html" target="_blank">SBA Certification Executive Summary</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_SBA_Application_Tool.html" target="_blank">SBA Application Process Tool</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_SBA_Size_Standard_Tool.html" target="_blank">SBA Size Standard Tool</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_SBA_NAICS_Tool.html" target="_blank">SBA–NAICS Codes Tool</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_FAR_DCAA_Tool.html" target="_blank">FAR/DCAA Compliance Readiness Tool</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_Article_SAM_Registration.html" target="_blank">Registering on SAM.gov — Guide</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_Article_SBA_Special_Programs.html" target="_blank">SBA Special Programs — Article</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_Article_NAICS_Codes.html" target="_blank">NAICS Codes Strategy — Article</a></li>
       </ul>
-      <a href="https://rc2consulting.github.io/RC2_Article_SBA_Certification.html" target="_blank" class="btn-blue">Explorar Recursos ›</a>
+      <a href="https://rc2consulting.github.io/RC2_Article_SBA_Certification-es.html" target="_blank" class="btn-blue">Explore Resources ›</a>
     </div>
 
     <div class="rc-card">
       <span class="rc-icon">📈</span>
-      <div class="rc-title">Centro de Recursos KPI</div>
-      <div class="rc-desc">Guía completa para construir, implementar y mantener marcos KPI que impulsen el desempeño organizacional real — desde la selección de métricas hasta la mejora continua.</div>
+      <div class="rc-title">KPI Resource Center</div>
+      <div class="rc-desc">Complete guide to building, implementing, and sustaining KPI frameworks that drive real organizational performance — from metric selection through continuous improvement.</div>
       <ul class="rc-links">
-        <li><a href="https://rc2consulting.github.io/RC2_Article_KPI_Framework.html" target="_blank">Desarrollo de Marco KPI — Resumen Ejecutivo</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_KPI_Tool.html" target="_blank">Constructor de Marco KPI — Herramienta Interactiva</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_Article_KPI_Strategic_Alignment.html" target="_blank">Alineación Estratégica — Artículo</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_Article_KPI_Measurable_Metrics.html" target="_blank">Definición de Métricas Medibles — Artículo</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_Article_KPI_Balancing_Indicators.html" target="_blank">Equilibrio de Indicadores — Artículo</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_Article_KPI_Process_Steps.html" target="_blank">Pasos del Proceso — Artículo</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_Article_KPI_Continuous_Improvement.html" target="_blank">Mejora Continua — Artículo</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_Article_KPI_Framework-es.html" target="_blank">KPI Framework Development — Executive Summary</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_KPI_Tool.html" target="_blank">KPI Framework Builder — Interactive Tool</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_Article_KPI_Strategic_Alignment.html" target="_blank">Strategic Alignment — Article</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_Article_KPI_Measurable_Metrics.html" target="_blank">Defining Measurable Metrics — Article</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_Article_KPI_Balancing_Indicators.html" target="_blank">Balancing Indicators — Article</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_Article_KPI_Process_Steps.html" target="_blank">Process Steps — Article</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_Article_KPI_Continuous_Improvement.html" target="_blank">Continuous Improvement — Article</a></li>
       </ul>
-      <a href="https://rc2consulting.github.io/RC2_Article_KPI_Framework.html" target="_blank" class="btn-blue">Explorar Recursos KPI ›</a>
+      <a href="https://rc2consulting.github.io/RC2_Article_KPI_Framework-es.html" target="_blank" class="btn-blue">Explore KPI Resources ›</a>
     </div>
 
   </div>
 </div></div>
 </div>
 
-<!-- FOOTER -->
+<!-- ══ SHARED FOOTER — BLUE ══ -->
 <footer class="site-footer">
   <div class="footer-tagline">Claridad Operacional. Confianza en el Cumplimiento. Sistemas que Escalan.</div>
   <div class="footer-links">
@@ -680,8 +740,4 @@
     <a href="https://rc2consulting.github.io/RC2_Resources_Page-es.html">Recursos</a>
     <a href="https://rc2consulting.github.io/contact-es.html">Contacto</a>
   </div>
-  <div class="footer-copy">© 2026 RC2 Consulting, LLC &nbsp;|&nbsp; Política de Privacidad &nbsp;|&nbsp; Términos de Servicio</div>
-</footer>
-
-</body>
-</html>
+  <div class="footer-copy">© 2026 RC2 Consulting, LLC &nb
