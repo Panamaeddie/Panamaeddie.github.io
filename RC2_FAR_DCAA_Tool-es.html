@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Herramienta de Preparación FAR / DCAA | RC2 Consulting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--navy:#0B2545;--blue:#1A4A8A;--lb:#2563EB;--bg:#F4F6FA;--w:#FFFFFF;--txt:#1C2B3A;--mu:#4A5568;--bdr:#E2E8F0;--sg:#1A7A4E;--sbg:#EBF7F2;--wg:#854D0E;--wbg:#FFFBEB;--dg:#9B1C1C;--dbg:#FEF2F2}
+    body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--txt);margin:0;line-height:1.6}
+    .topnav{background:var(--navy);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+    .nav-brand{display:flex;align-items:center;gap:8px;text-decoration:none}
+    .nav-logo-mark{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center}
+    .nav-logo-mark sup{font-size:.5rem;vertical-align:super}
+    .nav-brand-name{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.9)}
+    .nav-links{display:flex;gap:4px;list-style:none}
+    .nav-links a{color:rgba(255,255,255,.78);text-decoration:none;font-size:.83rem;font-weight:600;padding:6px 12px;border-radius:4px;white-space:nowrap}
+    .nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+    .nav-links a.active{color:#fff;background:rgba(255,255,255,.12)}
+    .hero{background:linear-gradient(to bottom,rgba(11,37,69,.9),rgba(11,37,69,.74)),url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1400&q=80') center/cover no-repeat;padding:56px 40px 48px}
+    .hero-inner{max-width:960px;margin:0 auto}
+    .atag{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:4px 12px;border-radius:10px;margin-bottom:14px}
+    .hero h1{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:#fff;line-height:1.2;margin-bottom:8px}
+    .hero-sub{font-size:.9rem;color:rgba(255,255,255,.75);margin-bottom:14px;max-width:680px;line-height:1.6}
+    .hmeta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .hmeta span{font-size:.8rem;color:rgba(255,255,255,.6)}
+    .hmeta .dv{color:rgba(255,255,255,.3)}
+    .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+    .btn-back{display:inline-flex;align-items:center;gap:6px;color:var(--lb);text-decoration:none;font-size:.84rem;font-weight:600;margin:24px 0 0}
+
+    /* LIVE DASHBOARD */
+    .dashboard{background:var(--navy);border-radius:10px;padding:20px 24px;margin:28px 0 20px}
+    .dash-top{display:grid;grid-template-columns:repeat(6,1fr) 180px;gap:10px;margin-bottom:12px}
+    .dash-cell{text-align:center;padding:12px 6px;background:rgba(255,255,255,.07);border-radius:8px;border:1px solid rgba(255,255,255,.1)}
+    .dash-val{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:#fff;line-height:1;margin-bottom:2px;transition:all .3s}
+    .dash-label{font-size:.58rem;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.5px;line-height:1.2}
+    .dash-cell.composite{background:rgba(37,99,235,.25);border-color:rgba(37,99,235,.5)}
+    .dash-cell.composite .dash-val{font-size:1.7rem;color:#93C5FD}
+    .prog-row{height:4px;background:rgba(255,255,255,.15);border-radius:2px;margin-top:4px}
+    .prog-fill{height:4px;border-radius:2px;transition:width .4s}
+    .verdict-bar{border-radius:8px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);transition:all .4s;flex-wrap:wrap;gap:8px}
+    .verdict-bar.v-ready{background:rgba(26,122,78,.2);border-color:rgba(26,122,78,.5)}
+    .verdict-bar.v-conditional{background:rgba(133,77,14,.2);border-color:rgba(133,77,14,.5)}
+    .verdict-bar.v-not-ready{background:rgba(155,28,28,.2);border-color:rgba(155,28,28,.5)}
+    .verdict-text{font-size:.88rem;font-weight:700;color:#fff}
+    .verdict-sub{font-size:.74rem;color:rgba(255,255,255,.65);margin-top:3px}
+
+    /* SCORING BLOCKS */
+    .domain-block{background:var(--w);border-radius:10px;border:1px solid var(--bdr);box-shadow:0 2px 8px rgba(11,37,69,.06);margin-bottom:20px;overflow:hidden}
+    .domain-hdr{padding:12px 22px;display:flex;align-items:center;justify-content:space-between}
+    .d1{background:linear-gradient(to right,#EFF6FF,#F4F6FA);border-bottom:2px solid #BFDBFE}
+    .d2{background:linear-gradient(to right,#F0FDF4,#F4F6FA);border-bottom:2px solid #BBF7D0}
+    .d3{background:linear-gradient(to right,#FFF7ED,#F4F6FA);border-bottom:2px solid #FED7AA}
+    .d4{background:linear-gradient(to right,#FDF4FF,#F4F6FA);border-bottom:2px solid #E9D5FF}
+    .d5{background:linear-gradient(to right,#FFF1F2,#F4F6FA);border-bottom:2px solid #FECDD3}
+    .d6{background:linear-gradient(to right,#ECFEFF,#F4F6FA);border-bottom:2px solid #A5F3FC}
+    .domain-title-wrap h3{font-size:.94rem;font-weight:700;color:var(--navy)}
+    .domain-title-wrap p{font-size:.73rem;color:var(--mu);margin-top:2px}
+    .domain-score-badge{text-align:right}
+    .dscore{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--navy);line-height:1}
+    .dscore-sub{font-size:.65rem;color:var(--mu)}
+    .domain-progbar{height:4px;background:var(--bdr);border-radius:2px;margin-top:4px;width:80px}
+    .domain-pfill{height:4px;border-radius:2px;transition:width .3s}
+    .d1 .domain-pfill{background:#3B82F6}
+    .d2 .domain-pfill{background:#10B981}
+    .d3 .domain-pfill{background:#F59E0B}
+    .d4 .domain-pfill{background:#8B5CF6}
+    .d5 .domain-pfill{background:#F43F5E}
+    .d6 .domain-pfill{background:#06B6D4}
+
+    /* SCORING TABLE */
+    .score-table{width:100%;border-collapse:collapse}
+    .score-table th{background:var(--bg);padding:9px 14px;text-align:left;font-size:.7rem;font-weight:700;color:var(--mu);border-bottom:2px solid var(--bdr);letter-spacing:.4px}
+    .score-table td{padding:10px 14px;border-bottom:1px solid var(--bdr);font-size:.82rem;color:var(--mu);vertical-align:middle}
+    .score-table tr:last-child td{border-bottom:none}
+    .score-table tr:hover td{background:#FAFBFD}
+    .item-num{font-size:.7rem;font-weight:700;color:var(--lb);width:36px}
+    .item-text{color:var(--txt);line-height:1.45;font-size:.82rem}
+    .item-ref{font-size:.7rem;color:var(--mu);margin-top:2px;font-style:italic}
+    .crit-flag{font-size:.64rem;font-weight:700;color:var(--dg);background:var(--dbg);padding:1px 6px;border-radius:8px;margin-left:6px}
+    .score-sel{border:1.5px solid var(--bdr);border-radius:6px;padding:6px 10px;font-size:.8rem;color:var(--navy);font-family:'Source Sans 3',sans-serif;outline:none;background:var(--bg);cursor:pointer;width:120px;transition:all .2s}
+    .score-sel:focus{border-color:var(--lb)}
+    .score-sel.s-5{background:#EBF7F2;border-color:#6EE7B7;color:var(--sg)}
+    .score-sel.s-4{background:#F0FDF4;border-color:#BBF7D0;color:#15803D}
+    .score-sel.s-3{background:#FFFBEB;border-color:#FDE68A;color:var(--wg)}
+    .score-sel.s-2{background:#FFF1F2;border-color:#FECDD3;color:#9F1239}
+    .score-sel.s-1{background:var(--dbg);border-color:#FECACA;color:var(--dg)}
+    .weight-badge{display:inline-block;font-size:.68rem;font-weight:700;padding:2px 7px;border-radius:10px;background:var(--navy);color:#fff;white-space:nowrap}
+    .wtd-out{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--navy);min-width:36px;text-align:center}
+    .domain-footer{background:var(--bg);padding:10px 14px;border-top:1px solid var(--bdr);display:flex;align-items:center;gap:16px}
+    .df-label{font-size:.7rem;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.5px}
+    .df-val{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--navy)}
+    .df-prog{flex:1;height:6px;background:var(--bdr);border-radius:3px}
+    .df-pfill{height:6px;border-radius:3px;background:var(--lb);transition:width .3s}
+
+    /* RESULT CARDS */
+    .result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px}
+    .res-card{border-radius:8px;padding:18px 20px;border:2px solid;transition:all .3s}
+    .rc-green{background:var(--sbg);border-color:#BBF7D0}
+    .rc-yellow{background:var(--wbg);border-color:#FDE68A}
+    .rc-red{background:var(--dbg);border-color:#FECACA}
+    .res-card.active-res{box-shadow:0 0 0 3px rgba(37,99,235,.4);transform:scale(1.02)}
+    .res-label{font-size:.72rem;font-weight:700;margin-bottom:6px}
+    .rc-green .res-label{color:var(--sg)}
+    .rc-yellow .res-label{color:var(--wg)}
+    .rc-red .res-label{color:var(--dg)}
+    .res-val{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--navy);margin-bottom:5px}
+    .res-desc{font-size:.75rem;color:var(--mu);line-height:1.5}
+
+    .sources{background:var(--bg);border-radius:8px;padding:18px 22px;margin:0 0 24px;border:1px solid var(--bdr)}
+    .sources h4{font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:10px}
+    .sources ul{list-style:none}
+    .sources li{font-size:.77rem;color:var(--mu);padding:3px 0;border-bottom:1px solid var(--bdr)}
+    .sources li:last-child{border-bottom:none}
+    .sources a{color:var(--lb);text-decoration:none}
+    .acta{background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:10px;padding:32px;text-align:center;margin-bottom:44px}
+    .acta h3{font-family:'Playfair Display',serif;font-size:1.35rem;color:#fff;margin-bottom:8px}
+    .acta p{font-size:.86rem;color:rgba(255,255,255,.78);margin-bottom:18px}
+    .btn-cta{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--blue);font-weight:700;font-size:.86rem;padding:11px 22px;border-radius:6px;text-decoration:none}
+    .btn-print{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);color:#fff;font-weight:600;font-size:.84rem;padding:10px 20px;border-radius:6px;border:1px solid rgba(255,255,255,.3);margin-left:10px;cursor:pointer;font-family:'Source Sans 3',sans-serif}
+    .site-footer{background:var(--blue);color:#fff;text-align:center;padding:36px 24px}
+    .ft{font-size:.9rem;color:rgba(255,255,255,.9);font-weight:600;letter-spacing:.5px;margin-bottom:10px}
+    .fl{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+    .fl a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.78rem}
+    .fc{font-size:.73rem;color:rgba(255,255,255,.5)}
+    @media(max-width:720px){.dash-top{grid-template-columns:repeat(3,1fr)}.result-grid{grid-template-columns:1fr}.topnav{padding:0 14px}.nav-links a{padding:5px 7px;font-size:.76rem}}
+    @media print{.topnav,.btn-back,.dashboard,.acta,.site-footer,.sources{display:none}.domain-block{box-shadow:none;break-inside:avoid}}
+
+    .nav-lang { display:flex; gap:4px; margin-left:16px; }
+    .lang-btn { color:rgba(255,255,255,0.6); text-decoration:none; font-size:0.78rem; font-weight:700; padding:4px 8px; border-radius:4px; border:1px solid transparent; transition:all 0.2s; }
+    .lang-btn:hover { color:white; border-color:rgba(255,255,255,0.3); }
+    .lang-btn.active { color:white; background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.3); }
+  </style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="https://rc2consulting.github.io/" class="nav-brand">
+    <div class="nav-logo-mark">RC<sup>2</sup></div>
+    <span class="nav-brand-name">Consulting</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://rc2consulting.github.io/">Inicio</a></li>
+    <li><a href="https://rc2consulting.github.io/services-es.html">Servicios</a></li>
+    <li><a href="https://rc2consulting.github.io/who-we-help-es.html">A Quién Ayudamos</a></li>
+    <li><a href="https://rc2consulting.github.io/about-es.html">Nosotros</a></li>
+    <li><a href="https://rc2consulting.github.io/RC2_Resources_Page.html" class="active">Recursos</a></li>
+    <li><a href="https://rc2consulting.github.io/contact-es.html">Contacto</a></li>
+  </ul>
+  <div class="nav-lang">
+    <a href="https://rc2consulting.github.io/RC2_FAR_DCAA_Tool.html" class="lang-btn">EN</a>
+    <a href="#" class="lang-btn active">ES</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="atag">Government Contracting Tool</span>
+    <h1>Herramienta de Preparación FAR / DCAA</h1>
+    <p class="hero-sub">Evalúe su organización en seis dominios de cumplimiento de contratos federales. Las puntuaciones ponderadas se actualizan en tiempo real — su puntuación compuesta de preparación y determinación de nivel aparecen al instante a medida que completa cada sección.</p>
+    <div class="hmeta">
+      <span>RC2 Consulting</span><span class="dv">|</span>
+      <span>2026</span><span class="dv">|</span>
+      <span>Based on FAR Part 31, DCAA CAM, and SF 1408 Criteria</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <a href="https://rc2consulting.github.io/RC2_Resources_Page.html" class="btn-back">← Volver a Recursos</a>
+
+  <!-- LIVE DASHBOARD -->
+  <div class="dashboard">
+    <div class="dash-top">
+      <div class="dash-cell"><div class="dash-val" id="ds1">—</div><div class="dash-label">Accounting System</div><div class="prog-row"><div class="prog-fill" id="dp1" style="background:#3B82F6;width:0%"></div></div></div>
+      <div class="dash-cell"><div class="dash-val" id="ds2">—</div><div class="dash-label">T&A / Timekeeping</div><div class="prog-row"><div class="prog-fill" id="dp2" style="background:#10B981;width:0%"></div></div></div>
+      <div class="dash-cell"><div class="dash-val" id="ds3">—</div><div class="dash-label">Purchasing Systems</div><div class="prog-row"><div class="prog-fill" id="dp3" style="background:#F59E0B;width:0%"></div></div></div>
+      <div class="dash-cell"><div class="dash-val" id="ds4">—</div><div class="dash-label">Labor / HR Compliance</div><div class="prog-row"><div class="prog-fill" id="dp4" style="background:#8B5CF6;width:0%"></div></div></div>
+      <div class="dash-cell"><div class="dash-val" id="ds5">—</div><div class="dash-label">Contract Management</div><div class="prog-row"><div class="prog-fill" id="dp5" style="background:#F43F5E;width:0%"></div></div></div>
+      <div class="dash-cell"><div class="dash-val" id="ds6">—</div><div class="dash-label">Cybersecurity</div><div class="prog-row"><div class="prog-fill" id="dp6" style="background:#06B6D4;width:0%"></div></div></div>
+      <div class="dash-cell composite"><div class="dash-val" id="dtot">—</div><div class="dash-label">Composite / 150</div></div>
+    </div>
+    <div class="verdict-bar" id="verdict-bar">
+      <div><div class="verdict-text">Evalúe cada dominio a continuación — su nivel de preparación FAR/DCAA aparece aquí en tiempo real</div><div class="verdict-sub">Califique cada elemento del 1 al 5: 1=No implementado · 3=Parcialmente implementado · 5=Totalmente implementado y documentado</div></div>
+    </div>
+  </div>
+
+  <!-- DOMAIN 1 — ACCOUNTING SYSTEM -->
+  <div class="domain-block">
+    <div class="domain-hdr d1">
+      <div class="domain-title-wrap">
+        <h3>Domain 1 — Accounting System Adequacy (FAR 16.301, SF 1408)</h3>
+        <p>La DCAA evalúa si su sistema contable puede acumular, registrar e informar costos por contrato — este es el sistema más crítico para los contratistas gubernamentales</p>
+      </div>
+      <div class="domain-score-badge">
+        <div class="dscore" id="d1-score">—</div>
+        <div class="dscore-sub">/ 30 pts</div>
+        <div class="domain-progbar"><div class="domain-pfill d1" id="d1-pf" style="width:0%"></div></div>
+      </div>
+    </div>
+    <table class="score-table">
+      <thead><tr><th style="width:36px">#</th><th>Compliance Requirement</th><th style="width:160px">Referencia</th><th style="width:130px">Puntuación (1–5)</th><th style="width:60px">Peso</th><th style="width:60px">Puntos</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="item-num">1.1</td>
+          <td><div class="item-text">Accounting system can segregate direct costs (costs specifically identifiable to a contract) from indirect costs (overhead, G&A, fringe)<span class="crit-flag">CRITICAL</span></div><div class="item-ref">FAR 31.202, 31.203; DCAA CAM 5-1000</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">SF 1408 Item 2</td>
+          <td><select class="score-sel" data-domain="1" data-weight="3" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×3</span></td>
+          <td class="wtd-out" id="w1_1">—</td>
+        </tr>
+        <tr>
+          <td class="item-num">1.2</td>
+          <td><div class="item-text">Costs are accumulated by cost objective (contract number, project, task order) — job cost accounting implemented<span class="crit-flag">CRITICAL</span></div><div class="item-ref">FAR 31.001; DFARS 252.242-7006</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">SF 1408 Item 3</td>
+          <td><select class="score-sel" data-domain="1" data-weight="3" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×3</span></td>
+          <td class="wtd-out" id="w1_2">—</td>
+        </tr>
+        <tr>
+          <td class="item-num">1.3</td>
+          <td><div class="item-text">Políticas y procedimientos contables escritos y consistentes documentados — prácticas de contabilidad de costos aplicadas consistentemente período a período</div><div class="item-ref">FAR 31.201-1; CAS 401</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">SF 1408 Item 1</td>
+          <td><select class="score-sel" data-domain="1" data-weight="2" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×2</span></td>
+          <td class="wtd-out" id="w1_3">—</td>
+        </tr>
+        <tr>
+          <td class="item-num">1.4</td>
+          <td><div class="item-text">Grupos de costos indirectos definidos, asignados y aplicados a contratos usando bases de asignación consistentes y documentadas (horas de trabajo, costos directos, etc.)</div><div class="item-ref">FAR 31.203; DCAA CAM 6-700</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">SF 1408 Item 5</td>
+          <td><select class="score-sel" data-domain="1" data-weight="2" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×2</span></td>
+          <td class="wtd-out" id="w1_4">—</td>
+        </tr>
+        <tr>
+          <td class="item-num">1.5</td>
+          <td><div class="item-text">Costos no permitidos (entretenimiento, multas, compensación de directivos que excede lo razonable, publicidad) identificados y excluidos de la facturación</div><div class="item-ref">FAR 31.205; DCAA CAM 7-000</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">SF 1408 Item 9</td>
+          <td><select class="score-sel" data-domain="1" data-weight="2" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×2</span></td>
+          <td class="wtd-out" id="w1_5">—</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="domain-footer"><span class="df-label">Puntuación del Dominio:</span><span class="df-val" id="df1-val">—</span><span class="df-label">/ 30</span><div class="df-prog"><div class="df-pfill" id="df1-prog" style="width:0%"></div></div></div>
+  </div>
+
+  <!-- DOMAIN 2 — TIMEKEEPING -->
+  <div class="domain-block">
+    <div class="domain-hdr d2">
+      <div class="domain-title-wrap">
+        <h3>Domain 2 — Timekeeping & Labor Distribution (DCAA T&A Requirements)</h3>
+        <p>Los registros de tiempo son la base de la facturación de costos de mano de obra — la DCAA considera un T&A inadecuado una deficiencia mayor que puede resultar en la suspensión del contrato</p>
+      </div>
+      <div class="domain-score-badge">
+        <div class="dscore" id="d2-score">—</div>
+        <div class="dscore-sub">/ 25 pts</div>
+        <div class="domain-progbar"><div class="domain-pfill d2" id="d2-pf" style="width:0%"></div></div>
+      </div>
+    </div>
+    <table class="score-table">
+      <thead><tr><th style="width:36px">#</th><th>Compliance Requirement</th><th style="width:160px">Referencia</th><th style="width:130px">Puntuación (1–5)</th><th style="width:60px">Peso</th><th style="width:60px">Puntos</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="item-num">2.1</td>
+          <td><div class="item-text">All employees record time daily or at minimum weekly — no retroactive time entry allowed without documented approval<span class="crit-flag">CRITICAL</span></div><div class="item-ref">DCAA CAM 6-401; FAR 31.201-2</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">DCAA Timekeeping</td>
+          <td><select class="score-sel" data-domain="2" data-weight="3" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×3</span></td>
+          <td class="wtd-out" id="w2_1">—</td>
+        </tr>
+        <tr>
+          <td class="item-num">2.2</td>
+          <td><div class="item-text">Los empleados cargan el tiempo directamente a contratos/proyectos — sin cargos de resumen o en bloque (cargar todas las horas a un código sin detalle)</div><div class="item-ref">DCAA CAM 6-402</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">T&A Practices</td>
+          <td><select class="score-sel" data-domain="2" data-weight="2" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×2</span></td>
+          <td class="wtd-out" id="w2_2">—</td>
+        </tr>
+        <tr>
+          <td class="item-num">2.3</td>
+          <td><div class="item-text">Los supervisores revisan y aprueban las hojas de tiempo — la aprobación está documentada, no solo asumida</div><div class="item-ref">DCAA CAM 6-410</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">T&A Controls</td>
+          <td><select class="score-sel" data-domain="2" data-weight="2" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×2</span></td>
+          <td class="wtd-out" id="w2_3">—</td>
+        </tr>
+        <tr>
+          <td class="item-num">2.4</td>
+          <td><div class="item-text">El sistema T&A se vincula a la nómina y los informes de distribución de mano de obra — los costos laborales fluyen automáticamente desde la hoja de tiempo a la facturación del contrato</div><div class="item-ref">FAR 31.202; DCAA CAM 6-600</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">System Integration</td>
+          <td><select class="score-sel" data-domain="2" data-weight="2" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×2</span></td>
+          <td class="wtd-out" id="w2_4">—</td>
+        </tr>
+        <tr>
+          <td class="item-num">2.5</td>
+          <td><div class="item-text">Registros de tiempo retenidos por un mínimo de 3 años después del pago final del contrato — calendario de retención documentado y seguido</div><div class="item-ref">FAR 4.703; DCAA Retention Policy</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">Record Retention</td>
+          <td><select class="score-sel" data-domain="2" data-weight="1" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×1</span></td>
+          <td class="wtd-out" id="w2_5">—</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="domain-footer"><span class="df-label">Puntuación del Dominio:</span><span class="df-val" id="df2-val">—</span><span class="df-label">/ 25</span><div class="df-prog"><div class="df-pfill" id="df2-prog" style="width:0%"></div></div></div>
+  </div>
+
+  <!-- DOMAIN 3 — PURCHASING -->
+  <div class="domain-block">
+    <div class="domain-hdr d3">
+      <div class="domain-title-wrap">
+        <h3>Domain 3 — Purchasing Systems & Subcontract Management (FAR 44)</h3>
+        <p>Los contratistas gubernamentales deben trasladar los requisitos FAR/DFARS a los subcontratistas y mantener procedimientos de compras documentados</p>
+      </div>
+      <div class="domain-score-badge">
+        <div class="dscore" id="d3-score">—</div>
+        <div class="dscore-sub">/ 25 pts</div>
+        <div class="domain-progbar"><div class="domain-pfill d3" id="d3-pf" style="width:0%"></div></div>
+      </div>
+    </div>
+    <table class="score-table">
+      <thead><tr><th style="width:36px">#</th><th>Compliance Requirement</th><th style="width:160px">Referencia</th><th style="width:130px">Puntuación (1–5)</th><th style="width:60px">Peso</th><th style="width:60px">Puntos</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="item-num">3.1</td>
+          <td><div class="item-text">Políticas del sistema de compras escritas y documentadas — requisitos de competencia, justificaciones de fuente única, umbrales de aprobación definidos</div><div class="item-ref">FAR 44.302; DFARS 244.303</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">Purchasing System</td>
+          <td><select class="score-sel" data-domain="3" data-weight="2" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×2</span></td>
+          <td class="wtd-out" id="w3_1">—</td>
+        </tr>
+        <tr>
+          <td class="item-num">3.2</td>
+          <td><div class="item-text">Subcontracts include required FAR flow-down clauses — at minimum: equal opportunity, anti-kickback, whistleblower protection, and applicable DFARS clauses<span class="crit-flag">CRITICAL</span></div><div class="item-ref">FAR 44.403; FAR 52.222-26; FAR 52.203-13</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">Flow-Down Clauses</td>
+          <td><select class="score-sel" data-domain="3" data-weight="3" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×3</span></td>
+          <td class="wtd-out" id="w3_2">—</td>
+        </tr>
+        <tr>
+          <td class="item-num">3.3</td>
+          <td><div class="item-text">Análisis de precio y costo del subcontratista/proveedor realizado antes de la adjudicación — evidencia documentada de determinación de precio justo y razonable</div><div class="item-ref">FAR 15.404-3; FAR 44.201</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">Price Analysis</td>
+          <td><select class="score-sel" data-domain="3" data-weight="2" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×2</span></td>
+          <td class="wtd-out" id="w3_3">—</td>
+        </tr>
+        <tr>
+          <td class="item-num">3.4</td>
+          <td><div class="item-text">Verificación de exclusión en SAM.gov realizada para todos los proveedores antes de la adjudicación — sin contratos con partes inhabilitadas o suspendidas</div><div class="item-ref">FAR 9.405; 2 CFR Part 180</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">Vendor Eligibility</td>
+          <td><select class="score-sel" data-domain="3" data-weight="2" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×2</span></td>
+          <td class="wtd-out" id="w3_4">—</td>
+        </tr>
+        <tr>
+          <td class="item-num">3.5</td>
+          <td><div class="item-text">Registros de compras retenidos según los requisitos FAR — órdenes de compra, análisis de precios, correspondencia con proveedores y documentación de entrega archivados</div><div class="item-ref">FAR 4.703</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">Record Retention</td>
+          <td><select class="score-sel" data-domain="3" data-weight="1" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×1</span></td>
+          <td class="wtd-out" id="w3_5">—</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="domain-footer"><span class="df-label">Puntuación del Dominio:</span><span class="df-val" id="df3-val">—</span><span class="df-label">/ 25</span><div class="df-prog"><div class="df-pfill" id="df3-prog" style="width:0%"></div></div></div>
+  </div>
+
+  <!-- DOMAIN 4 — LABOR/HR COMPLIANCE -->
+  <div class="domain-block">
+    <div class="domain-hdr d4">
+      <div class="domain-title-wrap">
+        <h3>Domain 4 — Labor & HR Compliance (SCA, Davis-Bacon, EO Requirements)</h3>
+        <p>El cumplimiento de la ley laboral federal es obligatorio para la mayoría de los contratos de servicio y construcción — las violaciones resultan en responsabilidad de pago retroactivo, inhabilitación y rescisión del contrato</p>
+      </div>
+      <div class="domain-score-badge">
+        <div class="dscore" id="d4-score">—</div>
+        <div class="dscore-sub">/ 25 pts</div>
+        <div class="domain-progbar"><div class="domain-pfill d4" id="d4-pf" style="width:0%"></div></div>
+      </div>
+    </div>
+    <table class="score-table">
+      <thead><tr><th style="width:36px">#</th><th>Compliance Requirement</th><th style="width:160px">Referencia</th><th style="width:130px">Puntuación (1–5)</th><th style="width:60px">Peso</th><th style="width:60px">Puntos</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="item-num">4.1</td>
+          <td><div class="item-text">Service Contract Act (SCA) applicability assessed — if applicable, wage determinations obtained and applied to all service employees on covered contracts<span class="crit-flag">CRITICAL</span></div><div class="item-ref">41 U.S.C. Chapter 67; FAR 22.1002</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">SCA Compliance</td>
+          <td><select class="score-sel" data-domain="4" data-weight="3" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×3</span></td>
+          <td class="wtd-out" id="w4_1">—</td>
+        </tr>
+        <tr>
+          <td class="item-num">4.2</td>
+          <td><div class="item-text">Requisitos de salario mínimo de la Orden Ejecutiva aplicados a todos los empleados directos de contratos federales — tasa salarial EO actual publicada y aplicada</div><div class="item-ref">EO 14026 (2021); FAR 22.1904</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">EO Minimum Wage</td>
+          <td><select class="score-sel" data-domain="4" data-weight="2" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×2</span></td>
+          <td class="wtd-out" id="w4_2">—</td>
+        </tr>
+        <tr>
+          <td class="item-num">4.3</td>
+          <td><div class="item-text">Obligaciones de igualdad de oportunidades mantenidas — política EEO publicada, plan de acción afirmativa en lugar (si 50+ empleados en contratos de $50K+), cumplimiento OFCCP rastreado</div><div class="item-ref">FAR 22.807; EO 11246; 41 CFR Part 60</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">EEO / Affirmative Action</td>
+          <td><select class="score-sel" data-domain="4" data-weight="2" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×2</span></td>
+          <td class="wtd-out" id="w4_3">—</td>
+        </tr>
+        <tr>
+          <td class="item-num">4.4</td>
+          <td><div class="item-text">Aplicabilidad de la Ley Davis-Bacon evaluada para contratos de construcción — salarios prevalecientes aplicados y nóminas certificadas enviadas semanalmente cuando se requiere</div><div class="item-ref">40 U.S.C. §§ 3141–3148; FAR 22.403</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">Davis-Bacon</td>
+          <td><select class="score-sel" data-domain="4" data-weight="2" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×2</span></td>
+          <td class="wtd-out" id="w4_4">—</td>
+        </tr>
+        <tr>
+          <td class="item-num">4.5</td>
+          <td><div class="item-text">Documentación de calificaciones del personal mantenida — currículos del personal clave, certificaciones, habilitaciones y procesos de aprobación de sustitución documentados</div><div class="item-ref">FAR 52.237-10; Contract SOWs</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">Key Personnel</td>
+          <td><select class="score-sel" data-domain="4" data-weight="1" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×1</span></td>
+          <td class="wtd-out" id="w4_5">—</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="domain-footer"><span class="df-label">Puntuación del Dominio:</span><span class="df-val" id="df4-val">—</span><span class="df-label">/ 25</span><div class="df-prog"><div class="df-pfill" id="df4-prog" style="width:0%"></div></div></div>
+  </div>
+
+  <!-- DOMAIN 5 — CONTRACT MANAGEMENT -->
+  <div class="domain-block">
+    <div class="domain-hdr d5">
+      <div class="domain-title-wrap">
+        <h3>Domain 5 — Contract Management & Invoicing (FAR 12, 32)</h3>
+        <p>La facturación incorrecta es el camino más rápido a una derivación de auditoría DCAA — las facturas deben estar totalmente respaldadas y coincidir exactamente con los términos del contrato</p>
+      </div>
+      <div class="domain-score-badge">
+        <div class="dscore" id="d5-score">—</div>
+        <div class="dscore-sub">/ 25 pts</div>
+        <div class="domain-progbar"><div class="domain-pfill d5" id="d5-pf" style="width:0%"></div></div>
+      </div>
+    </div>
+    <table class="score-table">
+      <thead><tr><th style="width:36px">#</th><th>Compliance Requirement</th><th style="width:160px">Referencia</th><th style="width:130px">Puntuación (1–5)</th><th style="width:60px">Peso</th><th style="width:60px">Puntos</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="item-num">5.1</td>
+          <td><div class="item-text">Invoicing system submits invoices in required format — WAWF (Wide Area Workflow / Tungsten) for DoD; agency-specific portals for civilian; proper cost backup attached<span class="crit-flag">CRITICAL</span></div><div class="item-ref">DFARS 252.232-7003; FAR 32.905</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">Invoice Submission</td>
+          <td><select class="score-sel" data-domain="5" data-weight="3" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×3</span></td>
+          <td class="wtd-out" id="w5_1">—</td>
+        </tr>
+        <tr>
+          <td class="item-num">5.2</td>
+          <td><div class="item-text">Entregables del contrato rastreados contra PWS/SOW — estado documentado, entrega a tiempo monitoreada, notificaciones al oficial de contratación realizadas según los requisitos del contrato</div><div class="item-ref">FAR 46; Contract SOW</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">Deliverable Tracking</td>
+          <td><select class="score-sel" data-domain="5" data-weight="2" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×2</span></td>
+          <td class="wtd-out" id="w5_2">—</td>
+        </tr>
+        <tr>
+          <td class="item-num">5.3</td>
+          <td><div class="item-text">Todas las modificaciones del contrato rastreadas e incorporadas — el archivo del contrato incluye el contrato base, todas las modificaciones, correspondencia del CO y documentación de desempeño</div><div class="item-ref">FAR 4.802; FAR 43</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">Contract Files</td>
+          <td><select class="score-sel" data-domain="5" data-weight="2" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×2</span></td>
+          <td class="wtd-out" id="w5_3">—</td>
+        </tr>
+        <tr>
+          <td class="item-num">5.4</td>
+          <td><div class="item-text">Programa de ética empresarial y código de conducta en lugar — requisitos de FAR 52.203-13 (código de ética del contratista) cumplidos para contratos superiores a $6M / 120 días</div><div class="item-ref">FAR 3.1004; FAR 52.203-13; FAR 52.203-14</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">Ethics Program</td>
+          <td><select class="score-sel" data-domain="5" data-weight="2" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×2</span></td>
+          <td class="wtd-out" id="w5_4">—</td>
+        </tr>
+        <tr>
+          <td class="item-num">5.5</td>
+          <td><div class="item-text">Documentación de desempeño pasado CPARS mantenida — registros de desempeño completados y narrativas del contratista archivadas para todos los contratos significativos</div><div class="item-ref">FAR 42.1502; FAR 15.305(a)(2)</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">Past Performance</td>
+          <td><select class="score-sel" data-domain="5" data-weight="1" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×1</span></td>
+          <td class="wtd-out" id="w5_5">—</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="domain-footer"><span class="df-label">Puntuación del Dominio:</span><span class="df-val" id="df5-val">—</span><span class="df-label">/ 25</span><div class="df-prog"><div class="df-pfill" id="df5-prog" style="width:0%"></div></div></div>
+  </div>
+
+  <!-- DOMAIN 6 — CYBERSECURITY -->
+  <div class="domain-block">
+    <div class="domain-hdr d6">
+      <div class="domain-title-wrap">
+        <h3>Domain 6 — Cybersecurity & Information Security (CMMC / NIST 800-171)</h3>
+        <p>Los contratos del DoD requieren cada vez más la certificación CMMC Nivel 2 — los contratistas no conformes no pueden ofertar en trabajos relacionados con CUI</p>
+      </div>
+      <div class="domain-score-badge">
+        <div class="dscore" id="d6-score">—</div>
+        <div class="dscore-sub">/ 20 pts</div>
+        <div class="domain-progbar"><div class="domain-pfill d6" id="d6-pf" style="width:0%"></div></div>
+      </div>
+    </div>
+    <table class="score-table">
+      <thead><tr><th style="width:36px">#</th><th>Compliance Requirement</th><th style="width:160px">Referencia</th><th style="width:130px">Puntuación (1–5)</th><th style="width:60px">Peso</th><th style="width:60px">Puntos</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="item-num">6.1</td>
+          <td><div class="item-text">NIST SP 800-171 self-assessment completed — 110 practices scored and System Security Plan (SSP) documented<span class="crit-flag">CRITICAL for DoD</span></div><div class="item-ref">DFARS 252.204-7012; NIST SP 800-171</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">CMMC Level 2 Req</td>
+          <td><select class="score-sel" data-domain="6" data-weight="2" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×2</span></td>
+          <td class="wtd-out" id="w6_1">—</td>
+        </tr>
+        <tr>
+          <td class="item-num">6.2</td>
+          <td><div class="item-text">Información No Clasificada Controlada (CUI) identificada, categorizada y protegida — procedimientos de manejo de CUI documentados según las guías de NIST y Archivos Nacionales</div><div class="item-ref">DFARS 252.204-7012; 32 CFR Part 2002</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">CUI Protection</td>
+          <td><select class="score-sel" data-domain="6" data-weight="2" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×2</span></td>
+          <td class="wtd-out" id="w6_2">—</td>
+        </tr>
+        <tr>
+          <td class="item-num">6.3</td>
+          <td><div class="item-text">Procedimiento de reporte de incidentes en lugar — incidentes cibernéticos reportados al DoD dentro de las 72 horas a través de dibnet.dod.mil según lo exige DFARS 252.204-7012</div><div class="item-ref">DFARS 252.204-7012(c)</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">Incident Reporting</td>
+          <td><select class="score-sel" data-domain="6" data-weight="1" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×1</span></td>
+          <td class="wtd-out" id="w6_3">—</td>
+        </tr>
+        <tr>
+          <td class="item-num">6.4</td>
+          <td><div class="item-text">Puntuación SPRS (Sistema de Riesgo de Desempeño de Proveedores) enviada — puntuación de autoevaluación NIST 800-171 ingresada en el portal SPRS en sprs.navy.mil</div><div class="item-ref">DFARS 252.204-7019; SPRS</div></td>
+          <td style="font-size:.72rem;color:var(--mu)">SPRS Submission</td>
+          <td><select class="score-sel" data-domain="6" data-weight="1" onchange="styleSelect(this);calcAll()"><option value="0">Seleccionar…</option><option value="1">1 — No implementado</option><option value="2">2 — Mínimo</option><option value="3">3 — Parcial</option><option value value="4">4 — Mayormente listo</option><option value="5">5 — Totalmente implementado</option></select></td>
+          <td><span class="weight-badge">×1</span></td>
+          <td class="wtd-out" id="w6_4">—</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="domain-footer"><span class="df-label">Puntuación del Dominio:</span><span class="df-val" id="df6-val">—</span><span class="df-label">/ 20</span><div class="df-prog"><div class="df-pfill" id="df6-prog" style="width:0%"></div></div></div>
+  </div>
+
+  <!-- RESULT TIER CARDS -->
+  <div class="result-grid">
+    <div class="res-card rc-green" id="tier-ready">
+      <div class="res-label">✅ Nivel 1 — Listo para Contratos</div>
+      <div class="res-val">115–150 pts</div>
+      <div class="res-desc">Sólida postura de cumplimiento en todos los dominios. La encuesta previa al contrato de la DCAA probablemente pase. Listo para competir y ejecutar contratos gubernamentales. Continuar con el monitoreo y la revisión anual.</div>
+    </div>
+    <div class="res-card rc-yellow" id="tier-conditional">
+      <div class="res-label">⚠ Nivel 2 — Preparación Condicional</div>
+      <div class="res-val">75–114 pts</div>
+      <div class="res-desc">Cumplimiento parcial con brechas identificables. Puede buscar contratos pero vulnerable a los hallazgos de DCAA. Desarrollar un plan de acción correctiva para dominios con puntuación inferior a 15. Presupuestar 60–120 días para remediación.</div>
+    </div>
+    <div class="res-card rc-red" id="tier-not-ready">
+      <div class="res-label">✗ Nivel 3 — No Listo para Contratos</div>
+      <div class="res-val">Menos de 75 pts</div>
+      <div class="res-desc">Brechas de cumplimiento significativas que desencadenarán hallazgos adversos de DCAA, rechazos de facturación o suspensión del contrato. No busque contratos de reembolso de costos o CPFF hasta que los sistemas fundamentales estén construidos.</div>
+    </div>
+  </div>
+
+  <div class="sources">
+    <h4>Sources & Regulatory References</h4>
+    <ul>
+      <li>FAR Part 31 — Contract Cost Principles and Procedures — <a href="https://www.acquisition.gov" target="_blank">acquisition.gov</a></li>
+      <li>DCAA — Contract Audit Manual (CAM), Chapters 5–7 — <a href="https://www.dcaa.mil/Guidance/DCAA-Contract-Audit-Manual" target="_blank">dcaa.mil</a></li>
+      <li>SF 1408 — Pre-Award Survey of Prospective Contractor (Accounting System) — <a href="https://www.gsa.gov/forms" target="_blank">gsa.gov</a></li>
+      <li>DFARS 252.242-7006 — Accounting System Administration — <a href="https://www.acquisition.gov/dfars" target="_blank">acquisition.gov/dfars</a></li>
+      <li>NIST SP 800-171 — Protecting CUI in Nonfederal Systems — <a href="https://csrc.nist.gov/publications/detail/sp/800-171/rev-3/final" target="_blank">csrc.nist.gov</a></li>
+      <li>DoD CMMC Program — Cybersecurity Maturity Model Certification — <a href="https://dodcio.defense.gov/CMMC" target="_blank">dodcio.defense.gov</a></li>
+      <li>41 U.S.C. Chapter 67 — Service Contract Act; 40 U.S.C. §§ 3141–3148 — Davis-Bacon Act</li>
+      <li>FAR 22.807; EO 11246; 41 CFR Part 60 — Equal Opportunity and Affirmative Action</li>
+    </ul>
+  </div>
+  <div class="acta">
+    <h3>¿Listo para Cerrar sus Brechas de Cumplimiento FAR/DCAA?</h3>
+    <p>RC2 Consulting construye sistemas de cumplimiento para contratistas gubernamentales — marcos contables adecuados para DCAA, procedimientos T&A, documentación de sistemas de compras, SOPs de gestión de subcontratos y preparación para encuestas previas al contrato.</p>
+    <a href="https://rc2consulting.github.io/contact.html" class="btn-cta">Agendar una Revisión de Brechas de Cumplimiento →</a>
+    <button class="btn-print" onclick="window.print()">🖨 Imprimir / Guardar como PDF</button>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="ft">Claridad Operacional. Confianza en el Cumplimiento. Sistemas que Escalan.</div>
+  <div class="fl"><a href="https://rc2consulting.github.io/">Inicio</a><a href="https://rc2consulting.github.io/services-es.html">Servicios</a><a href="https://rc2consulting.github.io/who-we-help-es.html">A Quién Ayudamos</a><a href="https://rc2consulting.github.io/about-es.html">Nosotros</a><a href="https://rc2consulting.github.io/RC2_Resources_Page-es.html">Recursos</a><a href="https://rc2consulting.github.io/contact-es.html">Contacto</a></div>
+  <div class="fc">© 2026 RC2 Consulting, LLC &nbsp;|&nbsp; Privacy Policy &nbsp;|&nbsp; Terms of Service</div>
+</footer>
+
+<script>
+// Domain config: {items, weights, max}
+const DOMAINS = {
+  1:{items:5,weights:[3,3,2,2,2],max:50,displayMax:30},
+  2:{items:5,weights:[3,2,2,2,1],max:50,displayMax:25},
+  3:{items:5,weights:[2,3,2,2,1],max:50,displayMax:25},
+  4:{items:5,weights:[3,2,2,2,1],max:50,displayMax:25},
+  5:{items:5,weights:[3,2,2,2,1],max:50,displayMax:25},
+  6:{items:4,weights:[2,2,1,1],max:30,displayMax:20}
+};
+
+function styleSelect(el){
+  el.className='score-sel';
+  const v=el.value;
+  if(v==='5') el.classList.add('s-5');
+  else if(v==='4') el.classList.add('s-4');
+  else if(v==='3') el.classList.add('s-3');
+  else if(v==='2') el.classList.add('s-2');
+  else if(v==='1') el.classList.add('s-1');
+}
+
+function calcAll(){
+  let composite=0, totalMax=150;
+  [1,2,3,4,5,6].forEach(d=>{
+    const cfg=DOMAINS[d];
+    let domainWtd=0, domainMaxWtd=0;
+    for(let i=1;i<=cfg.items;i++){
+      const el=document.getElementById('w'+d+'_'+i);
+      const sel=document.querySelector(`[data-domain="${d}"][data-weight="${cfg.weights[i-1]}"]:nth-of-type(${i})`);
+      // Use all selects in domain
+      const sels=document.querySelectorAll(`select[data-domain="${d}"]`);
+      const selEl=sels[i-1];
+      const w=cfg.weights[i-1];
+      const v=selEl?parseInt(selEl.value)||0:0;
+      const wtd=v*w;
+      domainMaxWtd+=5*w;
+      domainWtd+=wtd;
+      if(el) el.textContent=v>0?wtd:'—';
+    }
+    // Scale to displayMax
+    const scaled=Math.round(domainWtd/domainMaxWtd*cfg.displayMax);
+    const pct=domainMaxWtd>0?Math.round(domainWtd/domainMaxWtd*100):0;
+    composite+=scaled;
+    const scorePct=cfg.displayMax>0?Math.round(scaled/cfg.displayMax*100):0;
+
+    document.getElementById('ds'+d).textContent=domainWtd>0?scaled:'—';
+    document.getElementById('dp'+d).style.width=pct+'%';
+    document.getElementById('d'+d+'-score').textContent=domainWtd>0?scaled:'—';
+    document.getElementById('d'+d+'-pf').style.width=pct+'%';
+    document.getElementById('df'+d+'-val').textContent=domainWtd>0?scaled:'—';
+    document.getElementById('df'+d+'-prog').style.width=scorePct+'%';
+  });
+
+  // Check if any scoring done
+  const anyDone=document.querySelectorAll('select.score-sel:not([value="0"])').length > 0 ||
+    Array.from(document.querySelectorAll('select.score-sel')).some(s=>s.value!=='0'&&s.value!=='');
+
+  if(!anyDone){
+    document.getElementById('dtot').textContent='—';
+    document.getElementById('verdict-bar').className='verdict-bar';
+    document.getElementById('verdict-bar').innerHTML='<div><div class="verdict-text">Evalúe cada dominio a continuación — su nivel de preparación FAR/DCAA aparece aquí en tiempo real</div><div class="verdict-sub">Califique cada elemento del 1 al 5: 1=No implementado · 3=Parcialmente implementado · 5=Totalmente implementado y documentado</div></div>';
+    ['tier-ready','tier-conditional','tier-not-ready'].forEach(id=>document.getElementById(id).classList.remove('active-res'));
+    return;
+  }
+
+  document.getElementById('dtot').textContent=composite;
+  const vbar=document.getElementById('verdict-bar');
+  ['tier-ready','tier-conditional','tier-not-ready'].forEach(id=>document.getElementById(id).classList.remove('active-res'));
+
+  if(composite>=115){
+    vbar.className='verdict-bar v-ready';
+    vbar.innerHTML=`<div><div class="verdict-text">✅ TIER 1 — CONTRACT READY — Score: ${composite}/150</div><div class="verdict-sub">Strong compliance posture. DCAA pre-award survey likely to pass. Continue monitoring and annual review cadence.</div></div>`;
+    document.getElementById('tier-ready').classList.add('active-res');
+  } else if(composite>=75){
+    vbar.className='verdict-bar v-conditional';
+    vbar.innerHTML=`<div><div class="verdict-text">⚠️ TIER 2 — CONDITIONAL READINESS — Score: ${composite}/150</div><div class="verdict-sub">Identifiable gaps present. Develop corrective action plan for domains below 15 points before pursuing cost-reimbursement contracts.</div></div>`;
+    document.getElementById('tier-conditional').classList.add('active-res');
+  } else {
+    vbar.className='verdict-bar v-not-ready';
+    vbar.innerHTML=`<div><div class="verdict-text">✗ TIER 3 — NOT CONTRACT READY — Score: ${composite}/150</div><div class="verdict-sub">Significant compliance gaps. Do not pursue cost-reimbursement or CPFF contracts. Remediate fundamental systems before submitting proposals.</div></div>`;
+    document.getElementById('tier-not-ready').classList.add('active-res');
+  }
+}
+</script>
+</body>
+</html>

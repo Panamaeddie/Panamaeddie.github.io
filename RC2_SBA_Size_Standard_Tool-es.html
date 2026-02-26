@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Herramienta de Estándar de Tamaño SBA | RC2 Consulting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--navy:#0B2545;--blue:#1A4A8A;--lb:#2563EB;--bg:#F4F6FA;--w:#FFFFFF;--txt:#1C2B3A;--mu:#4A5568;--bdr:#E2E8F0;--sg:#1A7A4E;--sbg:#EBF7F2;--wg:#854D0E;--wbg:#FFFBEB;--dg:#9B1C1C;--dbg:#FEF2F2}
+    body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--txt);margin:0;line-height:1.6}
+    .topnav{background:var(--navy);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+    .nav-brand{display:flex;align-items:center;gap:8px;text-decoration:none}
+    .nav-logo-mark{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center}
+    .nav-logo-mark sup{font-size:.5rem;vertical-align:super}
+    .nav-brand-name{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.9)}
+    .nav-links{display:flex;gap:4px;list-style:none}
+    .nav-links a{color:rgba(255,255,255,.78);text-decoration:none;font-size:.83rem;font-weight:600;padding:6px 12px;border-radius:4px;white-space:nowrap}
+    .nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+    .nav-links a.active{color:#fff;background:rgba(255,255,255,.12)}
+    .hero{background:linear-gradient(to bottom,rgba(11,37,69,.88),rgba(11,37,69,.7)),url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1400&q=80') center/cover no-repeat;padding:56px 40px 48px}
+    .hero-inner{max-width:960px;margin:0 auto}
+    .atag{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:4px 12px;border-radius:10px;margin-bottom:14px}
+    .hero h1{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:#fff;line-height:1.2;margin-bottom:8px}
+    .hero-sub{font-size:.9rem;color:rgba(255,255,255,.75);margin-bottom:14px;max-width:680px;line-height:1.6}
+    .hmeta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .hmeta span{font-size:.8rem;color:rgba(255,255,255,.6)}
+    .hmeta .dv{color:rgba(255,255,255,.3)}
+    .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+    .btn-back{display:inline-flex;align-items:center;gap:6px;color:var(--lb);text-decoration:none;font-size:.84rem;font-weight:600;margin:24px 0 0}
+
+    /* CALCULATOR BLOCK */
+    .calc-block{background:var(--w);border-radius:10px;border:1px solid var(--bdr);box-shadow:0 2px 8px rgba(11,37,69,.06);margin:28px 0 20px;overflow:hidden}
+    .cb-hdr{background:var(--navy);padding:16px 24px}
+    .cb-hdr h2{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:4px}
+    .cb-hdr p{font-size:.78rem;color:rgba(255,255,255,.65)}
+    .cb-body{padding:28px 28px 24px}
+
+    /* SECTOR GRID */
+    .sector-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px}
+    .sec-btn{padding:12px 10px;border-radius:8px;border:2px solid var(--bdr);background:var(--bg);font-size:.78rem;font-weight:700;color:var(--mu);cursor:pointer;font-family:'Source Sans 3',sans-serif;transition:all .2s;text-align:center;line-height:1.3}
+    .sec-btn:hover{border-color:var(--lb);color:var(--lb);background:#EFF6FF}
+    .sec-btn.sel{background:var(--navy);border-color:var(--navy);color:#fff}
+
+    /* NAICS SELECTOR */
+    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+    .field-group{display:flex;flex-direction:column;gap:6px}
+    .field-label{font-size:.72rem;font-weight:700;color:var(--mu);letter-spacing:.6px;text-transform:uppercase}
+    .field-sel{border:1.5px solid var(--bdr);border-radius:6px;padding:10px 12px;font-size:.88rem;color:var(--navy);font-family:'Source Sans 3',sans-serif;outline:none;background:var(--bg);cursor:pointer;transition:border-color .2s}
+    .field-sel:focus{border-color:var(--lb);background:#fff}
+    .field-input{border:1.5px solid var(--bdr);border-radius:6px;padding:10px 12px;font-size:.88rem;color:var(--navy);font-family:'Source Sans 3',sans-serif;outline:none;background:var(--bg);transition:border-color .2s;width:100%}
+    .field-input:focus{border-color:var(--lb);background:#fff}
+    .field-sub{font-size:.72rem;color:var(--mu);margin-top:3px}
+
+    /* RESULT CARD */
+    .result-card{border-radius:10px;padding:24px 28px;border:2px solid var(--bdr);transition:all .4s;margin-top:4px;min-height:120px}
+    .result-card.r-small{background:var(--sbg);border-color:#6EE7B7}
+    .result-card.r-large{background:var(--dbg);border-color:#FECACA}
+    .result-card.r-margin{background:var(--wbg);border-color:#FDE68A}
+    .result-card.r-default{background:var(--bg);border-color:var(--bdr)}
+    .result-status{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;margin-bottom:6px;line-height:1}
+    .r-small .result-status{color:var(--sg)}
+    .r-large .result-status{color:var(--dg)}
+    .r-margin .result-status{color:var(--wg)}
+    .r-default .result-status{color:var(--mu)}
+    .result-detail{font-size:.86rem;color:var(--mu);line-height:1.65;margin-bottom:10px}
+    .result-badges{display:flex;gap:8px;flex-wrap:wrap}
+    .rbadge{display:inline-block;font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:10px}
+    .rb-green{background:var(--sbg);color:var(--sg);border:1px solid #6EE7B7}
+    .rb-red{background:var(--dbg);color:var(--dg);border:1px solid #FECACA}
+    .rb-yellow{background:var(--wbg);color:var(--wg);border:1px solid #FDE68A}
+    .rb-blue{background:#EFF6FF;color:#1D4ED8;border:1px solid #BFDBFE}
+
+    /* STANDARDS TABLE */
+    .std-block{background:var(--w);border-radius:10px;border:1px solid var(--bdr);box-shadow:0 2px 8px rgba(11,37,69,.06);margin-bottom:20px;overflow:hidden}
+    .std-hdr{background:var(--navy);padding:12px 22px}
+    .std-hdr h3{font-size:.86rem;font-weight:700;color:#fff}
+    .std-table{width:100%;border-collapse:collapse;font-size:.82rem}
+    .std-table th{background:var(--bg);padding:10px 14px;text-align:left;font-size:.72rem;font-weight:700;color:var(--mu);border-bottom:2px solid var(--bdr);letter-spacing:.4px}
+    .std-table td{padding:10px 14px;border-bottom:1px solid var(--bdr);color:var(--mu);vertical-align:top}
+    .std-table td:first-child{font-weight:600;color:var(--navy)}
+    .std-table tr:nth-child(even) td{background:var(--bg)}
+    .std-table tr:last-child td{border-bottom:none}
+    .std-table tr:hover td{background:#FAFBFD}
+    .std-highlight{background:#EFF6FF !important;border-left:3px solid var(--lb)}
+    .std-highlight td{color:var(--navy) !important;font-weight:600 !important}
+    .size-type{display:inline-block;font-size:.66rem;font-weight:700;padding:2px 7px;border-radius:10px}
+    .st-rev{background:#EFF6FF;color:#1D4ED8}
+    .st-emp{background:#F0FDF4;color:#15803D}
+
+    /* DISCLAIMER */
+    .disclaimer{background:var(--wbg);border:1px solid #FDE68A;border-radius:8px;padding:14px 18px;margin:20px 0}
+    .disclaimer p{font-size:.8rem;color:var(--wg);line-height:1.65;margin:0}
+    .disclaimer strong{color:var(--navy)}
+
+    .sources{background:var(--bg);border-radius:8px;padding:18px 22px;margin:0 0 24px;border:1px solid var(--bdr)}
+    .sources h4{font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:10px}
+    .sources ul{list-style:none}
+    .sources li{font-size:.77rem;color:var(--mu);padding:3px 0;border-bottom:1px solid var(--bdr)}
+    .sources li:last-child{border-bottom:none}
+    .sources a{color:var(--lb);text-decoration:none}
+    .acta{background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:10px;padding:32px;text-align:center;margin-bottom:44px}
+    .acta h3{font-family:'Playfair Display',serif;font-size:1.35rem;color:#fff;margin-bottom:8px}
+    .acta p{font-size:.86rem;color:rgba(255,255,255,.78);margin-bottom:18px}
+    .btn-cta{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--blue);font-weight:700;font-size:.86rem;padding:11px 22px;border-radius:6px;text-decoration:none}
+    .site-footer{background:var(--blue);color:#fff;text-align:center;padding:36px 24px}
+    .ft{font-size:.9rem;color:rgba(255,255,255,.9);font-weight:600;letter-spacing:.5px;margin-bottom:10px}
+    .fl{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+    .fl a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.78rem}
+    .fc{font-size:.73rem;color:rgba(255,255,255,.5)}
+    @media(max-width:720px){.sector-grid{grid-template-columns:repeat(2,1fr)}.field-row{grid-template-columns:1fr}.topnav{padding:0 14px}.nav-links a{padding:5px 7px;font-size:.76rem}}
+
+    .nav-lang { display:flex; gap:4px; margin-left:16px; }
+    .lang-btn { color:rgba(255,255,255,0.6); text-decoration:none; font-size:0.78rem; font-weight:700; padding:4px 8px; border-radius:4px; border:1px solid transparent; transition:all 0.2s; }
+    .lang-btn:hover { color:white; border-color:rgba(255,255,255,0.3); }
+    .lang-btn.active { color:white; background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.3); }
+  </style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="https://rc2consulting.github.io/" class="nav-brand">
+    <div class="nav-logo-mark">RC<sup>2</sup></div>
+    <span class="nav-brand-name">Consulting</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://rc2consulting.github.io/">Inicio</a></li>
+    <li><a href="https://rc2consulting.github.io/services-es.html">Servicios</a></li>
+    <li><a href="https://rc2consulting.github.io/who-we-help-es.html">A Quién Ayudamos</a></li>
+    <li><a href="https://rc2consulting.github.io/about-es.html">Nosotros</a></li>
+    <li><a href="https://rc2consulting.github.io/RC2_Resources_Page.html" class="active">Recursos</a></li>
+    <li><a href="https://rc2consulting.github.io/contact-es.html">Contacto</a></li>
+  </ul>
+  <div class="nav-lang">
+    <a href="https://rc2consulting.github.io/RC2_SBA_Size_Standard_Tool.html" class="lang-btn">EN</a>
+    <a href="#" class="lang-btn active">ES</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="atag">Government Contracting Tool</span>
+    <h1>Herramienta de Estándar de Tamaño SBA</h1>
+    <p class="hero-sub">Seleccione su sector industrial y código NAICS, luego ingrese sus ingresos anuales y número de empleados. Su determinación de pequeña empresa SBA se calcula en tiempo real — incluyendo qué contratos reservados de certificación califica.</p>
+    <div class="hmeta">
+      <span>RC2 Consulting</span><span class="dv">|</span>
+      <span>2026</span><span class="dv">|</span>
+      <span>Based on SBA Table of Size Standards, Effective March 2023</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <a href="https://rc2consulting.github.io/RC2_Resources_Page.html" class="btn-back">← Volver a Recursos</a>
+
+  <!-- CALCULATOR -->
+  <div class="calc-block">
+    <div class="cb-hdr">
+      <h2>Calculadora de Estándar de Tamaño</h2>
+      <p>Ingrese su código NAICS principal, ingresos anuales promedio de 3 años y número de empleados — su determinación de tamaño aparece al instante</p>
+    </div>
+    <div class="cb-body">
+      <!-- SECTOR BUTTONS -->
+      <div style="font-size:.72rem;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px">Paso 1 — Seleccione su Sector Industrial</div>
+      <div class="sector-grid" id="sector-grid">
+        <button class="sec-btn" onclick="setSector(this,'mfg')">🏭 Manufacturing<br><span style="font-weight:400;font-size:.72rem">NAICS 31–33</span></button>
+        <button class="sec-btn" onclick="setSector(this,'const')">🏗️ Construction<br><span style="font-weight:400;font-size:.72rem">NAICS 23</span></button>
+        <button class="sec-btn" onclick="setSector(this,'retail')">🛒 Retail Trade<br><span style="font-weight:400;font-size:.72rem">NAICS 44–45</span></button>
+        <button class="sec-btn" onclick="setSector(this,'wholesale')">📦 Wholesale Trade<br><span style="font-weight:400;font-size:.72rem">NAICS 42</span></button>
+        <button class="sec-btn" onclick="setSector(this,'services')">💼 Professional Services<br><span style="font-weight:400;font-size:.72rem">NAICS 54</span></button>
+        <button class="sec-btn" onclick="setSector(this,'it')">💻 IT / Tech Services<br><span style="font-weight:400;font-size:.72rem">NAICS 51, 54151x</span></button>
+        <button class="sec-btn" onclick="setSector(this,'health')">🏥 Healthcare<br><span style="font-weight:400;font-size:.72rem">NAICS 62</span></button>
+        <button class="sec-btn" onclick="setSector(this,'other')">📋 Other / Admin<br><span style="font-weight:400;font-size:.72rem">NAICS 56, 61, 71, 81</span></button>
+      </div>
+
+      <!-- NAICS + INPUTS -->
+      <div style="font-size:.72rem;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px">Paso 2 — Ingrese los Detalles del Negocio</div>
+      <div class="field-row">
+        <div class="field-group">
+          <label class="field-label">Industry / NAICS Code</label>
+          <select class="field-sel" id="naics-sel" onchange="calcSize()">
+            <option value="">— Seleccione sector arriba primero —</option>
+          </select>
+          <span class="field-sub" id="naics-std-label">El estándar de tamaño aparecerá aquí</span>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Código NAICS Principal (ingreso manual)</label>
+          <input class="field-input" type="text" id="manual-naics" placeholder="e.g. 315990" maxlength="6" oninput="calcSize()"/>
+          <span class="field-sub">Opcional — anula la selección del menú desplegable</span>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Ingresos Anuales Promedio de 3 Años ($)</label>
+          <input class="field-input" type="number" id="revenue" placeholder="e.g. 4500000" oninput="calcSize()"/>
+          <span class="field-sub">Incluya todos los ingresos de afiliados según las reglas de afiliación SBA (13 CFR § 121.103)</span>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Total de Empleados (promedio, 12 meses)</label>
+          <input class="field-input" type="number" id="employees" placeholder="e.g. 85" oninput="calcSize()"/>
+          <span class="field-sub">Incluya todos los empleados de afiliados — tiempo completo, parcial y temporales</span>
+        </div>
+      </div>
+
+      <!-- RESULT -->
+      <div class="result-card r-default" id="result-card">
+        <div class="result-status" id="result-status">Ingrese su industria y detalles del negocio arriba</div>
+        <div class="result-detail" id="result-detail">Su determinación de pequeña empresa SBA y elegibilidad para contratos reservados aplicables aparecerán aquí en tiempo real a medida que complete los campos.</div>
+        <div class="result-badges" id="result-badges"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIZE STANDARDS REFERENCE TABLE -->
+  <div class="std-block">
+    <div class="std-hdr"><h3>Referencia de Estándares de Tamaño SBA — Industrias Clave (Vigente desde Marzo 2023)</h3></div>
+    <table class="std-table">
+      <thead>
+        <tr>
+          <th>Código NAICS</th>
+          <th>Industria / Descripción</th>
+          <th>Estándar de Tamaño</th>
+          <th>Base</th>
+          <th>¿Elegible para Contratos Reservados?</th>
+        </tr>
+      </thead>
+      <tbody id="std-table-body">
+        <tr><td>311</td><td>Manufactura de Alimentos</td><td>$47M</td><td><span class="size-type st-rev">Revenue</span></td><td>✅ Sí, si está bajo el estándar</td></tr>
+        <tr><td>315</td><td>Manufactura de Prendas</td><td>500 employees</td><td><span class="size-type st-emp">Employees</span></td><td>✅ Sí, si está bajo el estándar</td></tr>
+        <tr><td>316</td><td>Cuero / Productos Afines</td><td>500 employees</td><td><span class="size-type st-emp">Employees</span></td><td>✅ Sí, si está bajo el estándar</td></tr>
+        <tr><td>236</td><td>Construcción de Edificios</td><td>$45M</td><td><span class="size-type st-rev">Revenue</span></td><td>✅ Sí, si está bajo el estándar</td></tr>
+        <tr><td>238</td><td>Contratistas de Especialidad</td><td>$22M</td><td><span class="size-type st-rev">Revenue</span></td><td>✅ Sí, si está bajo el estándar</td></tr>
+        <tr><td>423–424</td><td>Comercio Mayorista (Comerciante)</td><td>250–500 employees</td><td><span class="size-type st-emp">Employees</span></td><td>✅ Sí, si está bajo el estándar</td></tr>
+        <tr><td>481</td><td>Transporte Aéreo</td><td>1,500 employees</td><td><span class="size-type st-emp">Employees</span></td><td>✅ Sí, si está bajo el estándar</td></tr>
+        <tr><td>484</td><td>Transporte de Carga</td><td>$34M</td><td><span class="size-type st-rev">Revenue</span></td><td>✅ Sí, si está bajo el estándar</td></tr>
+        <tr><td>511–519</td><td>Información / Medios</td><td>$47M–$47M</td><td><span class="size-type st-rev">Revenue</span></td><td>✅ Sí, si está bajo el estándar</td></tr>
+        <tr><td>5415</td><td>Diseño de Sistemas Informáticos y Servicios Afines</td><td>$34M</td><td><span class="size-type st-rev">Revenue</span></td><td>✅ Sí, si está bajo el estándar</td></tr>
+        <tr><td>5416</td><td>Consultoría Gerencial / Científica</td><td>$19M–$47M</td><td><span class="size-type st-rev">Revenue</span></td><td>✅ Sí, si está bajo el estándar</td></tr>
+        <tr><td>5417</td><td>Servicios de I&D Científica</td><td>$34M–$47M or 1,000 employees</td><td><span class="size-type st-rev">Revenue</span></td><td>✅ Sí, si está bajo el estándar</td></tr>
+        <tr><td>5418</td><td>Publicidad / Relaciones Públicas</td><td>$19M</td><td><span class="size-type st-rev">Revenue</span></td><td>✅ Sí, si está bajo el estándar</td></tr>
+        <tr><td>561</td><td>Servicios Administrativos y de Apoyo</td><td>$19M–$47M</td><td><span class="size-type st-rev">Revenue</span></td><td>✅ Sí, si está bajo el estándar</td></tr>
+        <tr><td>562</td><td>Gestión de Residuos / Remediación</td><td>$19M–$47M</td><td><span class="size-type st-rev">Revenue</span></td><td>✅ Sí, si está bajo el estándar</td></tr>
+        <tr><td>611</td><td>Servicios Educativos</td><td>$12M–$47M</td><td><span class="size-type st-rev">Revenue</span></td><td>✅ Sí, si está bajo el estándar</td></tr>
+        <tr><td>621</td><td>Atención Médica Ambulatoria</td><td>$19M–$47M</td><td><span class="size-type st-rev">Revenue</span></td><td>✅ Sí, si está bajo el estándar</td></tr>
+        <tr><td>811</td><td>Reparación y Mantenimiento</td><td>$9M–$19M</td><td><span class="size-type st-rev">Revenue</span></td><td>✅ Sí, si está bajo el estándar</td></tr>
+      </tbody>
+    </table>
+    <div style="padding:12px 16px;background:var(--bg);border-top:1px solid var(--bdr)">
+      <p style="font-size:.75rem;color:var(--mu)"><strong>Important:</strong> This table reflects commonly referenced size standards. Always verify your specific NAICS 6-digit code at the official SBA Size Standards Tool at <a href="https://www.sba.gov/document/support--table-size-standards" style="color:var(--lb)">sba.gov</a>. Los ingresos y empleados de los afiliados deben combinarse bajo las reglas de afiliación SBA — consulte a un abogado para estructuras de propiedad complejas.</p>
+    </div>
+  </div>
+
+  <!-- AFFILIATION RULES -->
+  <div style="background:var(--w);border-radius:10px;border:1px solid var(--bdr);box-shadow:0 2px 8px rgba(11,37,69,.06);margin-bottom:20px;overflow:hidden">
+    <div style="background:var(--navy);padding:12px 22px"><h3 style="font-size:.86rem;font-weight:700;color:#fff">Reglas de Afiliación SBA — Lo que la Mayoría de los Negocios Subestima</h3></div>
+    <div style="padding:20px 24px">
+      <p style="font-size:.86rem;color:var(--mu);line-height:1.75;margin-bottom:12px">The SBA's affiliation rules (13 CFR § 121.103) require that the revenues <em>and</em> employees of all affiliated businesses be combined when determining whether a company qualifies as small. Affiliation exists when one entity has the power to control another — through ownership, management, contractual relationships, or economic dependence. The following relationships commonly trigger affiliation:</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
+        <div style="background:var(--dbg);border-radius:6px;padding:12px 14px;border:1px solid #FECACA"><div style="font-size:.72rem;font-weight:700;color:var(--dg);margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px">⚠ Desencadena Afiliación</div><div style="font-size:.8rem;color:var(--mu);line-height:1.55">Propiedad 50%+ por el mismo individuo / entidad en múltiples negocios · Gestión compartida o personal clave entre empresas · Dependencia económica (&gt;70% de ingresos de un cliente) · Inversiones, instalaciones o equipos compartidos</div></div>
+        <div style="background:var(--sbg);border-radius:6px;padding:12px 14px;border:1px solid #6EE7B7"><div style="font-size:.72rem;font-weight:700;color:var(--sg);margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px">✓ Generalmente Seguro</div><div style="font-size:.8rem;color:var(--mu);line-height:1.55">Propiedad minoritaria sin derechos de control · Relaciones con clientes a distancia · Acuerdos de equipo sin gestión compartida · Relaciones de franquicia (el franquiciado se mide de forma independiente)</div></div>
+      </div>
+      <p style="font-size:.8rem;color:var(--mu);line-height:1.65">Las determinaciones de afiliación son específicas a los hechos y dependen del contexto. Si su negocio tiene alguna propiedad, gestión o relaciones contractuales compartidas con otras entidades, consulte a un abogado calificado en SBA antes de certificar su estatus de tamaño. La falsa certificación de tamaño activa la responsabilidad bajo la Ley de Falsas Reclamaciones. Fuente: 13 CFR § 121.103; Decisiones de Protesta de Tamaño SBA OHA.</p>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <p><strong>Important Disclaimer:</strong> This tool provides general educational guidance based on publicly available SBA size standards. It does not constitute a legal size determination. Size standards are subject to change, and your specific NAICS code classification and affiliation analysis may vary. Always verify your size status using the official <a href="https://www.sba.gov/document/support--table-size-standards" style="color:var(--lb)">SBA Table of Size Standards</a> and the <a href="https://www.sba.gov/size" style="color:var(--lb)">SBA Size Standards Tool</a> before certifying your size status in any federal procurement. False size certification is a federal violation.</p>
+  </div>
+
+  <div class="sources">
+    <h4>Sources & Regulatory References</h4>
+    <ul>
+      <li>SBA — Table of Small Business Size Standards, Effective March 2023 — <a href="https://www.sba.gov/document/support--table-size-standards" target="_blank">sba.gov</a></li>
+      <li>SBA — Size Standards Methodology White Paper (2019, updated 2023) — <a href="https://www.sba.gov" target="_blank">sba.gov</a></li>
+      <li>13 CFR Part 121 — SBA Size Standards Regulations — <a href="https://www.ecfr.gov" target="_blank">ecfr.gov</a></li>
+      <li>13 CFR § 121.103 — SBA Affiliation Rules — <a href="https://www.ecfr.gov" target="_blank">ecfr.gov</a></li>
+      <li>FAR 19.301 — Representation by the Offeror on Small Business Size — <a href="https://www.acquisition.gov" target="_blank">acquisition.gov</a></li>
+    </ul>
+  </div>
+  <div class="acta">
+    <h3>¿Preguntas Sobre su Determinación de Tamaño?</h3>
+    <p>RC2 Consulting ayuda a los negocios a comprender su clasificación de tamaño, riesgo de afiliación y elegibilidad de certificación antes de presentarse a agencias federales.</p>
+    <a href="https://rc2consulting.github.io/contact.html" class="btn-cta">Agendar una Revisión de Tamaño y Certificación →</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="ft">Claridad Operacional. Confianza en el Cumplimiento. Sistemas que Escalan.</div>
+  <div class="fl"><a href="https://rc2consulting.github.io/">Inicio</a><a href="https://rc2consulting.github.io/services-es.html">Servicios</a><a href="https://rc2consulting.github.io/who-we-help-es.html">A Quién Ayudamos</a><a href="https://rc2consulting.github.io/about-es.html">Nosotros</a><a href="https://rc2consulting.github.io/RC2_Resources_Page-es.html">Recursos</a><a href="https://rc2consulting.github.io/contact-es.html">Contacto</a></div>
+  <div class="fc">© 2026 RC2 Consulting, LLC &nbsp;|&nbsp; Privacy Policy &nbsp;|&nbsp; Terms of Service</div>
+</footer>
+
+<script>
+// Size standards data: {naicsCode, label, stdRev (M), stdEmp, basis ('rev'|'emp'|'both')}
+const SECTORS = {
+  mfg:[
+    {v:'311xxx',l:'Food Manufacturing (311)',rev:47,emp:null,basis:'rev'},
+    {v:'3133',l:'Textile Mills (313)',rev:null,emp:1000,basis:'emp'},
+    {v:'3141',l:'Textile Furnishings Mills (314)',rev:null,emp:500,basis:'emp'},
+    {v:'315',l:'Apparel Manufacturing (315)',rev:null,emp:500,basis:'emp'},
+    {v:'316',l:'Leather & Allied Products (316)',rev:null,emp:500,basis:'emp'},
+    {v:'321',l:'Wood Product Manufacturing (321)',rev:null,emp:500,basis:'emp'},
+    {v:'322',l:'Paper Manufacturing (322)',rev:null,emp:750,basis:'emp'},
+    {v:'332',l:'Fabricated Metal Products (332)',rev:null,emp:500,basis:'emp'},
+    {v:'334',l:'Computer/Electronic Mfg (334)',rev:null,emp:750,basis:'emp'},
+    {v:'339',l:'Misc Manufacturing (339)',rev:null,emp:500,basis:'emp'},
+  ],
+  const:[
+    {v:'2361',l:'Residential Building Construction (236)',rev:45,emp:null,basis:'rev'},
+    {v:'2362',l:'Nonresidential Building Construction',rev:45,emp:null,basis:'rev'},
+    {v:'237',l:'Heavy & Civil Engineering Construction (237)',rev:45,emp:null,basis:'rev'},
+    {v:'238',l:'Specialty Trade Contractors (238)',rev:22,emp:null,basis:'rev'},
+  ],
+  retail:[
+    {v:'441',l:'Motor Vehicle & Parts Dealers (441)',rev:34,emp:null,basis:'rev'},
+    {v:'444',l:'Building Material & Garden (444)',rev:47,emp:null,basis:'rev'},
+    {v:'445',l:'Grocery Stores (445)',rev:34,emp:null,basis:'rev'},
+    {v:'448',l:'Clothing & Clothing Accessories (448)',rev:34,emp:null,basis:'rev'},
+    {v:'452',l:'General Merchandise Stores (452)',rev:47,emp:null,basis:'rev'},
+    {v:'454',l:'Nonstore Retailers (454)',rev:19,emp:null,basis:'rev'},
+  ],
+  wholesale:[
+    {v:'4231',l:'Motor Vehicle Wholesale (423)',rev:null,emp:250,basis:'emp'},
+    {v:'4232',l:'Furniture Wholesale (423)',rev:null,emp:250,basis:'emp'},
+    {v:'4234',l:'Professional Equipment Wholesale',rev:null,emp:250,basis:'emp'},
+    {v:'4241',l:'Paper/Paperboard Wholesale (424)',rev:null,emp:250,basis:'emp'},
+    {v:'4245',l:'Apparel/Piece Goods Wholesale (424)',rev:null,emp:500,basis:'emp'},
+    {v:'4249',l:'Misc Nondurable Goods Wholesale',rev:null,emp:250,basis:'emp'},
+  ],
+  services:[
+    {v:'5411',l:'Legal Services (5411)',rev:19,emp:null,basis:'rev'},
+    {v:'5412',l:'Accounting / Tax Prep (5412)',rev:22,emp:null,basis:'rev'},
+    {v:'5413',l:'Architectural & Engineering (5413)',rev:19,emp:null,basis:'rev'},
+    {v:'5414',l:'Specialized Design Services (5414)',rev:19,emp:null,basis:'rev'},
+    {v:'5416',l:'Management Consulting (5416)',rev:19,emp:null,basis:'rev'},
+    {v:'5418',l:'Advertising & PR (5418)',rev:19,emp:null,basis:'rev'},
+    {v:'5419',l:'Other Professional Services (5419)',rev:19,emp:null,basis:'rev'},
+    {v:'561',l:'Administrative & Support Services (561)',rev:19,emp:null,basis:'rev'},
+  ],
+  it:[
+    {v:'5151',l:'Radio & TV Broadcasting (515)',rev:47,emp:null,basis:'rev'},
+    {v:'5182',l:'Data Processing & Hosting (518)',rev:34,emp:null,basis:'rev'},
+    {v:'5191',l:'Other Information Services (519)',rev:34,emp:null,basis:'rev'},
+    {v:'5415',l:'Computer Systems Design (5415)',rev:34,emp:null,basis:'rev'},
+    {v:'54151',l:'Custom Computer Programming (54151)',rev:34,emp:null,basis:'rev'},
+    {v:'54152',l:'Computer Systems Design Services',rev:34,emp:null,basis:'rev'},
+    {v:'5417',l:'Scientific R&D Services (5417)',rev:34,emp:null,basis:'rev'},
+  ],
+  health:[
+    {v:'6211',l:'Offices of Physicians (6211)',rev:19,emp:null,basis:'rev'},
+    {v:'6213',l:'Offices Allied Health Practitioners',rev:19,emp:null,basis:'rev'},
+    {v:'6214',l:'Outpatient Care Centers (6214)',rev:19,emp:null,basis:'rev'},
+    {v:'6215',l:'Medical & Diagnostic Labs',rev:19,emp:null,basis:'rev'},
+    {v:'6216',l:'Home Health Care Services (6216)',rev:19,emp:null,basis:'rev'},
+    {v:'6219',l:'Other Ambulatory Health Care',rev:19,emp:null,basis:'rev'},
+    {v:'622',l:'Hospitals (622)',rev:null,emp:1500,basis:'emp'},
+  ],
+  other:[
+    {v:'5611',l:'Office Admin Services (5611)',rev:19,emp:null,basis:'rev'},
+    {v:'5614',l:'Business Support Services (5614)',rev:19,emp:null,basis:'rev'},
+    {v:'5615',l:'Travel Arrangement Services (5615)',rev:19,emp:null,basis:'rev'},
+    {v:'5616',l:'Investigation & Security (5616)',rev:19,emp:null,basis:'rev'},
+    {v:'5617',l:'Services to Buildings (5617)',rev:19,emp:null,basis:'rev'},
+    {v:'6111',l:'Elementary & Secondary Schools',rev:12,emp:null,basis:'rev'},
+    {v:'7115',l:'Independent Artists (7115)',rev:12,emp:null,basis:'rev'},
+    {v:'8111',l:'Automotive Repair (8111)',rev:9,emp:null,basis:'rev'},
+    {v:'8121',l:'Personal Care Services (8121)',rev:9,emp:null,basis:'rev'},
+  ]
+};
+
+let currentStd = null;
+
+function setSector(btn, sector) {
+  document.querySelectorAll('.sec-btn').forEach(b=>b.classList.remove('sel'));
+  btn.classList.add('sel');
+  const sel = document.getElementById('naics-sel');
+  sel.innerHTML = '<option value="">— Select NAICS code —</option>';
+  (SECTORS[sector]||[]).forEach(item=>{
+    const opt = document.createElement('option');
+    opt.value = item.v;
+    opt.textContent = item.l;
+    opt.dataset.rev = item.rev||'';
+    opt.dataset.emp = item.emp||'';
+    opt.dataset.basis = item.basis;
+    sel.appendChild(opt);
+  });
+  currentStd = null;
+  calcSize();
+}
+
+function calcSize() {
+  const sel = document.getElementById('naics-sel');
+  const opt = sel.options[sel.selectedIndex];
+  const rev = parseFloat(document.getElementById('revenue').value)||0;
+  const emp = parseInt(document.getElementById('employees').value)||0;
+  const card = document.getElementById('result-card');
+  const statusEl = document.getElementById('result-status');
+  const detailEl = document.getElementById('result-detail');
+  const badgesEl = document.getElementById('result-badges');
+  const stdLabel = document.getElementById('naics-std-label');
+
+  let stdRev=null, stdEmp=null, basis='rev';
+  if(opt && opt.value && opt.dataset.basis) {
+    stdRev = opt.dataset.rev ? parseFloat(opt.dataset.rev) : null;
+    stdEmp = opt.dataset.emp ? parseInt(opt.dataset.emp) : null;
+    basis = opt.dataset.basis;
+  }
+
+  if(!opt || !opt.value) {
+    stdLabel.textContent='Select a NAICS code from the dropdown';
+    if(rev===0 && emp===0){
+      card.className='result-card r-default';
+      statusEl.textContent='Ingrese su industria y detalles del negocio arriba';
+      detailEl.textContent='Your SBA small business determination and applicable set-aside eligibility will appear here in real time.';
+      badgesEl.innerHTML='';
+      return;
+    }
+  }
+
+  if(stdRev) stdLabel.textContent=`Size standard: $${stdRev}M average annual receipts (3-year average)`;
+  else if(stdEmp) stdLabel.textContent=`Size standard: ${stdEmp.toLocaleString()} employees (including affiliates)`;
+
+  if((rev===0 && basis==='rev')||(emp===0 && basis==='emp')) {
+    card.className='result-card r-default';
+    statusEl.textContent='Enter your business data to see your determination';
+    detailEl.textContent='Fill in revenue and/or employee count above.';
+    badgesEl.innerHTML='';
+    return;
+  }
+
+  // Determine size
+  let isSmall = false, isMargin = false;
+  let metric='', threshold='', userVal='';
+
+  if(stdRev && basis==='rev'){
+    isSmall = rev <= stdRev*1e6;
+    isMargin = rev > stdRev*0.8*1e6 && rev <= stdRev*1e6;
+    metric='revenue'; threshold=`$${stdRev}M`;
+    userVal='$'+(rev/1e6).toFixed(2)+'M';
+  } else if(stdEmp && basis==='emp'){
+    isSmall = emp <= stdEmp;
+    isMargin = emp > stdEmp*0.85 && emp <= stdEmp;
+    metric='employees'; threshold=stdEmp.toLocaleString();
+    userVal=emp.toLocaleString();
+  } else if(!stdRev && !stdEmp) {
+    // Fallback general
+    card.className='result-card r-default';
+    statusEl.textContent='Verify your size at sba.gov';
+    detailEl.textContent='Your specific NAICS code has nuanced size standards — verify at the official SBA Size Standards Table.';
+    badgesEl.innerHTML='<span class="rbadge rb-blue"><a href="https://www.sba.gov/document/support--table-size-standards" target="_blank" style="color:inherit;text-decoration:none">→ SBA Size Standards Table</a></span>';
+    return;
+  }
+
+  if(isSmall && isMargin){
+    card.className='result-card r-margin';
+    statusEl.textContent='⚠ Small — But Near the Threshold';
+    detailEl.textContent=`Your ${metric} (${userVal}) is under the ${threshold} size standard — you currently qualify as a small business. However, you are within 15–20% of the threshold. Monitor revenue growth and affiliate changes carefully. Exceeding the standard at time of contract award or recertification triggers loss of small business status and potentially the contract itself.`;
+    badgesEl.innerHTML='<span class="rbadge rb-yellow">Small Business — Monitor Closely</span><span class="rbadge rb-yellow">Near Size Threshold</span><span class="rbadge rb-blue">Verify Affiliates</span>';
+  } else if(isSmall){
+    card.className='result-card r-small';
+    statusEl.textContent='✅ Qualifies as Small Business';
+    detailEl.textContent=`Your ${metric} (${userVal}) is under the ${threshold} size standard for this NAICS code. You qualify as a small business under SBA regulations, subject to proper affiliate calculation and size certification in SAM.gov. This makes you eligible for small business set-aside contracts, and potentially for 8(a), WOSB, HUBZone, SDVOSB, or VOSB set-asides if you meet additional program eligibility requirements.`;
+    badgesEl.innerHTML='<span class="rbadge rb-green">✓ Small Business Eligible</span><span class="rbadge rb-blue">May Qualify: 8(a)</span><span class="rbadge rb-blue">May Qualify: WOSB</span><span class="rbadge rb-blue">May Qualify: HUBZone</span><span class="rbadge rb-blue">May Qualify: SDVOSB/VOSB</span>';
+  } else {
+    card.className='result-card r-large';
+    statusEl.textContent='✗ Does NOT Qualify as Small Business';
+    detailEl.textContent=`Your ${metric} (${userVal}) exceeds the ${threshold} size standard for this NAICS code. You do not qualify as a small business under SBA regulations and are not eligible for small business set-aside contracts under this NAICS code. You may still compete for full-and-open competition federal contracts. Consider whether a different NAICS code better reflects your primary business activity — size standards vary significantly by code.`;
+    badgesEl.innerHTML='<span class="rbadge rb-red">✗ Exceeds Size Standard</span><span class="rbadge rb-yellow">Review NAICS Classification</span><span class="rbadge rb-yellow">Full-and-Open Competition Eligible</span>';
+  }
+}
+</script>
+</body>
+</html>
