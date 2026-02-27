@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Lista de Verificación de Inspección de Salud y Seguridad | RC2 Consulting</title>
+  <meta name="description" content="Lista de Verificación de Inspección de Salud y Seguridad — A structured facility inspection tool aligned to WRAP Principle 8 and OSHA general industry standards."/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:#0B2545; --blue:#1A4A8A; --light-blue:#2563EB;
+      --light-bg:#F4F6FA; --white:#FFFFFF;
+      --text:#1C2B3A; --text-muted:#4A5568; --border:#E2E8F0;
+      --success:#1A7A4E; --success-bg:#EBF7F2;
+      --warn:#854D0E; --warn-bg:#FFFBEB;
+      --danger:#9B1C1C; --danger-bg:#FEF2F2;
+      --gold:#C8922A;
+    }
+    body { font-family:'Source Sans 3',sans-serif; background:var(--light-bg); color:var(--text); margin:0; line-height:1.7; }
+
+    /* NAV */
+    .topnav { background:var(--navy); padding:0 40px; display:flex; align-items:center; justify-content:space-between; height:52px; position:sticky; top:0; z-index:200; box-shadow:0 2px 8px rgba(0,0,0,0.25); }
+    .nav-brand { display:flex; align-items:center; gap:8px; text-decoration:none; }
+    .nav-logo-mark { background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); color:white; font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; width:32px; height:32px; border-radius:6px; display:flex; align-items:center; justify-content:center; }
+    .nav-logo-mark sup { font-size:0.5rem; vertical-align:super; }
+    .nav-brand-name { font-size:0.88rem; font-weight:600; color:rgba(255,255,255,0.9); }
+    .nav-links { display:flex; gap:4px; list-style:none; }
+    .nav-links a { color:rgba(255,255,255,0.78); text-decoration:none; font-size:0.83rem; font-weight:600; padding:6px 12px; border-radius:4px; transition:all 0.2s; white-space:nowrap; }
+    .nav-links a:hover { color:white; background:rgba(255,255,255,0.1); }
+    .nav-links a.active { color:white; background:rgba(255,255,255,0.12); }
+    .nav-lang { display:flex; gap:4px; }
+    .lang-btn { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.78rem; font-weight:700; padding:4px 10px; border-radius:4px; border:1px solid rgba(255,255,255,0.2); transition:all 0.2s; }
+    .lang-btn:hover { color:white; border-color:rgba(255,255,255,0.5); }
+    .lang-btn.active { color:white; background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.4); }
+
+    /* HERO */
+    .hero { background:linear-gradient(160deg, var(--navy) 0%, #1A3A6B 55%, #0D2A5A 100%); padding:56px 40px 44px; position:relative; overflow:hidden; }
+    .hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 80% 40%, rgba(200,146,42,0.07) 0%, transparent 60%); pointer-events:none; }
+    .hero-inner { max-width:900px; margin:0 auto; position:relative; z-index:1; }
+    .atag { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.75); font-size:0.68rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:4px 14px; border-radius:20px; margin-bottom:14px; }
+    .hero h1 { font-family:'Playfair Display',serif; font-size:2rem; font-weight:700; color:white; line-height:1.25; margin-bottom:10px; }
+    .hero-sub { font-size:0.9rem; color:rgba(255,255,255,0.72); max-width:680px; line-height:1.7; margin-bottom:14px; }
+    .hero-meta { font-size:0.75rem; color:rgba(255,255,255,0.45); letter-spacing:0.3px; }
+    .hero-meta span { margin:0 10px; }
+
+    /* BACK LINK */
+    .back-link { max-width:900px; margin:20px auto 0; padding:0 40px; }
+    .back-link a { color:var(--light-blue); font-size:0.83rem; font-weight:600; text-decoration:none; }
+    .back-link a:hover { text-decoration:underline; }
+
+    /* LIVE DASHBOARD */
+    .dash { background:var(--navy); border-top:1px solid rgba(255,255,255,0.1); padding:18px 40px; }
+    .dash-inner { max-width:900px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr) auto; gap:16px; align-items:center; }
+    .dash-stat { text-align:center; }
+    .dash-val { font-family:'Playfair Display',serif; font-size:1.7rem; font-weight:700; color:white; line-height:1; }
+    .dash-lbl { font-size:0.62rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-top:3px; }
+    .verdict { text-align:center; }
+    .verdict-badge { display:inline-block; padding:8px 18px; border-radius:6px; font-size:0.8rem; font-weight:700; letter-spacing:0.5px; white-space:nowrap; }
+    .v-navy { background:rgba(255,255,255,0.1); color:rgba(255,255,255,0.7); border:1px solid rgba(255,255,255,0.15); }
+    .v-green { background:#065F46; color:#6EE7B7; border:1px solid #34D399; }
+    .v-yellow { background:#78350F; color:#FCD34D; border:1px solid #F59E0B; }
+    .v-red { background:#7F1D1D; color:#FCA5A5; border:1px solid #F87171; }
+
+    /* MAIN */
+    .page-wrap { max-width:900px; margin:0 auto; padding:32px 40px 60px; }
+
+    /* FACILITY INFO */
+    .facility-box { background:white; border:1px solid var(--border); border-radius:10px; padding:24px; margin-bottom:28px; }
+    .facility-box h3 { font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; color:var(--navy); margin-bottom:16px; padding-bottom:10px; border-bottom:2px solid var(--light-bg); }
+    .facility-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .facility-grid input, .facility-grid select { width:100%; padding:8px 12px; border:1px solid var(--border); border-radius:6px; font-size:0.85rem; font-family:'Source Sans 3',sans-serif; color:var(--text); background:var(--light-bg); }
+    .facility-grid input:focus, .facility-grid select:focus { outline:none; border-color:var(--light-blue); background:white; }
+    .field-label { font-size:0.73rem; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; color:var(--text-muted); margin-bottom:4px; }
+
+    /* SECTION CARD */
+    .section-card { background:white; border:1px solid var(--border); border-radius:10px; margin-bottom:20px; overflow:hidden; }
+    .section-header { background:linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%); padding:14px 20px; display:flex; align-items:center; justify-content:space-between; }
+    .section-title-wrap { display:flex; flex-direction:column; gap:2px; }
+    .section-title { font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; color:white; }
+    .section-ref { font-size:0.68rem; color:rgba(255,255,255,0.55); font-weight:600; letter-spacing:0.5px; text-transform:uppercase; }
+    .section-score-chip { background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.25); color:white; font-size:0.8rem; font-weight:700; padding:4px 12px; border-radius:20px; white-space:nowrap; }
+    .section-score-chip.chip-green { background:#065F46; border-color:#34D399; color:#6EE7B7; }
+    .section-score-chip.chip-yellow { background:#78350F; border-color:#F59E0B; color:#FCD34D; }
+    .section-score-chip.chip-red { background:#7F1D1D; border-color:#F87171; color:#FCA5A5; }
+
+    /* TABLE */
+    .check-table { width:100%; border-collapse:collapse; }
+    .check-table thead th { background:var(--light-bg); color:var(--text-muted); font-size:0.68rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:9px 14px; text-align:left; border-bottom:1px solid var(--border); }
+    .check-table thead th:nth-child(1) { width:40px; text-align:center; }
+    .check-table thead th:nth-child(3) { width:130px; text-align:center; }
+    .check-table thead th:nth-child(4) { width:100px; text-align:center; }
+    .check-table thead th:nth-child(5) { width:90px; text-align:center; }
+    .check-table tr { border-bottom:1px solid var(--border); }
+    .check-table tr:last-child { border-bottom:none; }
+    .check-table td { padding:11px 14px; font-size:0.83rem; vertical-align:middle; }
+    .check-table td:nth-child(1) { text-align:center; color:var(--text-muted); font-size:0.75rem; font-weight:700; }
+    .item-text { color:var(--text); font-weight:600; line-height:1.4; }
+    .item-ref { font-size:0.7rem; color:var(--text-muted); margin-top:2px; }
+    .crit-flag { display:inline-block; background:#FEF2F2; color:#9B1C1C; border:1px solid #FECACA; font-size:0.6rem; font-weight:700; padding:1px 6px; border-radius:4px; margin-left:6px; letter-spacing:0.5px; vertical-align:middle; }
+
+    /* RADIO BUTTONS */
+    .radio-group { display:flex; gap:6px; justify-content:center; }
+    .radio-group label { cursor:pointer; }
+    .radio-group input[type="radio"] { display:none; }
+    .radio-group label span { display:inline-block; width:32px; height:32px; border-radius:6px; border:2px solid var(--border); font-size:0.72rem; font-weight:700; display:flex; align-items:center; justify-content:center; transition:all 0.15s; color:var(--text-muted); }
+    .radio-group label span:hover { border-color:var(--light-blue); color:var(--light-blue); }
+    .radio-group input[type="radio"]:checked + span { border-color:transparent; color:white; }
+    .radio-pass input[type="radio"]:checked + span { background:#1A7A4E; border-color:#1A7A4E; }
+    .radio-fail input[type="radio"]:checked + span { background:#9B1C1C; border-color:#9B1C1C; }
+    .radio-na input[type="radio"]:checked + span { background:#4A5568; border-color:#4A5568; }
+
+    /* NOTES INPUT */
+    .notes-input { width:100%; padding:5px 8px; border:1px solid var(--border); border-radius:5px; font-size:0.75rem; font-family:'Source Sans 3',sans-serif; color:var(--text); background:var(--light-bg); resize:none; min-height:34px; }
+    .notes-input:focus { outline:none; border-color:var(--light-blue); background:white; }
+
+    /* SECTION TOTAL ROW */
+    .section-total-row td { background:var(--light-bg); font-weight:700; font-size:0.8rem; color:var(--navy); padding:9px 14px; }
+
+    /* RESULTS MATRIX */
+    .results-section { background:var(--navy); border-radius:12px; padding:28px; margin:32px 0; }
+    .results-section h2 { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; color:white; margin-bottom:20px; }
+    .results-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:24px; }
+    .result-row { display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:7px; }
+    .result-label { font-size:0.8rem; font-weight:600; color:rgba(255,255,255,0.75); }
+    .result-bar-wrap { width:100%; height:5px; background:rgba(255,255,255,0.12); border-radius:3px; margin-top:5px; }
+    .result-bar { height:100%; border-radius:3px; background:var(--light-blue); transition:width 0.4s ease; }
+    .result-val { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:white; min-width:40px; text-align:right; }
+    .result-total { grid-column:1/-1; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); }
+    .result-total .result-label { color:white; font-size:0.85rem; }
+    .result-total .result-val { font-size:1.3rem; }
+
+    /* TIER BOXES */
+    .tier-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+    .tier-box { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:8px; padding:14px; }
+    .tier-box h4 { font-size:0.78rem; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; margin-bottom:6px; }
+    .tier-box p { font-size:0.75rem; color:rgba(255,255,255,0.6); line-height:1.5; }
+    .tier-box.t-pass h4 { color:#6EE7B7; }
+    .tier-box.t-cond h4 { color:#FCD34D; }
+    .tier-box.t-fail h4 { color:#FCA5A5; }
+
+    /* ABOUT BOX */
+    .abstract-box { background:white; border:1px solid var(--border); border-left:4px solid var(--light-blue); border-radius:0 10px 10px 0; padding:22px 26px; margin-bottom:28px; }
+    .abstract-box h3 { font-family:'Playfair Display',serif; font-size:1.05rem; font-weight:700; color:var(--navy); margin-bottom:10px; }
+    .abstract-box p { font-size:0.85rem; color:var(--text-muted); line-height:1.7; margin-bottom:10px; }
+    .abstract-box p:last-child { margin-bottom:0; }
+    .abstract-box h4 { font-size:0.82rem; font-weight:700; color:var(--navy); margin:14px 0 8px; }
+    .how-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:14px 0; }
+    .how-card { background:var(--light-bg); border-radius:8px; padding:14px; }
+    .how-num { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; color:var(--navy); line-height:1; }
+    .how-card p { font-size:0.78rem; color:var(--text-muted); margin-top:6px; line-height:1.5; }
+    .score-key { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:12px; }
+    .key-item { border-radius:7px; padding:10px 12px; border:1px solid var(--border); }
+    .key-item strong { font-size:0.8rem; display:block; margin-bottom:3px; }
+    .key-item span { font-size:0.72rem; color:var(--text-muted); }
+    .k-pass { background:var(--success-bg); border-color:#BBF7D0; }
+    .k-pass strong { color:var(--success); }
+    .k-fail { background:var(--danger-bg); border-color:#FECACA; }
+    .k-fail strong { color:var(--danger); }
+    .k-na { background:var(--light-bg); border-color:var(--border); }
+    .k-na strong { color:var(--text-muted); }
+
+    /* SOURCES */
+    .sources { background:white; border:1px solid var(--border); border-radius:10px; padding:22px; margin-top:28px; }
+    .sources h3 { font-size:0.75rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--text-muted); margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--border); }
+    .sources ul { list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .sources li { font-size:0.8rem; color:var(--text-muted); padding-left:14px; position:relative; }
+    .sources li::before { content:'›'; position:absolute; left:0; color:var(--light-blue); font-weight:700; }
+    .sources a { color:var(--light-blue); text-decoration:none; }
+    .sources a:hover { text-decoration:underline; }
+
+    /* CTA */
+    .cta-box { background:linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%); border-radius:12px; padding:28px 32px; margin-top:32px; display:flex; justify-content:space-between; align-items:center; gap:24px; }
+    .cta-box h3 { font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:white; margin-bottom:6px; }
+    .cta-box p { font-size:0.82rem; color:rgba(255,255,255,0.7); max-width:500px; line-height:1.6; }
+    .cta-box a { display:inline-block; padding:11px 22px; background:var(--light-blue); color:white; text-decoration:none; border-radius:7px; font-size:0.83rem; font-weight:700; white-space:nowrap; }
+    .cta-box a:hover { background:#1D4ED8; }
+    .print-btn { display:block; text-align:center; margin:20px 0 0; }
+    .print-btn button { padding:10px 22px; background:white; color:var(--navy); border:1px solid var(--border); border-radius:7px; font-size:0.82rem; font-weight:700; cursor:pointer; font-family:'Source Sans 3',sans-serif; }
+    .print-btn button:hover { background:var(--light-bg); }
+
+    /* FOOTER */
+    .site-footer { background:var(--navy); padding:28px 40px; text-align:center; margin-top:60px; }
+    .footer-tagline { font-family:'Playfair Display',serif; font-size:0.9rem; color:rgba(255,255,255,0.5); margin-bottom:14px; font-style:italic; }
+    .footer-links { display:flex; justify-content:center; gap:24px; flex-wrap:wrap; margin-bottom:12px; }
+    .footer-links a { color:rgba(255,255,255,0.5); text-decoration:none; font-size:0.78rem; }
+    .footer-links a:hover { color:white; }
+    .footer-copy { font-size:0.72rem; color:rgba(255,255,255,0.3); }
+    .footer-copy a { color:rgba(255,255,255,0.4); text-decoration:none; }
+
+    @media print {
+      .topnav, .back-link, .cta-box, .print-btn, .site-footer { display:none; }
+      .dash { background:white; border:1px solid #ccc; }
+      .section-header { background:#0B2545 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      body { font-size:11px; }
+    }
+    @media(max-width:700px) {
+      .dash-inner { grid-template-columns:repeat(2,1fr); }
+      .facility-grid, .results-grid, .tier-grid, .how-grid, .score-key { grid-template-columns:1fr; }
+      .topnav { padding:0 16px; }
+      .page-wrap { padding:20px 16px 40px; }
+      .hero { padding:36px 16px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="https://rc2consulting.github.io/" class="nav-brand">
+    <div class="nav-logo-mark">RC<sup>2</sup></div>
+    <span class="nav-brand-name">Consulting</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://rc2consulting.github.io/index-es.html">Inicio</a></li>
+    <li><a href="https://rc2consulting.github.io/services-es.html">Servicios</a></li>
+    <li><a href="https://rc2consulting.github.io/who-we-help-es.html">A Quién Ayudamos</a></li>
+    <li><a href="https://rc2consulting.github.io/about-es.html">Nosotros</a></li>
+    <li><a href="https://rc2consulting.github.io/RC2_Resources_Page-es.html" class="active">Recursos</a></li>
+    <li><a href="https://rc2consulting.github.io/contact-es.html">Contacto</a></li>
+  </ul>
+  <div class="nav-lang">
+    <a href="https://rc2consulting.github.io/RC2_HS_Inspection_Checklist.html" class="lang-btn">EN</a>
+    <a href="#" class="lang-btn active">ES</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="atag">Herramienta de Cumplimiento</span>
+    <h1>Lista de Verificación de Inspección de Salud y Seguridad</h1>
+    <p class="hero-sub">Herramienta estructurada de inspección de instalaciones que cubre 8 dominios críticos de S&S alineados al Principio 8 de WRAP y los estándares de la industria general de OSHA. Puntúe cada elemento, identifique deficiencias y genere un resumen de acciones correctivas priorizado.</p>
+    <div class="hero-meta">
+      <span>RC2 Consulting</span><span>|</span><span>2026</span><span>|</span><span>Interactivo — Puntuación en Tiempo Real</span>
+    </div>
+  </div>
+</section>
+
+<div class="back-link"><a href="https://rc2consulting.github.io/RC2_Resources_Page-es.html">← Volver a Recursos</a></div>
+
+<!-- LIVE DASHBOARD -->
+<div class="dash">
+  <div class="dash-inner">
+    <div class="dash-stat">
+      <div class="dash-val" id="d-score">—</div>
+      <div class="dash-lbl">Puntuación Compuesta</div>
+    </div>
+    <div class="dash-stat">
+      <div class="dash-val" id="d-pass">0</div>
+      <div class="dash-lbl">Elementos Pasan</div>
+    </div>
+    <div class="dash-stat">
+      <div class="dash-val" id="d-fail">0</div>
+      <div class="dash-lbl">Elementos Fallan</div>
+    </div>
+    <div class="dash-stat">
+      <div class="dash-val" id="d-crit">0</div>
+      <div class="dash-lbl">Fallas Críticas</div>
+    </div>
+    <div class="verdict">
+      <div class="verdict-badge v-navy" id="d-verdict">⬜ Comenzar Inspección</div>
+    </div>
+  </div>
+</div>
+
+<div class="page-wrap">
+
+  <!-- ABOUT -->
+  <div class="abstract-box">
+    <h3>Acerca de Esta Lista de Verificación</h3>
+    <p>La Lista de Verificación de Salud y Seguridad RC2 es una herramienta de preparación a nivel de instalación diseñada para equipos internos de cumplimiento, gerentes de operaciones y preparación para auditorías PASA. Cubre los ocho dominios de S&S más frecuentemente auditados bajo el Principio 8 de WRAP, OSHA 29 CFR 1910 y el ILO OSH 2001 — incluyendo seguridad contra incendios, manejo de productos químicos, preparación para emergencias, EPP, protección de máquinas, seguridad eléctrica, saneamiento y reporte de incidentes.</p>
+    <p>Los elementos marcados con <strong>★ Crítico</strong> representan deficiencias que casi siempre generarán un hallazgo de auditoría o una citación regulatoria. Aborde estos primero. Todos los demás elementos representan el cumplimiento de mejores prácticas que debe documentarse y mantenerse.</p>
+    <h4>Cómo Usar Esta Lista de Verificación</h4>
+    <div class="how-grid">
+      <div class="how-card"><div class="how-num">1</div><p>Realice un recorrido físico de su instalación. Puntúe cada elemento basándose en las condiciones realmente observadas — no en las intenciones.</p></div>
+      <div class="how-card"><div class="how-num">2</div><p>Marque <strong>Pasa</strong>, <strong>Falla</strong> o <strong>N/A</strong> para cada elemento. Agregue notas para cualquier falla que identifique la deficiencia específica.</p></div>
+      <div class="how-card"><div class="how-num">3</div><p>Revise su puntuación compuesta y la lista de fallas prioritarias. Use los resultados para construir un plan de acción correctiva antes de su auditoría formal.</p></div>
+    </div>
+    <h4>Clave de Puntuación</h4>
+    <div class="score-key">
+      <div class="key-item k-pass"><strong>✓ Pasa</strong><span>Condición presente, documentada y verificable</span></div>
+      <div class="key-item k-fail"><strong>✗ Falla</strong><span>Condición ausente, incompleta o no verificable</span></div>
+      <div class="key-item k-na"><strong>N/A</strong><span>No aplica a esta instalación u operación</span></div>
+    </div>
+  </div>
+
+  <!-- FACILITY INFO -->
+  <div class="facility-box">
+    <h3>Información de la Instalación</h3>
+    <div class="facility-grid">
+      <div><div class="field-label">Nombre de la Instalación</div><input type="text" placeholder="Nombre de la Instalación / Empresa" oninput="calc()"/></div>
+      <div><div class="field-label">Fecha de Inspección</div><input type="date" oninput="calc()"/></div>
+      <div><div class="field-label">Dirección de la Instalación</div><input type="text" placeholder="Calle, Ciudad, País" oninput="calc()"/></div>
+      <div><div class="field-label">Industria / Tipo de Producto</div><input type="text" placeholder="Ej. Manufactura de Prendas" oninput="calc()"/></div>
+      <div><div class="field-label">Nombre e Cargo del Inspector</div><input type="text" placeholder="Nombre — Cargo" oninput="calc()"/></div>
+      <div><div class="field-label">Tipo de Inspección</div>
+        <select oninput="calc()">
+          <option>Pre-Auditoría Interna</option>
+          <option>Preparación PASA WRAP</option>
+          <option>Inspección Mensual de Rutina</option>
+          <option>Revisión Post-Incidente</option>
+          <option>Apoyo a Auditoría Externa</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="section-card">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <div class="section-title">Sección 1 — Seguridad Contra Incendios y Salidas de Emergencia</div>
+        <div class="section-ref">WRAP Principle 8 · OSHA 29 CFR 1910.38 · NFPA 101</div>
+      </div>
+      <div class="section-score-chip" id="chip-1">—</div>
+    </div>
+    <table class="check-table">
+      <thead><tr><th>#</th><th>Elemento de Inspección</th><th>Pasa / Falla / N/A</th><th>Indicador de Riesgo</th><th>Notas</th></tr></thead>
+      <tbody id="body-1">
+        <tr><td>1.1</td><td><div class="item-text">Extintores de incendios presentes en los lugares requeridos, inspeccionados en los últimos 12 meses y etiquetados con la fecha de inspección actual<span class="crit-flag">★ Crítico</span></div><div class="item-ref">OSHA 1910.157 · NFPA 10</div></td><td><div class="radio-group" data-crit="1" data-sec="1"><label class="radio-pass"><input type="radio" name="i1_1" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i1_1" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i1_1" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr><td>1.2</td><td><div class="item-text">Todas las salidas de emergencia despejadas, claramente marcadas con señales de SALIDA iluminadas, y las puertas abren hacia afuera sin llaves especiales<span class="crit-flag">★ Crítico</span></div><div class="item-ref">OSHA 1910.36–37 · NFPA 101</div></td><td><div class="radio-group" data-crit="1" data-sec="1"><label class="radio-pass"><input type="radio" name="i1_2" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i1_2" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i1_2" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr><td>1.3</td><td><div class="item-text">Plan de evacuación de emergencia publicado en el idioma del trabajador en todas las áreas de trabajo — puntos de reunión identificados</div><div class="item-ref">OSHA 1910.38 · WRAP P8</div></td><td><div class="radio-group" data-sec="1"><label class="radio-pass"><input type="radio" name="i1_3" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i1_3" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i1_3" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr><td>1.4</td><td><div class="item-text">Simulacro de incendio realizado en los últimos 12 meses — registros con fecha, hora, participantes y duración del simulacro mantenidos</div><div class="item-ref">OSHA 1910.38 · ILO OSH 2001</div></td><td><div class="radio-group" data-sec="1"><label class="radio-pass"><input type="radio" name="i1_4" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i1_4" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i1_4" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr><td>1.5</td><td><div class="item-text">Sistema de rociadores o sistema de supresión de incendios operativo e inspeccionado — sin cabezas de rociadores bloqueadas</div><div class="item-ref">NFPA 25 · OSHA 1910.159</div></td><td><div class="radio-group" data-sec="1"><label class="radio-pass"><input type="radio" name="i1_5" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i1_5" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i1_5" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr class="section-total-row"><td colspan="5">Puntuación Sección 1: <span id="st-1">—</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="section-card">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <div class="section-title">Sección 2 — Manejo de Productos Químicos y Materiales Peligrosos</div>
+        <div class="section-ref">WRAP Principle 8 · OSHA 29 CFR 1910.1200 (HazCom) · GHS</div>
+      </div>
+      <div class="section-score-chip" id="chip-2">—</div>
+    </div>
+    <table class="check-table">
+      <thead><tr><th>#</th><th>Elemento de Inspección</th><th>Pasa / Falla / N/A</th><th>Indicador de Riesgo</th><th>Notas</th></tr></thead>
+      <tbody id="body-2">
+        <tr><td>2.1</td><td><div class="item-text">Fichas de Datos de Seguridad (FDS/MSDS) presentes y accesibles para cada producto químico utilizado en el área de trabajo<span class="crit-flag">★ Crítico</span></div><div class="item-ref">OSHA 1910.1200(g) · GHS Rev 9</div></td><td><div class="radio-group" data-crit="1" data-sec="2"><label class="radio-pass"><input type="radio" name="i2_1" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i2_1" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i2_1" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr><td>2.2</td><td><div class="item-text">Todos los contenedores de productos químicos etiquetados con etiquetas conformes al GHS — contenedores secundarios etiquetados, sin contenedores sin etiqueta<span class="crit-flag">★ Crítico</span></div><div class="item-ref">OSHA 1910.1200(f) · GHS</div></td><td><div class="radio-group" data-crit="1" data-sec="2"><label class="radio-pass"><input type="radio" name="i2_2" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i2_2" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i2_2" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr><td>2.3</td><td><div class="item-text">Materiales peligrosos almacenados en áreas designadas y ventiladas — productos químicos incompatibles segregados</div><div class="item-ref">OSHA 1910.106 · NFPA 30</div></td><td><div class="radio-group" data-sec="2"><label class="radio-pass"><input type="radio" name="i2_3" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i2_3" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i2_3" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr><td>2.4</td><td><div class="item-text">Registros de capacitación en manejo de productos químicos mantenidos — trabajadores que manejan materiales peligrosos capacitados y documentados</div><div class="item-ref">OSHA 1910.1200(h) · WRAP P8</div></td><td><div class="radio-group" data-sec="2"><label class="radio-pass"><input type="radio" name="i2_4" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i2_4" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i2_4" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr><td>2.5</td><td><div class="item-text">Estaciones de lavaojos y duchas de emergencia presentes y accesibles a menos de 10 segundos de las áreas de riesgo químico — probadas semanalmente</div><div class="item-ref">OSHA 1910.151 · ANSI Z358.1</div></td><td><div class="radio-group" data-sec="2"><label class="radio-pass"><input type="radio" name="i2_5" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i2_5" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i2_5" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr class="section-total-row"><td colspan="5">Puntuación Sección 2: <span id="st-2">—</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="section-card">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <div class="section-title">Sección 3 — Equipo de Protección Personal (EPP)</div>
+        <div class="section-ref">WRAP Principle 8 · OSHA 29 CFR 1910.132–138</div>
+      </div>
+      <div class="section-score-chip" id="chip-3">—</div>
+    </div>
+    <table class="check-table">
+      <thead><tr><th>#</th><th>Elemento de Inspección</th><th>Pasa / Falla / N/A</th><th>Indicador de Riesgo</th><th>Notas</th></tr></thead>
+      <tbody id="body-3">
+        <tr><td>3.1</td><td><div class="item-text">Evaluación de riesgos de EPP completada, documentada y firmada por la gerencia — identifica el EPP requerido por tarea<span class="crit-flag">★ Crítico</span></div><div class="item-ref">OSHA 1910.132(d)</div></td><td><div class="radio-group" data-crit="1" data-sec="3"><label class="radio-pass"><input type="radio" name="i3_1" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i3_1" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i3_1" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr><td>3.2</td><td><div class="item-text">EPP requerido proporcionado sin costo para los trabajadores — inventario verificado, tallas disponibles, en buen estado</div><div class="item-ref">OSHA 1910.132(h) · WRAP P8</div></td><td><div class="radio-group" data-sec="3"><label class="radio-pass"><input type="radio" name="i3_2" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i3_2" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i3_2" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr><td>3.3</td><td><div class="item-text">Se observa a los trabajadores usando el EPP requerido en las áreas designadas — cumplimiento monitoreado y aplicado</div><div class="item-ref">OSHA 1910.132 · WRAP P8</div></td><td><div class="radio-group" data-sec="3"><label class="radio-pass"><input type="radio" name="i3_3" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i3_3" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i3_3" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr><td>3.4</td><td><div class="item-text">Registros de capacitación en EPP mantenidos — trabajadores capacitados en el uso correcto, mantenimiento y limitaciones del EPP asignado</div><div class="item-ref">OSHA 1910.132(f)</div></td><td><div class="radio-group" data-sec="3"><label class="radio-pass"><input type="radio" name="i3_4" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i3_4" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i3_4" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr class="section-total-row"><td colspan="5">Puntuación Sección 3: <span id="st-3">—</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="section-card">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <div class="section-title">Sección 4 — Protección de Máquinas y Seguridad de Equipos</div>
+        <div class="section-ref">WRAP Principle 8 · OSHA 29 CFR 1910.212–219</div>
+      </div>
+      <div class="section-score-chip" id="chip-4">—</div>
+    </div>
+    <table class="check-table">
+      <thead><tr><th>#</th><th>Elemento de Inspección</th><th>Pasa / Falla / N/A</th><th>Indicador de Riesgo</th><th>Notas</th></tr></thead>
+      <tbody id="body-4">
+        <tr><td>4.1</td><td><div class="item-text">Todas las partes móviles de las máquinas protegidas — sin peligros de rotación, corte o puntos de atrapamiento expuestos y accesibles a los trabajadores<span class="crit-flag">★ Crítico</span></div><div class="item-ref">OSHA 1910.212</div></td><td><div class="radio-group" data-crit="1" data-sec="4"><label class="radio-pass"><input type="radio" name="i4_1" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i4_1" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i4_1" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr><td>4.2</td><td><div class="item-text">Procedimientos de Bloqueo/Etiquetado (LOTO) escritos y publicados para todos los equipos de aislamiento de energía — trabajadores capacitados<span class="crit-flag">★ Crítico</span></div><div class="item-ref">OSHA 1910.147</div></td><td><div class="radio-group" data-crit="1" data-sec="4"><label class="radio-pass"><input type="radio" name="i4_2" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i4_2" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i4_2" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr><td>4.3</td><td><div class="item-text">Registros de mantenimiento preventivo para todos los equipos de producción — mantenimiento programado vigente y documentado</div><div class="item-ref">OSHA 1910.217 · WRAP P8</div></td><td><div class="radio-group" data-sec="4"><label class="radio-pass"><input type="radio" name="i4_3" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i4_3" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i4_3" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr><td>4.4</td><td><div class="item-text">Áreas de trabajo alrededor de la maquinaria libres de desorden — espacio adecuado mantenido para operación segura y acceso de emergencia</div><div class="item-ref">OSHA 1910.22 · WRAP P8</div></td><td><div class="radio-group" data-sec="4"><label class="radio-pass"><input type="radio" name="i4_4" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i4_4" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i4_4" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr class="section-total-row"><td colspan="5">Puntuación Sección 4: <span id="st-4">—</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="section-card">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <div class="section-title">Sección 5 — Seguridad Eléctrica</div>
+        <div class="section-ref">WRAP Principle 8 · OSHA 29 CFR 1910.301–399 · NFPA 70E</div>
+      </div>
+      <div class="section-score-chip" id="chip-5">—</div>
+    </div>
+    <table class="check-table">
+      <thead><tr><th>#</th><th>Elemento de Inspección</th><th>Pasa / Falla / N/A</th><th>Indicador de Riesgo</th><th>Notas</th></tr></thead>
+      <tbody id="body-5">
+        <tr><td>5.1</td><td><div class="item-text">Todos los tableros eléctricos etiquetados, accesibles (90 cm de espacio libre) y sin sobrecarga — sin breakers con doble conexión<span class="crit-flag">★ Crítico</span></div><div class="item-ref">OSHA 1910.303 · NFPA 70</div></td><td><div class="radio-group" data-crit="1" data-sec="5"><label class="radio-pass"><input type="radio" name="i5_1" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i5_1" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i5_1" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr><td>5.2</td><td><div class="item-text">Extensiones eléctricas usadas solo temporalmente — sin instalaciones permanentes de extensiones, cables dañados retirados del servicio</div><div class="item-ref">OSHA 1910.305(g)</div></td><td><div class="radio-group" data-sec="5"><label class="radio-pass"><input type="radio" name="i5_2" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i5_2" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i5_2" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr><td>5.3</td><td><div class="item-text">Puesta a tierra eléctrica verificada para todos los equipos — interruptores de falla a tierra (GFCI) instalados donde se requiere</div><div class="item-ref">OSHA 1910.304 · NFPA 70E</div></td><td><div class="radio-group" data-sec="5"><label class="radio-pass"><input type="radio" name="i5_3" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i5_3" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i5_3" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr class="section-total-row"><td colspan="5">Puntuación Sección 5: <span id="st-5">—</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="section-card">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <div class="section-title">Sección 6 — Primeros Auxilios y Preparación Médica</div>
+        <div class="section-ref">WRAP Principle 8 · OSHA 29 CFR 1910.151 · ILO OSH 2001</div>
+      </div>
+      <div class="section-score-chip" id="chip-6">—</div>
+    </div>
+    <table class="check-table">
+      <thead><tr><th>#</th><th>Elemento de Inspección</th><th>Pasa / Falla / N/A</th><th>Indicador de Riesgo</th><th>Notas</th></tr></thead>
+      <tbody id="body-6">
+        <tr><td>6.1</td><td><div class="item-text">Botiquines de primeros auxilios presentes, abastecidos al mínimo requerido, accesibles en todas las áreas de trabajo — registro de inventario mantenido</div><div class="item-ref">OSHA 1910.151 · ANSI Z308.1</div></td><td><div class="radio-group" data-sec="6"><label class="radio-pass"><input type="radio" name="i6_1" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i6_1" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i6_1" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr><td>6.2</td><td><div class="item-text">Personal capacitado en primeros auxilios identificado y publicado por área de trabajo — certificaciones vigentes en archivo<span class="crit-flag">★ Crítico</span></div><div class="item-ref">OSHA 1910.151(b) · WRAP P8</div></td><td><div class="radio-group" data-crit="1" data-sec="6"><label class="radio-pass"><input type="radio" name="i6_2" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i6_2" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i6_2" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr><td>6.3</td><td><div class="item-text">Números de contacto de emergencia e instalación médica más cercana publicados en todas las áreas de trabajo y estaciones de primeros auxilios</div><div class="item-ref">OSHA 1910.151 · WRAP P8</div></td><td><div class="radio-group" data-sec="6"><label class="radio-pass"><input type="radio" name="i6_3" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i6_3" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i6_3" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr class="section-total-row"><td colspan="5">Puntuación Sección 6: <span id="st-6">—</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="section-card">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <div class="section-title">Sección 7 — Saneamiento, Orden y Condiciones del Lugar de Trabajo</div>
+        <div class="section-ref">WRAP Principle 8 · OSHA 29 CFR 1910.22 · 1910.141</div>
+      </div>
+      <div class="section-score-chip" id="chip-7">—</div>
+    </div>
+    <table class="check-table">
+      <thead><tr><th>#</th><th>Elemento de Inspección</th><th>Pasa / Falla / N/A</th><th>Indicador de Riesgo</th><th>Notas</th></tr></thead>
+      <tbody id="body-7">
+        <tr><td>7.1</td><td><div class="item-text">Pisos de trabajo, pasillos y almacenes limpios, ordenados y secos — sin riesgos de resbalones o tropiezos, anchos de pasillos adecuados mantenidos</div><div class="item-ref">OSHA 1910.22</div></td><td><div class="radio-group" data-sec="7"><label class="radio-pass"><input type="radio" name="i7_1" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i7_1" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i7_1" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr><td>7.2</td><td><div class="item-text">Agua potable accesible para todos los trabajadores — cantidad suficiente, dispensación sanitaria</div><div class="item-ref">OSHA 1910.141(b)(1) · WRAP P8</div></td><td><div class="radio-group" data-sec="7"><label class="radio-pass"><input type="radio" name="i7_2" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i7_2" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i7_2" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr><td>7.3</td><td><div class="item-text">Instalaciones sanitarias adecuadas para el tamaño de la fuerza laboral, limpias, funcionales y accesibles durante las horas de trabajo</div><div class="item-ref">OSHA 1910.141(c) · WRAP P8</div></td><td><div class="radio-group" data-sec="7"><label class="radio-pass"><input type="radio" name="i7_3" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i7_3" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i7_3" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr><td>7.4</td><td><div class="item-text">Ventilación adecuada para el área de trabajo — polvo, humos y vapores químicos controlados a niveles de exposición seguros</div><div class="item-ref">OSHA 1910.94 · WRAP P8</div></td><td><div class="radio-group" data-sec="7"><label class="radio-pass"><input type="radio" name="i7_4" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i7_4" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i7_4" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr class="section-total-row"><td colspan="5">Puntuación Sección 7: <span id="st-7">—</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 8 -->
+  <div class="section-card">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <div class="section-title">Sección 8 — Reporte de Incidentes y Sistema de Gestión de Seguridad</div>
+        <div class="section-ref">WRAP Principle 8 · OSHA 29 CFR 1904 · ILO OSH 2001</div>
+      </div>
+      <div class="section-score-chip" id="chip-8">—</div>
+    </div>
+    <table class="check-table">
+      <thead><tr><th>#</th><th>Elemento de Inspección</th><th>Pasa / Falla / N/A</th><th>Indicador de Riesgo</th><th>Notas</th></tr></thead>
+      <tbody id="body-8">
+        <tr><td>8.1</td><td><div class="item-text">Procedimiento escrito de reporte de incidentes establecido — todos los trabajadores capacitados, formulario de reporte accesible en el idioma del trabajador<span class="crit-flag">★ Crítico</span></div><div class="item-ref">OSHA 1904 · WRAP P8</div></td><td><div class="radio-group" data-crit="1" data-sec="8"><label class="radio-pass"><input type="radio" name="i8_1" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i8_1" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i8_1" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr><td>8.2</td><td><div class="item-text">Registro OSHA 300 (o equivalente) mantenido y vigente — todas las lesiones y enfermedades registrables anotadas dentro de los 7 días</div><div class="item-ref">OSHA 1904.7 · WRAP P8</div></td><td><div class="radio-group" data-sec="8"><label class="radio-pass"><input type="radio" name="i8_2" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i8_2" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i8_2" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr><td>8.3</td><td><div class="item-text">Análisis de causa raíz completado para todos los incidentes registrables — acciones correctivas documentadas y cierre verificado</div><div class="item-ref">ILO OSH 2001 · WRAP P8</div></td><td><div class="radio-group" data-sec="8"><label class="radio-pass"><input type="radio" name="i8_3" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i8_3" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i8_3" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr><td>8.4</td><td><div class="item-text">Comité de S&S o representante de seguridad establecido — registros de reuniones mantenidos con agenda, asistencia y elementos de acción</div><div class="item-ref">ILO OSH 2001 · WRAP P8</div></td><td><div class="radio-group" data-sec="8"><label class="radio-pass"><input type="radio" name="i8_4" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i8_4" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i8_4" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr><td>8.5</td><td><div class="item-text">Capacitación anual de S&S completada — registros muestran que todos los trabajadores recibieron orientación de seguridad y capacitación de actualización anual</div><div class="item-ref">OSHA 1910 General · WRAP P8</div></td><td><div class="radio-group" data-sec="8"><label class="radio-pass"><input type="radio" name="i8_5" value="P" onchange="calc()"><span>P</span></label><label class="radio-fail"><input type="radio" name="i8_5" value="F" onchange="calc()"><span>F</span></label><label class="radio-na"><input type="radio" name="i8_5" value="N" onchange="calc()"><span>N/A</span></label></div></td><td><select class="risk-sel" onchange="calc()"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option></select></td><td><textarea class="notes-input" rows="2" placeholder="Notas…"></textarea></td></tr>
+        <tr class="section-total-row"><td colspan="5">Puntuación Sección 8: <span id="st-8">—</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- RESULTS MATRIX -->
+  <div class="results-section">
+    <h2>Resumen de Resultados de Inspección</h2>
+    <div class="results-grid">
+      <div class="result-row"><div><div class="result-label">Seguridad Contra Incendios y Egreso</div><div class="result-bar-wrap"><div class="result-bar" id="rb-1" style="width:0%"></div></div></div><div class="result-val" id="rv-1">—</div></div>
+      <div class="result-row"><div><div class="result-label">Químicos y Materiales Peligrosos</div><div class="result-bar-wrap"><div class="result-bar" id="rb-2" style="width:0%"></div></div></div><div class="result-val" id="rv-2">—</div></div>
+      <div class="result-row"><div><div class="result-label">EPP</div><div class="result-bar-wrap"><div class="result-bar" id="rb-3" style="width:0%"></div></div></div><div class="result-val" id="rv-3">—</div></div>
+      <div class="result-row"><div><div class="result-label">Protección de Máquinas</div><div class="result-bar-wrap"><div class="result-bar" id="rb-4" style="width:0%"></div></div></div><div class="result-val" id="rv-4">—</div></div>
+      <div class="result-row"><div><div class="result-label">Seguridad Eléctrica</div><div class="result-bar-wrap"><div class="result-bar" id="rb-5" style="width:0%"></div></div></div><div class="result-val" id="rv-5">—</div></div>
+      <div class="result-row"><div><div class="result-label">Primeros Auxilios y Médico</div><div class="result-bar-wrap"><div class="result-bar" id="rb-6" style="width:0%"></div></div></div><div class="result-val" id="rv-6">—</div></div>
+      <div class="result-row"><div><div class="result-label">Saneamiento y Orden</div><div class="result-bar-wrap"><div class="result-bar" id="rb-7" style="width:0%"></div></div></div><div class="result-val" id="rv-7">—</div></div>
+      <div class="result-row"><div><div class="result-label">Reporte de Incidentes y SGS</div><div class="result-bar-wrap"><div class="result-bar" id="rb-8" style="width:0%"></div></div></div><div class="result-val" id="rv-8">—</div></div>
+      <div class="result-row result-total"><div><div class="result-label">Tasa de Cumplimiento General</div><div class="result-bar-wrap"><div class="result-bar" id="rb-total" style="width:0%"></div></div></div><div class="result-val" id="rv-total">—</div></div>
+    </div>
+    <div class="tier-grid">
+      <div class="tier-box t-pass"><h4>✓ Pasa — Listo para Auditoría (≥ 85%)</h4><p>Sólida postura de cumplimiento de S&S. Programe la auditoría formal. Continúe monitoreando y mantenga toda la documentación vigente.</p></div>
+      <div class="tier-box t-cond"><h4>⚠ Condicional — Acción Requerida (65–84%)</h4><p>Cumplimiento parcial con brechas identificables. Construya un plan de acción correctiva que aborde todas las fallas Críticas antes de programar la auditoría.</p></div>
+      <div class="tier-box t-fail"><h4>✗ No Listo — Riesgo Significativo (&lt; 65%)</h4><p>Múltiples deficiencias de cumplimiento. No programe la auditoría. Contrate apoyo calificado de S&S y construya un plan de remediación de 60–90 días.</p></div>
+    </div>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="sources">
+    <h3>Fuentes y Referencias Regulatorias</h3>
+    <ul>
+      <li>WRAP — Principios de Cumplimiento, Principio 8: Salud y Seguridad — <a href="https://www.wrapcompliance.org" target="_blank">wrapcompliance.org</a></li>
+      <li>OSHA 29 CFR Parte 1910 — Estándares de Industria General — <a href="https://www.osha.gov/laws-regs/regulations/standardnumber/1910" target="_blank">osha.gov</a></li>
+      <li>NFPA 101 — Código de Seguridad de Vida (2021) — <a href="https://www.nfpa.org" target="_blank">nfpa.org</a></li>
+      <li>ILO OSH 2001 — Directrices sobre Sistemas de Gestión de Seguridad y Salud Ocupacional — <a href="https://www.ilo.org" target="_blank">ilo.org</a></li>
+      <li>GHS Rev. 9 — Sistema Globalmente Armonizado de Clasificación y Etiquetado de Productos Químicos de la ONU — <a href="https://unece.org/ghs" target="_blank">unece.org</a></li>
+      <li>ANSI Z358.1 — Estándar Nacional Americano para Equipos de Lavaojos y Duchas de Emergencia — <a href="https://www.isea.org" target="_blank">isea.org</a></li>
+    </ul>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <div>
+      <h3>¿Listo para Cerrar sus Brechas de Cumplimiento de S&S?</h3>
+      <p>RC2 Consulting proporciona preparación experta para auditorías de S&S, análisis de brechas, planificación de acciones correctivas y soporte en documentación del Principio 8 de WRAP para instalaciones manufactureras.</p>
+    </div>
+    <a href="https://rc2consulting.github.io/contact-es.html">Agendar una Revisión de Cumplimiento →</a>
+  </div>
+  <div class="print-btn"><button onclick="window.print()">🖨 Imprimir / Guardar como PDF</button></div>
+
+</div><!-- end page-wrap -->
+
+<footer class="site-footer">
+  <div class="footer-tagline">Claridad Operacional. Confianza en el Cumplimiento. Sistemas que Escalan.</div>
+  <div class="footer-links">
+    <a href="https://rc2consulting.github.io/index-es.html">Inicio</a>
+    <a href="https://rc2consulting.github.io/services-es.html">Servicios</a>
+    <a href="https://rc2consulting.github.io/who-we-help-es.html">A Quién Ayudamos</a>
+    <a href="https://rc2consulting.github.io/about-es.html">Nosotros</a>
+    <a href="https://rc2consulting.github.io/RC2_Resources_Page.html">Recursos</a>
+    <a href="https://rc2consulting.github.io/contact-es.html">Contacto</a>
+  </div>
+  <div class="footer-copy">© 2026 RC2 Consulting, LLC &nbsp;|&nbsp; <a href="#">Política de Privacidad</a> &nbsp;|&nbsp; <a href="#">Términos de Servicio</a></div>
+</footer>
+
+<script>
+const SECTIONS = [1,2,3,4,5,6,7,8];
+
+function getSectionData(sec) {
+  const body = document.getElementById('body-' + sec);
+  const groups = body.querySelectorAll('.radio-group');
+  let pass=0, fail=0, na=0, critFail=0, total=0;
+  groups.forEach(g => {
+    const sel = g.querySelector('input[type="radio"]:checked');
+    if (!sel) return;
+    total++;
+    if (sel.value === 'P') pass++;
+    else if (sel.value === 'F') {
+      fail++;
+      if (g.dataset.crit) critFail++;
+    } else na++;
+  });
+  const applicable = pass + fail;
+  const pct = applicable > 0 ? Math.round((pass / applicable) * 100) : null;
+  return { pass, fail, na, critFail, total, applicable, pct };
+}
+
+function calc() {
+  let totalPass=0, totalFail=0, totalCritFail=0, totalApplicable=0, sectionsScored=0;
+
+  SECTIONS.forEach(s => {
+    const d = getSectionData(s);
+    const chip = document.getElementById('chip-' + s);
+    const st = document.getElementById('st-' + s);
+    const rv = document.getElementById('rv-' + s);
+    const rb = document.getElementById('rb-' + s);
+
+    totalPass += d.pass;
+    totalFail += d.fail;
+    totalCritFail += d.critFail;
+    totalApplicable += d.applicable;
+    if (d.applicable > 0) sectionsScored++;
+
+    if (d.pct === null) {
+      chip.textContent = '—'; chip.className = 'section-score-chip';
+      if (st) st.textContent = '—';
+      if (rv) rv.textContent = '—';
+      if (rb) rb.style.width = '0%';
+    } else {
+      const label = d.pct + '%';
+      chip.textContent = label;
+      chip.className = 'section-score-chip ' + (d.pct>=85?'chip-green':d.pct>=65?'chip-yellow':'chip-red');
+      if (st) st.textContent = d.pass + ' pasan / ' + d.fail + ' fallan' + (d.critFail?' ('+d.critFail+' crítico)':'');
+      if (rv) rv.textContent = label;
+      if (rb) rb.style.width = d.pct + '%';
+    }
+  });
+
+  const overall = totalApplicable > 0 ? Math.round((totalPass / totalApplicable) * 100) : null;
+  document.getElementById('d-pass').textContent = totalPass;
+  document.getElementById('d-fail').textContent = totalFail;
+  document.getElementById('d-crit').textContent = totalCritFail;
+  document.getElementById('rv-total').textContent = overall !== null ? overall + '%' : '—';
+  document.getElementById('rb-total').style.width = overall !== null ? overall + '%' : '0%';
+
+  const verdict = document.getElementById('d-verdict');
+  const score = document.getElementById('d-score');
+  if (overall === null) {
+    score.textContent = '—';
+    verdict.textContent = '⬜ Comenzar Inspección'; verdict.className = 'verdict-badge v-navy';
+  } else {
+    score.textContent = overall + '%';
+    if (totalCritFail > 0) {
+      verdict.textContent = '🔴 Fallas Críticas — ' + totalCritFail + ' elemento(s)'; verdict.className = 'verdict-badge v-red';
+    } else if (overall >= 85) {
+      verdict.textContent = '✅ Listo para Auditoría'; verdict.className = 'verdict-badge v-green';
+    } else if (overall >= 65) {
+      verdict.textContent = '⚠️ Acción Requerida'; verdict.className = 'verdict-badge v-yellow';
+    } else {
+      verdict.textContent = '🔴 No Listo'; verdict.className = 'verdict-badge v-red';
+    }
+  }
+}
+</script>
+</body>
+</html>
