@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Guía de Constitución de LLC | RC2 Consulting</title>
+<meta name="description" content="A step-by-step interactive guide to forming an LLC — naming, registration, EIN, banking, licenses, and compliance. Real-time progress tracking across 7 phases."/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0B2545;--blue:#1A4A8A;--lb:#2563EB;
+  --bg:#F4F6FA;--w:#FFFFFF;--txt:#1C2B3A;--mu:#4A5568;--bdr:#E2E8F0;
+  --sg:#1A7A4E;--sbg:#EBF7F2;--sbdr:#BBF7D0;
+  --wg:#854D0E;--wbg:#FFFBEB;--wbdr:#FDE68A;
+  --dg:#9B1C1C;--dbg:#FEF2F2;--dbdr:#FECACA;
+}
+body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--txt);margin:0;line-height:1.6}
+
+/* NAV */
+.topnav{background:var(--navy);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.nav-brand{display:flex;align-items:center;gap:8px;text-decoration:none}
+.nav-logo-mark{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:white;font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center}
+.nav-logo-mark sup{font-size:.5rem;vertical-align:super}
+.nav-brand-name{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.9)}
+.nav-links{display:flex;gap:4px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.78);text-decoration:none;font-size:.83rem;font-weight:600;padding:6px 12px;border-radius:4px;transition:all .2s;white-space:nowrap}
+.nav-links a:hover{color:white;background:rgba(255,255,255,.1)}
+.nav-links a.active{color:white;background:rgba(255,255,255,.12)}
+.nav-lang{display:flex;gap:4px}
+.lang-btn{color:rgba(255,255,255,.7);text-decoration:none;font-size:.78rem;font-weight:700;padding:4px 10px;border-radius:4px;border:1px solid rgba(255,255,255,.2);transition:all .2s}
+.lang-btn:hover{color:white;border-color:rgba(255,255,255,.5)}
+.lang-btn.active{color:white;background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.4)}
+
+/* HERO */
+.hero{background:linear-gradient(160deg,rgba(11,37,69,.88) 0%,rgba(11,37,69,.72) 100%),url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1400&q=80') center/cover no-repeat;padding:56px 40px 44px;position:relative;overflow:hidden}
+.hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}
+.atag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.75);font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:14px}
+.hero h1{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:white;line-height:1.25;margin-bottom:10px}
+.hero-sub{font-size:.9rem;color:rgba(255,255,255,.72);max-width:680px;line-height:1.7;margin-bottom:14px}
+.hero-meta{font-size:.75rem;color:rgba(255,255,255,.45);letter-spacing:.3px}
+.hero-meta span{margin:0 8px}
+.back-wrap{max-width:940px;margin:20px auto 0;padding:0 40px}
+.back-wrap a{color:var(--lb);font-size:.83rem;font-weight:600;text-decoration:none}
+.back-wrap a:hover{text-decoration:underline}
+
+/* PROGRESS BAR */
+.prog-bar-wrap{background:var(--navy);padding:16px 40px;border-top:1px solid rgba(255,255,255,.1)}
+.prog-bar-inner{max-width:940px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.prog-label{font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.55);white-space:nowrap}
+.prog-track{flex:1;background:rgba(255,255,255,.12);border-radius:10px;height:8px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,#2563EB,#4ADE80);border-radius:10px;transition:width .5s ease;width:0%}
+.prog-pct{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:white;min-width:42px;text-align:right}
+
+/* PAGE LAYOUT */
+.page-wrap{max-width:940px;margin:0 auto;padding:32px 40px 60px}
+
+/* DISCLAIMER BOX */
+.disclaimer{background:var(--wbg);border:1px solid var(--wbdr);border-left:4px solid #F59E0B;border-radius:0 8px 8px 0;padding:16px 20px;margin-bottom:28px;font-size:.82rem;color:var(--wg);line-height:1.65}
+.disclaimer strong{display:block;margin-bottom:4px;font-size:.85rem}
+
+/* INTRO CARDS */
+.intro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px}
+.intro-card{background:white;border:1px solid var(--bdr);border-radius:10px;padding:18px;text-align:center}
+.intro-card .ic-icon{font-size:1.6rem;margin-bottom:8px}
+.intro-card .ic-title{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:4px}
+.intro-card .ic-desc{font-size:.78rem;color:var(--mu);line-height:1.5}
+
+/* PHASE CARD */
+.phase-card{background:white;border:1px solid var(--bdr);border-radius:12px;margin-bottom:20px;overflow:hidden;transition:box-shadow .2s}
+.phase-card:hover{box-shadow:0 4px 20px rgba(11,37,69,.1)}
+.phase-header{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;cursor:pointer;user-select:none;background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 100%)}
+.phase-header-left{display:flex;align-items:center;gap:14px}
+.phase-num{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:white;font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.phase-title-wrap{}
+.phase-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:white;line-height:1.2}
+.phase-sub{font-size:.72rem;color:rgba(255,255,255,.6);margin-top:2px}
+.phase-right{display:flex;align-items:center;gap:12px}
+.phase-badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:white;font-size:.75rem;font-weight:700;padding:4px 12px;border-radius:20px;white-space:nowrap}
+.badge-done{background:#065F46;border-color:#34D399;color:#6EE7B7}
+.badge-prog{background:#78350F;border-color:#F59E0B;color:#FCD34D}
+.phase-toggle{color:rgba(255,255,255,.7);font-size:1.1rem;transition:transform .3s;line-height:1}
+.phase-body{display:none;padding:0}
+.phase-body.open{display:block}
+
+/* STEPS TABLE */
+.steps-table{width:100%;border-collapse:collapse}
+.steps-table thead th{background:var(--bg);color:var(--mu);font-size:.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:9px 16px;text-align:left;border-bottom:1px solid var(--bdr)}
+.steps-table thead th:first-child{width:44px;text-align:center}
+.steps-table thead th:nth-child(3){width:120px;text-align:center}
+.steps-table thead th:last-child{width:140px}
+.steps-table tr{border-bottom:1px solid var(--bdr);transition:background .15s}
+.steps-table tr:hover{background:#FAFBFC}
+.steps-table tr:last-child{border-bottom:none}
+.steps-table td{padding:13px 16px;vertical-align:middle}
+.steps-table td:first-child{text-align:center}
+
+/* CHECKBOX */
+.step-check{width:20px;height:20px;border-radius:5px;border:2px solid var(--bdr);cursor:pointer;accent-color:var(--sg);transition:all .15s}
+.step-check:checked{accent-color:var(--sg)}
+
+/* STEP CONTENT */
+.step-title{font-size:.88rem;font-weight:700;color:var(--txt);line-height:1.4}
+.step-desc{font-size:.78rem;color:var(--mu);margin-top:3px;line-height:1.55}
+.step-resource{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;font-weight:600;color:var(--lb);text-decoration:none;margin-top:5px;background:#EFF6FF;padding:2px 8px;border-radius:4px}
+.step-resource:hover{background:#DBEAFE}
+.crit-tag{display:inline-block;background:var(--dbg);color:var(--dg);border:1px solid var(--dbdr);font-size:.6rem;font-weight:700;padding:1px 6px;border-radius:4px;margin-left:6px;letter-spacing:.5px;vertical-align:middle;white-space:nowrap}
+.tip-tag{display:inline-block;background:var(--sbg);color:var(--sg);border:1px solid var(--sbdr);font-size:.6rem;font-weight:700;padding:1px 6px;border-radius:4px;margin-left:6px;letter-spacing:.5px;vertical-align:middle;white-space:nowrap}
+
+/* STATUS SELECT */
+.status-sel{width:100%;padding:6px 10px;border:1px solid var(--bdr);border-radius:6px;font-size:.78rem;font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--txt)}
+.status-sel:focus{outline:none;border-color:var(--lb);background:white}
+
+/* PHASE TOTAL ROW */
+.phase-total td{background:var(--bg);font-weight:700;font-size:.8rem;color:var(--navy);padding:10px 16px;border-top:2px solid var(--bdr)}
+
+/* INFO BOX */
+.info-box{background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 100%);border-radius:10px;padding:20px 24px;margin:0 16px 16px}
+.info-box h4{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:white;margin-bottom:10px}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.info-item{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:7px;padding:12px}
+.info-item .ii-val{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:white}
+.info-item .ii-lbl{font-size:.7rem;color:rgba(255,255,255,.6);margin-top:3px;line-height:1.4}
+
+/* RESULTS */
+.results-wrap{background:var(--navy);border-radius:12px;padding:28px;margin:28px 0}
+.results-wrap h2{font-family:'Playfair Display',serif;font-size:1.25rem;color:white;margin-bottom:20px}
+.results-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px}
+.res-row{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center}
+.res-label{font-size:.8rem;font-weight:600;color:rgba(255,255,255,.7)}
+.res-val{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:white}
+.res-total{grid-column:1/-1;background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2)}
+.res-total .res-label{color:white;font-size:.85rem}
+.res-total .res-val{font-size:1.25rem}
+.verdict{text-align:center;padding:16px;background:rgba(255,255,255,.05);border-radius:8px;border:1px solid rgba(255,255,255,.12)}
+.verdict-text{font-size:.9rem;color:rgba(255,255,255,.8);line-height:1.6}
+
+/* SOURCES */
+.sources-box{background:white;border:1px solid var(--bdr);border-radius:10px;padding:22px;margin-top:24px}
+.sources-box h3{font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--mu);padding-bottom:10px;border-bottom:1px solid var(--bdr);margin-bottom:14px}
+.sources-box ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.sources-box li{font-size:.8rem;color:var(--mu);padding-left:14px;position:relative}
+.sources-box li::before{content:'›';position:absolute;left:0;color:var(--lb);font-weight:700}
+.sources-box a{color:var(--lb);text-decoration:none}
+.sources-box a:hover{text-decoration:underline}
+
+/* CTA */
+.cta-box{background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 100%);border-radius:12px;padding:28px 32px;margin-top:32px;display:flex;justify-content:space-between;align-items:center;gap:24px}
+.cta-box h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:white;margin-bottom:6px}
+.cta-box p{font-size:.82rem;color:rgba(255,255,255,.7);max-width:480px;line-height:1.6}
+.cta-box a{display:inline-block;padding:11px 22px;background:var(--lb);color:white;text-decoration:none;border-radius:7px;font-size:.83rem;font-weight:700;white-space:nowrap}
+.cta-box a:hover{background:#1D4ED8}
+.print-btn{text-align:center;margin:16px 0 0}
+.print-btn button{padding:9px 20px;background:white;color:var(--navy);border:1px solid var(--bdr);border-radius:7px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:'Source Sans 3',sans-serif}
+
+/* FOOTER */
+.site-footer{background:var(--navy);padding:28px 40px;text-align:center;margin-top:60px}
+.footer-tagline{font-family:'Playfair Display',serif;font-size:.9rem;color:rgba(255,255,255,.5);margin-bottom:14px;font-style:italic}
+.footer-links{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:12px}
+.footer-links a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.78rem}
+.footer-links a:hover{color:white}
+.footer-copy{font-size:.72rem;color:rgba(255,255,255,.3)}
+.footer-copy a{color:rgba(255,255,255,.4);text-decoration:none}
+
+@media print{.topnav,.back-wrap,.cta-box,.print-btn,.site-footer{display:none}.phase-body{display:block!important}.phase-header{background:#0B2545!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+@media(max-width:700px){.intro-grid,.results-grid,.info-grid{grid-template-columns:1fr}.topnav{padding:0 16px}.page-wrap{padding:20px 16px 40px}.hero{padding:36px 16px 28px}}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="https://rc2consulting.github.io/" class="nav-brand">
+    <div class="nav-logo-mark">RC<sup>2</sup></div>
+    <span class="nav-brand-name">Consulting</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://rc2consulting.github.io/index-es.html">Inicio</a></li>
+    <li><a href="https://rc2consulting.github.io/services-es.html">Servicios</a></li>
+    <li><a href="https://rc2consulting.github.io/who-we-help-es.html">A Quién Ayudamos</a></li>
+    <li><a href="https://rc2consulting.github.io/about-es.html">Nosotros</a></li>
+    <li><a href="https://rc2consulting.github.io/RC2_Resources_Page-es.html" class="active">Recursos</a></li>
+    <li><a href="https://rc2consulting.github.io/contact-es.html">Contacto</a></li>
+  </ul>
+  <div class="nav-lang">
+    <a href="https://rc2consulting.github.io/RC2_LLC_Formation_Guide.html" class="lang-btn">EN</a>
+    <a href="#" class="lang-btn active">ES</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="atag">Herramienta de Operaciones y Cumplimiento</span>
+    <h1>Guía de Constitución de LLC</h1>
+    <p class="hero-sub">Una lista de verificación interactiva para constituir y lanzar una nueva entidad empresarial — desde el registro del nombre hasta la banca, licencias y configuración de cumplimiento. Marque cada paso a medida que lo complete. Su progreso se registra en tiempo real en las 7 fases.</p>
+    <div class="hero-meta">
+      <span>RC2 Consulting</span><span>|</span><span>2026</span><span>|</span><span>Interactivo — Seguimiento en Tiempo Real</span>
+    </div>
+  </div>
+</section>
+<div class="back-wrap"><a href="https://rc2consulting.github.io/RC2_Resources_Page.html">← Volver a Recursos</a></div>
+
+<!-- PROGRESS BAR -->
+<div class="prog-bar-wrap">
+  <div class="prog-bar-inner">
+    <div class="prog-label">Progreso General</div>
+    <div class="prog-track"><div class="prog-fill" id="prog-fill"></div></div>
+    <div class="prog-pct"><span id="prog-pct">0%</span></div>
+    <div class="prog-label" style="color:rgba(255,255,255,.75)" id="prog-count">0 de 42 pasos</div>
+  </div>
+</div>
+
+<div class="page-wrap">
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  <strong>⚠ Aviso de Orientación Profesional</strong>
+  Esta guía proporciona pasos operacionales generales para constituir una LLC y es solo para fines informativos. Los requisitos varían por estado. RC2 Consulting recomienda consultar a un abogado y CPA con licencia antes de tomar decisiones legales y fiscales. Esta lista de verificación no constituye asesoramiento legal ni fiscal.
+</div>
+
+<!-- INTRO STATS -->
+<div class="intro-grid">
+  <div class="intro-card"><div class="ic-icon">🏢</div><div class="ic-title">7 Fases</div><div class="ic-desc">Desde nombrar su negocio hasta la configuración completa de cumplimiento operacional</div></div>
+  <div class="intro-card"><div class="ic-icon">✅</div><div class="ic-title">42 Pasos</div><div class="ic-desc">Cada acción crítica requerida para lanzar legalmente y con cumplimiento</div></div>
+  <div class="intro-card"><div class="ic-icon">⏱</div><div class="ic-title">2–8 Semanas</div><div class="ic-desc">Tiempo típico desde la presentación de la LLC hasta el negocio totalmente operacional</div></div>
+</div>
+
+<!-- PHASE 1 -->
+<div class="phase-card">
+  <div class="phase-header" onclick="togglePhase(1)">
+    <div class="phase-header-left">
+      <div class="phase-num">01</div>
+      <div class="phase-title-wrap">
+        <div class="phase-title">Nombre del Negocio y Decisiones de Estructura</div>
+        <div class="phase-sub">Antes de presentar cualquier documento — tome estas decisiones correctamente</div>
+      </div>
+    </div>
+    <div class="phase-right">
+      <div class="phase-badge" id="badge-1">0 / 6</div>
+      <div class="phase-toggle" id="toggle-1">▼</div>
+    </div>
+  </div>
+  <div class="phase-body open" id="body-1">
+    <div class="info-box">
+      <h4>📌 Por Qué Esta Fase es Importante</h4>
+      <div class="info-grid">
+        <div class="info-item"><div class="ii-val">LLC</div><div class="ii-lbl">Estructura más popular para pequeños negocios — limita la responsabilidad personal, tributación flexible</div></div>
+        <div class="info-item"><div class="ii-val">$50–500</div><div class="ii-lbl">Rango típico de tarifas de presentación de LLC estatal — varía por estado (fuente: SBA.gov)</div></div>
+        <div class="info-item"><div class="ii-val">1–3 days</div><div class="ii-lbl">Tiempo para completar decisiones de pre-presentación si está preparado — no se apresure en esta fase</div></div>
+      </div>
+    </div>
+    <table class="steps-table">
+      <thead><tr><th>✓</th><th>Paso</th><th>Estado</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="1" onchange="calc()"/></td>
+          <td><div class="step-title">Elija el nombre de su negocio — confirme que refleja su marca y es buscable<span class="crit-tag">★ Crítico</span></div><div class="step-desc">Su nombre debe ser único en su estado. Evite nombres genéricos — hágalo memorable y buscable. Verifique ortografía, pronunciación y disponibilidad de URL.</div></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="1" onchange="calc()"/></td>
+          <td><div class="step-title">Busque en la base de datos de nombres comerciales de su estado su disponibilidad<span class="crit-tag">★ Crítico</span></div><div class="step-desc">La mayoría de los estados tienen una búsqueda de nombres en línea gratuita. Su nombre no puede coincidir ni ser demasiado similar a una entidad registrada existente en su estado.</div><a href="https://www.sos.ca.gov/business-programs/business-entities" target="_blank" class="step-resource">🔗 Búsqueda de Nombre SOS Estatal</a></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="1" onchange="calc()"/></td>
+          <td><div class="step-title">Busque en la base de datos federal de marcas comerciales del USPTO<span class="tip-tag">💡 Consejo</span></div><div class="step-desc">Incluso si su estado permite el nombre, una marca comercial federal puede bloquear su uso. Busque gratis en USPTO.gov antes de invertir en branding.</div><a href="https://www.uspto.gov/trademarks/search" target="_blank" class="step-resource">🔗 Búsqueda TESS del USPTO</a></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="1" onchange="calc()"/></td>
+          <td><div class="step-title">Decida su estructura de gestión: Gestionada por Miembros vs. Gestionada por Gerente</div><div class="step-desc">Gestionada por miembros: todos los propietarios dirigen el negocio. Gestionada por gerente: un gerente designado (puede ser no propietario). Esto afecta su acuerdo operacional y autoridad diaria.</div></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="1" onchange="calc()"/></td>
+          <td><div class="step-title">Decida su clasificación fiscal: Miembro Único, Multi-Miembro o elección de S-Corp<span class="crit-tag">★ Crítico</span></div><div class="step-desc">Las LLC se gravan como entidades de transferencia por defecto. Puede elegir el estado de S-Corp (Formulario IRS 2553) para posibles ahorros fiscales si la ganancia neta supera ~$40K. Consulte a un CPA.</div><a href="https://www.irs.gov/businesses/small-businesses-self-employed/s-corporations" target="_blank" class="step-resource">🔗 Información Elección S-Corp del IRS</a></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="1" onchange="calc()"/></td>
+          <td><div class="step-title">Asegure su nombre de dominio y perfiles en redes sociales</div><div class="step-desc">Registre su dominio .com inmediatamente después de confirmar la disponibilidad del nombre. Verifique la disponibilidad de perfiles coincidentes en Instagram, LinkedIn, Facebook y X.</div></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr class="phase-total"><td colspan="3">Fase 1 — <span id="pt-1">0 de 6 pasos completados</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PHASE 2 -->
+<div class="phase-card">
+  <div class="phase-header" onclick="togglePhase(2)">
+    <div class="phase-header-left">
+      <div class="phase-num">02</div>
+      <div class="phase-title-wrap">
+        <div class="phase-title">Registro y Presentación de LLC ante el Estado</div>
+        <div class="phase-sub">Constitución oficial ante su estado — crea su entidad legal</div>
+      </div>
+    </div>
+    <div class="phase-right">
+      <div class="phase-badge" id="badge-2">0 / 6</div>
+      <div class="phase-toggle" id="toggle-2">▼</div>
+    </div>
+  </div>
+  <div class="phase-body" id="body-2">
+    <div class="info-box">
+      <h4>📌 Descripción General de la Presentación Estatal</h4>
+      <div class="info-grid">
+        <div class="info-item"><div class="ii-val">Articles</div><div class="ii-lbl">Los Artículos de Organización son el documento principal que crea su LLC en su estado</div></div>
+        <div class="info-item"><div class="ii-val">$50–500</div><div class="ii-lbl">Tarifa de presentación — DE: $90 · FL: $125 · TX: $300 · CA: $70 (fuente: SBA.gov)</div></div>
+        <div class="info-item"><div class="ii-val">1–10 days</div><div class="ii-lbl">Tiempo de procesamiento típico — presentación expedita disponible en la mayoría de los estados por cargo adicional</div></div>
+      </div>
+    </div>
+    <table class="steps-table">
+      <thead><tr><th>✓</th><th>Paso</th><th>Estado</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="2" onchange="calc()"/></td>
+          <td><div class="step-title">Identifique su Agente Registrado — persona o servicio que recibe documentos legales<span class="crit-tag">★ Crítico</span></div><div class="step-desc">Toda LLC debe tener un agente registrado con dirección física en el estado de constitución. Puede ser usted mismo, un miembro o un servicio de agente registrado comercial (~$50–150/año).</div></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="2" onchange="calc()"/></td>
+          <td><div class="step-title">Presente los Artículos de Organización ante la Secretaría de Estado de su estado<span class="crit-tag">★ Crítico</span></div><div class="step-desc">Complete el documento oficial de constitución del estado con el nombre de su LLC, agente registrado, dirección y estructura de gestión. Presente en línea en el sitio web de la SOS de su estado.</div><a href="https://www.sba.gov/business-guide/launch-your-business/register-your-business" target="_blank" class="step-resource">🔗 SBA — Registre su Negocio</a></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="2" onchange="calc()"/></td>
+          <td><div class="step-title">Pague la tarifa de presentación estatal y reciba confirmación / Certificado de Organización</div><div class="step-desc">Guarde su Certificado de Organización — lo necesitará para abrir cuentas bancarias, solicitar licencias y obtener su EIN. Mantenga una copia digital y física.</div></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="2" onchange="calc()"/></td>
+          <td><div class="step-title">Registre un DBA ("Haciendo Negocios Como") si opera bajo un nombre comercial diferente<span class="tip-tag">💡 Consejo</span></div><div class="step-desc">Si su LLC es "ABC Holdings, LLC" pero opera como "Blue Sky Apparel," presente un DBA (también llamado nombre comercial ficticio o nombre comercial) ante su condado o estado.</div></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="2" onchange="calc()"/></td>
+          <td><div class="step-title">Verifique si se necesita calificación extranjera en otros estados donde realiza negocios</div><div class="step-desc">Si tiene empleados, oficinas u operaciones significativas en otros estados, puede necesitar registrar su LLC allí como entidad extranjera. Cada estado tiene sus propias reglas.</div></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="2" onchange="calc()"/></td>
+          <td><div class="step-title">Anote la fecha de presentación de su informe anual y el calendario de tarifas estatales<span class="crit-tag">★ Crítico</span></div><div class="step-desc">La mayoría de los estados requieren informes anuales o bienales para mantener su LLC en buen estado. No presentarlos resulta en disolución administrativa. Configure un recordatorio de calendario ahora.</div></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr class="phase-total"><td colspan="3">Fase 2 — <span id="pt-2">0 de 6 pasos completados</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PHASE 3 -->
+<div class="phase-card">
+  <div class="phase-header" onclick="togglePhase(3)">
+    <div class="phase-header-left">
+      <div class="phase-num">03</div>
+      <div class="phase-title-wrap">
+        <div class="phase-title">Número de Identificación Fiscal Federal (EIN) y Registro en el IRS</div>
+        <div class="phase-sub">La identidad federal de su negocio — requerida para banca, contratación e impuestos</div>
+      </div>
+    </div>
+    <div class="phase-right">
+      <div class="phase-badge" id="badge-3">0 / 5</div>
+      <div class="phase-toggle" id="toggle-3">▼</div>
+    </div>
+  </div>
+  <div class="phase-body" id="body-3">
+    <div class="info-box">
+      <h4>📌 EIN — Número de Identificación del Empleador</h4>
+      <div class="info-grid">
+        <div class="info-item"><div class="ii-val">Free</div><div class="ii-lbl">El EIN es gratuito del IRS — nunca pague a un tercero para obtenerlo</div></div>
+        <div class="info-item"><div class="ii-val">Instant</div><div class="ii-lbl">La solicitud de EIN en línea toma ~15 minutos — se emite inmediatamente al finalizar la solicitud</div></div>
+        <div class="info-item"><div class="ii-val">Required</div><div class="ii-lbl">Los bancos requieren EIN para abrir una cuenta corriente empresarial — también requerido para contratar empleados</div></div>
+      </div>
+    </div>
+    <table class="steps-table">
+      <thead><tr><th>✓</th><th>Paso</th><th>Estado</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="3" onchange="calc()"/></td>
+          <td><div class="step-title">Solicite su EIN (Número de Identificación del Empleador) del IRS — en línea, gratuito<span class="crit-tag">★ Crítico</span></div><div class="step-desc">Solicite en línea en IRS.gov usando el Asistente EIN. Recibirá su EIN inmediatamente. Debe tener sus documentos de constitución de LLC y SSN listos.</div><a href="https://www.irs.gov/businesses/small-businesses-self-employed/apply-for-an-employer-identification-number-ein-online" target="_blank" class="step-resource">🔗 Solicitud EIN en Línea del IRS</a></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="3" onchange="calc()"/></td>
+          <td><div class="step-title">Guarde su carta de confirmación EIN (CP575) — no pierda este documento</div><div class="step-desc">El IRS solo emite CP575 una vez. Lo necesitará para banca, configuración de nómina y cualquier correspondencia futura con el IRS. Almacénelo digitalmente y en un archivo físico seguro.</div></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="3" onchange="calc()"/></td>
+          <td><div class="step-title">Presente el Formulario IRS 8832 (Elección de Clasificación de Entidad) si desea ser gravado como corporación<span class="tip-tag">💡 Consejo</span></div><div class="step-desc">Por defecto, una LLC de miembro único se grava como propietario único y una LLC de múltiples miembros como sociedad. Presente el Formulario 8832 si desea tratamiento fiscal corporativo.</div><a href="https://www.irs.gov/forms-pubs/about-form-8832" target="_blank" class="step-resource">🔗 Formulario IRS 8832</a></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="3" onchange="calc()"/></td>
+          <td><div class="step-title">Presente el Formulario IRS 2553 si elige el estado fiscal de S-Corporation<span class="tip-tag">💡 Consejo</span></div><div class="step-desc">La elección de S-Corp debe presentarse dentro de los 75 días de constitución o antes del 15 de marzo del año fiscal. Puede ahorrar impuestos de trabajo por cuenta propia para negocios rentables. Consulte primero a un CPA.</div><a href="https://www.irs.gov/forms-pubs/about-form-2553" target="_blank" class="step-resource">🔗 Formulario IRS 2553</a></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="3" onchange="calc()"/></td>
+          <td><div class="step-title">Regístrese para el impuesto estatal sobre la renta y el impuesto sobre las ventas con el departamento de ingresos de su estado<span class="crit-tag">★ Crítico</span></div><div class="step-desc">Si vende bienes o servicios gravables, regístrese para un permiso de impuesto sobre las ventas. También regístrese para la retención del impuesto estatal sobre la renta si tiene empleados.</div><a href="https://www.sba.gov/business-guide/launch-your-business/get-federal-and-state-tax-id-numbers" target="_blank" class="step-resource">🔗 Guía de Registro Fiscal Estatal de la SBA</a></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr class="phase-total"><td colspan="3">Fase 3 — <span id="pt-3">0 de 5 pasos completados</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PHASE 4 -->
+<div class="phase-card">
+  <div class="phase-header" onclick="togglePhase(4)">
+    <div class="phase-header-left">
+      <div class="phase-num">04</div>
+      <div class="phase-title-wrap">
+        <div class="phase-title">Cuenta Corriente Empresarial y Configuración Financiera</div>
+        <div class="phase-sub">Separe las finanzas personales y empresariales desde el primer día</div>
+      </div>
+    </div>
+    <div class="phase-right">
+      <div class="phase-badge" id="badge-4">0 / 6</div>
+      <div class="phase-toggle" id="toggle-4">▼</div>
+    </div>
+  </div>
+  <div class="phase-body" id="body-4">
+    <div class="info-box">
+      <h4>📌 Por Qué la Banca Separada No Es Negociable</h4>
+      <div class="info-grid">
+        <div class="info-item"><div class="ii-val">LLC Shield</div><div class="ii-lbl">Mezclar fondos personales y empresariales puede "perforar el velo corporativo" — eliminando su protección de responsabilidad</div></div>
+        <div class="info-item"><div class="ii-val">Tax Prep</div><div class="ii-lbl">Las cuentas separadas hacen la contabilidad y la declaración de impuestos mucho más fáciles y menos costosas</div></div>
+        <div class="info-item"><div class="ii-val">Credit</div><div class="ii-lbl">Las cuentas empresariales construyen su perfil de crédito empresarial — esencial para financiamiento futuro</div></div>
+      </div>
+    </div>
+    <table class="steps-table">
+      <thead><tr><th>✓</th><th>Paso</th><th>Estado</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="4" onchange="calc()"/></td>
+          <td><div class="step-title">Abra una cuenta corriente empresarial dedicada<span class="crit-tag">★ Crítico</span></div><div class="step-desc">Traiga: carta EIN (CP575), Certificado de Organización, identificación emitida por el gobierno y depósito inicial. Compare bancos — las cooperativas de crédito y bancos en línea (Mercury, Relay) suelen ofrecer mejores condiciones para pequeños negocios.</div></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="4" onchange="calc()"/></td>
+          <td><div class="step-title">Solicite una tarjeta de crédito empresarial — comience a construir crédito empresarial de inmediato<span class="tip-tag">💡 Consejo</span></div><div class="step-desc">Una tarjeta de crédito empresarial separa gastos, acumula recompensas y establece su número DUNS de Dun & Bradstreet. Comience con una tarjeta asegurada si su crédito empresarial es nuevo.</div></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="4" onchange="calc()"/></td>
+          <td><div class="step-title">Configure software de contabilidad — QuickBooks, FreshBooks o Wave (gratuito)<span class="crit-tag">★ Crítico</span></div><div class="step-desc">Comience a rastrear ingresos y gastos desde el primer día. Elija software que se integre con su banco. Wave es gratuito; QuickBooks Self-Employed comienza en ~$15/mes.</div></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="4" onchange="calc()"/></td>
+          <td><div class="step-title">Obtenga un número DUNS de Dun &amp; Bradstreet (requerido para contratos federales)<span class="tip-tag">💡 Consejo</span></div><div class="step-desc">Gratuito en dnb.com. Requerido para registrarse en SAM.gov para contratos gubernamentales. También ayuda a establecer historial de crédito empresarial independientemente de su crédito personal.</div><a href="https://www.dnb.com/duns-number/get-a-duns.html" target="_blank" class="step-resource">🔗 Registro DUNS de D&amp;B</a></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="4" onchange="calc()"/></td>
+          <td><div class="step-title">Configure un sistema de nómina si tiene empleados (Gusto, ADP, Paychex)</div><div class="step-desc">El software de nómina maneja la retención federal y estatal, la preparación de W-2 y los depósitos de impuestos de nómina. No retener y depositar los impuestos de nómina es un delito federal grave.</div></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="4" onchange="calc()"/></td>
+          <td><div class="step-title">Establezca la estructura de retiro del propietario o salario — nunca pague gastos personales de la cuenta empresarial</div><div class="step-desc">Para LLC: los propietarios toman retiros (no salario a menos que se haya hecho la elección de S-Corp). Documente todos los retiros del propietario. Nunca pague gastos personales de la cuenta empresarial.</div></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr class="phase-total"><td colspan="3">Fase 4 — <span id="pt-4">0 de 6 pasos completados</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PHASE 5 -->
+<div class="phase-card">
+  <div class="phase-header" onclick="togglePhase(5)">
+    <div class="phase-header-left">
+      <div class="phase-num">05</div>
+      <div class="phase-title-wrap">
+        <div class="phase-title">Licencias, Permisos y Acuerdo Operacional</div>
+        <div class="phase-sub">Documentos legales y permisos necesarios para operar</div>
+      </div>
+    </div>
+    <div class="phase-right">
+      <div class="phase-badge" id="badge-5">0 / 6</div>
+      <div class="phase-toggle" id="toggle-5">▼</div>
+    </div>
+  </div>
+  <div class="phase-body" id="body-5">
+    <table class="steps-table">
+      <thead><tr><th>✓</th><th>Paso</th><th>Estado</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="5" onchange="calc()"/></td>
+          <td><div class="step-title">Redacte y firme un Acuerdo Operacional de LLC<span class="crit-tag">★ Crítico</span></div><div class="step-desc">Aunque su estado no lo requiera, un Acuerdo Operacional define porcentajes de propiedad, roles de gestión, distribución de ganancias y resolución de disputas. Esencial para LLC de múltiples miembros.</div></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="5" onchange="calc()"/></td>
+          <td><div class="step-title">Investigue y solicite las licencias federales requeridas (si aplica a su industria)</div><div class="step-desc">Algunas industrias requieren licencias federales: alimentos/agricultura (USDA), armas de fuego (ATF), asesoría de inversiones (SEC/FINRA), camiones (FMCSA), radiodifusión (FCC). Consulte SBA.gov para su industria.</div><a href="https://www.sba.gov/business-guide/launch-your-business/apply-for-licenses-and-permits" target="_blank" class="step-resource">🔗 Búsqueda de Licencias Federales SBA</a></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="5" onchange="calc()"/></td>
+          <td><div class="step-title">Obtenga la licencia comercial estatal y cualquier permiso estatal específico de la industria<span class="crit-tag">★ Crítico</span></div><div class="step-desc">La mayoría de los estados requieren una licencia comercial general. Los permisos adicionales dependen de la industria: licencia de contratista, licencia de cosmetología, permiso de manipulación de alimentos, etc.</div></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="5" onchange="calc()"/></td>
+          <td><div class="step-title">Obtenga la licencia comercial local de ciudad/condado y aprobación de zonificación (si opera desde un local)</div><div class="step-desc">La mayoría de las ciudades requieren una licencia comercial local. Si opera desde su hogar, verifique las leyes de zonificación. Si alquila espacio comercial, verifique que el espacio esté zonificado para su tipo de negocio.</div></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="5" onchange="calc()"/></td>
+          <td><div class="step-title">Obtenga un Certificado de Ocupación (CO) si opera desde un espacio comercial</div><div class="step-desc">Un CO confirma que su espacio está legalmente aprobado para uso comercial. Requerido antes de abrir al público. Se obtiene en su departamento local de construcción o zonificación.</div></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="5" onchange="calc()"/></td>
+          <td><div class="step-title">Cree un calendario de renovación de licencias y permisos — configure recordatorios anuales<span class="tip-tag">💡 Consejo</span></div><div class="step-desc">Las licencias y permisos comerciales tienen fechas de renovación anuales. No renovarlos puede resultar en multas o cierre forzado. Agregue todas las fechas de vencimiento a un calendario maestro de cumplimiento.</div></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr class="phase-total"><td colspan="3">Fase 5 — <span id="pt-5">0 de 6 pasos completados</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PHASE 6 -->
+<div class="phase-card">
+  <div class="phase-header" onclick="togglePhase(6)">
+    <div class="phase-header-left">
+      <div class="phase-num">06</div>
+      <div class="phase-title-wrap">
+        <div class="phase-title">Seguros, Cumplimiento y Gestión de Riesgos</div>
+        <div class="phase-sub">Proteja el negocio que acaba de construir</div>
+      </div>
+    </div>
+    <div class="phase-right">
+      <div class="phase-badge" id="badge-6">0 / 7</div>
+      <div class="phase-toggle" id="toggle-6">▼</div>
+    </div>
+  </div>
+  <div class="phase-body" id="body-6">
+    <table class="steps-table">
+      <thead><tr><th>✓</th><th>Paso</th><th>Estado</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="6" onchange="calc()"/></td>
+          <td><div class="step-title">Obtenga un Seguro de Responsabilidad Civil General<span class="crit-tag">★ Crítico</span></div><div class="step-desc">Cubre lesiones corporales, daños a la propiedad y reclamaciones de lesiones personales. Requerido por la mayoría de los arrendadores comerciales y muchos clientes. Costo típico: $400–1,500/año para pequeños negocios.</div></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="6" onchange="calc()"/></td>
+          <td><div class="step-title">Obtenga Seguro de Responsabilidad Profesional / E&amp;O (si brinda servicios profesionales)</div><div class="step-desc">El seguro de Errores y Omisiones (E&O) cubre reclamaciones de negligencia profesional o incumplimiento en la prestación de servicios. Esencial para consultores, asesores, diseñadores y proveedores de servicios.</div></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="6" onchange="calc()"/></td>
+          <td><div class="step-title">Configure el Seguro de Compensación de Trabajadores si tiene empleados<span class="crit-tag">★ Crítico</span></div><div class="step-desc">Requerido en la mayoría de los estados en cuanto tenga un empleado. Cubre costos médicos y salarios perdidos por lesiones relacionadas con el trabajo. Los requisitos estatales varían — consulte el departamento laboral de su estado.</div></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="6" onchange="calc()"/></td>
+          <td><div class="step-title">Regístrese en el seguro de desempleo estatal (SUTA) si tiene empleados</div><div class="step-desc">El registro en la Ley Estatal de Impuesto al Desempleo es requerido cuando contrata a su primer empleado. Se realiza a través del departamento laboral o de fuerza laboral de su estado.</div></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="6" onchange="calc()"/></td>
+          <td><div class="step-title">Presente el Informe de Información de Beneficiarios Reales (BOI) de FinCEN — requerido desde el 1 de enero de 2025<span class="crit-tag">★ Crítico</span></div><div class="step-desc">Bajo la Ley de Transparencia Corporativa, la mayoría de las LLC deben presentar informes BOI ante FinCEN. Las LLC nuevas constituidas en 2024+ deben presentarlos dentro de los 90 días de constitución. Gratuito en FinCEN.gov.</div><a href="https://boiefiling.fincen.gov" target="_blank" class="step-resource">🔗 Portal de Presentación BOI de FinCEN</a></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="6" onchange="calc()"/></td>
+          <td><div class="step-title">Publique los carteles de leyes laborales federales y estatales requeridos en su lugar de trabajo</div><div class="step-desc">La ley federal requiere carteles específicos sobre FLSA, FMLA, OSHA, EEO y USERRA. Descarga gratuita en DOL.gov. También se requieren carteles estatales — consulte el departamento laboral de su estado.</div><a href="https://www.dol.gov/agencies/whd/posters" target="_blank" class="step-resource">🔗 Descarga de Carteles Federales DOL</a></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="6" onchange="calc()"/></td>
+          <td><div class="step-title">Cree un sistema básico de retención de documentos y gestión de registros</div><div class="step-desc">Mantenga documentos de constitución, declaraciones de impuestos, contratos, pólizas de seguro y registros de empleados en archivos físicos y digitales organizados. Registros del IRS: mínimo 7 años.</div></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr class="phase-total"><td colspan="3">Fase 6 — <span id="pt-6">0 de 7 pasos completados</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PHASE 7 -->
+<div class="phase-card">
+  <div class="phase-header" onclick="togglePhase(7)">
+    <div class="phase-header-left">
+      <div class="phase-num">07</div>
+      <div class="phase-title-wrap">
+        <div class="phase-title">Lanzamiento de Operaciones e Infraestructura de Crecimiento</div>
+        <div class="phase-sub">Construya los sistemas que apoyan el crecimiento y la escalabilidad a largo plazo</div>
+      </div>
+    </div>
+    <div class="phase-right">
+      <div class="phase-badge" id="badge-7">0 / 6</div>
+      <div class="phase-toggle" id="toggle-7">▼</div>
+    </div>
+  </div>
+  <div class="phase-body" id="body-7">
+    <table class="steps-table">
+      <thead><tr><th>✓</th><th>Paso</th><th>Estado</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="7" onchange="calc()"/></td>
+          <td><div class="step-title">Configure el registro en SAM.gov si busca contratos gubernamentales federales o estatales<span class="tip-tag">💡 Consejo</span></div><div class="step-desc">El Sistema de Gestión de Premios (SAM.gov) es gratuito para registrarse. Requerido para licitar contratos federales. El registro debe renovarse anualmente. Requiere número DUNS (ahora UEI).</div><a href="https://sam.gov" target="_blank" class="step-resource">🔗 Registro en SAM.gov</a></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="7" onchange="calc()"/></td>
+          <td><div class="step-title">Desarrolle su documentación central de servicios/productos — propuestas, contratos y facturas</div><div class="step-desc">Cree acuerdos de servicio, formatos de propuesta y plantillas de factura. Cada compromiso debe tener un contrato firmado. Use DocuSign, HelloSign o PandaDoc para firmas digitales.</div></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="7" onchange="calc()"/></td>
+          <td><div class="step-title">Cree un Manual del Empleado y documentación de políticas de RR.HH. si tiene empleados</div><div class="step-desc">Defina las políticas de PTO, horas de trabajo, anti-acoso, seguridad y conducta. Un Manual del Empleado reduce el riesgo legal y establece expectativas claras desde el primer día.</div></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="7" onchange="calc()"/></td>
+          <td><div class="step-title">Construya su presencia digital — sitio web, Perfil de Google Business, LinkedIn<span class="crit-tag">★ Crítico</span></div><div class="step-desc">Un sitio web profesional y el Perfil de Google Business son requisitos básicos para cualquier negocio. LinkedIn es esencial para negocios B2B. Reclame todos los perfiles antes que un competidor.</div><a href="https://business.google.com" target="_blank" class="step-resource">🔗 Perfil de Google Business</a></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="7" onchange="calc()"/></td>
+          <td><div class="step-title">Establezca un calendario de pagos fiscales trimestrales — evite penalidades del IRS por pago insuficiente</div><div class="step-desc">Los propietarios autónomos y de LLC deben pagar impuestos estimados trimestrales (Formulario IRS 1040-ES) antes del 15 de abril, 15 de junio, 15 de septiembre y 15 de enero. Consulte a un CPA para calcular los montos.</div><a href="https://www.irs.gov/businesses/small-businesses-self-employed/estimated-taxes" target="_blank" class="step-resource">🔗 Guía de Impuestos Estimados del IRS</a></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="step-check" data-phase="7" onchange="calc()"/></td>
+          <td><div class="step-title">Programe una revisión operacional de 90 días — evalúe todos los sistemas, estado de cumplimiento y plan de crecimiento</div><div class="step-desc">A los 90 días en el negocio: revise las finanzas, asegúrese de que todas las licencias estén activas, confirme que la cobertura del seguro sea adecuada y documente los SOPs iniciales. Establezca KPIs para el primer año.</div></td>
+          <td><select class="status-sel" onchange="calc()"><option value="">—</option><option>Por Hacer</option><option>En Proceso</option><option>Completado</option></select></td>
+        </tr>
+        <tr class="phase-total"><td colspan="3">Fase 7 — <span id="pt-7">0 de 6 pasos completados</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- RESULTS -->
+<div class="results-wrap">
+  <h2>Resumen del Progreso de Constitución</h2>
+  <div class="results-grid">
+    <div class="res-row"><div class="res-label">Fase 1 — Nombre y Estructura</div><div class="res-val" id="rv-1">0/6</div></div>
+    <div class="res-row"><div class="res-label">Fase 2 — Registro Estatal</div><div class="res-val" id="rv-2">0/6</div></div>
+    <div class="res-row"><div class="res-label">Fase 3 — EIN e IDs Fiscales</div><div class="res-val" id="rv-3">0/5</div></div>
+    <div class="res-row"><div class="res-label">Fase 4 — Banca y Finanzas</div><div class="res-val" id="rv-4">0/6</div></div>
+    <div class="res-row"><div class="res-label">Fase 5 — Licencias y Permisos</div><div class="res-val" id="rv-5">0/6</div></div>
+    <div class="res-row"><div class="res-label">Fase 6 — Seguros y Cumplimiento</div><div class="res-val" id="rv-6">0/7</div></div>
+    <div class="res-row res-total"><div class="res-label">Finalización General</div><div class="res-val" id="rv-total">0 de 42 pasos</div></div>
+  </div>
+  <div class="verdict"><div class="verdict-text" id="verdict-text">Complete la lista de verificación para ver el estado de constitución de su negocio. Los ítems críticos (★) deben completarse antes de comenzar operaciones comerciales.</div></div>
+</div>
+
+<!-- SOURCES -->
+<div class="sources-box">
+  <h3>Fuentes y Referencias Oficiales</h3>
+  <ul>
+    <li>Administración de Pequeños Negocios de EE.UU. — Guías de Constitución y Registro — <a href="https://www.sba.gov/business-guide/launch-your-business" target="_blank">sba.gov</a></li>
+    <li>Servicio de Impuestos Internos — EIN, Elección S-Corp, Impuestos Estimados — <a href="https://www.irs.gov/businesses/small-businesses-self-employed" target="_blank">irs.gov</a></li>
+    <li>FinCEN — Reporte de Información de Beneficiarios Reales (Ley de Transparencia Corporativa) — <a href="https://boiefiling.fincen.gov" target="_blank">fincen.gov</a></li>
+    <li>Oficina de Patentes y Marcas de EE.UU. — Búsqueda de Nombre de Marca — <a href="https://www.uspto.gov/trademarks/search" target="_blank">uspto.gov</a></li>
+    <li>SAM.gov — Registro de Contratista Federal — <a href="https://sam.gov" target="_blank">sam.gov</a></li>
+    <li>Departamento de Trabajo de EE.UU. — Carteles de Derecho Laboral Federal y Cumplimiento — <a href="https://www.dol.gov" target="_blank">dol.gov</a></li>
+    <li>Dun &amp; Bradstreet — Registro DUNS / UEI Empresarial — <a href="https://www.dnb.com" target="_blank">dnb.com</a></li>
+    <li>SCORE — Mentoría y Recursos Gratuitos para Pequeños Negocios — <a href="https://www.score.org" target="_blank">score.org</a></li>
+  </ul>
+</div>
+
+<!-- CTA -->
+<div class="cta-box">
+  <div>
+    <h3>¿Listo para Construir su Negocio de la Manera Correcta?</h3>
+    <p>RC2 Consulting ayuda a negocios nuevos y en crecimiento a establecer infraestructura de cumplimiento, documentación operacional y sistemas escalables desde cero.</p>
+  </div>
+  <a href="https://rc2consulting.github.io/contact-es.html">Agendar una Llamada de Descubrimiento Gratuita →</a>
+</div>
+<div class="print-btn"><button onclick="window.print()">🖨 Imprimir / Guardar como PDF</button></div>
+
+</div><!-- end page-wrap -->
+
+<footer class="site-footer">
+  <div class="footer-tagline">Claridad Operacional. Confianza en el Cumplimiento. Sistemas que Escalan.</div>
+  <div class="footer-links">
+    <a href="https://rc2consulting.github.io/index-es.html">Inicio</a>
+    <a href="https://rc2consulting.github.io/services-es.html">Servicios</a>
+    <a href="https://rc2consulting.github.io/who-we-help-es.html">A Quién Ayudamos</a>
+    <a href="https://rc2consulting.github.io/about-es.html">Nosotros</a>
+    <a href="https://rc2consulting.github.io/RC2_Resources_Page-es.html">Recursos</a>
+    <a href="https://rc2consulting.github.io/contact-es.html">Contacto</a>
+  </div>
+  <div class="footer-copy">© 2026 RC2 Consulting, LLC &nbsp;|&nbsp; <a href="#">Política de Privacidad</a> &nbsp;|&nbsp; <a href="#">Términos de Servicio</a></div>
+</footer>
+
+<script>
+const PHASES = {1:6, 2:6, 3:5, 4:6, 5:6, 6:7, 7:6};
+const TOTAL = 42;
+
+function togglePhase(n){
+  const body = document.getElementById('body-'+n);
+  const tog = document.getElementById('toggle-'+n);
+  const open = body.classList.toggle('open');
+  tog.textContent = open ? '▲' : '▼';
+}
+
+function calc(){
+  let grand = 0;
+  for(const [p, max] of Object.entries(PHASES)){
+    const boxes = document.querySelectorAll(`.step-check[data-phase="${p}"]`);
+    let done = 0;
+    boxes.forEach(b => { if(b.checked) done++; });
+    grand += done;
+    const badge = document.getElementById('badge-'+p);
+    const pt = document.getElementById('pt-'+p);
+    const rv = document.getElementById('rv-'+p);
+    badge.textContent = done+' / '+max;
+    badge.className = 'phase-badge' + (done===max?' badge-done':done>0?' badge-prog':'');
+    if(pt) pt.textContent = done+' de '+max+' pasos completados';
+    if(rv) rv.textContent = done+'/'+max;
+  }
+  // overall
+  const pct = Math.round((grand/TOTAL)*100);
+  document.getElementById('prog-fill').style.width = pct+'%';
+  document.getElementById('prog-pct').textContent = pct+'%';
+  document.getElementById('prog-count').textContent = grand+' de '+TOTAL+' pasos';
+  document.getElementById('rv-total').textContent = grand+' de '+TOTAL+' pasos';
+  // verdict
+  const vt = document.getElementById('verdict-text');
+  if(grand===0) vt.textContent='Complete la lista de verificación para ver el estado de constitución de su negocio. Los ítems críticos (★) deben completarse antes de comenzar operaciones comerciales.';
+  else if(pct<30) vt.textContent='🟡 Early Stage — You\'ve started the process. Focus on Phases 1–3 first: name registration, state filing, and EIN. These are the legal foundation everything else depends on.';
+  else if(pct<60) vt.textContent='🔵 Foundation Building — Good progress. Ensure all Critical (★) items in Phases 2–4 are complete before conducting business or opening accounts.';
+  else if(pct<85) vt.textContent='🟢 Nearly Operational — Strong completion rate. Review remaining steps — many late-stage items relate to insurance, compliance, and growth infrastructure that will protect your business long-term.';
+  else vt.textContent='✅ Constitución Completa — Su negocio es estructuralmente sólido. Continúe a la Fase 7 para sistemas operacionales y de crecimiento. Felicitaciones por construir su negocio de la manera correcta.';
+}
+</script>
+</body>
+</html>
