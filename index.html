@@ -185,7 +185,28 @@
     .lang-btn.inactive{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6)}
     .lang-btn.inactive:hover{background:rgba(255,255,255,.15);color:#fff}
     .lang-btn.active{background:#C8922A;color:#0B2545}
-  </style>
+  
+    /* ── EXPANDABLE BULLETS (home service cards) ── */
+    .service-col ul li { display:block; padding:0; border-bottom:1px solid var(--border); }
+    .service-col ul li:last-child { border-bottom:none; }
+    .service-col ul li::before { display:none; }
+    .svc-bullet {
+      display:flex; align-items:center; gap:8px; padding:7px 0;
+      cursor:pointer; user-select:none;
+    }
+    .svc-bullet .arrow { color:var(--blue); flex-shrink:0; font-size:0.85rem; }
+    .svc-bullet .bullet-label { font-size:0.84rem; color:var(--text-muted); flex:1; line-height:1.4; transition:color .2s; }
+    .svc-bullet:hover .bullet-label { color:var(--navy); }
+    .expand-icon { margin-left:auto; width:18px; height:18px; border-radius:50%;
+      background:var(--light-bg); border:1px solid var(--border); color:var(--light-blue);
+      font-size:0.75rem; font-weight:700; display:flex; align-items:center; justify-content:center;
+      flex-shrink:0; transition:all .25s; line-height:1; }
+    .svc-bullet.open .expand-icon { background:var(--light-blue); color:white; border-color:var(--light-blue); transform:rotate(45deg); }
+    .svc-desc { display:none; padding:6px 10px 10px 24px; font-size:0.80rem; color:var(--text-muted);
+      line-height:1.65; background:var(--light-bg); border-radius:0 0 6px 6px;
+      border-left:3px solid var(--light-blue); margin:0 0 4px; }
+    .svc-desc.open { display:block; }
+</style>
 </head>
 <body>
 
@@ -233,28 +254,58 @@
   <div class="strip-inner">
     <div class="services-grid">
       <div class="service-col">
-        <h3>Operations & Execution</h3>
+        <h3>Operations &amp; Execution</h3>
         <ul>
-          <li>Process Optimization</li>
-          <li>SOP & Workflow Development / Alignment</li>
-          <li>Fractional Directing</li>
+          <li>
+            <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Process Optimization</span><span class="expand-icon">+</span></div>
+            <div class="svc-desc">We analyze your current workflows end-to-end — from intake to delivery — and eliminate redundancy, bottlenecks, and manual workarounds. The result is a leaner, faster operation with clear accountability at every step.</div>
+          </li>
+          <li>
+            <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">SOP &amp; Workflow Development / Alignment</span><span class="expand-icon">+</span></div>
+            <div class="svc-desc">We build or restructure your Standard Operating Procedures so every role has clear, step-by-step instructions. Aligned workflows reduce errors, accelerate onboarding, and create a foundation for consistent, scalable execution across your entire team.</div>
+          </li>
+          <li>
+            <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Fractional Directing</span><span class="expand-icon">+</span></div>
+            <div class="svc-desc">Get senior-level operational leadership — without the full-time executive cost. We embed into your business on a fractional basis to drive execution, manage cross-functional teams, and build the internal systems and culture your organization needs to scale.</div>
+          </li>
         </ul>
       </div>
       <div class="service-col">
-        <h3>Compliance & Readiness</h3>
+        <h3>Compliance &amp; Readiness</h3>
         <ul>
-          <li>Audit Preparation</li>
-          <li>Policy Documentation</li>
-          <li>Regulatory Compliance</li>
+          <li>
+            <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Audit Preparation</span><span class="expand-icon">+</span></div>
+            <div class="svc-desc">We prepare your organization to walk into any audit — WRAP, government, or internal — with complete confidence. From pre-audit assessments and corrective action plans to mock audit walkthroughs, we close every gap before the auditor finds it.</div>
+          </li>
+          <li>
+            <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Policy Documentation</span><span class="expand-icon">+</span></div>
+            <div class="svc-desc">We write, update, and organize your compliance policies so they are accurate, audit-ready, and actually used by your team. Clear policy documentation is the single most important compliance investment an organization can make — and most businesses underinvest in it.</div>
+          </li>
+          <li>
+            <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Regulatory Compliance</span><span class="expand-icon">+</span></div>
+            <div class="svc-desc">We track the regulatory requirements that apply to your business — labor, trade, environmental, and government contracting — and build the systems to keep you compliant as those requirements evolve. Compliance is not a one-time project; it is an ongoing operational discipline.</div>
+          </li>
         </ul>
       </div>
       <div class="service-col">
-        <h3>Sales & Growth Enablement</h3>
+        <h3>Sales &amp; Growth Enablement</h3>
         <ul>
-          <li>New Business Development</li>
-          <li>Performance Optimization</li>
-          <li>Pipeline Development</li>
-          <li>Sales Messaging</li>
+          <li>
+            <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">New Business Development</span><span class="expand-icon">+</span></div>
+            <div class="svc-desc">We identify and pursue your highest-value growth opportunities — from target market definition and prospect research to outreach strategy and first-meeting preparation. We build the front end of your revenue engine so your team spends time on qualified conversations, not cold searches.</div>
+          </li>
+          <li>
+            <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Performance Optimization</span><span class="expand-icon">+</span></div>
+            <div class="svc-desc">We analyze your existing sales team's activity, conversion rates, and deal velocity to find where revenue is being lost. Then we build the coaching frameworks, KPI dashboards, and accountability structures that turn average performers into consistent producers.</div>
+          </li>
+          <li>
+            <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Pipeline Development</span><span class="expand-icon">+</span></div>
+            <div class="svc-desc">We design and implement a structured, repeatable pipeline process — from lead generation through close — so your revenue flow is predictable and measurable. A healthy pipeline is not an accident; it is a system, and we build it with the right stages, tools, and follow-through discipline.</div>
+          </li>
+          <li>
+            <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Sales Messaging</span><span class="expand-icon">+</span></div>
+            <div class="svc-desc">We craft the language your sales team uses to open doors, handle objections, and close deals — tailored to your specific buyer, industry, and competitive landscape. The right message delivered at the right moment is the difference between a prospect who engages and one who goes silent.</div>
+          </li>
         </ul>
       </div>
     </div>
@@ -319,5 +370,14 @@
   <div class="footer-copy">© 2026 RC2 Consulting, LLC &nbsp;|&nbsp; Privacy Policy &nbsp;|&nbsp; Terms of Service</div>
 </footer>
 
+
+<script>
+function toggleDesc(btn) {
+  const desc = btn.nextElementSibling;
+  const isOpen = desc.classList.contains('open');
+  btn.classList.toggle('open', !isOpen);
+  desc.classList.toggle('open', !isOpen);
+}
+</script>
 </body>
 </html>

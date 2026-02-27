@@ -185,7 +185,25 @@
     .lang-btn.inactive{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6)}
     .lang-btn.inactive:hover{background:rgba(255,255,255,.15);color:#fff}
     .lang-btn.active{background:#C8922A;color:#0B2545}
-  </style>
+  
+    /* ── EXPANDABLE BULLETS (home service cards) ── */
+    .service-col ul li { display:block; padding:0; border-bottom:1px solid var(--border); }
+    .service-col ul li:last-child { border-bottom:none; }
+    .service-col ul li::before { display:none; }
+    .svc-bullet { display:flex; align-items:center; gap:8px; padding:7px 0; cursor:pointer; user-select:none; }
+    .svc-bullet .arrow { color:var(--blue); flex-shrink:0; font-size:0.85rem; }
+    .svc-bullet .bullet-label { font-size:0.84rem; color:var(--text-muted); flex:1; line-height:1.4; transition:color .2s; }
+    .svc-bullet:hover .bullet-label { color:var(--navy); }
+    .expand-icon { margin-left:auto; width:18px; height:18px; border-radius:50%;
+      background:var(--light-bg); border:1px solid var(--border); color:var(--light-blue);
+      font-size:0.75rem; font-weight:700; display:flex; align-items:center; justify-content:center;
+      flex-shrink:0; transition:all .25s; line-height:1; }
+    .svc-bullet.open .expand-icon { background:var(--light-blue); color:white; border-color:var(--light-blue); transform:rotate(45deg); }
+    .svc-desc { display:none; padding:6px 10px 10px 24px; font-size:0.80rem; color:var(--text-muted);
+      line-height:1.65; background:var(--light-bg); border-radius:0 0 6px 6px;
+      border-left:3px solid var(--light-blue); margin:0 0 4px; }
+    .svc-desc.open { display:block; }
+</style>
 </head>
 <body>
 
@@ -235,26 +253,56 @@
       <div class="service-col">
         <h3>Operaciones y Ejecución</h3>
         <ul>
-          <li>Optimización de Procesos</li>
-          <li>Desarrollo y Alineación de SOPs y Flujos de Trabajo</li>
-          <li>Dirección Fraccionada</li>
+          <li>
+            <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Optimización de Procesos</span><span class="expand-icon">+</span></div>
+            <div class="svc-desc">Analizamos sus flujos de trabajo de extremo a extremo — desde la recepción hasta la entrega — y eliminamos redundancias, cuellos de botella y procesos manuales innecesarios. El resultado es una operación más ágil con responsabilidades claras en cada paso.</div>
+          </li>
+          <li>
+            <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Desarrollo y Alineación de SOPs y Flujos de Trabajo</span><span class="expand-icon">+</span></div>
+            <div class="svc-desc">Construimos o reestructuramos sus Procedimientos Operativos Estándar para que cada función tenga instrucciones claras paso a paso. Los flujos alineados reducen errores, aceleran la incorporación de personal y crean la base para una ejecución consistente y escalable en todo su equipo.</div>
+          </li>
+          <li>
+            <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Dirección Fraccionada</span><span class="expand-icon">+</span></div>
+            <div class="svc-desc">Obtenga liderazgo operativo de nivel ejecutivo — sin el costo de tiempo completo. Nos integramos a su negocio de forma fraccionada para impulsar la ejecución, gestionar equipos multifuncionales y construir los sistemas y la cultura que su empresa necesita para escalar.</div>
+          </li>
         </ul>
       </div>
       <div class="service-col">
         <h3>Cumplimiento y Preparación</h3>
         <ul>
-          <li>Preparación para Auditorías</li>
-          <li>Documentación de Políticas</li>
-          <li>Cumplimiento Normativo</li>
+          <li>
+            <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Preparación para Auditorías</span><span class="expand-icon">+</span></div>
+            <div class="svc-desc">Preparamos a su organización para entrar a cualquier auditoría — WRAP, gubernamental o interna — con total confianza. Desde evaluaciones previas y planes de acción correctiva hasta simulacros de auditoría, cerramos cada brecha antes de que el auditor la encuentre.</div>
+          </li>
+          <li>
+            <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Documentación de Políticas</span><span class="expand-icon">+</span></div>
+            <div class="svc-desc">Redactamos, actualizamos y organizamos sus políticas de cumplimiento para que sean precisas, listas para auditoría y realmente utilizadas por su equipo. La documentación clara de políticas es la inversión de cumplimiento más importante que una organización puede hacer.</div>
+          </li>
+          <li>
+            <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Cumplimiento Normativo</span><span class="expand-icon">+</span></div>
+            <div class="svc-desc">Monitoreamos los requisitos regulatorios aplicables a su negocio — laborales, comerciales, ambientales y de contratación gubernamental — y construimos los sistemas para mantenerle en cumplimiento a medida que esos requisitos evolucionan.</div>
+          </li>
         </ul>
       </div>
       <div class="service-col">
         <h3>Ventas y Habilitación de Crecimiento</h3>
         <ul>
-          <li>Desarrollo de Nuevos Negocios</li>
-          <li>Optimización del Desempeño</li>
-          <li>Desarrollo de Pipeline</li>
-          <li>Mensajería de Ventas</li>
+          <li>
+            <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Desarrollo de Nuevos Negocios</span><span class="expand-icon">+</span></div>
+            <div class="svc-desc">Identificamos y perseguimos sus oportunidades de crecimiento de mayor valor — desde la definición del mercado objetivo y la investigación de prospectos hasta la estrategia de contacto y la preparación para la primera reunión. Construimos el motor de ingresos para que su equipo invierta tiempo en conversaciones calificadas.</div>
+          </li>
+          <li>
+            <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Optimización del Desempeño</span><span class="expand-icon">+</span></div>
+            <div class="svc-desc">Analizamos la actividad, las tasas de conversión y la velocidad de cierre de su equipo de ventas para identificar dónde se pierde ingresos. Luego construimos los marcos de entrenamiento, tableros de KPI y estructuras de rendición de cuentas que convierten el rendimiento promedio en resultados consistentes.</div>
+          </li>
+          <li>
+            <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Desarrollo de Pipeline</span><span class="expand-icon">+</span></div>
+            <div class="svc-desc">Diseñamos e implementamos un proceso de pipeline estructurado y repetible — desde la generación de leads hasta el cierre — para que su flujo de ingresos sea predecible y medible. Un pipeline saludable no es un accidente; es un sistema, y lo construimos con las etapas, herramientas y disciplina de seguimiento correctas.</div>
+          </li>
+          <li>
+            <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Mensajería de Ventas</span><span class="expand-icon">+</span></div>
+            <div class="svc-desc">Elaboramos el lenguaje que usa su equipo de ventas para abrir puertas, manejar objeciones y cerrar negocios — adaptado a su comprador específico, industria y panorama competitivo. El mensaje correcto en el momento correcto es la diferencia entre un prospecto que se involucra y uno que desaparece.</div>
+          </li>
         </ul>
       </div>
     </div>
@@ -319,5 +367,14 @@
   <div class="footer-copy">© 2026 RC2 Consulting, LLC &nbsp;|&nbsp; Política de Privacidad &nbsp;|&nbsp; Términos de Servicio</div>
 </footer>
 
+
+<script>
+function toggleDesc(btn) {
+  const desc = btn.nextElementSibling;
+  const isOpen = desc.classList.contains('open');
+  btn.classList.toggle('open', !isOpen);
+  desc.classList.toggle('open', !isOpen);
+}
+</script>
 </body>
 </html>
