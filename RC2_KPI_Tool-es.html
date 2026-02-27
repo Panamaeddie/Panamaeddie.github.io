@@ -27,14 +27,17 @@
     .nav-links{display:flex;gap:4px;list-style:none}
     .nav-links a{color:rgba(255,255,255,.78);text-decoration:none;font-size:.83rem;font-weight:600;padding:6px 12px;border-radius:4px;transition:all .2s}
     .nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,.12)}
+    .nav-lang{display:flex;gap:4px}
+    .lang-btn{color:rgba(255,255,255,.7);text-decoration:none;font-size:.78rem;font-weight:700;padding:4px 10px;border-radius:4px;border:1px solid rgba(255,255,255,.2);transition:all .2s}
+    .lang-btn:hover{color:white;border-color:rgba(255,255,255,.5)}
+    .lang-btn.active{color:white;background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.4)}
 
     /* HERO */
-    .hero{background:linear-gradient(160deg,var(--navy) 0%,#1A3A6B 60%,#0D2E5C 100%);padding:48px 40px 36px;position:relative;overflow:hidden}
+    .hero{background:linear-gradient(160deg,var(--navy) 0%,#1A3A6B 55%,#0D2A5A 100%);padding:56px 40px 44px;position:relative;overflow:hidden}
     .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 40%,rgba(200,146,42,.07) 0%,transparent 60%);pointer-events:none}
-    .hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
-    .hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.7);font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 13px;border-radius:20px;margin-bottom:14px}
+    .hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}
+    .atag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.75);font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:14px}
     .hero h1{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:#fff;line-height:1.2;margin-bottom:10px}
-    .hero h1 em{font-style:normal;color:var(--gold-lt)}
     .hero-sub{font-size:.9rem;color:rgba(255,255,255,.7);max-width:680px;line-height:1.7}
 
     /* DASHBOARD */
@@ -169,11 +172,16 @@
 
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-pill">🎯 Herramienta Interactiva</div>
-    <h1>Constructor de Marco KPI<br><em>Mida Lo que Realmente Importa</em></h1>
+    <span class="atag">Herramienta de Gestión del Desempeño</span>
+    <h1>Constructor de Marco KPI</h1>
     <p class="hero-sub">Evalúe su organización en 6 dominios de desempeño. Nombre sus KPIs, califique su madurez actual y obtenga una puntuación compuesta en tiempo real, lista de acciones prioritarias y resumen exportable del marco — para cualquier industria.</p>
+    <div class="hero-meta">
+      <span>RC2 Consulting</span><span>|</span><span>2026</span><span>|</span><span>Interactivo — Puntuación en Tiempo Real</span>
+    </div>
   </div>
 </section>
+
+<div class="back-wrap"><a href="https://rc2consulting.github.io/RC2_Resources_Page-es.html">← Volver a Recursos</a></div>
 
 <!-- LIVE DASHBOARD -->
 <div class="dash">
@@ -219,14 +227,14 @@
       <div class="instr-step">
         <div class="instr-num">3</div>
         <div class="instr-text">
-          <strong>Review Results</strong>
+          <strong>Revisar Resultados</strong>
           <p>Su puntuación compuesta, puntuaciones por dominio y lista de acciones prioritarias se actualizan en tiempo real.</p>
         </div>
       </div>
       <div class="instr-step">
         <div class="instr-num">4</div>
         <div class="instr-text">
-          <strong>Export Summary</strong>
+          <strong>Exportar Resumen</strong>
           <p>Haga clic en "Exportar Resumen" para abrir una versión imprimible de su marco KPI para su equipo o asesor.</p>
         </div>
       </div>
@@ -249,7 +257,7 @@
           <div class="kpi-label">Tasa de Crecimiento de Ingresos <span>% de aumento interanual de ingresos</span></div>
           <div class="kpi-inputs">
             <input class="kpi-name-input" type="text" value="Tasa de Crecimiento de Ingresos" oninput="calc()"/>
-            <select class="score-select" onchange="styleSelect(this);calc()" title="Current Maturity (1=Not Measured, 5=Fully Optimized)">
+            <select class="score-select" onchange="styleSelect(this);calc()" title="Current Madurez (1=No Medido, 5=Completamente Optimizado)">
               <option value="0">Madurez</option>
               <option value="1">1 – No Medido</option>
               <option value="2">2 – Ad Hoc</option>
@@ -257,7 +265,7 @@
               <option value="4">4 – Gestionado</option>
               <option value="5">5 – Optimizado</option>
             </select>
-            <select class="score-select" onchange="styleSelect(this);calc()" title="Strategic Importance (1=Low, 5=Critical)">
+            <select class="score-select" onchange="styleSelect(this);calc()" title="Estratégico Importancia (1=Baja, 5=Crítica)">
               <option value="0">Importancia</option>
               <option value="1">1 – Baja</option>
               <option value="2">2 – Moderada</option>
@@ -540,14 +548,14 @@
         <div class="kpi-row">
           <div class="kpi-label">Tasa de Completación de Iniciativas Estratégicas <span>% de proyectos estratégicos a tiempo y dentro del presupuesto</span></div>
           <div class="kpi-inputs">
-            <input class="kpi-name-input" type="text" value="Strategic Initiative Completion" oninput="calc()"/>
+            <input class="kpi-name-input" type="text" value="Completación de Iniciativas Estratégicas" oninput="calc()"/>
             <select class="score-select" onchange="styleSelect(this);calc()"><option value="0">Madurez</option><option value="1">1 – No Medido</option><option value="2">2 – Ad Hoc</option><option value="3">3 – Definido</option><option value="4">4 – Gestionado</option><option value="5">5 – Optimizado</option></select>
             <select class="score-select" onchange="styleSelect(this);calc()"><option value="0">Importancia</option><option value="1">1 – Baja</option><option value="2">2 – Moderada</option><option value="3">3 – Importante</option><option value="4">4 – Alta</option><option value="5">5 – Crítica</option></select>
           </div>
         </div>
         <div class="divider"></div>
         <div class="kpi-row">
-          <div class="kpi-label">Win Rate / Proposal Conversion <span>% proposals converted to contracts</span></div>
+          <div class="kpi-label">Tasa de Conversión de Propuestas <span>% de propuestas convertidas en contratos</span></div>
           <div class="kpi-inputs">
             <input class="kpi-name-input" type="text" value="Proposal Win Rate" oninput="calc()"/>
             <select class="score-select" onchange="styleSelect(this);calc()"><option value="0">Madurez</option><option value="1">1 – No Medido</option><option value="2">2 – Ad Hoc</option><option value="3">3 – Definido</option><option value="4">4 – Gestionado</option><option value="5">5 – Optimizado</option></select>
@@ -560,15 +568,15 @@
 
     <!-- RESULTS PANEL -->
     <div class="results-panel" id="results-panel">
-      <h2>📊 Framework Assessment Results</h2>
+      <h2>📊 Resultados de Evaluación del Marco</h2>
       <div class="results-grid" id="results-grid">
-        <div class="r-card"><div class="r-val" id="r-financial">–</div><div class="r-lbl">Financial</div><div class="r-bar"><div class="r-fill" id="rf-financial" style="width:0%"></div></div></div>
-        <div class="r-card"><div class="r-val" id="r-customer">–</div><div class="r-lbl">Customer</div><div class="r-bar"><div class="r-fill" id="rf-customer" style="width:0%"></div></div></div>
-        <div class="r-card"><div class="r-val" id="r-operations">–</div><div class="r-lbl">Operations</div><div class="r-bar"><div class="r-fill" id="rf-operations" style="width:0%"></div></div></div>
-        <div class="r-card"><div class="r-val" id="r-compliance">–</div><div class="r-lbl">Compliance</div><div class="r-bar"><div class="r-fill" id="rf-compliance" style="width:0%"></div></div></div>
-        <div class="r-card"><div class="r-val" id="r-people">–</div><div class="r-lbl">People</div><div class="r-bar"><div class="r-fill" id="rf-people" style="width:0%"></div></div></div>
-        <div class="r-card"><div class="r-val" id="r-strategic">–</div><div class="r-lbl">Strategic</div><div class="r-bar"><div class="r-fill" id="rf-strategic" style="width:0%"></div></div></div>
-        <div class="r-card" style="grid-column:span 2"><div class="r-val" id="r-total" style="font-size:2.2rem">–</div><div class="r-lbl">Overall Composite</div><div class="r-bar"><div class="r-fill" id="rf-total" style="width:0%"></div></div></div>
+        <div class="r-card"><div class="r-val" id="r-financial">–</div><div class="r-lbl">Financiero</div><div class="r-bar"><div class="r-fill" id="rf-financial" style="width:0%"></div></div></div>
+        <div class="r-card"><div class="r-val" id="r-customer">–</div><div class="r-lbl">Clientes</div><div class="r-bar"><div class="r-fill" id="rf-customer" style="width:0%"></div></div></div>
+        <div class="r-card"><div class="r-val" id="r-operations">–</div><div class="r-lbl">Operaciones</div><div class="r-bar"><div class="r-fill" id="rf-operations" style="width:0%"></div></div></div>
+        <div class="r-card"><div class="r-val" id="r-compliance">–</div><div class="r-lbl">Cumplimiento</div><div class="r-bar"><div class="r-fill" id="rf-compliance" style="width:0%"></div></div></div>
+        <div class="r-card"><div class="r-val" id="r-people">–</div><div class="r-lbl">Personas</div><div class="r-bar"><div class="r-fill" id="rf-people" style="width:0%"></div></div></div>
+        <div class="r-card"><div class="r-val" id="r-strategic">–</div><div class="r-lbl">Estratégico</div><div class="r-bar"><div class="r-fill" id="rf-strategic" style="width:0%"></div></div></div>
+        <div class="r-card" style="grid-column:span 2"><div class="r-val" id="r-total" style="font-size:2.2rem">–</div><div class="r-lbl">Puntuación Compuesta General</div><div class="r-bar"><div class="r-fill" id="rf-total" style="width:0%"></div></div></div>
         <div class="r-card" style="grid-column:span 2"><div class="r-val" id="r-kpis" style="font-size:2.2rem">–</div><div class="r-lbl">KPIs Assessed</div></div>
       </div>
 
@@ -576,12 +584,12 @@
         <div style="font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px">🔴 Acciones Prioritarias — Alta Importancia, Baja Madurez</div>
         <table class="priority-table" id="priority-table">
           <thead><tr><th>Nombre del KPI</th><th>Dominio</th><th>Madurez</th><th>Importancia</th><th>Prioridad</th></tr></thead>
-          <tbody id="priority-body"><tr><td colspan="5" style="color:rgba(255,255,255,.4);font-style:italic">Complete the assessment above to see priority actions</td></tr></tbody>
+          <tbody id="priority-body"><tr><td colspan="5" style="color:rgba(255,255,255,.4);font-style:italic">Complete la evaluación para ver las acciones prioritarias</td></tr></tbody>
         </table>
       </div>
 
       <div class="action-row">
-        <button class="btn-export" onclick="exportSummary()">📄 Export Summary (Print)</button>
+        <button class="btn-export" onclick="exportSummary()">📄 Exportar Resumen (Imprimir)</button>
         <button class="btn-reset" onclick="resetAll()">↺ Reiniciar Todo</button>
       </div>
     </div>

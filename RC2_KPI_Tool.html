@@ -27,14 +27,17 @@
     .nav-links{display:flex;gap:4px;list-style:none}
     .nav-links a{color:rgba(255,255,255,.78);text-decoration:none;font-size:.83rem;font-weight:600;padding:6px 12px;border-radius:4px;transition:all .2s}
     .nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,.12)}
+    .nav-lang{display:flex;gap:4px}
+    .lang-btn{color:rgba(255,255,255,.7);text-decoration:none;font-size:.78rem;font-weight:700;padding:4px 10px;border-radius:4px;border:1px solid rgba(255,255,255,.2);transition:all .2s}
+    .lang-btn:hover{color:white;border-color:rgba(255,255,255,.5)}
+    .lang-btn.active{color:white;background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.4)}
 
     /* HERO */
-    .hero{background:linear-gradient(160deg,var(--navy) 0%,#1A3A6B 60%,#0D2E5C 100%);padding:48px 40px 36px;position:relative;overflow:hidden}
+    .hero{background:linear-gradient(160deg,var(--navy) 0%,#1A3A6B 55%,#0D2A5A 100%);padding:56px 40px 44px;position:relative;overflow:hidden}
     .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 40%,rgba(200,146,42,.07) 0%,transparent 60%);pointer-events:none}
-    .hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
-    .hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.7);font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 13px;border-radius:20px;margin-bottom:14px}
+    .hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}
+    .atag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.75);font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:14px}
     .hero h1{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:#fff;line-height:1.2;margin-bottom:10px}
-    .hero h1 em{font-style:normal;color:var(--gold-lt)}
     .hero-sub{font-size:.9rem;color:rgba(255,255,255,.7);max-width:680px;line-height:1.7}
 
     /* DASHBOARD */
@@ -158,18 +161,27 @@
     <li><a href="https://rc2consulting.github.io/services.html">Services</a></li>
     <li><a href="https://rc2consulting.github.io/who-we-help.html">Who We Help</a></li>
     <li><a href="https://rc2consulting.github.io/about.html">About</a></li>
-    <li><a href="https://rc2consulting.github.io/RC2_Resources_Page.html">Resources</a></li>
+    <li><a href="https://rc2consulting.github.io/RC2_Resources_Page.html" class="active">Resources</a></li>
     <li><a href="https://rc2consulting.github.io/contact.html">Contact</a></li>
   </ul>
+  <div class="nav-lang">
+    <a href="#" class="lang-btn active">EN</a>
+    <a href="https://rc2consulting.github.io/RC2_KPI_Tool-es.html" class="lang-btn">ES</a>
+  </div>
 </nav>
 
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-pill">🎯 Interactive Tool</div>
-    <h1>KPI Framework Builder<br><em>Measure What Actually Matters</em></h1>
+    <span class="atag">Performance Management Tool</span>
+    <h1>KPI Framework Builder</h1>
     <p class="hero-sub">Score your organization across 6 performance domains. Name your KPIs, rate their current maturity, and get a real-time composite score, priority action list, and exportable framework summary — for any industry.</p>
+    <div class="hero-meta">
+      <span>RC2 Consulting</span><span>|</span><span>2026</span><span>|</span><span>Interactive — Real-Time Scoring</span>
+    </div>
   </div>
 </section>
+
+<div class="back-wrap"><a href="https://rc2consulting.github.io/RC2_Resources_Page.html">← Back to Resources</a></div>
 
 <!-- LIVE DASHBOARD -->
 <div class="dash">
