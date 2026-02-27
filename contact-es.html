@@ -31,23 +31,23 @@
 
     /* ── HERO ────────────────────────────────────────────────── */
     .hero{
-      background:linear-gradient(160deg,var(--navy) 0%,#1A3A6B 60%,#0D2E5C 100%);
+      background:linear-gradient(160deg,var(--navy) 0%,#1A3A6B 55%,#0D2A5A 100%);
       padding:60px 40px 0;
       position:relative;
       overflow:hidden;
     }
     .hero::before{
       content:'';position:absolute;inset:0;
-      background:radial-gradient(ellipse at 80% 50%,rgba(200,146,42,.08) 0%,transparent 60%);
+      background:radial-gradient(ellipse at 75% 40%,rgba(37,99,235,.12) 0%,transparent 60%);
       pointer-events:none;
     }
     .hero-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;position:relative;z-index:1}
     .hero-left{padding-bottom:52px}
-    .hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.75);font-size:.7rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:20px}
-    .hero-pill span{width:6px;height:6px;background:#4ADE80;border-radius:50%;animation:pulse 2s ease-in-out infinite}
+    .atag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.75);font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:20px}
+    .atag span{width:6px;height:6px;background:#4ADE80;border-radius:50%;animation:pulse 2s ease-in-out infinite}
     @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
-    .hero h1{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:700;color:#fff;line-height:1.15;margin-bottom:16px}
-    .hero h1 em{font-style:normal;color:var(--gold-lt)}
+    .hero h1{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:#fff;line-height:1.25;margin-bottom:14px}
+    .hero h1 em{font-style:normal;color:white}
     .hero-sub{font-size:.95rem;color:rgba(255,255,255,.72);line-height:1.75;margin-bottom:28px;max-width:480px}
     .trust-row{display:flex;gap:20px;flex-wrap:wrap}
     .trust-item{display:flex;align-items:center;gap:8px;font-size:.78rem;color:rgba(255,255,255,.6)}
@@ -247,8 +247,8 @@
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-left">
-      <div class="hero-pill"><span></span>Aceptando Nuevos Clientes</div>
-      <h1>Construyamos Algo <em>que Perdure</em></h1>
+      <div class="atag"><span></span>Aceptando Nuevos Clientes</div>
+      <h1>Construyamos Algo que Perdure</h1>
       <p class="hero-sub">Ya sea que se esté preparando para una auditoría WRAP, ingresando al mercado federal o reestructurando su cadena de suministro — la primera conversación no tiene costo. Elija un horario o envíe un mensaje.</p>
       <div class="trust-row">
         <div class="trust-item">Llamada de 30 min, sin compromiso</div>
