@@ -50,7 +50,7 @@
     .service-list { list-style:none; }
     .service-list li { font-size:0.88rem; color:var(--text-muted); padding:7px 0; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:10px; }
     .service-list li:last-child { border-bottom:none; }
-    .service-list li::before { content:'→'; color:var(--blue); flex-shrink:0; }
+    .service-list li:not(:has(.svc-bullet))::before { content:'→'; color:var(--blue); flex-shrink:0; }
 
     .service-photo { border-radius:10px; overflow:hidden; height:220px; }
     .service-photo div { width:100%; height:100%; background-size:cover; background-position:center; }
@@ -99,6 +99,22 @@
     .lang-btn.inactive{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6)}
     .lang-btn.inactive:hover{background:rgba(255,255,255,.15);color:#fff}
     .lang-btn.active{background:#C8922A;color:#0B2545}
+  
+    /* ── EXPANDABLE BULLET DESCRIPTIONS ── */
+    .service-list li { position:relative; }
+    .svc-bullet { display:flex; align-items:center; gap:10px; width:100%; cursor:pointer; }
+    .svc-bullet .arrow { color:var(--light-blue); flex-shrink:0; font-style:normal; }
+    .svc-bullet .bullet-label { flex:1; color:var(--text-muted); font-size:0.88rem; }
+    .svc-bullet .expand-icon { margin-left:auto; width:18px; height:18px; border-radius:50%;
+      background:var(--light-bg); border:1px solid var(--border); color:var(--light-blue);
+      font-size:0.75rem; font-weight:700; display:flex; align-items:center; justify-content:center;
+      flex-shrink:0; transition:all .25s; line-height:1; }
+    .svc-bullet.open .expand-icon { background:var(--light-blue); color:white; border-color:var(--light-blue); transform:rotate(45deg); }
+    .svc-desc { display:none; padding:8px 10px 10px 28px; font-size:0.80rem; color:var(--text-muted);
+      line-height:1.65; background:var(--light-bg); border-radius:0 0 6px 6px;
+      border-left:3px solid var(--light-blue); margin:0 0 4px; }
+    .svc-desc.open { display:block; }
+    .svc-bullet:hover .bullet-label { color:var(--navy); }
   </style>
 </head>
 <body>
@@ -137,11 +153,26 @@
       <div class="service-tag">Compliance</div>
       <div class="service-title">Compliance Readiness Review</div>
       <ul class="service-list">
-        <li>Documentation Gap Review</li>
-        <li>Policy Structuring</li>
-        <li>Readiness Planning</li>
-        <li>Corrective Action Plan Development</li>
-        <li>Pre-Audit Internal Assessment</li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Documentation Gap Review</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">A systematic review of your existing compliance documents — policies, procedures, and records — to identify what is missing, outdated, or non-conforming. Produces a prioritized gap inventory that becomes the foundation of your remediation plan.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Policy Structuring</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Development and organization of formal policy frameworks aligned with audit standards and regulatory requirements. Ensures policies are clearly written, consistently formatted, and traceable to the compliance standards they satisfy.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Readiness Planning</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Creation of a phased, prioritized action plan to bring operations into full compliance ahead of an audit or certification event. Includes timelines, responsible parties, and milestone checkpoints to keep remediation on track.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Corrective Action Plan Development</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Structured CAP documentation identifying root causes, corrective measures, implementation timelines, and responsible parties. Built to satisfy auditor requirements and demonstrate documented, verifiable follow-through.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Pre-Audit Internal Assessment</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">A simulated internal audit conducted before an external review — evaluating your current compliance posture, surfacing exposure points, and giving your team the experience of the audit process before it counts.</div>
+        </li>
       </ul>
     </div>
     <div class="service-photo"><div class="p-s1"></div></div>
@@ -152,11 +183,26 @@
       <div class="service-tag">Operations</div>
       <div class="service-title">Operational Systems Optimization</div>
       <ul class="service-list">
-        <li>SOP & Workflow Buildout</li>
-        <li>Education / Training Programming</li>
-        <li>Compliance & Readiness Review</li>
-        <li>Process Documentation & Standardization</li>
-        <li>KPI Framework Development</li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">SOP &amp; Workflow Buildout</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Development of Standard Operating Procedures and documented workflows that define how work gets done, by whom, and to what standard. Converts institutional knowledge into repeatable, auditable systems that scale without the founder in the room.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Education / Training Programming</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Design and delivery of compliance and operations training programs tailored to your team's roles, responsibilities, and learning needs. Builds organizational competency so your people execute to standard — consistently, every time.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Compliance &amp; Readiness Review</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Evaluation of existing operational systems against compliance requirements — identifying where process gaps create audit risk, regulatory exposure, or operational vulnerability before they become liabilities.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Process Documentation &amp; Standardization</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Capture and formalization of existing processes into consistent, auditable documentation systems. Transforms ad hoc operations into structured workflows that can be trained, measured, and handed off — at any scale.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">KPI Framework Development</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Design of measurable performance indicators aligned to your operational goals. Enables data-driven management decisions, accountability at every level, and a clear line of sight between daily execution and strategic outcomes.</div>
+        </li>
       </ul>
     </div>
     <div class="service-photo"><div class="p-s2"></div></div>
@@ -167,11 +213,26 @@
       <div class="service-tag">Growth</div>
       <div class="service-title">Sales & Growth</div>
       <ul class="service-list">
-        <li>Sales Strategy Framework</li>
-        <li>Messaging Alignment</li>
-        <li>KPI Structure</li>
-        <li>Pipeline Development</li>
-        <li>New Business Development Strategy</li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Sales Strategy Framework</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">A structured approach to defining target markets, value propositions, and go-to-market execution. Aligns your sales activity with business objectives so every conversation, proposal, and follow-up moves a qualified opportunity forward.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Messaging Alignment</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Ensures that internal and external communications consistently reflect your brand's value, positioning, and client promise. Eliminates the disconnect between what leadership thinks the company says and what clients actually hear.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">KPI Structure</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Establishment of sales-specific performance metrics that track pipeline health, conversion rates, average deal size, and revenue targets — giving leadership real visibility into what is working and what needs to change.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Pipeline Development</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Building the systems, processes, and prospecting frameworks needed to generate, track, qualify, and close new business consistently. Turns unpredictable revenue into a managed, forecastable process.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">New Business Development Strategy</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Identification of growth opportunities, new market entry strategies, and partnership models to expand revenue streams. Built on your actual capabilities — not theoretical frameworks — so execution is immediate and grounded.</div>
+        </li>
       </ul>
     </div>
     <div class="service-photo"><div class="p-s3"></div></div>
@@ -182,11 +243,26 @@
       <div class="service-tag">Leadership</div>
       <div class="service-title">Fractional Director of Operations</div>
       <ul class="service-list">
-        <li>Sales Strategy Framework</li>
-        <li>Messaging Alignment</li>
-        <li>KPI Structure</li>
-        <li>Growing organizations needing structure</li>
-        <li>Leadership teams seeking executive support</li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Sales Strategy Framework</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Executive oversight of sales strategy development — ensuring alignment between revenue targets, operational capacity, and delivery systems. RC2 embeds at the leadership level to keep strategy and execution in sync.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Messaging Alignment</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Senior-level guidance on positioning, brand voice, and consistent communication across all client-facing and internal channels. Ensures the organization speaks with one voice — from the boardroom to the front line.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">KPI Structure</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Establishment and ongoing monitoring of cross-functional KPIs that align departments with organizational goals. Creates the accountability infrastructure leadership needs to manage performance without micromanaging people.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Growing Organizations Needing Structure</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Embedded operational leadership for businesses that have outgrown their current systems. RC2 steps in as your fractional director — building the structure, documentation, and processes your growth requires without the cost of a full-time executive hire.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Leadership Teams Seeking Executive Support</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Senior-level operational direction and advisory for leadership teams navigating growth, transition, restructuring, or complexity. Provides the experienced perspective and decision-making support that keeps organizations moving forward with clarity and confidence.</div>
+        </li>
       </ul>
     </div>
     <div class="service-photo"><div class="p-s3"></div></div>
@@ -227,5 +303,13 @@
   <div class="footer-copy">© 2026 RC2 Consulting, LLC &nbsp;|&nbsp; Privacy Policy &nbsp;|&nbsp; Terms of Service</div>
 </footer>
 
+<script>
+function toggleDesc(btn) {
+  const desc = btn.nextElementSibling;
+  const isOpen = desc.classList.contains('open');
+  btn.classList.toggle('open', !isOpen);
+  desc.classList.toggle('open', !isOpen);
+}
+</script>
 </body>
 </html>

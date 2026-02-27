@@ -50,7 +50,7 @@
     .service-list { list-style:none; }
     .service-list li { font-size:0.88rem; color:var(--text-muted); padding:7px 0; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:10px; }
     .service-list li:last-child { border-bottom:none; }
-    .service-list li::before { content:'→'; color:var(--blue); flex-shrink:0; }
+    .service-list li:not(:has(.svc-bullet))::before { content:'→'; color:var(--blue); flex-shrink:0; }
 
     .service-photo { border-radius:10px; overflow:hidden; height:220px; }
     .service-photo div { width:100%; height:100%; background-size:cover; background-position:center; }
@@ -99,6 +99,38 @@
     .lang-btn.inactive{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6)}
     .lang-btn.inactive:hover{background:rgba(255,255,255,.15);color:#fff}
     .lang-btn.active{background:#C8922A;color:#0B2545}
+  
+    /* ── EXPANDABLE BULLET DESCRIPTIONS ── */
+    .service-list li { position:relative; }
+    .svc-bullet { display:flex; align-items:center; gap:10px; width:100%; cursor:pointer; }
+    .svc-bullet .arrow { color:var(--light-blue); flex-shrink:0; font-style:normal; }
+    .svc-bullet .bullet-label { flex:1; color:var(--text-muted); font-size:0.88rem; }
+    .svc-bullet .expand-icon { margin-left:auto; width:18px; height:18px; border-radius:50%;
+      background:var(--light-bg); border:1px solid var(--border); color:var(--light-blue);
+      font-size:0.75rem; font-weight:700; display:flex; align-items:center; justify-content:center;
+      flex-shrink:0; transition:all .25s; line-height:1; }
+    .svc-bullet.open .expand-icon { background:var(--light-blue); color:white; border-color:var(--light-blue); transform:rotate(45deg); }
+    .svc-desc { display:none; padding:8px 10px 10px 28px; font-size:0.80rem; color:var(--text-muted);
+      line-height:1.65; background:var(--light-bg); border-radius:0 0 6px 6px;
+      border-left:3px solid var(--light-blue); margin:0 0 4px; }
+    .svc-desc.open { display:block; }
+    .svc-bullet:hover .bullet-label { color:var(--navy); }
+  
+    /* ── EXPANDABLE BULLET DESCRIPTIONS ── */
+    .service-list li { position:relative; }
+    .svc-bullet { display:flex; align-items:center; gap:10px; width:100%; cursor:pointer; }
+    .svc-bullet .arrow { color:var(--light-blue); flex-shrink:0; font-style:normal; }
+    .svc-bullet .bullet-label { flex:1; color:var(--text-muted); font-size:0.88rem; }
+    .svc-bullet .expand-icon { margin-left:auto; width:18px; height:18px; border-radius:50%;
+      background:var(--light-bg); border:1px solid var(--border); color:var(--light-blue);
+      font-size:0.75rem; font-weight:700; display:flex; align-items:center; justify-content:center;
+      flex-shrink:0; transition:all .25s; line-height:1; }
+    .svc-bullet.open .expand-icon { background:var(--light-blue); color:white; border-color:var(--light-blue); transform:rotate(45deg); }
+    .svc-desc { display:none; padding:8px 10px 10px 28px; font-size:0.80rem; color:var(--text-muted);
+      line-height:1.65; background:var(--light-bg); border-radius:0 0 6px 6px;
+      border-left:3px solid var(--light-blue); margin:0 0 4px; }
+    .svc-desc.open { display:block; }
+    .svc-bullet:hover .bullet-label { color:var(--navy); }
   </style>
 </head>
 <body>
@@ -137,11 +169,26 @@
       <div class="service-tag">Cumplimiento</div>
       <div class="service-title">Revisión de Preparación para el Cumplimiento</div>
       <ul class="service-list">
-        <li>Revisión de Brechas en Documentación</li>
-        <li>Estructuración de Políticas</li>
-        <li>Planificación de Preparación</li>
-        <li>Desarrollo de Plan de Acción Correctiva</li>
-        <li>Evaluación Interna Previa a Auditoría</li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Revisión de Brechas en Documentación</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Revisión sistemática de sus documentos de cumplimiento — políticas, procedimientos y registros — para identificar lo que falta, está desactualizado o no cumple. Produce un inventario de brechas priorizado que se convierte en la base de su plan de remediación.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Estructuración de Políticas</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Desarrollo y organización de marcos de políticas formales alineados con estándares de auditoría y requisitos regulatorios. Garantiza que las políticas estén redactadas con claridad, con formato consistente y rastreables a los estándares de cumplimiento que satisfacen.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Planificación de Preparación</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Creación de un plan de acción priorizado y por fases para llevar las operaciones al pleno cumplimiento antes de una auditoría o evento de certificación. Incluye cronogramas, responsables y hitos de verificación para mantener la remediación encaminada.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Desarrollo de Plan de Acción Correctiva</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Documentación estructurada de CAP que identifica causas raíz, medidas correctivas, cronogramas de implementación y responsables. Diseñado para satisfacer los requisitos del auditor y demostrar un seguimiento documentado y verificable.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Evaluación Interna Previa a Auditoría</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Una auditoría interna simulada realizada antes de una revisión externa — evaluando su postura de cumplimiento actual, identificando puntos de exposición y dando a su equipo la experiencia del proceso de auditoría antes de que sea definitivo.</div>
+        </li>
       </ul>
     </div>
     <div class="service-photo"><div class="p-s1"></div></div>
@@ -152,11 +199,26 @@
       <div class="service-tag">Operaciones</div>
       <div class="service-title">Optimización de Sistemas Operativos</div>
       <ul class="service-list">
-        <li>Desarrollo de SOPs y Flujos de Trabajo</li>
-        <li>Programación de Educación / Capacitación</li>
-        <li>Revisión de Cumplimiento y Preparación</li>
-        <li>Documentación y Estandarización de Procesos</li>
-        <li>Desarrollo de Marco de KPIs</li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Desarrollo de SOPs y Flujos de Trabajo</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Desarrollo de Procedimientos Operativos Estándar y flujos de trabajo documentados que definen cómo se realiza el trabajo, por quién y con qué estándar. Convierte el conocimiento institucional en sistemas repetibles y auditables que escalan sin necesidad de la presencia del fundador.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Programación de Educación / Capacitación</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Diseño y entrega de programas de capacitación en cumplimiento y operaciones adaptados a los roles, responsabilidades y necesidades de aprendizaje de su equipo. Construye competencia organizacional para que su personal ejecute según el estándar — consistentemente, cada vez.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Revisión de Cumplimiento y Preparación</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Evaluación de los sistemas operacionales existentes frente a los requisitos de cumplimiento — identificando dónde las brechas de proceso crean riesgo de auditoría, exposición regulatoria o vulnerabilidad operacional antes de que se conviertan en pasivos.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Documentación y Estandarización de Procesos</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Captura y formalización de procesos existentes en sistemas de documentación consistentes y auditables. Transforma operaciones ad hoc en flujos de trabajo estructurados que pueden capacitarse, medirse y transferirse — a cualquier escala.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Desarrollo de Marco de KPIs</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Diseño de indicadores de desempeño medibles alineados con sus objetivos operacionales. Permite decisiones de gestión basadas en datos, responsabilidad a todos los niveles y una línea clara entre la ejecución diaria y los resultados estratégicos.</div>
+        </li>
       </ul>
     </div>
     <div class="service-photo"><div class="p-s2"></div></div>
@@ -167,11 +229,26 @@
       <div class="service-tag">Crecimiento</div>
       <div class="service-title">Ventas y Crecimiento</div>
       <ul class="service-list">
-        <li>Marco de Estrategia de Ventas</li>
-        <li>Alineación de Mensajes</li>
-        <li>Estructura de KPIs</li>
-        <li>Pipeline Development</li>
-        <li>Estrategia de Desarrollo de Nuevos Negocios</li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Marco de Estrategia de Ventas</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Enfoque estructurado para definir mercados objetivo, propuestas de valor y ejecución go-to-market. Alinea la actividad de ventas con los objetivos del negocio para que cada conversación, propuesta y seguimiento avance una oportunidad calificada.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Alineación de Mensajes</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Garantiza que las comunicaciones internas y externas reflejen consistentemente el valor, el posicionamiento y la promesa al cliente de su marca. Elimina la brecha entre lo que el liderazgo cree que dice la empresa y lo que los clientes realmente escuchan.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Estructura de KPIs</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Establecimiento de métricas de desempeño de ventas que rastrean la salud del pipeline, las tasas de conversión, el tamaño promedio de negocio y los objetivos de ingresos — dando al liderazgo visibilidad real sobre qué funciona y qué necesita cambiar.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Desarrollo de Pipeline</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Construcción de los sistemas, procesos y marcos de prospección necesarios para generar, rastrear, calificar y cerrar nuevos negocios de forma consistente. Convierte los ingresos impredecibles en un proceso gestionado y predecible.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Estrategia de Desarrollo de Nuevos Negocios</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Identificación de oportunidades de crecimiento, estrategias de entrada a nuevos mercados y modelos de asociación para expandir fuentes de ingresos. Construida sobre sus capacidades reales — no marcos teóricos — para que la ejecución sea inmediata y fundamentada.</div>
+        </li>
       </ul>
     </div>
     <div class="service-photo"><div class="p-s3"></div></div>
@@ -182,11 +259,26 @@
       <div class="service-tag">Liderazgo</div>
       <div class="service-title">Director de Operaciones Fraccionado</div>
       <ul class="service-list">
-        <li>Marco de Estrategia de Ventas</li>
-        <li>Alineación de Mensajes</li>
-        <li>Estructura de KPIs</li>
-        <li>Organizaciones en crecimiento que necesitan estructura</li>
-        <li>Equipos de liderazgo que buscan apoyo ejecutivo</li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Marco de Estrategia de Ventas</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Supervisión ejecutiva del desarrollo de estrategia de ventas — asegurando la alineación entre objetivos de ingresos, capacidad operacional y sistemas de entrega. RC2 se integra al nivel de liderazgo para mantener la estrategia y la ejecución sincronizadas.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Alineación de Mensajes</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Orientación de nivel senior sobre posicionamiento, voz de marca y comunicación consistente en todos los canales de cara al cliente e internos. Garantiza que la organización hable con una sola voz — desde la sala de juntas hasta la primera línea.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Estructura de KPIs</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Establecimiento y monitoreo continuo de KPIs interfuncionales que alinean los departamentos con los objetivos organizacionales. Crea la infraestructura de responsabilidad que el liderazgo necesita para gestionar el desempeño sin microgestionar personas.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Organizaciones en Crecimiento que Necesitan Estructura</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Liderazgo operacional integrado para empresas que han superado sus sistemas actuales. RC2 actúa como su director fraccional — construyendo la estructura, documentación y procesos que su crecimiento requiere sin el costo de una contratación ejecutiva a tiempo completo.</div>
+        </li>
+        <li>
+          <div class="svc-bullet" onclick="toggleDesc(this)"><span class="arrow">→</span><span class="bullet-label">Equipos de Liderazgo que Buscan Apoyo Ejecutivo</span><span class="expand-icon">+</span></div>
+          <div class="svc-desc">Dirección operacional de nivel senior y asesoría para equipos de liderazgo que navegan crecimiento, transición, reestructuración o complejidad. Proporciona la perspectiva experimentada y el apoyo en la toma de decisiones que mantiene a las organizaciones avanzando con claridad y confianza.</div>
+        </li>
       </ul>
     </div>
     <div class="service-photo"><div class="p-s3"></div></div>
@@ -227,5 +319,13 @@
   <div class="footer-copy">© 2026 RC2 Consulting, LLC &nbsp;|&nbsp; Política de Privacidad &nbsp;|&nbsp; Términos de Servicio</div>
 </footer>
 
+<script>
+function toggleDesc(btn) {
+  const desc = btn.nextElementSibling;
+  const isOpen = desc.classList.contains('open');
+  btn.classList.toggle('open', !isOpen);
+  desc.classList.toggle('open', !isOpen);
+}
+</script>
 </body>
 </html>
