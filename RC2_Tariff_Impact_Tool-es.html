@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Herramienta de Análisis de Impacto Arancelario | RC2 Consulting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--navy:#0B2545;--blue:#1A4A8A;--lb:#2563EB;--bg:#F4F6FA;--w:#FFFFFF;--txt:#1C2B3A;--mu:#4A5568;--bdr:#E2E8F0;--sg:#1A7A4E;--sbg:#EBF7F2;--wg:#854D0E;--wbg:#FFFBEB;--dg:#9B1C1C;--dbg:#FEF2F2}
+    body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--txt);margin:0;line-height:1.6}
+    .topnav{background:var(--navy);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+    .nav-brand{display:flex;align-items:center;gap:8px;text-decoration:none}
+    .nav-logo-mark{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center}
+    .nav-logo-mark sup{font-size:.5rem;vertical-align:super}
+    .nav-brand-name{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.9)}
+    .nav-links{display:flex;gap:4px;list-style:none}
+    .nav-links a{color:rgba(255,255,255,.78);text-decoration:none;font-size:.83rem;font-weight:600;padding:6px 12px;border-radius:4px;white-space:nowrap}
+    .nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+    .nav-links a.active{color:#fff;background:rgba(255,255,255,.12)}
+    .hero{background:linear-gradient(to bottom,rgba(11,37,69,.86),rgba(11,37,69,.7)),url('https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=1400&q=80') center/cover no-repeat;padding:56px 40px 48px}
+    .hero-inner{max-width:960px;margin:0 auto}
+    .atag{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:4px 12px;border-radius:10px;margin-bottom:14px}
+    .hero h1{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:#fff;line-height:1.2;margin-bottom:8px}
+    .hero-sub{font-size:.9rem;color:rgba(255,255,255,.75);margin-bottom:14px;max-width:640px;line-height:1.6}
+    .hmeta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .hmeta span{font-size:.8rem;color:rgba(255,255,255,.6)}
+    .hmeta .dv{color:rgba(255,255,255,.3)}
+    .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+    .btn-back{display:inline-flex;align-items:center;gap:6px;color:var(--lb);text-decoration:none;font-size:.84rem;font-weight:600;margin:24px 0 0}
+
+    /* LIVE DASHBOARD */
+    .dashboard{background:var(--navy);border-radius:10px;padding:20px 24px;margin:28px 0 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .dash-cell{text-align:center;padding:14px 10px;background:rgba(255,255,255,.07);border-radius:8px;border:1px solid rgba(255,255,255,.1)}
+    .dash-val{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:#fff;line-height:1;margin-bottom:4px;transition:all .3s;word-break:break-all}
+    .dash-label{font-size:.63rem;font-weight:700;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.8px}
+    .dash-cell.savings{background:rgba(26,122,78,.25);border-color:rgba(26,122,78,.5)}
+    .dash-cell.savings .dash-val{font-size:1.6rem;color:#6EE7B7}
+    .dash-cell.danger{background:rgba(155,28,28,.2);border-color:rgba(155,28,28,.4)}
+    .dash-cell.danger .dash-val{color:#FCA5A5}
+    .savings-bar{grid-column:1/-1;border-radius:8px;padding:14px 20px;background:rgba(26,122,78,.15);border:1px solid rgba(26,122,78,.4);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+    .savings-text{font-size:.9rem;font-weight:700;color:#6EE7B7}
+    .savings-sub{font-size:.76rem;color:rgba(255,255,255,.65);margin-top:2px}
+    .savings-pct{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:#6EE7B7}
+
+    /* BLOCKS */
+    .tblock{background:var(--w);border-radius:10px;border:1px solid var(--bdr);box-shadow:0 2px 8px rgba(11,37,69,.06);margin-bottom:20px;overflow:hidden}
+    .tbhdr{background:var(--navy);padding:12px 22px;display:flex;align-items:center;justify-content:space-between}
+    .tbhdr h3{font-size:.86rem;font-weight:700;color:#fff}
+    .tbhdr span{font-size:.72rem;color:rgba(255,255,255,.55)}
+    .tbody{padding:20px 24px}
+    .tbody p{font-size:.86rem;color:var(--mu);line-height:1.7;margin-bottom:12px}
+    .tbody p strong{color:var(--navy)}
+
+    /* INPUT ROWS */
+    .calc-row{display:grid;grid-template-columns:1fr 180px;gap:16px;align-items:center;padding:10px 0;border-bottom:1px solid var(--bdr)}
+    .calc-row:last-child{border-bottom:none}
+    .calc-label{font-size:.86rem;color:var(--txt);font-weight:500}
+    .calc-sub{font-size:.73rem;color:var(--mu);margin-top:2px}
+    .cinput{border:1.5px solid var(--bdr);border-radius:6px;padding:8px 12px;font-size:.88rem;color:var(--navy);font-family:'Source Sans 3',sans-serif;outline:none;background:var(--bg);text-align:right;width:100%;transition:border-color .2s}
+    .cinput:focus{border-color:var(--lb);background:white}
+    .cout{background:var(--navy);color:white;border-radius:6px;padding:8px 12px;font-size:.88rem;font-weight:700;text-align:right;width:100%;min-height:36px}
+    .cout.savings{background:var(--sg)}
+    .cout.danger{background:var(--dg)}
+
+    /* PRODUCT TABLE */
+    .ptable{width:100%;border-collapse:collapse;font-size:.8rem;margin-bottom:14px}
+    .ptable th{background:var(--navy);color:#fff;padding:9px 10px;text-align:left;font-size:.7rem;font-weight:700;letter-spacing:.4px}
+    .ptable th:not(:first-child){text-align:center}
+    .ptable td{padding:8px 10px;border-bottom:1px solid var(--bdr)}
+    .ptable td:not(:first-child){text-align:center}
+    .ptable tfoot td{background:var(--bg);font-weight:700;color:var(--navy);border-top:2px solid var(--bdr)}
+    .pi{border:none;border-bottom:1.5px solid var(--bdr);font-size:.8rem;color:var(--navy);background:transparent;font-family:'Source Sans 3',sans-serif;outline:none;width:100%;text-align:right}
+    .pi.left{text-align:left}
+    .pi:focus{border-bottom-color:var(--lb)}
+    .pi-out{font-weight:700;color:var(--navy)}
+
+    /* TRADE TABLE */
+    .rate-h{color:var(--dg);font-weight:700}
+    .rate-l{color:var(--sg);font-weight:700}
+    .rate-z{color:var(--sg);font-weight:700}
+
+    /* SCENARIO GRID */
+    .scen-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:16px 20px}
+    .scen-card{border-radius:8px;padding:14px;border:2px solid;transition:all .3s}
+    .sc-green{background:var(--sbg);border-color:#BBF7D0}
+    .sc-yellow{background:var(--wbg);border-color:#FDE68A}
+    .sc-red{background:var(--dbg);border-color:#FECACA}
+    .scen-card.active-scen{box-shadow:0 0 0 3px rgba(37,99,235,.4);transform:scale(1.02)}
+    .sc-label{font-size:.76rem;font-weight:700;margin-bottom:6px}
+    .sc-green .sc-label{color:var(--sg)}
+    .sc-yellow .sc-label{color:var(--wg)}
+    .sc-red .sc-label{color:var(--dg)}
+    .sc-val{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin-bottom:4px;color:var(--navy)}
+    .sc-sub{font-size:.72rem;color:var(--mu);line-height:1.4}
+
+    .callout{background:var(--bg);border-radius:8px;padding:14px 18px;margin:14px 0;border:1px solid var(--bdr)}
+    .callout p{font-size:.86rem;color:var(--navy);font-weight:600;line-height:1.65;margin:0;font-style:italic;border-left:3px solid var(--lb);padding-left:14px}
+
+    .sources{background:var(--bg);border-radius:8px;padding:18px 22px;margin:0 0 24px;border:1px solid var(--bdr)}
+    .sources h4{font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:10px}
+    .sources ul{list-style:none}
+    .sources li{font-size:.77rem;color:var(--mu);padding:3px 0;border-bottom:1px solid var(--bdr)}
+    .sources li:last-child{border-bottom:none}
+    .sources a{color:var(--lb);text-decoration:none}
+    .acta{background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:10px;padding:32px;text-align:center;margin-bottom:44px}
+    .acta h3{font-family:'Playfair Display',serif;font-size:1.35rem;color:#fff;margin-bottom:8px}
+    .acta p{font-size:.86rem;color:rgba(255,255,255,.78);margin-bottom:18px}
+    .btn-cta{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--blue);font-weight:700;font-size:.86rem;padding:11px 22px;border-radius:6px;text-decoration:none}
+    .btn-print{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);color:#fff;font-weight:600;font-size:.84rem;padding:10px 20px;border-radius:6px;border:1px solid rgba(255,255,255,.3);margin-left:10px;cursor:pointer;font-family:'Source Sans 3',sans-serif}
+    .site-footer{background:var(--blue);color:#fff;text-align:center;padding:36px 24px}
+    .ft{font-size:.9rem;color:rgba(255,255,255,.9);font-weight:600;letter-spacing:.5px;margin-bottom:10px}
+    .fl{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+    .fl a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.78rem}
+    .fc{font-size:.73rem;color:rgba(255,255,255,.5)}
+    @media(max-width:720px){.dashboard{grid-template-columns:repeat(2,1fr)}.scen-grid{grid-template-columns:1fr}.topnav{padding:0 14px}.nav-links a{padding:5px 7px;font-size:.76rem}}
+    @media print{.topnav,.btn-back,.dashboard,.acta,.site-footer,.sources{display:none}.tblock{box-shadow:none;break-inside:avoid}}
+  </style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="https://rc2consulting.github.io/" class="nav-brand">
+    <div class="nav-logo-mark">RC<sup>2</sup></div>
+    <span class="nav-brand-name">Consulting</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://rc2consulting.github.io/index-es.html">Inicio</a></li>
+    <li><a href="https://rc2consulting.github.io/services-es.html">Servicios</a></li>
+    <li><a href="https://rc2consulting.github.io/who-we-help-es.html">A Quién Ayudamos</a></li>
+    <li><a href="https://rc2consulting.github.io/about-es.html">Nosotros</a></li>
+    <li><a href="https://rc2consulting.github.io/RC2_Resources_Page-es.html" class="active">Recursos</a></li>
+    <li><a href="https://rc2consulting.github.io/contact-es.html">Contacto</a></li>
+  </ul>
+  <div class="nav-lang">
+    <a href="https://rc2consulting.github.io/RC2_Tariff_Impact_Tool.html" class="lang-btn">EN</a>
+    <a href="#" class="lang-btn active">ES</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="atag">Herramienta de Cadena de Suministro</span>
+    <h1>Herramienta de Análisis de Impacto Arancelario</h1>
+    <p class="hero-sub">Ingrese sus valores de importación y tasas arancelarias — los ahorros anuales en aranceles, la reducción de la tasa efectiva y el análisis de escenarios se calculan automáticamente en tiempo real.</p>
+    <div class="hmeta">
+      <span>RC2 Consulting</span><span class="dv">|</span>
+      <span>February 2026</span><span class="dv">|</span>
+      <span>Interactivo — Cálculos en Tiempo Real</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <a href="https://rc2consulting.github.io/RC2_Resources_Page-es.html" class="btn-back">← Volver a Recursos</a>
+
+  <!-- LIVE DASHBOARD -->
+  <div class="dashboard">
+    <div class="dash-cell danger"><div class="dash-val" id="d-current">$—</div><div class="dash-label">Current Annual Duty</div></div>
+    <div class="dash-cell"><div class="dash-val" id="d-new">$—</div><div class="dash-label">Duty After Nearshoring</div></div>
+    <div class="dash-cell savings"><div class="dash-val" id="d-savings">$—</div><div class="dash-label">Annual Savings</div></div>
+    <div class="dash-cell savings"><div class="dash-val" id="d-pct">—%</div><div class="dash-label">Duty Reduction</div></div>
+    <div class="savings-bar" id="savings-bar">
+      <div><div class="savings-text" id="sb-text">Ingrese sus datos de importación para calcular los ahorros arancelarios</div><div class="savings-sub" id="sb-sub">Los valores se actualizan automáticamente mientras escribe</div></div>
+      <div class="savings-pct" id="sb-pct"></div>
+    </div>
+  </div>
+
+  <!-- SECTION A: PRODUCT PROFILE -->
+  <div class="tblock">
+    <div class="tbhdr"><h3>Section A — Product & Import Profile</h3><span>Ingrese sus productos principales — los totales arancelarios se calculan automáticamente</span></div>
+    <div class="tbody">
+      <p>Enter each product by description, HTS code, annual import value, current duty rate (MFN + any Section 301), and your projected nearshoring duty rate. <strong>Row totals and overall tariff exposure calculate automatically.</strong> Consulte las tasas arancelarias HTS exactas en <strong>hts.usitc.gov</strong>.</p>
+      <table class="ptable">
+        <thead>
+          <tr>
+            <th style="width:22%">Producto</th>
+            <th style="width:11%">Código HTS</th>
+            <th style="width:14%">Importación Anual $</th>
+            <th style="width:11%">Tasa Actual %</th>
+            <th style="width:12%">Arancel Actual $</th>
+            <th style="width:12%">Tasa Nearshore %</th>
+            <th style="width:11%">Nuevo Arancel $</th>
+            <th style="width:7%">Ahorros $</th>
+          </tr>
+        </thead>
+        <tbody id="product-rows">
+          <tr><td><input class="pi left" placeholder="Product 1" id="p1_name"/></td><td><input class="pi" placeholder="0000.00" id="p1_hts"/></td><td>$<input class="pi" type="number" id="p1_val" placeholder="0" oninput="calcProducts()"/></td><td><input class="pi" type="number" id="p1_cur" placeholder="0" oninput="calcProducts()"/>%</td><td class="pi-out" id="p1_curduty">—</td><td><input class="pi" type="number" id="p1_new" placeholder="0" oninput="calcProducts()"/>%</td><td class="pi-out" id="p1_newduty">—</td><td class="pi-out" id="p1_sav" style="color:var(--sg)">—</td></tr>
+          <tr><td><input class="pi left" placeholder="Product 2" id="p2_name"/></td><td><input class="pi" placeholder="0000.00" id="p2_hts"/></td><td>$<input class="pi" type="number" id="p2_val" placeholder="0" oninput="calcProducts()"/></td><td><input class="pi" type="number" id="p2_cur" placeholder="0" oninput="calcProducts()"/>%</td><td class="pi-out" id="p2_curduty">—</td><td><input class="pi" type="number" id="p2_new" placeholder="0" oninput="calcProducts()"/>%</td><td class="pi-out" id="p2_newduty">—</td><td class="pi-out" id="p2_sav" style="color:var(--sg)">—</td></tr>
+          <tr><td><input class="pi left" placeholder="Product 3" id="p3_name"/></td><td><input class="pi" placeholder="0000.00" id="p3_hts"/></td><td>$<input class="pi" type="number" id="p3_val" placeholder="0" oninput="calcProducts()"/></td><td><input class="pi" type="number" id="p3_cur" placeholder="0" oninput="calcProducts()"/>%</td><td class="pi-out" id="p3_curduty">—</td><td><input class="pi" type="number" id="p3_new" placeholder="0" oninput="calcProducts()"/>%</td><td class="pi-out" id="p3_newduty">—</td><td class="pi-out" id="p3_sav" style="color:var(--sg)">—</td></tr>
+          <tr><td><input class="pi left" placeholder="Product 4" id="p4_name"/></td><td><input class="pi" placeholder="0000.00" id="p4_hts"/></td><td>$<input class="pi" type="number" id="p4_val" placeholder="0" oninput="calcProducts()"/></td><td><input class="pi" type="number" id="p4_cur" placeholder="0" oninput="calcProducts()"/>%</td><td class="pi-out" id="p4_curduty">—</td><td><input class="pi" type="number" id="p4_new" placeholder="0" oninput="calcProducts()"/>%</td><td class="pi-out" id="p4_newduty">—</td><td class="pi-out" id="p4_sav" style="color:var(--sg)">—</td></tr>
+          <tr><td><input class="pi left" placeholder="Product 5" id="p5_name"/></td><td><input class="pi" placeholder="0000.00" id="p5_hts"/></td><td>$<input class="pi" type="number" id="p5_val" placeholder="0" oninput="calcProducts()"/></td><td><input class="pi" type="number" id="p5_cur" placeholder="0" oninput="calcProducts()"/>%</td><td class="pi-out" id="p5_curduty">—</td><td><input class="pi" type="number" id="p5_new" placeholder="0" oninput="calcProducts()"/>%</td><td class="pi-out" id="p5_newduty">—</td><td class="pi-out" id="p5_sav" style="color:var(--sg)">—</td></tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2"><strong>TOTALES</strong></td>
+            <td id="tot_val">$—</td>
+            <td id="tot_wavg">Prom. Pond.: —%</td>
+            <td id="tot_curduty" style="color:var(--dg)">$—</td>
+            <td></td>
+            <td id="tot_newduty">$—</td>
+            <td id="tot_sav" style="color:var(--sg)">$—</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECTION B: TRADE PROGRAM REFERENCE -->
+  <div class="tblock">
+    <div class="tbhdr"><h3>Section B — Trade Program Duty Rate Reference</h3><span>Verifique las tasas actuales en hts.usitc.gov antes de finalizar</span></div>
+    <div class="tbody">
+      <table class="ptable">
+        <thead><tr><th>Programa Comercial</th><th>Países</th><th>Tasa Típica de Prendas</th><th>Tasa Típica de Textiles</th><th>Complemento Sección 301</th></tr></thead>
+        <tbody>
+          <tr><td>China — MFN + Sección 301</td><td>China</td><td class="rate-h">25–35%</td><td class="rate-h">25–35%</td><td class="rate-h">+25% to +100%</td></tr>
+          <tr><td>MFN — Países sin TLC</td><td>Bangladesh, Vietnam, etc.</td><td class="rate-h">12–32%</td><td class="rate-h">8–25%</td><td>Ninguno</td></tr>
+          <tr><td>CAFTA-DR</td><td>Honduras, Guatemala, El Salvador, Costa Rica, Nicaragua, DR</td><td class="rate-z">0%</td><td class="rate-z">0%</td><td>Ninguno</td></tr>
+          <tr><td>USMCA</td><td>Mexico, Canada</td><td class="rate-z">0%</td><td class="rate-z">0%</td><td>Ninguno</td></tr>
+          <tr><td>US-Colombia FTA</td><td>Colombia</td><td class="rate-l">0–3%</td><td class="rate-l">0–3%</td><td>Ninguno</td></tr>
+          <tr><td>US-Peru FTA</td><td>Peru</td><td class="rate-l">0–3%</td><td class="rate-l">0–3%</td><td>Ninguno</td></tr>
+        </tbody>
+      </table>
+      <div class="callout"><p>CAFTA-DR and USMCA zero-duty treatment requires rules of origin compliance — yarn-forward for most apparel categories. Verify eligibility for your HTS codes before modeling zero-duty savings. Source: USTR, 2025.</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION C: SAVINGS CALCULATOR -->
+  <div class="tblock">
+    <div class="tbhdr"><h3>Section C — Annual Savings Summary</h3><span>Auto-populated from Section A — override manually if needed</span></div>
+    <div class="tbody">
+      <div class="calc-row"><div><div class="calc-label">Total annual import value to be nearshored</div><div class="calc-sub">From Section A totals</div></div><div class="cout" id="sum-val">$—</div></div>
+      <div class="calc-row"><div><div class="calc-label">Current annual duty paid (all products)</div><div class="calc-sub">At current origin duty rates</div></div><div class="cout danger" id="sum-cur">$—</div></div>
+      <div class="calc-row"><div><div class="calc-label">Projected annual duty under nearshoring program</div><div class="calc-sub">At CAFTA-DR / USMCA / FTA rates</div></div><div class="cout" id="sum-new">$—</div></div>
+      <div class="calc-row" style="background:var(--sbg);border-radius:8px;padding:12px 14px;margin-top:8px"><div><div class="calc-label" style="font-weight:700;color:var(--sg);font-size:.94rem">Projected Annual Tariff Savings</div><div class="calc-sub">Current duty minus nearshoring duty</div></div><div class="cout savings" id="sum-sav">$—</div></div>
+      <div class="calc-row"><div><div class="calc-label">Effective duty rate reduction</div><div class="calc-sub">As % of total import value</div></div><div class="cout savings" id="sum-pct">—%</div></div>
+    </div>
+  </div>
+
+  <!-- SECTION D: SCENARIO ANALYSIS -->
+  <div class="tblock">
+    <div class="tbhdr"><h3>Section D — Policy Risk Scenario Analysis</h3><span>Savings calculated against your Section A totals — updates automatically</span></div>
+    <div class="tbody">
+      <p>Stress-test your projected savings against trade policy change scenarios. What happens to your nearshoring advantage if CAFTA-DR rates shift?</p>
+    </div>
+    <div class="scen-grid">
+      <div class="scen-card sc-green" id="sc1">
+        <div class="sc-label">Base Case — Zero Duty Maintained</div>
+        <div class="sc-val" id="sc1-val">$—</div>
+        <div class="sc-sub">Full projected savings at 0% nearshoring rate. CAFTA-DR / USMCA maintained as-is.</div>
+      </div>
+      <div class="scen-card sc-yellow" id="sc2">
+        <div class="sc-label">Moderate — 5% Duty Rate</div>
+        <div class="sc-val" id="sc2-val">$—</div>
+        <div class="sc-sub">Partial savings retained if rules of origin tightened or tariff-rate quotas introduced.</div>
+      </div>
+      <div class="scen-card sc-red" id="sc3">
+        <div class="sc-label">Adverse — 15% Duty Rate</div>
+        <div class="sc-val" id="sc3-val">$—</div>
+        <div class="sc-sub">Significant savings erosion if agreement renegotiated. Still savings vs. current MFN rate.</div>
+      </div>
+    </div>
+    <div style="padding:12px 20px;background:var(--bg);border-top:1px solid var(--bdr)">
+      <p style="font-size:.78rem;color:var(--mu)"><strong>Recommendation:</strong> Nearshoring should remain financially viable at the 15% adverse scenario to justify long-term production commitment. If the adverse case eliminates the savings advantage, reassess the total landed cost model before committing capacity.</p>
+    </div>
+  </div>
+
+  <div class="sources">
+    <h4>Sources & References</h4>
+    <ul>
+      <li>U.S. International Trade Commission — HTS Online Reference — <a href="https://hts.usitc.gov" target="_blank">hts.usitc.gov</a></li>
+      <li>U.S. Trade Representative — CAFTA-DR Agreement Tariff Schedules (2025) — <a href="https://ustr.gov" target="_blank">ustr.gov</a></li>
+      <li>U.S. Trade Representative — USMCA Tariff Schedule (2025) — <a href="https://ustr.gov" target="_blank">ustr.gov</a></li>
+      <li>U.S. Customs & Border Protection — Section 301 Tariff List (2025) — <a href="https://www.cbp.gov" target="_blank">cbp.gov</a></li>
+    </ul>
+  </div>
+  <div class="acta">
+    <h3>Need a Custom Tariff Impact Analysis?</h3>
+    <p>RC2 Consulting builds company-specific tariff impact analyses — mapping your actual HTS codes against applicable trade programs and modeling the full financial case for nearshoring.</p>
+    <a href="https://rc2consulting.github.io/contact-es.html" class="btn-cta">Request a Custom Analysis →</a>
+    <button class="btn-print" onclick="window.print()">🖨 Imprimir / Guardar como PDF</button>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="ft">Claridad Operacional. Confianza en el Cumplimiento. Sistemas que Escalan.</div>
+  <div class="fl"><a href="https://rc2consulting.github.io/index-es.html">Inicio</a><a href="https://rc2consulting.github.io/services-es.html">Servicios</a><a href="https://rc2consulting.github.io/who-we-help-es.html">A Quién Ayudamos</a><a href="https://rc2consulting.github.io/about-es.html">Nosotros</a><a href="https://rc2consulting.github.io/RC2_Resources_Page-es.html">Recursos</a><a href="https://rc2consulting.github.io/contact-es.html">Contacto</a></div>
+  <div class="fc">© 2026 RC2 Consulting, LLC &nbsp;|&nbsp; Política de Privacidad &nbsp;|&nbsp; Términos de Servicio</div>
+</footer>
+
+<script>
+function fmt(n){return n>=1000000?'$'+(n/1000000).toFixed(2)+'M':n>=1000?'$'+(n/1000).toFixed(1)+'K':'$'+n.toFixed(0);}
+function fmtPct(n){return n.toFixed(1)+'%';}
+
+function calcProducts(){
+  let totalVal=0,totalCurDuty=0,totalNewDuty=0;
+  for(let i=1;i<=5;i++){
+    const val=parseFloat(document.getElementById('p'+i+'_val').value)||0;
+    const cur=parseFloat(document.getElementById('p'+i+'_cur').value)||0;
+    const nw=parseFloat(document.getElementById('p'+i+'_new').value)||0;
+    const curDuty=val*(cur/100);
+    const newDuty=val*(nw/100);
+    const sav=curDuty-newDuty;
+    document.getElementById('p'+i+'_curduty').textContent=val>0?fmt(curDuty):'—';
+    document.getElementById('p'+i+'_newduty').textContent=val>0?fmt(newDuty):'—';
+    document.getElementById('p'+i+'_sav').textContent=(val>0&&(cur>0||nw>0))?fmt(sav):'—';
+    totalVal+=val; totalCurDuty+=curDuty; totalNewDuty+=newDuty;
+  }
+  const totalSav=totalCurDuty-totalNewDuty;
+  const wavg=totalVal>0?(totalCurDuty/totalVal*100):0;
+  const pctReduction=totalCurDuty>0?(totalSav/totalCurDuty*100):0;
+  const effRate=totalVal>0?(totalSav/totalVal*100):0;
+
+  // Product table totals
+  document.getElementById('tot_val').textContent=totalVal>0?fmt(totalVal):'$—';
+  document.getElementById('tot_wavg').textContent=totalVal>0?'Prom. Pond.: '+fmtPct(wavg):'Prom. Pond.: —';
+  document.getElementById('tot_curduty').textContent=totalVal>0?fmt(totalCurDuty):'$—';
+  document.getElementById('tot_newduty').textContent=totalVal>0?fmt(totalNewDuty):'$—';
+  document.getElementById('tot_sav').textContent=totalVal>0?fmt(totalSav):'$—';
+
+  // Section C summary
+  document.getElementById('sum-val').textContent=totalVal>0?fmt(totalVal):'$—';
+  document.getElementById('sum-cur').textContent=totalVal>0?fmt(totalCurDuty):'$—';
+  document.getElementById('sum-new').textContent=totalVal>0?fmt(totalNewDuty):'$—';
+  document.getElementById('sum-sav').textContent=totalVal>0?fmt(totalSav):'$—';
+  document.getElementById('sum-pct').textContent=totalVal>0?fmtPct(effRate):'—%';
+
+  // Dashboard
+  document.getElementById('d-current').textContent=totalVal>0?fmt(totalCurDuty):'$—';
+  document.getElementById('d-new').textContent=totalVal>0?fmt(totalNewDuty):'$—';
+  document.getElementById('d-savings').textContent=totalVal>0?fmt(totalSav):'$—';
+  document.getElementById('d-pct').textContent=totalVal>0?fmtPct(pctReduction):'—%';
+
+  // Savings bar
+  if(totalVal>0&&totalSav>0){
+    document.getElementById('sb-text').textContent='Projected annual tariff savings from nearshoring';
+    document.getElementById('sb-sub').textContent='Based on '+fmt(totalVal)+' import value · '+fmtPct(wavg)+' current weighted avg rate → significantly lower nearshoring rate';
+    document.getElementById('sb-pct').textContent=fmtPct(pctReduction)+' reduction';
+  }
+
+  // Section D scenarios — base on TOTAL import value at scenario rates vs current duty
+  if(totalVal>0){
+    const s1=totalCurDuty-totalVal*0; // 0% nearshoring
+    const s2=totalCurDuty-totalVal*(5/100);
+    const s3=totalCurDuty-totalVal*(15/100);
+    document.getElementById('sc1-val').textContent=fmt(s1)+' saved';
+    document.getElementById('sc2-val').textContent=fmt(Math.max(0,s2))+' saved';
+    document.getElementById('sc3-val').textContent=fmt(Math.max(0,s3))+' saved';
+  }
+}
+</script>
+</body>
+</html>
