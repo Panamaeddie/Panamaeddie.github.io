@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Navegador Comercial de las Américas y el Caribe — RC2 Consulting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:#0B2545; --navy-mid:#163566; --blue:#1A4A8A; --light-blue:#2563EB;
+      --teal:#0D7680; --accent:#C8922A; --accent-lt:#F0B429;
+      --light-bg:#F4F6FA; --border:#E2E8F0; --text:#1C2B3A; --muted:#4A5568; --white:#FFFFFF;
+      --fta:#16A34A; --fta-lt:#DCFCE7; --art:#7C3AED; --art-lt:#EDE9FE;
+      --tifa:#0891B2; --tifa-lt:#CFFAFE; --bit:#D97706; --bit-lt:#FEF3C7;
+      --pref:#DB2777; --pref-lt:#FCE7F3; --other:#64748B; --other-lt:#F1F5F9;
+    }
+    html,body{overflow-x:hidden;font-family:'Source Sans 3',sans-serif;color:var(--text);background:var(--light-bg)}
+    nav.topnav{background:var(--navy);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:300}
+    .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .nav-logo-mark{width:34px;height:34px;background:var(--accent);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:800;color:var(--navy)}
+    .nav-brand-name{color:white;font-weight:700;font-size:0.88rem;letter-spacing:0.5px}
+    .nav-links{display:flex;gap:4px;list-style:none;align-items:center}
+    .nav-links a{color:rgba(255,255,255,0.78);text-decoration:none;font-size:0.83rem;font-weight:600;padding:6px 10px;border-radius:5px;transition:all .2s}
+    .nav-links a:hover{color:white;background:rgba(255,255,255,0.1)}
+    .hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:6px}
+    .hamburger span{display:block;width:22px;height:2px;background:rgba(255,255,255,0.9);border-radius:2px}
+    .lang-switch{display:flex;align-items:center;gap:6px}
+    .lang-switch a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.76rem;font-weight:700;padding:4px 8px;border-radius:4px;border:1px solid rgba(255,255,255,0.2);transition:all .2s}
+    .lang-switch a:hover{color:white;border-color:rgba(255,255,255,0.5)}
+    .lang-switch a.active{color:white;background:var(--accent);border-color:var(--accent)}
+
+    .hero{background:linear-gradient(135deg,#0B2545 0%,#163566 40%,#0D7680 100%);padding:56px 40px 48px;position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
+    .hero-inner{max-width:1100px;margin:0 auto;position:relative}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,146,42,0.2);border:1px solid rgba(200,146,42,0.5);color:var(--accent-lt);font-size:0.76rem;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:18px}
+    .hero h1{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:800;color:white;line-height:1.2;margin-bottom:14px;max-width:740px}
+    .hero-sub{color:rgba(255,255,255,0.82);font-size:1rem;line-height:1.7;max-width:680px;margin-bottom:28px}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:20px}
+    .hero-meta-item{display:flex;align-items:center;gap:7px;color:rgba(255,255,255,0.7);font-size:0.82rem}
+    .hero-meta-item strong{color:rgba(255,255,255,0.95)}
+
+    .stats-bar{background:white;border-bottom:2px solid var(--border);padding:14px 40px}
+    .stats-inner{max-width:1100px;margin:0 auto;display:flex;gap:32px;flex-wrap:wrap;align-items:center}
+    .stat-item{text-align:center}
+    .stat-num{font-size:1.3rem;font-weight:800;color:var(--navy);font-family:'Playfair Display',serif}
+    .stat-label{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.4px}
+
+    .legend-bar{background:white;border-bottom:1px solid var(--border);padding:12px 40px}
+    .legend-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+    .legend-label{font-size:0.75rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-right:4px}
+    .legend-item{display:flex;align-items:center;gap:6px;font-size:0.76rem;font-weight:600;padding:4px 10px;border-radius:12px}
+    .legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+    .l-fta{background:var(--fta-lt);color:var(--fta)} .d-fta{background:var(--fta)}
+    .l-art{background:var(--art-lt);color:var(--art)} .d-art{background:var(--art)}
+    .l-tifa{background:var(--tifa-lt);color:var(--tifa)} .d-tifa{background:var(--tifa)}
+    .l-bit{background:var(--bit-lt);color:var(--bit)} .d-bit{background:var(--bit)}
+    .l-pref{background:var(--pref-lt);color:var(--pref)} .d-pref{background:var(--pref)}
+    .l-other{background:var(--other-lt);color:var(--other)} .d-other{background:var(--other)}
+
+    .controls-bar{background:var(--navy);padding:16px 40px}
+    .controls-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+    .search-box{flex:1;min-width:240px;position:relative}
+    .search-box input{width:100%;padding:9px 14px 9px 38px;border:1px solid rgba(255,255,255,0.2);border-radius:7px;background:rgba(255,255,255,0.1);color:white;font-size:0.87rem;font-family:'Source Sans 3',sans-serif;transition:all .2s}
+    .search-box input::placeholder{color:rgba(255,255,255,0.45)}
+    .search-box input:focus{outline:none;background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.4)}
+    .search-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);font-size:1rem;opacity:0.5;pointer-events:none}
+    .filter-group{display:flex;flex-wrap:wrap;gap:6px}
+    .filter-btn{padding:7px 13px;border-radius:6px;border:1px solid rgba(255,255,255,0.2);background:transparent;color:rgba(255,255,255,0.7);font-size:0.78rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Source Sans 3',sans-serif}
+    .filter-btn:hover{background:rgba(255,255,255,0.1);color:white}
+    .filter-btn.active{background:white;color:var(--navy);border-color:white}
+    .filter-btn.active.f-fta{background:var(--fta);color:white;border-color:var(--fta)}
+    .filter-btn.active.f-art{background:var(--art);color:white;border-color:var(--art)}
+    .filter-btn.active.f-tifa{background:var(--tifa);color:white;border-color:var(--tifa)}
+    .filter-btn.active.f-bit{background:var(--bit);color:white;border-color:var(--bit)}
+    .filter-btn.active.f-pref{background:var(--pref);color:white;border-color:var(--pref)}
+
+    .region-tabs{background:white;border-bottom:1px solid var(--border);padding:0 40px}
+    .tabs-inner{max-width:1100px;margin:0 auto;display:flex;gap:0}
+    .tab-btn{padding:14px 22px;border:none;background:none;font-family:'Source Sans 3',sans-serif;font-size:0.84rem;font-weight:600;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;white-space:nowrap}
+    .tab-btn:hover{color:var(--navy)}
+    .tab-btn.active{color:var(--navy);border-bottom-color:var(--accent)}
+
+    .main-wrap{max-width:1100px;margin:0 auto;padding:32px 40px 64px}
+    .country-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .region-heading{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--navy);margin:32px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--border)}
+    .region-heading:first-child{margin-top:0}
+
+    .country-card{background:white;border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:box-shadow .2s,transform .15s;cursor:pointer}
+    .country-card:hover{box-shadow:0 4px 20px rgba(11,37,69,0.12);transform:translateY(-2px)}
+    .country-card.hidden{display:none}
+    .card-header{padding:16px 18px 14px;display:flex;align-items:flex-start;gap:12px;border-bottom:1px solid var(--border)}
+    .card-flag{font-size:2rem;line-height:1;flex-shrink:0}
+    .card-info{flex:1;min-width:0}
+    .card-country{font-size:0.97rem;font-weight:700;color:var(--navy);line-height:1.2}
+    .card-region{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:2px}
+    .card-expand{margin-left:auto;width:26px;height:26px;border-radius:50%;background:var(--light-bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--muted);transition:all .25s;flex-shrink:0}
+    .country-card.open .card-expand{background:var(--navy);color:white;border-color:var(--navy);transform:rotate(45deg)}
+    .card-pills{padding:10px 18px 12px;display:flex;flex-wrap:wrap;gap:5px}
+    .pill{font-size:0.68rem;font-weight:700;padding:3px 8px;border-radius:10px;text-transform:uppercase;letter-spacing:0.3px;white-space:nowrap}
+    .p-fta{background:var(--fta-lt);color:var(--fta)}
+    .p-art{background:var(--art-lt);color:var(--art)}
+    .p-tifa{background:var(--tifa-lt);color:var(--tifa)}
+    .p-bit{background:var(--bit-lt);color:var(--bit)}
+    .p-pref{background:var(--pref-lt);color:var(--pref)}
+    .p-other{background:var(--other-lt);color:var(--other)}
+    .card-detail{display:none;border-top:1px solid var(--border)}
+    .country-card.open .card-detail{display:block}
+    .detail-intro{padding:14px 18px 0;font-size:0.82rem;color:var(--muted);line-height:1.65}
+    .agreement-section{padding:12px 18px}
+    .agreement-section+.agreement-section{border-top:1px solid var(--border)}
+    .ag-header{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+    .ag-type-badge{font-size:0.67rem;font-weight:700;padding:3px 8px;border-radius:10px;text-transform:uppercase;letter-spacing:0.3px}
+    .ag-title{font-size:0.88rem;font-weight:700;color:var(--navy)}
+    .ag-desc{font-size:0.80rem;color:var(--muted);line-height:1.6;margin-bottom:8px}
+    .ag-links{list-style:none;display:flex;flex-direction:column;gap:4px}
+    .ag-links li{display:flex;align-items:flex-start;gap:6px}
+    .ag-links li::before{content:'\2192';color:var(--light-blue);font-size:0.8rem;flex-shrink:0;line-height:1.5}
+    .ag-links a{font-size:0.78rem;color:var(--light-blue);text-decoration:none;line-height:1.5;font-weight:600;transition:color .15s}
+    .ag-links a:hover{color:var(--navy);text-decoration:underline}
+    .card-footer{padding:10px 18px 14px;background:var(--light-bg)}
+    .card-footer a{display:inline-flex;align-items:center;gap:5px;font-size:0.77rem;color:var(--light-blue);text-decoration:none;font-weight:600}
+    .card-footer a:hover{color:var(--navy)}
+
+    .collective-card{background:linear-gradient(135deg,rgba(8,145,178,0.06),rgba(13,118,128,0.08));border:1.5px solid rgba(8,145,178,0.3);border-radius:12px;padding:20px;margin-bottom:24px}
+    .collective-header{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+    .collective-icon{font-size:1.8rem}
+    .collective-title{font-size:1.05rem;font-weight:700;color:var(--navy)}
+    .collective-sub{font-size:0.78rem;color:var(--muted)}
+    .collective-desc{font-size:0.83rem;color:var(--muted);line-height:1.65;margin-bottom:12px}
+    .collective-members{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+    .member-tag{font-size:0.73rem;background:rgba(8,145,178,0.1);color:var(--tifa);border:1px solid rgba(8,145,178,0.2);padding:3px 9px;border-radius:10px;font-weight:600}
+    .collective-links{list-style:none;display:flex;flex-direction:column;gap:4px}
+    .collective-links li{display:flex;align-items:flex-start;gap:6px}
+    .collective-links li::before{content:'\2192';color:var(--tifa);font-size:0.8rem;flex-shrink:0;line-height:1.5}
+    .collective-links a{font-size:0.80rem;color:var(--tifa);font-weight:600;text-decoration:none}
+    .collective-links a:hover{text-decoration:underline}
+
+    .no-results{text-align:center;padding:48px;color:var(--muted);font-size:0.95rem;display:none}
+    .source-footer{background:var(--navy);color:rgba(255,255,255,0.65);padding:20px 40px;font-size:0.75rem;line-height:1.7}
+    .source-footer strong{color:rgba(255,255,255,0.9)}
+    .source-footer a{color:rgba(255,255,255,0.75)}
+
+    @media(max-width:900px){.country-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){
+      .topnav{padding:0 16px;position:relative}
+      .hamburger{display:flex!important}
+      .nav-links{display:none;position:absolute;top:52px;left:0;right:0;background:var(--navy);flex-direction:column;padding:8px 0 16px;border-top:1px solid rgba(255,255,255,0.15);z-index:200;gap:0!important}
+      .nav-links.open{display:flex!important}
+      .nav-links a{padding:12px 20px!important;border-bottom:1px solid rgba(255,255,255,0.07);border-radius:0!important}
+      .hero{padding:36px 20px 32px}
+      .hero h1{font-size:1.7rem}
+      .controls-bar,.legend-bar,.stats-bar{padding-left:16px;padding-right:16px}
+      .region-tabs{padding:0 16px}
+      .main-wrap{padding:20px 16px 48px}
+      .country-grid{grid-template-columns:1fr}
+      .tabs-inner{overflow-x:auto}
+      .tab-btn{padding:12px 14px;font-size:0.8rem}
+      .stats-inner{gap:20px}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="https://rc2consulting.github.io/index-es.html" class="nav-brand">
+    <div class="nav-logo-mark">RC<sup style="font-size:0.55em">2</sup></div>
+    <span class="nav-brand-name">Consulting</span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="https://rc2consulting.github.io/index-es.html">Inicio</a></li>
+    <li><a href="https://rc2consulting.github.io/services-es.html">Servicios</a></li>
+    <li><a href="https://rc2consulting.github.io/who-we-help-es.html">A Qui&#233;n Ayudamos</a></li>
+    <li><a href="https://rc2consulting.github.io/about-es.html">Nosotros</a></li>
+    <li><a href="https://rc2consulting.github.io/RC2_Resources_Page-es.html">Recursos</a></li>
+    <li><a href="https://rc2consulting.github.io/contact-es.html">Contacto</a></li>
+    <li class="lang-switch">
+      <a href="https://rc2consulting.github.io/RC2_Americas_Trade_Navigator.html">EN</a>
+      <a href="#" class="active">ES</a>
+    </li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Abrir men&#250;">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">&#127758; Herramienta Interactiva de Inteligencia Comercial</div>
+    <h1>Navegador Comercial de<br>las Am&#233;ricas y el Caribe</h1>
+    <p class="hero-sub">Encuentre cada acuerdo comercial, tratado bilateral de inversi&#243;n, programa de preferencias y marco de comercio e inversi&#243;n que aplica a cada pa&#237;s del Hemisferio Occidental &#8212; al instante. Dise&#241;ado para equipos de cumplimiento, gerentes de cadena de suministro, importadores, exportadores y profesionales legales en toda Am&#233;rica y el Caribe.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">&#127963; <strong>Fuente Principal:</strong> Representante Comercial de EE.UU. (USTR)</div>
+      <div class="hero-meta-item">&#128197; <strong>Actualizado:</strong> Febrero 2026</div>
+      <div class="hero-meta-item">&#127758; <strong>Pa&#237;ses Cubiertos:</strong> 30+</div>
+      <div class="hero-meta-item">&#128203; <strong>Tipos de Acuerdo:</strong> 5 Categor&#237;as</div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num">6</div><div class="stat-label">Tratados de Libre Comercio</div></div>
+    <div class="stat-item"><div class="stat-num">4</div><div class="stat-label">Acuerdos Rec&#237;procos</div></div>
+    <div class="stat-item"><div class="stat-num">5+</div><div class="stat-label">TIFAs / Marcos</div></div>
+    <div class="stat-item"><div class="stat-num">7+</div><div class="stat-label">Tratados de Inversi&#243;n</div></div>
+    <div class="stat-item"><div class="stat-num">17</div><div class="stat-label">Beneficiarios CBI</div></div>
+    <div class="stat-item"><div class="stat-num">$2T</div><div class="stat-label">Comercio Hemisf&#233;rico EE.UU. (2024)</div></div>
+  </div>
+</div>
+
+<div class="legend-bar">
+  <div class="legend-inner">
+    <span class="legend-label">Tipos:</span>
+    <span class="legend-item l-fta"><span class="legend-dot d-fta"></span>Tratado de Libre Comercio (TLC)</span>
+    <span class="legend-item l-art"><span class="legend-dot d-art"></span>Acuerdo Rec&#237;proco (ART)</span>
+    <span class="legend-item l-tifa"><span class="legend-dot d-tifa"></span>TIFA / Marco</span>
+    <span class="legend-item l-bit"><span class="legend-dot d-bit"></span>Tratado Bilateral de Inversi&#243;n (TBI)</span>
+    <span class="legend-item l-pref"><span class="legend-dot d-pref"></span>Programa de Preferencias</span>
+    <span class="legend-item l-other"><span class="legend-dot d-other"></span>OMC / Otro / Riesgo</span>
+  </div>
+</div>
+
+<div class="controls-bar">
+  <div class="controls-inner">
+    <div class="search-box">
+      <span class="search-icon">&#128269;</span>
+      <input type="text" id="searchInput" placeholder="Buscar por nombre de pa&#237;s..." autocomplete="off" />
+    </div>
+    <div class="filter-group">
+      <button class="filter-btn active" data-filter="all">Todos</button>
+      <button class="filter-btn f-fta" data-filter="fta">TLC / FTA</button>
+      <button class="filter-btn f-art" data-filter="art">Rec&#237;proco</button>
+      <button class="filter-btn f-tifa" data-filter="tifa">TIFA</button>
+      <button class="filter-btn f-bit" data-filter="bit">TBI / BIT</button>
+      <button class="filter-btn f-pref" data-filter="pref">Preferencias</button>
+    </div>
+  </div>
+</div>
+
+<div class="region-tabs">
+  <div class="tabs-inner">
+    <button class="tab-btn active" data-region="all">Todas las Regiones</button>
+    <button class="tab-btn" data-region="north">Am&#233;rica del Norte</button>
+    <button class="tab-btn" data-region="central">Am&#233;rica Central</button>
+    <button class="tab-btn" data-region="caribbean">El Caribe</button>
+    <button class="tab-btn" data-region="south">Am&#233;rica del Sur</button>
+  </div>
+</div>
+
+<div class="main-wrap" id="mainWrap"><div class="region-section" data-region="north">
+  <div class="region-heading">&#127758; Am&#233;rica del Norte</div>
+  
+  <div class="country-grid"><div class="country-card" data-country="canad&#225;" data-region="north" data-types="fta,other">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇨🇦</div>
+    <div class="card-info">
+      <div class="card-country">Canad&#225;</div>
+      <div class="card-region">Am&#233;rica del Norte</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-fta">USMCA / TLC</span><span class="pill p-other">Miembro OMC</span></div>
+  <div class="card-detail">
+    <p class="detail-intro">Canad&#225; es el socio comercial m&#225;s grande de los Estados Unidos. El USMCA rige la mayor&#237;a del comercio bilateral con acceso libre de aranceles para bienes calificados. M&#225;s del 85% del comercio EE.UU.&#8211;Canad&#225; permanece libre de aranceles bajo el USMCA, que est&#225; expl&#237;citamente exento de los recargos arancelarios de la Secci&#243;n 122.</p><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-fta">TLC</span><span class="ag-title">USMCA &#8212; Acuerdo entre EE.UU., M&#233;xico y Canad&#225;</span></div><p class="ag-desc">Sucesor del TLCAN, en vigor desde el 1 de julio de 2020. Acceso libre de aranceles para bienes calificados, reglas de origen actualizadas para textiles y autom&#243;viles, protecciones de propiedad intelectual mejoradas, disposiciones de comercio digital y un mecanismo de respuesta r&#225;pida en materia laboral. La revisi&#243;n conjunta de 2026 es el evento de pol&#237;tica comercial de Am&#233;rica del Norte m&#225;s significativo a corto plazo.</p><ul class="ag-links"><li><a href="https://ustr.gov/trade-agreements/free-trade-agreements/united-states-mexico-canada-agreement" target="_blank">Resumen del USMCA &#8212; USTR.gov</a></li><li><a href="https://www.cbp.gov/trade/priority-issues/trade-agreements/free-trade-agreements/USMCA" target="_blank">Gu&#237;a del Importador USMCA &#8212; CBP.gov</a></li><li><a href="https://www.trade.gov/us-canada-fta-overview" target="_blank">Resumen Comercial EE.UU.&#8211;Canad&#225; &#8212; Trade.gov</a></li></ul></div>
+    <div class="card-footer"><a href="https://ustr.gov/countries-regions/americas/canada" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div>
+<div class="country-card" data-country="m&#233;xico" data-region="north" data-types="fta,other">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇲🇽</div>
+    <div class="card-info">
+      <div class="card-country">M&#233;xico</div>
+      <div class="card-region">Am&#233;rica del Norte</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-fta">USMCA / TLC</span><span class="pill p-other">Miembro OMC</span></div>
+  <div class="card-detail">
+    <p class="detail-intro">M&#233;xico es el <strong>&#250;nico pa&#237;s productor de prendas</strong> en el Hemisferio Occidental cuyos bienes ingresan a EE.UU. completamente libres de aranceles bajo la pol&#237;tica actual de 2026. El USMCA est&#225; expl&#237;citamente exento de los recargos arancelarios de la Secci&#243;n 122. El comercio EE.UU.&#8211;M&#233;xico fue de $798 mil millones en 2024.</p><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-fta">TLC</span><span class="ag-title">USMCA &#8212; En vigor desde el 1 de julio de 2020</span></div><p class="ag-desc">Las reglas de origen de hilado hacia adelante aplican a textiles y prendas. El mecanismo de respuesta r&#225;pida laboral (RRM) ha sido invocado m&#250;ltiples veces &#8212; la documentaci&#243;n de cumplimiento laboral es obligatoria para los exportadores mexicanos. La revisi&#243;n de 2026 abordar&#225; reglas de origen, trabajo, calendarios agr&#237;colas y comercio digital.</p><ul class="ag-links"><li><a href="https://ustr.gov/trade-agreements/free-trade-agreements/united-states-mexico-canada-agreement" target="_blank">Resumen del USMCA &#8212; USTR.gov</a></li><li><a href="https://www.cbp.gov/trade/priority-issues/trade-agreements/free-trade-agreements/USMCA" target="_blank">Gu&#237;a del Importador USMCA &#8212; CBP.gov</a></li><li><a href="https://www.trade.gov/us-mexico-fta-overview" target="_blank">Resumen Comercial EE.UU.&#8211;M&#233;xico &#8212; Trade.gov</a></li></ul></div>
+    <div class="card-footer"><a href="https://ustr.gov/countries-regions/americas/mexico" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div></div>
+</div><div class="region-section" data-region="central">
+  <div class="region-heading">&#127807; Am&#233;rica Central</div>
+  
+  <div class="country-grid"><div class="country-card" data-country="guatemala" data-region="central" data-types="fta,art,bit">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇬🇹</div>
+    <div class="card-info">
+      <div class="card-country">Guatemala</div>
+      <div class="card-region">Am&#233;rica Central &#8212; CAFTA-DR</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-fta">CAFTA-DR</span><span class="pill p-art">Acuerdo Rec&#237;proco</span><span class="pill p-bit">TBI</span></div>
+  <div class="card-detail">
+    <p class="detail-intro">Guatemala concluy&#243; un nuevo Acuerdo de Comercio Rec&#237;proco con EE.UU. (enero 2026), abriendo el camino para acceso libre de aranceles para prendas calificadas de CAFTA-DR.</p><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-fta">TLC</span><span class="ag-title">CAFTA-DR &#8212; En vigor desde el 1 de julio de 2006</span></div><p class="ag-desc">Acceso libre de aranceles para bienes calificados. Reglas de origen de hilado hacia adelante para textiles y prendas. Actualmente aplica un recargo del 10% de la Secci&#243;n 122 pendiente de la implementaci&#243;n del ART.</p><ul class="ag-links"><li><a href="https://ustr.gov/trade-agreements/free-trade-agreements/cafta-dr-dominican-republic-central-america-fta" target="_blank">Resumen CAFTA-DR &#8212; USTR.gov</a></li><li><a href="https://www.cbp.gov/trade/priority-issues/trade-agreements/free-trade-agreements/cafta-dr" target="_blank">Gu&#237;a CAFTA-DR para Importadores &#8212; CBP.gov</a></li></ul></div><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-art">Acuerdo Rec&#237;proco</span><span class="ag-title">Acuerdo EE.UU.&#8211;Guatemala de Comercio Rec&#237;proco (30 de enero de 2026)</span></div><p class="ag-desc">Marco para acceso libre de aranceles para prendas calificadas de CAFTA-DR. Incluye compromisos sobre comercio digital, propiedad intelectual, normas laborales y alineaci&#243;n de seguridad econ&#243;mica.</p><ul class="ag-links"><li><a href="https://ustr.gov/sites/default/files/files/Press/Releases/2026/Guatemala%20ART%201.30%20for%20posting%20CLEAN.pdf" target="_blank">Texto del Acuerdo &#8212; USTR.gov (PDF)</a></li><li><a href="https://ustr.gov/about/policy-offices/press-office/fact-sheets/2025/november/fact-sheet-united-states-and-guatemala-agree-framework-agreement-reciprocal-trade" target="_blank">Hoja de Datos USTR &#8212; Guatemala ART</a></li><li><a href="https://www.whitehouse.gov/briefings-statements/2025/11/joint-statement-on-framework-for-united-states-guatemala-agreement-on-reciprocal-trade/" target="_blank">Declaraci&#243;n Conjunta &#8212; WhiteHouse.gov</a></li></ul></div><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-bit">TBI</span><span class="ag-title">Tratado Bilateral de Inversi&#243;n EE.UU.&#8211;Guatemala (1998)</span></div><p class="ag-desc">Protege a inversionistas estadounidenses en Guatemala con trato nacional, NMF, trato justo y equitativo, y mecanismo de soluci&#243;n de diferencias inversionista-Estado.</p><ul class="ag-links"><li><a href="https://ustr.gov/trade-agreements/bilateral-investment-treaties" target="_blank">Programa de TBI &#8212; USTR.gov</a></li><li><a href="https://www.state.gov/investment-treaty-program/" target="_blank">Programa de Tratados de Inversi&#243;n &#8212; State.gov</a></li></ul></div>
+    <div class="card-footer"><a href="https://ustr.gov/countries-regions/americas/central-america" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div>
+<div class="country-card" data-country="el salvador" data-region="central" data-types="fta,art">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇸🇻</div>
+    <div class="card-info">
+      <div class="card-country">El Salvador</div>
+      <div class="card-region">Am&#233;rica Central &#8212; CAFTA-DR</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-fta">CAFTA-DR</span><span class="pill p-art">Acuerdo Rec&#237;proco</span></div>
+  <div class="card-detail">
+    <p class="detail-intro">El Salvador concluy&#243; un nuevo Acuerdo de Comercio Rec&#237;proco con EE.UU. (29 de enero de 2026), posicion&#225;ndolo junto a Guatemala para un acceso mejorado libre de aranceles para prendas.</p><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-fta">TLC</span><span class="ag-title">CAFTA-DR &#8212; En vigor desde el 1 de marzo de 2006</span></div><p class="ag-desc">Reglas de origen de hilado hacia adelante para textiles y prendas. El recargo de la Secci&#243;n 122 a&#250;n aplica pendiente de implementaci&#243;n del ART.</p><ul class="ag-links"><li><a href="https://ustr.gov/trade-agreements/free-trade-agreements/cafta-dr-dominican-republic-central-america-fta" target="_blank">Resumen CAFTA-DR &#8212; USTR.gov</a></li><li><a href="https://www.cbp.gov/trade/priority-issues/trade-agreements/free-trade-agreements/cafta-dr" target="_blank">Gu&#237;a CAFTA-DR para Importadores &#8212; CBP.gov</a></li></ul></div><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-art">Acuerdo Rec&#237;proco</span><span class="ag-title">Acuerdo EE.UU.&#8211;El Salvador de Comercio Rec&#237;proco (29 de enero de 2026)</span></div><p class="ag-desc">Marco de acceso libre de aranceles para prendas calificadas de CAFTA-DR. Incluye comercio digital, protecci&#243;n de PI, est&#225;ndares laborales y cooperaci&#243;n en seguridad nacional.</p><ul class="ag-links"><li><a href="https://ustr.gov/sites/default/files/files/Press/Releases/2026/El%20Salvador%20Agreement%201.29%20FINAL.pdf" target="_blank">Texto del Acuerdo &#8212; USTR.gov (PDF)</a></li><li><a href="https://ustr.gov/about/policy-offices/press-office/fact-sheets/2025/november/fact-sheet-united-states-and-el-salvador-agree-framework-agreement-reciprocal-trade" target="_blank">Hoja de Datos USTR &#8212; El Salvador ART</a></li><li><a href="https://www.whitehouse.gov/briefings-statements/2025/11/joint-statement-on-framework-for-united-states-el-salvador-agreement-on-reciprocal-trade/" target="_blank">Declaraci&#243;n Conjunta &#8212; WhiteHouse.gov</a></li></ul></div>
+    <div class="card-footer"><a href="https://ustr.gov/countries-regions/americas/central-america" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div>
+<div class="country-card" data-country="honduras" data-region="central" data-types="fta,bit">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇭🇳</div>
+    <div class="card-info">
+      <div class="card-country">Honduras</div>
+      <div class="card-region">Am&#233;rica Central &#8212; CAFTA-DR</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-fta">CAFTA-DR</span><span class="pill p-bit">TBI</span></div>
+  <div class="card-detail">
+    <p class="detail-intro">Honduras es uno de los mayores exportadores de prendas en CAFTA-DR. La NCTO presiona activamente para que Honduras reciba un acuerdo marco similar al de Guatemala y El Salvador.</p><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-fta">TLC</span><span class="ag-title">CAFTA-DR &#8212; En vigor desde el 1 de abril de 2006</span></div><p class="ag-desc">Implementaci&#243;n completa en enero de 2025. Actualmente sujeto al 10% de recargo de la Secci&#243;n 122. Acuerdo marco anticipado pero a&#250;n no finalizado a febrero de 2026.</p><ul class="ag-links"><li><a href="https://ustr.gov/trade-agreements/free-trade-agreements/cafta-dr-dominican-republic-central-america-fta" target="_blank">Resumen CAFTA-DR &#8212; USTR.gov</a></li><li><a href="https://www.trade.gov/cafta-dr" target="_blank">Datos Comerciales CAFTA-DR &#8212; Trade.gov / OTEXA</a></li></ul></div><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-bit">TBI</span><span class="ag-title">Tratado Bilateral de Inversi&#243;n EE.UU.&#8211;Honduras (2001)</span></div><p class="ag-desc">Protege a inversionistas estadounidenses con protecci&#243;n durante todo el ciclo de la inversi&#243;n, ISDS y garant&#237;as de trato NMF y nacional.</p><ul class="ag-links"><li><a href="https://ustr.gov/trade-agreements/bilateral-investment-treaties" target="_blank">Programa de TBI &#8212; USTR.gov</a></li></ul></div>
+    <div class="card-footer"><a href="https://ustr.gov/countries-regions/americas/central-america" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div>
+<div class="country-card" data-country="nicaragua" data-region="central" data-types="fta,other">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇳🇮</div>
+    <div class="card-info">
+      <div class="card-country">Nicaragua</div>
+      <div class="card-region">Am&#233;rica Central &#8212; CAFTA-DR</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-fta">CAFTA-DR</span><span class="pill p-other">Riesgo Secci&#243;n 301</span></div>
+  <div class="card-detail">
+    <p class="detail-intro">Nicaragua mantiene su membres&#237;a en CAFTA-DR pero enfrenta un riesgo pol&#237;tico significativo. La USTR abri&#243; una investigaci&#243;n de la Secci&#243;n 301 sobre las pr&#225;cticas de Nicaragua en materia de derechos laborales, derechos humanos y estado de derecho en 2025.</p><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-fta">TLC</span><span class="ag-title">CAFTA-DR &#8212; En vigor desde el 1 de abril de 2006</span></div><p class="ag-desc">Aplica recargo del 10% de la Secci&#243;n 122. Nicaragua no fue incluida en el nuevo marco de Acuerdos de Comercio Rec&#237;proco debido a preocupaciones pol&#237;ticas y de estado de derecho. La investigaci&#243;n activa de la Secci&#243;n 301 representa un riesgo de acci&#243;n comercial en curso.</p><ul class="ag-links"><li><a href="https://ustr.gov/trade-agreements/free-trade-agreements/cafta-dr-dominican-republic-central-america-fta" target="_blank">Resumen CAFTA-DR &#8212; USTR.gov</a></li><li><a href="https://ustr.gov/issue-areas/enforcement" target="_blank">Acciones de Cumplimiento USTR &#8212; USTR.gov</a></li></ul></div>
+    <div class="card-footer"><a href="https://ustr.gov/countries-regions/americas/central-america" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div>
+<div class="country-card" data-country="costa rica" data-region="central" data-types="fta">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇨🇷</div>
+    <div class="card-info">
+      <div class="card-country">Costa Rica</div>
+      <div class="card-region">Am&#233;rica Central &#8212; CAFTA-DR</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-fta">CAFTA-DR</span></div>
+  <div class="card-detail">
+    <p class="detail-intro">La membres&#237;a de Costa Rica en CAFTA-DR sustenta su posici&#243;n como socio de la cadena de suministro de EE.UU. en dispositivos m&#233;dicos, electr&#243;nica y productos agr&#237;colas.</p><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-fta">TLC</span><span class="ag-title">CAFTA-DR &#8212; En vigor desde el 1 de enero de 2009</span></div><p class="ag-desc">&#218;ltimo pa&#237;s CAFTA-DR en implementar. Implementaci&#243;n completa en enero de 2025. El recargo del 10% de la Secci&#243;n 122 aplica actualmente. Se anticipa que recibir&#225; un acuerdo marco similar al de Guatemala y El Salvador.</p><ul class="ag-links"><li><a href="https://ustr.gov/trade-agreements/free-trade-agreements/cafta-dr-dominican-republic-central-america-fta" target="_blank">Resumen CAFTA-DR &#8212; USTR.gov</a></li><li><a href="https://www.cbp.gov/trade/priority-issues/trade-agreements/free-trade-agreements/cafta-dr" target="_blank">Gu&#237;a CAFTA-DR para Importadores &#8212; CBP.gov</a></li></ul></div>
+    <div class="card-footer"><a href="https://ustr.gov/countries-regions/americas/central-america" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div>
+<div class="country-card" data-country="rep&#250;blica dominicana" data-region="central" data-types="fta">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇩🇴</div>
+    <div class="card-info">
+      <div class="card-country">Rep&#250;blica Dominicana</div>
+      <div class="card-region">El Caribe &#8212; CAFTA-DR</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-fta">CAFTA-DR</span></div>
+  <div class="card-detail">
+    <p class="detail-intro">La Rep&#250;blica Dominicana es el &#250;nico pa&#237;s caribe&#241;o en CAFTA-DR. Perdi&#243; la elegibilidad de Acumulaci&#243;n con M&#233;xico en 2012. Se anticipa un acuerdo marco pero a&#250;n no estaba finalizado en febrero de 2026.</p><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-fta">TLC</span><span class="ag-title">CAFTA-DR &#8212; En vigor desde el 1 de marzo de 2007</span></div><p class="ag-desc">Aplica recargo del 10% de la Secci&#243;n 122. La R.D. no es elegible para los programas TIFA de CARICOM ni CBI/CBTPA (sustituidos por CAFTA-DR). Las disposiciones de Acumulaci&#243;n con M&#233;xico no disponibles desde 2012 &#8212; limita las opciones de planificaci&#243;n del Cap&#237;tulo 98.</p><ul class="ag-links"><li><a href="https://ustr.gov/trade-agreements/free-trade-agreements/cafta-dr-dominican-republic-central-america-fta" target="_blank">Resumen CAFTA-DR &#8212; USTR.gov</a></li><li><a href="https://www.cbp.gov/trade/priority-issues/trade-agreements/free-trade-agreements/cafta-dr" target="_blank">Gu&#237;a CAFTA-DR para Importadores &#8212; CBP.gov</a></li></ul></div>
+    <div class="card-footer"><a href="https://ustr.gov/countries-regions/americas/central-america" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div>
+<div class="country-card" data-country="panam&#225;" data-region="central" data-types="fta,bit">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇵🇦</div>
+    <div class="card-info">
+      <div class="card-country">Panam&#225;</div>
+      <div class="card-region">Am&#233;rica Central / del Sur</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-fta">TPA / TLC</span><span class="pill p-bit">TBI</span></div>
+  <div class="card-detail">
+    <p class="detail-intro">La importancia estrat&#233;gica de Panam&#225; va m&#225;s all&#225; de su acuerdo arancelario &#8212; el Canal de Panam&#225; es infraestructura cr&#237;tica para todas las importaciones estadounidenses desde Asia. La presi&#243;n de la administraci&#243;n Trump sobre la gesti&#243;n del canal (inversi&#243;n china en puertos) crea un riesgo geopolítico adicional en la cadena de suministro.</p><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-fta">TLC</span><span class="ag-title">Acuerdo de Promoci&#243;n Comercial EE.UU.&#8211;Panam&#225; &#8212; En vigor desde el 31 de octubre de 2012</span></div><p class="ag-desc">Acceso libre de aranceles o reducido para la mayor&#237;a de las exportaciones e importaciones bilaterales. Aplica recargo del 10% de la Secci&#243;n 122. Monitoree las relaciones pol&#237;ticas EE.UU.&#8211;Panam&#225; sobre la gesti&#243;n del canal &#8212; un factor de riesgo independiente de la pol&#237;tica arancelaria.</p><ul class="ag-links"><li><a href="https://ustr.gov/trade-agreements/free-trade-agreements/panama-tpa" target="_blank">Resumen TPA Panam&#225; &#8212; USTR.gov</a></li><li><a href="https://ustr.gov/trade-agreements/free-trade-agreements/panama-tpa/final-text" target="_blank">Texto Completo TPA Panam&#225; &#8212; USTR.gov</a></li><li><a href="https://www.trade.gov/us-panama-fta-overview" target="_blank">Resumen TLC EE.UU.&#8211;Panam&#225; &#8212; Trade.gov</a></li></ul></div><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-bit">TBI</span><span class="ag-title">Cap&#237;tulo de Inversi&#243;n del TPA &#8212; Sustituye al TBI previo</span></div><p class="ag-desc">El cap&#237;tulo de inversi&#243;n del TPA de Panam&#225; proporciona protecciones integrales al inversionista incluyendo ISDS, trato nacional y garant&#237;as NMF.</p><ul class="ag-links"><li><a href="https://ustr.gov/trade-agreements/bilateral-investment-treaties" target="_blank">Programa de TBI &#8212; USTR.gov</a></li></ul></div>
+    <div class="card-footer"><a href="https://ustr.gov/countries-regions/americas/central-america" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div>
+<div class="country-card" data-country="belice" data-region="central" data-types="tifa,pref">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇧🇿</div>
+    <div class="card-info">
+      <div class="card-country">Belice</div>
+      <div class="card-region">Am&#233;rica Central / Caribe</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-tifa">TIFA CARICOM</span><span class="pill p-pref">CBI / CBTPA</span></div>
+  <div class="card-detail">
+    <p class="detail-intro">Belice se beneficia tanto del marco TIFA de CARICOM como del acceso preferencial del CBI/CBTPA para la mayor&#237;a de los bienes.</p><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-pref">Programa de Preferencias</span><span class="ag-title">Iniciativa de la Cuenca del Caribe (CBI / CBTPA)</span></div><p class="ag-desc">Belice se beneficia del acceso libre de aranceles bajo CBERA para la mayor&#237;a de bienes y acceso mejorado para prendas bajo CBTPA. Az&#250;car, c&#237;tricos, pl&#225;tanos y productos marinos son los principales sectores comerciales.</p><ul class="ag-links"><li><a href="https://ustr.gov/issue-areas/preference-programs/caribbean-basin-initiative-cbi" target="_blank">Resumen del CBI &#8212; USTR.gov</a></li><li><a href="https://www.cbp.gov/trade/priority-issues/trade-agreements/free-trade-agreements/cbi" target="_blank">Gu&#237;a CBI para Importadores &#8212; CBP.gov</a></li></ul></div><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-tifa">TIFA</span><span class="ag-title">TIFA EE.UU.&#8211;CARICOM</span></div><p class="ag-desc">Belice participa en el Consejo de Comercio e Inversi&#243;n del TIFA EE.UU.&#8211;CARICOM, proporcionando di&#225;logo estructurado sobre acceso al mercado, PI, derechos laborales y desarrollo de capacidades.</p><ul class="ag-links"><li><a href="https://ustr.gov/trade-agreements/trade-investment-framework-agreements" target="_blank">Resumen TIFA &#8212; USTR.gov</a></li></ul></div>
+    <div class="card-footer"><a href="https://ustr.gov/countries-regions/americas/caribbean" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div></div>
+</div><div class="region-section" data-region="caribbean">
+  <div class="region-heading">&#127965;&#65039; El Caribe</div>
+  <div class="collective-card">
+  <div class="collective-header">
+    <div class="collective-icon">&#127754;</div>
+    <div>
+      <div class="collective-title">CARICOM &#8212; Comunidad del Caribe</div>
+      <div class="collective-sub">Acuerdo Marco de Comercio e Inversi&#243;n EE.UU.&#8211;CARICOM (TIFA)</div>
+    </div>
+  </div>
+  <p class="collective-desc">Los Estados Unidos interactuan con la Comunidad del Caribe (CARICOM) a trav&#233;s de un Acuerdo Marco de Comercio e Inversi&#243;n (TIFA) colectivo. El Consejo de Comercio e Inversi&#243;n (TIC) del TIFA celebra sesiones peri&#243;dicas sobre acceso al mercado, PI, derechos laborales, seguridad alimentaria y desarrollo de capacidades. La mayor&#237;a de los miembros de CARICOM tambi&#233;n son beneficiarios de los programas de preferencias de la Iniciativa de la Cuenca del Caribe (CBI).</p>
+  <div class="collective-members">
+    <span class="member-tag">&#127462;&#127468; Antigua y Barbuda</span>
+    <span class="member-tag">&#127463;&#127480; Bahamas</span>
+    <span class="member-tag">&#127463;&#127463; Barbados</span>
+    <span class="member-tag">&#127463;&#127487; Belice</span>
+    <span class="member-tag">&#127465;&#127474; Dominica</span>
+    <span class="member-tag">&#127468;&#127465; Granada</span>
+    <span class="member-tag">&#127468;&#127486; Guyana</span>
+    <span class="member-tag">&#127469;&#127481; Hait&#237;</span>
+    <span class="member-tag">&#127471;&#127474; Jamaica</span>
+    <span class="member-tag">&#127474;&#127480; Montserrat</span>
+    <span class="member-tag">&#127472;&#127475; San Crist&#243;bal y Nieves</span>
+    <span class="member-tag">&#127473;&#127464; Santa Luc&#237;a</span>
+    <span class="member-tag">&#127483;&#127464; San Vicente y las Granadinas</span>
+    <span class="member-tag">&#127480;&#127479; Surinam</span>
+    <span class="member-tag">&#127481;&#127481; Trinidad y Tobago</span>
+    <span class="member-tag">Bermuda</span>
+    <span class="member-tag">Islas Caim&#225;n</span>
+    <span class="member-tag">Islas V&#237;rgenes Brit&#225;nicas</span>
+    <span class="member-tag">Islas Turcas y Caicos</span>
+  </div>
+  <ul class="collective-links">
+    <li><a href="https://ustr.gov/trade-agreements/trade-investment-framework-agreements" target="_blank">TIFA EE.UU.&#8211;CARICOM &#8212; USTR.gov</a></li>
+    <li><a href="https://ustr.gov/about-us/policy-offices/press-office/press-releases/2023/october/caricom-and-united-states-hold-ninth-meeting-trade-and-investment-council" target="_blank">9a Reuni&#243;n del Consejo de Comercio e Inversi&#243;n TIFA (2023) &#8212; USTR.gov</a></li>
+    <li><a href="https://ustr.gov/issue-areas/preference-programs/caribbean-basin-initiative-cbi" target="_blank">Iniciativa de la Cuenca del Caribe (CBI) &#8212; USTR.gov</a></li>
+    <li><a href="https://caricom.org" target="_blank">Sitio Oficial de CARICOM &#8212; caricom.org</a></li>
+  </ul>
+</div>
+  <div class="country-grid"><div class="country-card" data-country="hait&#237;" data-region="caribbean" data-types="pref,tifa,bit">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇭🇹</div>
+    <div class="card-info">
+      <div class="card-country">Hait&#237;</div>
+      <div class="card-region">El Caribe</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-pref">HOPE / HELP</span><span class="pill p-tifa">TIFA CARICOM</span><span class="pill p-pref">CBI / CBTPA</span><span class="pill p-bit">TBI</span></div>
+  <div class="card-detail">
+    <p class="detail-intro">La relaci&#243;n comercial de Hait&#237; est&#225; anclada en los programas de preferencias HOPE/HELP &#8212; m&#225;s del 90% de los $844M anuales de exportaciones de prendas de Hait&#237;. Los programas vencieron el 30 de septiembre de 2025 y fueron restaurados retroactivamente el 3 de febrero de 2026. <strong>Fecha l&#237;mite para reembolso retroactivo de aranceles: 2 de agosto de 2026.</strong></p><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-pref">Programa de Preferencias</span><span class="ag-title">Leyes HOPE / HELP de Hait&#237; &#8212; Restauradas el 3 de febrero de 2026</span></div><p class="ag-desc">Acceso libre de aranceles para prendas haitianas mediante el Cap&#237;tulo 98 del HTS Subc. XX usando el designador SPI "D". Restaurado hasta el 31 de diciembre de 2026 bajo H.R.7148. Reembolsos retroactivos disponibles para aranceles pagados del 1 oct 2025 al 3 feb 2026 &#8212; SOLICITE ANTES DEL 2 DE AGOSTO DE 2026. Extensiones hasta 2028 (H.R.6504) y 2035 (H.R.1625/S.742) pendientes en el Congreso.</p><ul class="ag-links"><li><a href="https://ustr.gov/issue-areas/preference-programs/haitian-hemispheric-opportunity-through-partnership-encouragement-hope-act" target="_blank">Resumen HOPE/HELP &#8212; USTR.gov</a></li><li><a href="https://www.cbp.gov/trade/quota/bulletins" target="_blank">Boletines de Cuota HOPE/HELP Haiti &#8212; CBP.gov</a></li><li><a href="https://www.federalregister.gov/documents/2026/02/12/2026-02832/haitian-hemispheric-opportunity-through-partnership-encouragement-hope-act-and-haitian-economic-lift" target="_blank">Registro Federal Doc. 2026-02832 &#8212; Cuota de Valor A&#241;adido HOPE</a></li></ul></div><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-pref">Programa de Preferencias</span><span class="ag-title">Iniciativa de la Cuenca del Caribe (CBI / CBTPA)</span></div><p class="ag-desc">Hait&#237; tambi&#233;n se beneficia del acceso preferencial del CBI/CBTPA para bienes no textiles.</p><ul class="ag-links"><li><a href="https://ustr.gov/issue-areas/preference-programs/caribbean-basin-initiative-cbi" target="_blank">Resumen del CBI &#8212; USTR.gov</a></li></ul></div><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-bit">TBI</span><span class="ag-title">Tratado Bilateral de Inversi&#243;n EE.UU.&#8211;Hait&#237; (1983)</span></div><p class="ag-desc">Uno de los TBI m&#225;s antiguos de EE.UU. en el hemisferio. Protege a los inversionistas estadounidenses que operan en Hait&#237;.</p><ul class="ag-links"><li><a href="https://ustr.gov/trade-agreements/bilateral-investment-treaties" target="_blank">Programa de TBI &#8212; USTR.gov</a></li></ul></div>
+    <div class="card-footer"><a href="https://ustr.gov/countries-regions/americas/caribbean" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div>
+<div class="country-card" data-country="jamaica" data-region="caribbean" data-types="tifa,pref,bit">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇯🇲</div>
+    <div class="card-info">
+      <div class="card-country">Jamaica</div>
+      <div class="card-region">El Caribe</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-tifa">TIFA CARICOM</span><span class="pill p-pref">CBI / CBTPA</span><span class="pill p-bit">TBI</span></div>
+  <div class="card-detail">
+    <p class="detail-intro">Jamaica es una de las mayores econom&#237;as del Caribe y un productor clave de prendas y productos agr&#237;colas bajo CBI/CBTPA. Se beneficia del marco colectivo del TIFA de CARICOM y de protecciones individuales del TBI.</p><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-pref">Programa de Preferencias</span><span class="ag-title">Iniciativa de la Cuenca del Caribe (CBI / CBTPA)</span></div><p class="ag-desc">Acceso libre de aranceles para la mayor&#237;a de bienes bajo CBERA; acceso mejorado para prendas bajo CBTPA. Principales sectores: bauxita/aluminita, agricultura, prendas, turismo. Jamaica es uno de los principales beneficiarios de CBTPA para exportaciones de prendas.</p><ul class="ag-links"><li><a href="https://ustr.gov/issue-areas/preference-programs/caribbean-basin-initiative-cbi" target="_blank">Resumen del CBI &#8212; USTR.gov</a></li><li><a href="https://ustr.gov/sites/default/files/2023%20Caribbean%20Basin%20Economic%20Recovery%20Act%20Report%20FINAL.pdf" target="_blank">Informe Anual CBERA 2023 &#8212; USTR.gov</a></li></ul></div><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-bit">TBI</span><span class="ag-title">Tratado Bilateral de Inversi&#243;n EE.UU.&#8211;Jamaica (1997)</span></div><p class="ag-desc">Proporciona trato nacional, NMF, trato justo y equitativo y protecciones ISDS para inversionistas estadounidenses en Jamaica.</p><ul class="ag-links"><li><a href="https://ustr.gov/trade-agreements/bilateral-investment-treaties" target="_blank">Programa de TBI &#8212; USTR.gov</a></li><li><a href="https://www.state.gov/investment-treaty-program/" target="_blank">Programa de Tratados de Inversi&#243;n &#8212; State.gov</a></li></ul></div>
+    <div class="card-footer"><a href="https://ustr.gov/countries-regions/americas/caribbean" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div>
+<div class="country-card" data-country="trinidad y tobago" data-region="caribbean" data-types="tifa,pref,bit">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇹🇹</div>
+    <div class="card-info">
+      <div class="card-country">Trinidad y Tobago</div>
+      <div class="card-region">El Caribe</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-tifa">TIFA CARICOM</span><span class="pill p-pref">CBI</span><span class="pill p-bit">TBI</span></div>
+  <div class="card-detail">
+    <p class="detail-intro">Trinidad y Tobago es la econom&#237;a m&#225;s industrializada del Caribe &#8212; un importante exportador de GNL y productos petroqu&#237;micos. Se beneficia del CBI y de protecci&#243;n bilateral de inversiones.</p><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-pref">Programa de Preferencias</span><span class="ag-title">Iniciativa de la Cuenca del Caribe (CBI)</span></div><p class="ag-desc">T&amp;T recibe acceso libre de aranceles bajo CBERA para la mayor&#237;a de bienes. Energ&#237;a y productos petroqu&#237;micos son los principales sectores comerciales.</p><ul class="ag-links"><li><a href="https://ustr.gov/issue-areas/preference-programs/caribbean-basin-initiative-cbi" target="_blank">Resumen del CBI &#8212; USTR.gov</a></li></ul></div><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-bit">TBI</span><span class="ag-title">TBI EE.UU.&#8211;Trinidad y Tobago (1996)</span></div><p class="ag-desc">Protege las inversiones estadounidenses en los sectores energ&#233;tico e industrial de T&amp;T con protecci&#243;n ISDS completa, trato nacional y garant&#237;as NMF.</p><ul class="ag-links"><li><a href="https://ustr.gov/trade-agreements/bilateral-investment-treaties" target="_blank">Programa de TBI &#8212; USTR.gov</a></li></ul></div>
+    <div class="card-footer"><a href="https://ustr.gov/countries-regions/americas/caribbean" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div>
+<div class="country-card" data-country="barbados" data-region="caribbean" data-types="tifa,pref">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇧🇧</div>
+    <div class="card-info">
+      <div class="card-country">Barbados</div>
+      <div class="card-region">El Caribe</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-tifa">TIFA CARICOM</span><span class="pill p-pref">CBI / CBTPA</span></div>
+  <div class="card-detail">
+    <div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-pref">Programa de Preferencias</span><span class="ag-title">Iniciativa de la Cuenca del Caribe (CBI / CBTPA)</span></div><p class="ag-desc">Barbados se beneficia del acceso libre de aranceles del CBI/CBTPA para la mayor&#237;a de bienes. Turismo, servicios financieros y manufactura ligera son sectores econ&#243;micos clave. Acceso mejorado para prendas disponible bajo CBTPA.</p><ul class="ag-links"><li><a href="https://ustr.gov/issue-areas/preference-programs/caribbean-basin-initiative-cbi" target="_blank">Resumen del CBI &#8212; USTR.gov</a></li><li><a href="https://www.cbp.gov/trade/priority-issues/trade-agreements/free-trade-agreements/cbi" target="_blank">Gu&#237;a CBI para Importadores &#8212; CBP.gov</a></li></ul></div>
+    <div class="card-footer"><a href="https://ustr.gov/countries-regions/americas/caribbean" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div>
+<div class="country-card" data-country="granada" data-region="caribbean" data-types="tifa,pref,bit">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇬🇩</div>
+    <div class="card-info">
+      <div class="card-country">Granada</div>
+      <div class="card-region">El Caribe</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-tifa">TIFA CARICOM</span><span class="pill p-pref">CBI / CBTPA</span><span class="pill p-bit">TBI</span></div>
+  <div class="card-detail">
+    <div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-pref">Programa de Preferencias</span><span class="ag-title">Iniciativa de la Cuenca del Caribe (CBI / CBTPA)</span></div><p class="ag-desc">Granada se beneficia del acceso libre de aranceles del CBI/CBTPA. Especias, nuez moscada, agricultura, cacao y manufactura ligera son los principales sectores comerciales.</p><ul class="ag-links"><li><a href="https://ustr.gov/issue-areas/preference-programs/caribbean-basin-initiative-cbi" target="_blank">Resumen del CBI &#8212; USTR.gov</a></li></ul></div><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-bit">TBI</span><span class="ag-title">TBI EE.UU.&#8211;Granada (1989)</span></div><p class="ag-desc">Uno de los TBI m&#225;s antiguos de EE.UU. en el Caribe. Protege a inversionistas estadounidenses en Granada.</p><ul class="ag-links"><li><a href="https://ustr.gov/trade-agreements/bilateral-investment-treaties" target="_blank">Programa de TBI &#8212; USTR.gov</a></li></ul></div>
+    <div class="card-footer"><a href="https://ustr.gov/countries-regions/americas/caribbean" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div>
+<div class="country-card" data-country="guyana" data-region="caribbean" data-types="tifa,pref">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇬🇾</div>
+    <div class="card-info">
+      <div class="card-country">Guyana</div>
+      <div class="card-region">Caribe / Am&#233;rica del Sur</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-tifa">TIFA CARICOM</span><span class="pill p-pref">CBI / CBTPA</span></div>
+  <div class="card-detail">
+    <p class="detail-intro">Guyana es la econom&#237;a de mayor crecimiento del Caribe tras importantes descubrimientos de petr&#243;leo en alta mar. Se beneficia del CBI y tiene creciente inter&#233;s de asociaci&#243;n energ&#233;tica estrat&#233;gica con EE.UU.</p><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-pref">Programa de Preferencias</span><span class="ag-title">Iniciativa de la Cuenca del Caribe (CBI / CBTPA)</span></div><p class="ag-desc">Guyana se beneficia del acceso libre de aranceles del CBI para la mayor&#237;a de bienes. Az&#250;car, arroz, oro, madera y energ&#237;a son los principales sectores. Las exportaciones de petr&#243;leo de campos en alta mar reciben tratamiento especial bajo las disposiciones de energ&#237;a de la Secci&#243;n 232.</p><ul class="ag-links"><li><a href="https://ustr.gov/issue-areas/preference-programs/caribbean-basin-initiative-cbi" target="_blank">Resumen del CBI &#8212; USTR.gov</a></li></ul></div>
+    <div class="card-footer"><a href="https://ustr.gov/countries-regions/americas/caribbean" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div>
+<div class="country-card" data-country="bahamas" data-region="caribbean" data-types="tifa,pref">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇧🇸</div>
+    <div class="card-info">
+      <div class="card-country">Bahamas</div>
+      <div class="card-region">El Caribe</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-tifa">TIFA CARICOM</span><span class="pill p-pref">CBI</span></div>
+  <div class="card-detail">
+    <div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-pref">Programa de Preferencias</span><span class="ag-title">Iniciativa de la Cuenca del Caribe (CBI)</span></div><p class="ag-desc">Las Bahamas se benefician del acceso libre de aranceles del CBI para la mayor&#237;a de bienes. Los servicios financieros y el turismo dominan la econom&#237;a. Las Bahamas es miembro asociado de CARICOM y participa en el marco del TIFA.</p><ul class="ag-links"><li><a href="https://ustr.gov/issue-areas/preference-programs/caribbean-basin-initiative-cbi" target="_blank">Resumen del CBI &#8212; USTR.gov</a></li></ul></div>
+    <div class="card-footer"><a href="https://ustr.gov/countries-regions/americas/caribbean" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div>
+<div class="country-card" data-country="santa luc&#237;a" data-region="caribbean" data-types="tifa,pref">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇱🇨</div>
+    <div class="card-info">
+      <div class="card-country">Santa Luc&#237;a</div>
+      <div class="card-region">El Caribe</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-tifa">TIFA CARICOM</span><span class="pill p-pref">CBI / CBTPA</span></div>
+  <div class="card-detail">
+    <div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-pref">Programa de Preferencias</span><span class="ag-title">Iniciativa de la Cuenca del Caribe (CBI / CBTPA)</span></div><p class="ag-desc">Santa Luc&#237;a se beneficia del acceso libre de aranceles del CBI/CBTPA. Pl&#225;tanos, servicios tur&#237;sticos y servicios financieros son los sectores principales.</p><ul class="ag-links"><li><a href="https://ustr.gov/issue-areas/preference-programs/caribbean-basin-initiative-cbi" target="_blank">Resumen del CBI &#8212; USTR.gov</a></li></ul></div>
+    <div class="card-footer"><a href="https://ustr.gov/countries-regions/americas/caribbean" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div>
+<div class="country-card" data-country="surinam" data-region="caribbean" data-types="tifa,pref">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇸🇷</div>
+    <div class="card-info">
+      <div class="card-country">Surinam</div>
+      <div class="card-region">Caribe / Am&#233;rica del Sur</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-tifa">TIFA CARICOM</span><span class="pill p-pref">CBI</span></div>
+  <div class="card-detail">
+    <div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-pref">Programa de Preferencias</span><span class="ag-title">Iniciativa de la Cuenca del Caribe (CBI)</span></div><p class="ag-desc">Surinam se beneficia del acceso libre de aranceles del CBI. Oro, petr&#243;leo, bauxita y productos agr&#237;colas son los principales sectores de exportaci&#243;n. Creciente sector energ&#233;tico en alta mar con inter&#233;s estrat&#233;gico de EE.UU.</p><ul class="ag-links"><li><a href="https://ustr.gov/issue-areas/preference-programs/caribbean-basin-initiative-cbi" target="_blank">Resumen del CBI &#8212; USTR.gov</a></li></ul></div>
+    <div class="card-footer"><a href="https://ustr.gov/countries-regions/americas/caribbean" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div></div>
+</div><div class="region-section" data-region="south">
+  <div class="region-heading">&#127758; Am&#233;rica del Sur</div>
+  
+  <div class="country-grid"><div class="country-card" data-country="colombia" data-region="south" data-types="fta,tifa">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇨🇴</div>
+    <div class="card-info">
+      <div class="card-country">Colombia</div>
+      <div class="card-region">Am&#233;rica del Sur &#8212; Andina</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-fta">TPA / TLC</span></div>
+  <div class="card-detail">
+    <p class="detail-intro">Colombia es uno de los pocos pa&#237;ses latinoamericanos que a&#250;n comercia m&#225;s con EE.UU. que con China &#8212; una distinci&#243;n estrat&#233;gica cr&#237;tica. Aplica recargo del 10% de la Secci&#243;n 122 a pesar del TLC activo.</p><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-fta">TLC</span><span class="ag-title">Acuerdo de Promoci&#243;n Comercial EE.UU.&#8211;Colombia &#8212; En vigor desde el 15 de mayo de 2012</span></div><p class="ag-desc">Elimin&#243; la mayor&#237;a de los aranceles bilaterales. Principales exportaciones colombianas: textiles y prendas, caf&#233;, insumos farmac&#233;uticos, flores cortadas, frutas tropicales. Aplica recargo del 10% de la Secci&#243;n 122. Colombia est&#225; profundizando los lazos comerciales con China en respuesta a la incertidumbre arancelaria de EE.UU.</p><ul class="ag-links"><li><a href="https://ustr.gov/trade-agreements/free-trade-agreements/colombia-fta" target="_blank">Resumen TPA Colombia &#8212; USTR.gov</a></li><li><a href="https://ustr.gov/trade-agreements/free-trade-agreements/colombia-fta/final-text" target="_blank">Texto Completo TPA Colombia &#8212; USTR.gov</a></li><li><a href="https://www.trade.gov/us-colombia-fta-overview" target="_blank">Resumen TLC EE.UU.&#8211;Colombia &#8212; Trade.gov</a></li></ul></div>
+    <div class="card-footer"><a href="https://ustr.gov/countries-regions/americas/colombia" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div>
+<div class="country-card" data-country="per&#250;" data-region="south" data-types="fta">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇵🇪</div>
+    <div class="card-info">
+      <div class="card-country">Per&#250;</div>
+      <div class="card-region">Am&#233;rica del Sur &#8212; Andina</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-fta">TPA / TLC</span></div>
+  <div class="card-detail">
+    <p class="detail-intro">Per&#250; tiene un TLC integral con EE.UU. y es un importante exportador de cobre y oro. Los aranceles de la Secci&#243;n 232 al cobre (25%+) crean una exposici&#243;n adicional significativa para las exportaciones industriales peruanas m&#225;s all&#225; del recargo de la Secci&#243;n 122.</p><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-fta">TLC</span><span class="ag-title">Acuerdo de Promoci&#243;n Comercial EE.UU.&#8211;Per&#250; &#8212; En vigor desde el 1 de febrero de 2009</span></div><p class="ag-desc">Elimin&#243; aranceles sobre la mayor&#237;a de bienes bilaterales. Per&#250; forma parte del cintur&#243;n andino de litio y cobre. Para cobre y metales &#8212; los aranceles de la Secci&#243;n 232 (25%+) aplican por separado de la Secci&#243;n 122. Siempre calcule la pila arancelaria completa para importaciones peruanas intensivas en metales.</p><ul class="ag-links"><li><a href="https://ustr.gov/trade-agreements/free-trade-agreements/peru-tpa" target="_blank">Resumen TPA Per&#250; &#8212; USTR.gov</a></li><li><a href="https://ustr.gov/trade-agreements/free-trade-agreements/peru-tpa/final-text" target="_blank">Texto Completo TPA Per&#250; &#8212; USTR.gov</a></li><li><a href="https://www.trade.gov/us-peru-fta-overview" target="_blank">Resumen TLC EE.UU.&#8211;Per&#250; &#8212; Trade.gov</a></li></ul></div>
+    <div class="card-footer"><a href="https://ustr.gov/countries-regions/americas/peru" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div>
+<div class="country-card" data-country="chile" data-region="south" data-types="fta">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇨🇱</div>
+    <div class="card-info">
+      <div class="card-country">Chile</div>
+      <div class="card-region">Am&#233;rica del Sur</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-fta">TLC (2004)</span></div>
+  <div class="card-detail">
+    <p class="detail-intro">El TLC de Chile con EE.UU. (2004) es uno de los m&#225;s antiguos del hemisferio. Como el mayor productor mundial de cobre y pieza central de la estrategia del tri&#225;ngulo del litio, Chile enfrenta una exposici&#243;n a los aranceles de la Secci&#243;n 232 al cobre (25%+) adem&#225;s del recargo de la Secci&#243;n 122.</p><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-fta">TLC</span><span class="ag-title">Tratado de Libre Comercio EE.UU.&#8211;Chile &#8212; En vigor desde el 1 de enero de 2004</span></div><p class="ag-desc">Elimin&#243; aranceles sobre la mayor&#237;a de bienes bilaterales. Principales exportaciones chilenas: cobre, litio, salm&#243;n, vino, productos agr&#237;colas. Aplica recargo del 10% de la Secci&#243;n 122. Los aranceles de la Secci&#243;n 232 al cobre (25%+) aplican por separado. Chile es el ancla estrat&#233;gica del tri&#225;ngulo del litio (con Argentina y Bolivia).</p><ul class="ag-links"><li><a href="https://ustr.gov/trade-agreements/free-trade-agreements/chile-fta" target="_blank">Resumen TLC Chile &#8212; USTR.gov</a></li><li><a href="https://ustr.gov/trade-agreements/free-trade-agreements/chile-fta/final-text" target="_blank">Texto Completo TLC Chile &#8212; USTR.gov</a></li><li><a href="https://www.trade.gov/us-chile-fta-overview" target="_blank">Resumen TLC EE.UU.&#8211;Chile &#8212; Trade.gov</a></li></ul></div>
+    <div class="card-footer"><a href="https://ustr.gov/countries-regions/americas/chile" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div>
+<div class="country-card" data-country="argentina" data-region="south" data-types="art,bit,tifa">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇦🇷</div>
+    <div class="card-info">
+      <div class="card-country">Argentina</div>
+      <div class="card-region">Am&#233;rica del Sur</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-art">Acuerdo Rec&#237;proco</span><span class="pill p-bit">TBI</span></div>
+  <div class="card-detail">
+    <p class="detail-intro">Argentina concluy&#243; un nuevo Acuerdo de Comercio e Inversi&#243;n Rec&#237;proco con EE.UU. en febrero de 2026 &#8212; el desarrollo comercial bilateral m&#225;s significativo en Am&#233;rica del Sur este a&#241;o. El programa de reforma econ&#243;mica del presidente Milei cre&#243; la apertura diplom&#225;tica.</p><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-art">Acuerdo Rec&#237;proco</span><span class="ag-title">Acuerdo de Comercio e Inversi&#243;n Rec&#237;proco EE.UU.&#8211;Argentina &#8212; Firmado en febrero de 2026</span></div><p class="ag-desc">Incluye acceso libre de aranceles para exportaciones argentinas calificadas (carne, productos agr&#237;colas, minerales cr&#237;ticos) y compromisos integrales de acceso al mercado para exportadores estadounidenses. Los aranceles completos fueron publicados junto al acuerdo.</p><ul class="ag-links"><li><a href="https://ustr.gov/sites/default/files/files/Press/Releases/2026/US%20Argentina%20ARTI%20English%20Final%20February%202026.pdf" target="_blank">Texto del Acuerdo &#8212; USTR.gov (PDF)</a></li><li><a href="https://ustr.gov/sites/default/files/files/Press/Releases/2026/US%20Argentina%20Schedules%20February%202026.pdf" target="_blank">Cronogramas de Aranceles &#8212; USTR.gov (PDF)</a></li><li><a href="https://ustr.gov/about/policy-offices/press-office/fact-sheets/2025/november/fact-sheet-united-states-and-argentina-agree-framework-agreement-reciprocal-trade-and-investment" target="_blank">Hoja de Datos USTR &#8212; Argentina ARTI</a></li><li><a href="https://www.whitehouse.gov/briefings-statements/2025/11/joint-statement-on-framework-for-a-united-states-argentina-agreement-on-reciprocal-trade-and-investment/" target="_blank">Declaraci&#243;n Conjunta &#8212; WhiteHouse.gov</a></li></ul></div><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-bit">TBI</span><span class="ag-title">Tratado Bilateral de Inversi&#243;n EE.UU.&#8211;Argentina (1994)</span></div><p class="ag-desc">Historia compleja de TBI incluyendo disputas durante la crisis econ&#243;mica de 2001&#8211;2002 de Argentina. Proporciona protecciones al inversionista incluyendo ISDS.</p><ul class="ag-links"><li><a href="https://ustr.gov/trade-agreements/bilateral-investment-treaties" target="_blank">Programa de TBI &#8212; USTR.gov</a></li><li><a href="https://www.state.gov/investment-treaty-program/" target="_blank">Programa de Tratados de Inversi&#243;n &#8212; State.gov</a></li></ul></div>
+    <div class="card-footer"><a href="https://ustr.gov/countries-regions/americas/argentina" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div>
+<div class="country-card" data-country="ecuador" data-region="south" data-types="tifa,art">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇪🇨</div>
+    <div class="card-info">
+      <div class="card-country">Ecuador</div>
+      <div class="card-region">Am&#233;rica del Sur &#8212; Andina</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-tifa">Protocolos / Marco</span><span class="pill p-art">Marco ART</span></div>
+  <div class="card-detail">
+    <p class="detail-intro">Ecuador est&#225; cubierto por los Protocolos de EE.UU. sobre Reglas Comerciales y Transparencia y recibi&#243; acceso libre de aranceles para banano y cacao como parte de los acuerdos marco bilaterales de 2025&#8211;2026.</p><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-tifa">Marco</span><span class="ag-title">Protocolos EE.UU.&#8211;Ecuador sobre Reglas Comerciales y Transparencia</span></div><p class="ag-desc">Compromisos de alto nivel sobre facilitaci&#243;n del comercio, administraci&#243;n aduanera, buenas pr&#225;cticas regulatorias, anticorrupci&#243;n y un anexo para peque&#241;as y medianas empresas.</p><ul class="ag-links"><li><a href="https://ustr.gov/countries-regions/americas/ecuador" target="_blank">Resumen Comercial Ecuador &#8212; USTR.gov</a></li><li><a href="https://www.trade.gov/market-intelligence/ecuador" target="_blank">Inteligencia de Mercado Ecuador &#8212; Trade.gov</a></li></ul></div><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-art">Acuerdo Rec&#237;proco</span><span class="ag-title">Marco ART EE.UU.&#8211;Ecuador (2025&#8211;2026)</span></div><p class="ag-desc">Acceso libre de aranceles para exportaciones ecuatorianas de banano y cacao. Marco bilateral completo en desarrollo a febrero de 2026.</p><ul class="ag-links"><li><a href="https://ustr.gov/trade-agreements/agreements-reciprocal-trade" target="_blank">Acuerdos de Comercio Rec&#237;proco &#8212; USTR.gov</a></li></ul></div>
+    <div class="card-footer"><a href="https://ustr.gov/countries-regions/americas/ecuador" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div>
+<div class="country-card" data-country="uruguay" data-region="south" data-types="tifa">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇺🇾</div>
+    <div class="card-info">
+      <div class="card-country">Uruguay</div>
+      <div class="card-region">Am&#233;rica del Sur</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-tifa">TIFA / Protocolos</span><span class="pill p-other">Miembro OMC</span></div>
+  <div class="card-detail">
+    <p class="detail-intro">Uruguay est&#225; cubierto por los Protocolos de EE.UU. sobre Reglas Comerciales y Transparencia. Econom&#237;a estable y bien gobernada con importantes exportaciones agr&#237;colas a EE.UU. Aplica recargo del 10&#8211;15% de la Secci&#243;n 122 en la mayor&#237;a de bienes.</p><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-tifa">Marco</span><span class="ag-title">Protocolos EE.UU.&#8211;Uruguay sobre Reglas Comerciales y Transparencia</span></div><p class="ag-desc">Proporciona un marco bilateral estructurado para la facilitaci&#243;n del comercio, administraci&#243;n aduanera, buenas pr&#225;cticas regulatorias y anticorrupci&#243;n. Es el marco fundacional para las relaciones EE.UU.&#8211;Uruguay en ausencia de un TLC completo.</p><ul class="ag-links"><li><a href="https://ustr.gov/countries-regions/americas/uruguay" target="_blank">Resumen Comercial Uruguay &#8212; USTR.gov</a></li><li><a href="https://www.trade.gov/market-intelligence/uruguay" target="_blank">Inteligencia de Mercado Uruguay &#8212; Trade.gov</a></li></ul></div>
+    <div class="card-footer"><a href="https://ustr.gov/countries-regions/americas/uruguay" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div>
+<div class="country-card" data-country="brasil" data-region="south" data-types="tifa,other">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇧🇷</div>
+    <div class="card-info">
+      <div class="card-country">Brasil</div>
+      <div class="card-region">Am&#233;rica del Sur &#8212; MERCOSUR</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-tifa">TIFA (Limitado)</span><span class="pill p-other">Sin TLC &#9888;</span><span class="pill p-other">Riesgo Secci&#243;n 301</span></div>
+  <div class="card-detail">
+    <p class="detail-intro">Brasil es el entorno comercial de mayor incertidumbre en el Hemisferio Occidental. Sin TLC bilateral. Aplica la Secci&#243;n 122 (10&#8211;15%) m&#225;s aranceles de la Secci&#243;n 232 al acero (50%) sobre productos de acero. Investigaci&#243;n activa de la Secci&#243;n 301 de la USTR sobre comercio digital, etanol, PI y deforestaci&#243;n de Brasil.</p><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-tifa">TIFA</span><span class="ag-title">Mecanismo de Consulta Comercial y Econ&#243;mica EE.UU.&#8211;Brasil</span></div><p class="ag-desc">EE.UU. y Brasil mantienen mecanismos de consulta comercial limitados. No existe un TLC integral. Brasil es miembro de MERCOSUR; las negociaciones EE.UU.&#8211;MERCOSUR han estado hist&#243;ricamente estancadas. Brasil posee las terceras mayores reservas de tierras raras del mundo &#8212; creando una paradoja de minerales cr&#237;ticos en la relaci&#243;n bilateral a pesar de las tensiones pol&#237;ticas.</p><ul class="ag-links"><li><a href="https://ustr.gov/countries-regions/americas/brazil" target="_blank">Resumen Comercial Brasil &#8212; USTR.gov</a></li><li><a href="https://www.trade.gov/market-intelligence/brazil" target="_blank">Inteligencia de Mercado Brasil &#8212; Trade.gov</a></li><li><a href="https://ustr.gov/issue-areas/enforcement" target="_blank">Cumplimiento Secci&#243;n 301 &#8212; USTR.gov</a></li></ul></div>
+    <div class="card-footer"><a href="https://ustr.gov/countries-regions/americas/brazil" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div>
+<div class="country-card" data-country="bolivia" data-region="south" data-types="other">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇧🇴</div>
+    <div class="card-info">
+      <div class="card-country">Bolivia</div>
+      <div class="card-region">Am&#233;rica del Sur &#8212; Andina</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-other">Miembro OMC</span><span class="pill p-other">Sin TLC / TBI</span></div>
+  <div class="card-detail">
+    <p class="detail-intro">Bolivia no tiene un TLC ni un TBI activo con los Estados Unidos. El TBI original de Bolivia (1998) fue rescindido por Bolivia en 2012. Bolivia posee las mayores reservas de litio del mundo &#8212; lo que la hace estrat&#233;gicamente importante para la pol&#237;tica de minerales cr&#237;ticos a pesar de la ausencia de acuerdos formales.</p><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-other">OMC</span><span class="ag-title">Membres&#237;a en la OMC &#8212; T&#233;rminos NMF + Recargo de la Secci&#243;n 122</span></div><p class="ag-desc">El comercio EE.UU.&#8211;Bolivia opera bajo los t&#233;rminos est&#225;ndar de NMF de la OMC m&#225;s el recargo de la Secci&#243;n 122 (10&#8211;15%). Las pol&#237;ticas de nacionalizaci&#243;n de Bolivia y su retiro del CIADI han dificultado la protecci&#243;n de inversiones para los inversionistas estadounidenses. El tri&#225;ngulo del litio (Bolivia, Argentina, Chile) es un foco creciente de la estrategia de minerales cr&#237;ticos de EE.UU.</p><ul class="ag-links"><li><a href="https://ustr.gov/countries-regions/americas/bolivia" target="_blank">Resumen Comercial Bolivia &#8212; USTR.gov</a></li><li><a href="https://www.trade.gov/market-intelligence/bolivia" target="_blank">Inteligencia de Mercado Bolivia &#8212; Trade.gov</a></li><li><a href="https://www.wto.org/english/thewto_e/countries_e/bolivia_e.htm" target="_blank">Bolivia &#8212; Perfil Pa&#237;s OMC</a></li></ul></div>
+    <div class="card-footer"><a href="https://ustr.gov/countries-regions/americas/bolivia" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div>
+<div class="country-card" data-country="paraguay" data-region="south" data-types="tifa,bit">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇵🇾</div>
+    <div class="card-info">
+      <div class="card-country">Paraguay</div>
+      <div class="card-region">Am&#233;rica del Sur &#8212; MERCOSUR</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-tifa">TIFA</span><span class="pill p-bit">TBI</span></div>
+  <div class="card-detail">
+    <p class="detail-intro">Paraguay es miembro de MERCOSUR sin un TLC integral con EE.UU., pero mantiene un tratado bilateral de inversi&#243;n. Paraguay es un importante exportador de soja y carne, y el cuarto mayor exportador mundial de electricidad (desde Itaip&#250;).</p><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-bit">TBI</span><span class="ag-title">Tratado Bilateral de Inversi&#243;n EE.UU.&#8211;Paraguay</span></div><p class="ag-desc">Proporciona protecciones para inversionistas estadounidenses incluyendo trato nacional, NMF e ISDS. El recargo de la Secci&#243;n 122 aplica a la mayor&#237;a de las exportaciones paraguayas a EE.UU.</p><ul class="ag-links"><li><a href="https://ustr.gov/trade-agreements/bilateral-investment-treaties" target="_blank">Programa de TBI &#8212; USTR.gov</a></li><li><a href="https://ustr.gov/countries-regions/americas/paraguay" target="_blank">Resumen Comercial Paraguay &#8212; USTR.gov</a></li></ul></div>
+    <div class="card-footer"><a href="https://ustr.gov/countries-regions/americas/paraguay" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div>
+<div class="country-card" data-country="venezuela" data-region="south" data-types="other">
+  <div class="card-header" onclick="toggleCard(this.parentElement)">
+    <div class="card-flag">🇻🇪</div>
+    <div class="card-info">
+      <div class="card-country">Venezuela</div>
+      <div class="card-region">Am&#233;rica del Sur</div>
+    </div>
+    <div class="card-expand">+</div>
+  </div>
+  <div class="card-pills"><span class="pill p-other">Sanciones EE.UU.</span><span class="pill p-other">Sin Comercio Normal</span></div>
+  <div class="card-detail">
+    <p class="detail-intro">Venezuela est&#225; sujeta a sanciones integrales de EE.UU. administradas por OFAC. No hay comercio bilateral normal. Cualquier operaci&#243;n requiere una licencia espec&#237;fica de OFAC. El entorno comercial de mayor riesgo en el Hemisferio Occidental.</p><div class="agreement-section"><div class="ag-header"><span class="ag-type-badge p-other">Sanciones</span><span class="ag-title">Sanciones Integrales de EE.UU. sobre Venezuela</span></div><p class="ag-desc">M&#250;ltiples Decretos Ejecutivos imponen sanciones integrales. Las Licencias Generales de OFAC proporcionan excepciones limitadas para actividades humanitarias. Todo comercio e inversi&#243;n requiere revisi&#243;n y licencia de OFAC.</p><ul class="ag-links"><li><a href="https://ofac.treasury.gov/sanctions-programs-and-country-information/venezuela-related-sanctions" target="_blank">Programa de Sanciones Venezuela &#8212; OFAC / Treasury.gov</a></li><li><a href="https://www.trade.gov/market-intelligence/venezuela" target="_blank">Resumen Comercial Venezuela &#8212; Trade.gov</a></li></ul></div>
+    <div class="card-footer"><a href="https://ofac.treasury.gov/sanctions-programs-and-country-information/venezuela-related-sanctions" target="_blank">&#128279; P&#225;gina USTR</a></div>
+  </div>
+</div></div>
+</div><div class="no-results" id="noResults">Ning&#250;n pa&#237;s coincide con su b&#250;squeda o filtro. Intente una combinaci&#243;n diferente.</div>
+</div>
+
+<div class="source-footer">
+  <div style="max-width:1100px;margin:0 auto">
+    <strong>Fuentes Principales:</strong>
+    <a href="https://ustr.gov/countries-regions/americas" target="_blank">Representante Comercial de EE.UU. (USTR) &#8212; Hemisferio Occidental</a> &#183;
+    <a href="https://ustr.gov/trade-agreements" target="_blank">Acuerdos Comerciales USTR</a> &#183;
+    <a href="https://www.cbp.gov/trade" target="_blank">Aduanas y Protecci&#243;n Fronteriza de EE.UU. (CBP)</a> &#183;
+    <a href="https://www.trade.gov" target="_blank">Administraci&#243;n de Comercio Internacional de EE.UU. (Trade.gov)</a> &#183;
+    <a href="https://www.state.gov/investment-treaty-program/" target="_blank">Departamento de Estado EE.UU. &#8212; Tratados de Inversi&#243;n</a> &#183;
+    <a href="https://ofac.treasury.gov" target="_blank">OFAC / Tesoro EE.UU.</a> &#183;
+    <a href="https://caricom.org" target="_blank">CARICOM</a> &#183;
+    <a href="https://www.wto.org" target="_blank">Organizaci&#243;n Mundial del Comercio (OMC)</a>
+    <br><br>
+    <strong>Aviso Legal:</strong> Toda la informaci&#243;n corresponde a febrero de 2026. Los acuerdos comerciales, las tasas arancelarias y la elegibilidad de los programas cambian con frecuencia. Esta herramienta es solo para fines informativos y de navegaci&#243;n &#8212; siempre consulte las publicaciones actuales de la USTR y asesores cualificados en derecho aduanero y comercio antes de tomar decisiones de cumplimiento. RC2 Consulting LLC no garantiza la integridad ni la exactitud de las fuentes gubernamentales de terceros.
+  </div>
+</div>
+
+<script>
+function toggleCard(card){card.classList.toggle('open')}
+document.getElementById('hamburger').addEventListener('click',function(){document.getElementById('navLinks').classList.toggle('open')});
+var searchInput=document.getElementById('searchInput');
+searchInput.addEventListener('input',filterCards);
+var activeFilter='all';
+document.querySelectorAll('.filter-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active')});
+    btn.classList.add('active');
+    activeFilter=btn.getAttribute('data-filter');
+    filterCards();
+  });
+});
+var activeRegion='all';
+document.querySelectorAll('.tab-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active')});
+    btn.classList.add('active');
+    activeRegion=btn.getAttribute('data-region');
+    filterCards();
+  });
+});
+function filterCards(){
+  var query=searchInput.value.toLowerCase().trim();
+  var cards=document.querySelectorAll('.country-card');
+  var visibleCount=0;
+  document.querySelectorAll('.region-section').forEach(function(sec){
+    var region=sec.getAttribute('data-region');
+    sec.style.display=(activeRegion==='all'||activeRegion===region)?'':' none';
+  });
+  cards.forEach(function(card){
+    var name=card.getAttribute('data-country').toLowerCase();
+    var types=card.getAttribute('data-types')||''
+    var region=card.getAttribute('data-region');
+    var ms=!query||name.includes(query);
+    var mf=activeFilter==='all'||types.includes(activeFilter);
+    var mr=activeRegion==='all'||activeRegion===region;
+    if(ms&&mf&&mr){card.classList.remove('hidden');visibleCount++;}
+    else{card.classList.add('hidden');}
+  });
+  document.getElementById('noResults').style.display=visibleCount===0?'block':'none';
+}
+</script>
+</body></html>
