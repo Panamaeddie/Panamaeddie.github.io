@@ -579,7 +579,69 @@
       .nav-logo-mark { font-size: 1rem !important; }
       .nav-brand-name { font-size: 0.68rem !important; }
     }
-</style>
+
+    /* ── CONSOLIDATED CARD UPGRADES ── */
+    .rc-card-wide {
+      background: var(--white);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 4px rgba(11,37,69,0.06);
+      padding: 22px 20px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .rc-card-wide:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(11,37,69,0.11); }
+    .rc-sub-group { margin-bottom: 14px; }
+    .rc-sub-label {
+      font-size: 0.67rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.7px; padding: 3px 9px; border-radius: 10px;
+      display: inline-block; margin-bottom: 7px;
+    }
+    .rc-sub-label.compliance { background: #DCFCE7; color: #16A34A; }
+    .rc-sub-label.audit     { background: #EDE9FE; color: #7C3AED; }
+    .rc-sub-label.tools     { background: #DBEAFE; color: #1D4ED8; }
+    .rc-sub-label.articles  { background: #FEF3C7; color: #D97706; }
+    .rc-sub-label.sba       { background: #CFFAFE; color: #0891B2; }
+    .rc-sub-label.contract  { background: #FCE7F3; color: #DB2777; }
+    .rc-sub-label.trade     { background: #F1F5F9; color: #334155; }
+    .rc-sub-label.navigator { background: #0B2545; color: #F0B429; }
+    .rc-divider { border: none; border-top: 1px solid var(--border); margin: 12px 0; }
+    /* Navigator featured card */
+    .rc-card-nav {
+      background: linear-gradient(135deg, #0B2545 0%, #163566 55%, #0D7680 100%);
+      border-radius: 10px; border: none;
+      box-shadow: 0 4px 18px rgba(11,37,69,0.22);
+      padding: 22px 20px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .rc-card-nav:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(11,37,69,0.32); }
+    .rc-card-nav .rc-icon { font-size: 1.5rem; margin-bottom: 10px; display: block; }
+    .rc-card-nav .rc-title { font-size: 0.95rem; font-weight: 700; color: #ffffff; margin-bottom: 6px; }
+    .rc-card-nav .rc-desc { font-size: 0.8rem; color: rgba(255,255,255,0.78); line-height: 1.55; margin-bottom: 14px; }
+    .rc-card-nav .rc-links { list-style: none; margin-bottom: 16px; }
+    .rc-card-nav .rc-links li {
+      font-size: 0.78rem; padding: 5px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      display: flex; align-items: flex-start; gap: 6px;
+    }
+    .rc-card-nav .rc-links li:last-child { border-bottom: none; }
+    .rc-card-nav .rc-links a { color: #93C5FD; text-decoration: none; font-weight: 500; }
+    .rc-card-nav .rc-links a:hover { color: #ffffff; text-decoration: underline; }
+    .btn-gold {
+      display: inline-block; background: #C8922A; color: #0B2545;
+      font-weight: 700; font-size: 0.78rem; padding: 9px 16px;
+      border-radius: 6px; text-decoration: none; transition: background 0.2s;
+    }
+    .btn-gold:hover { background: #F0B429; }
+    /* grid-4 but allow wider cards */
+    .grid-rc-new {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    @media (max-width: 900px) { .grid-rc-new { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 600px) { .grid-rc-new { grid-template-columns: 1fr; } }
+
+    </style>
 </head>
 <body>
 
@@ -815,37 +877,105 @@
     </div>
     <span class="section-pill">Curated Collections</span>
   </div>
-  <div class="grid-4">
+  <div class="grid-rc-new">
 
-    <div class="rc-card">
+    <!-- ① WRAP / PASA / CAP / GAP — consolidated -->
+    <div class="rc-card-wide">
       <span class="rc-icon">📋</span>
-      <div class="rc-title">WRAP Compliance Resource Center</div>
-      <div class="rc-desc">Guides, tools, readiness and pre-preparation tools for compliance certification.</div>
-      <ul class="rc-links">
-        <li><a href="https://rc2consulting.github.io/RC2_WRAP_12_Principles_Guide.html" target="_blank">WRAP 12 Principles Guide</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_Gap_Analysis.html" target="_blank">Compliance Gap Analysis Tool</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_CAP_Template.html" target="_blank">Corrective Action Plan Template</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_2026_Compliance_Gap.html" target="_blank">The 2026 Compliance Gap Article</a></li>
-      </ul>
-      <a href="https://rc2consulting.github.io/RC2_WRAP_12_Principles_Guide.html" target="_blank" class="btn-blue">Explore Resources ›</a>
+      <div class="rc-title">WRAP &amp; PASA Compliance Toolkit</div>
+      <div class="rc-desc">Everything facility teams and compliance officers need to prepare for, survive, and pass WRAP and PASA audits — from gap analysis through corrective action.</div>
+
+      <div class="rc-sub-group">
+        <span class="rc-sub-label compliance">WRAP Compliance</span>
+        <ul class="rc-links">
+          <li><a href="https://rc2consulting.github.io/RC2_WRAP_12_Principles_Guide.html" target="_blank">WRAP 12 Principles Interactive Guide</a></li>
+          <li><a href="https://rc2consulting.github.io/RC2_2026_Compliance_Gap.html" target="_blank">2026 Compliance Gap — Article</a></li>
+        </ul>
+      </div>
+
+      <div class="rc-sub-group">
+        <span class="rc-sub-label audit">PASA Pre-Audit</span>
+        <ul class="rc-links">
+          <li><a href="https://rc2consulting.github.io/RC2_PASA_Scorecard.html" target="_blank">PASA Pre-Audit Scorecard</a></li>
+          <li><a href="https://rc2consulting.github.io/RC2_HS_Inspection_Checklist.html" target="_blank">Health &amp; Safety Inspection Checklist</a></li>
+        </ul>
+      </div>
+
+      <div class="rc-sub-group">
+        <span class="rc-sub-label tools">Gap &amp; CAP Tools</span>
+        <ul class="rc-links">
+          <li><a href="https://rc2consulting.github.io/RC2_Gap_Analysis.html" target="_blank">Compliance Gap Analysis Tool</a></li>
+          <li><a href="https://rc2consulting.github.io/RC2_CAP_Template.html" target="_blank">Corrective Action Plan (CAP) Template</a></li>
+        </ul>
+      </div>
+
+      <a href="https://rc2consulting.github.io/RC2_WRAP_12_Principles_Guide.html" target="_blank" class="btn-blue">Open Compliance Toolkit ›</a>
     </div>
 
+    <!-- ② GOVERNMENT CONTRACTING — SBA Tools + FAR/DCAA consolidated -->
+    <div class="rc-card-wide">
+      <span class="rc-icon">🏛️</span>
+      <div class="rc-title">Government Contracting Toolkit</div>
+      <div class="rc-desc">Complete SBA certification, federal registration, NAICS strategy, and FAR/DCAA readiness tools for small businesses entering the federal marketplace.</div>
+
+      <div class="rc-sub-group">
+        <span class="rc-sub-label sba">SBA Interactive Tools</span>
+        <ul class="rc-links">
+          <li><a href="https://rc2consulting.github.io/RC2_SBA_Application_Tool.html" target="_blank">SBA Application Process Tool</a></li>
+          <li><a href="https://rc2consulting.github.io/RC2_SBA_Size_Standard_Tool.html" target="_blank">SBA Size Standard Tool</a></li>
+          <li><a href="https://rc2consulting.github.io/RC2_SBA_NAICS_Tool.html" target="_blank">SBA–NAICS Codes Tool</a></li>
+          <li><a href="https://rc2consulting.github.io/RC2_FAR_DCAA_Tool.html" target="_blank">FAR / DCAA Compliance Readiness Tool</a></li>
+        </ul>
+      </div>
+
+      <div class="rc-sub-group">
+        <span class="rc-sub-label articles">Guides &amp; Articles</span>
+        <ul class="rc-links">
+          <li><a href="https://rc2consulting.github.io/RC2_Article_SBA_Certification.html" target="_blank">SBA Certification — Executive Summary</a></li>
+          <li><a href="https://rc2consulting.github.io/RC2_Article_SAM_Registration.html" target="_blank">Registering on SAM.gov — Guide</a></li>
+          <li><a href="https://rc2consulting.github.io/RC2_Article_SBA_Special_Programs.html" target="_blank">SBA Special Programs — Article</a></li>
+          <li><a href="https://rc2consulting.github.io/RC2_Article_NAICS_Codes.html" target="_blank">NAICS Codes Strategy — Article</a></li>
+        </ul>
+      </div>
+
+      <a href="https://rc2consulting.github.io/RC2_Article_SBA_Certification.html" target="_blank" class="btn-blue">Open Contracting Toolkit ›</a>
+    </div>
+
+    <!-- ③ KPI -->
     <div class="rc-card">
-      <span class="rc-icon">🛡️</span>
-      <div class="rc-title">PASA Assessment Resource Center</div>
-      <div class="rc-desc">Non-binding models, operations tip guides, and corrective step planning for facility teams.</div>
+      <span class="rc-icon">📈</span>
+      <div class="rc-title">KPI Resource Center</div>
+      <div class="rc-desc">Build, implement, and sustain KPI frameworks that drive real organizational performance — from metric selection through continuous improvement.</div>
       <ul class="rc-links">
-        <li><a href="https://rc2consulting.github.io/RC2_Gap_Analysis.html" target="_blank">Pre-Audit Gap Analysis Tool</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_CAP_Template.html" target="_blank">Corrective Action Plan Template</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_PASA_Scorecard.html" target="_blank">PASA Pre-Audit Scorecard</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_HS_Inspection_Checklist.html" target="_blank">H&S Inspection Checklist</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_KPI_Tool.html" target="_blank">🛠 KPI Framework Builder — Interactive Tool</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_Article_KPI_Framework.html" target="_blank">KPI Framework Development — Executive Summary</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_Article_KPI_Strategic_Alignment.html" target="_blank">Strategic Alignment — Article</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_Article_KPI_Measurable_Metrics.html" target="_blank">Defining Measurable Metrics — Article</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_Article_KPI_Balancing_Indicators.html" target="_blank">Balancing Indicators — Article</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_Article_KPI_Process_Steps.html" target="_blank">Process Steps — Article</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_Article_KPI_Continuous_Improvement.html" target="_blank">Continuous Improvement — Article</a></li>
       </ul>
-      <a href="https://rc2consulting.github.io/RC2_Gap_Analysis.html" target="_blank" class="btn-blue">Explore Resources ›</a>
+      <a href="https://rc2consulting.github.io/RC2_KPI_Tool.html" target="_blank" class="btn-blue">Open KPI Toolkit ›</a>
     </div>
 
+    <!-- ④ TRADE NAVIGATOR — featured card -->
+    <div class="rc-card-nav">
+      <span class="rc-icon">🗺️</span>
+      <div class="rc-title">Americas &amp; Caribbean Trade Navigator</div>
+      <div class="rc-desc">Interactive country-by-country finder for every U.S. trade agreement, BIT, TIFA, and preference program across the entire Western Hemisphere. Built for importers, exporters, compliance teams, and supply chain professionals.</div>
+      <ul class="rc-links">
+        <li><a href="https://rc2consulting.github.io/RC2_Americas_Trade_Navigator.html" target="_blank">🌐 Trade Navigator — English</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_Americas_Trade_Navigator-es.html" target="_blank">🌐 Navegador Comercial — Español</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_Article_Americas_Trade.html" target="_blank">Americas Trade Landscape 2026 — AAPN Executive Summary</a></li>
+        <li><a href="https://rc2consulting.github.io/RC2_Article_Trade_Tariffs.html" target="_blank">Global Trade &amp; Tariffs 2026 — Executive Summary</a></li>
+      </ul>
+      <a href="https://rc2consulting.github.io/RC2_Americas_Trade_Navigator.html" class="btn-gold">Launch Trade Navigator ›</a>
+    </div>
+
+    <!-- ⑤ SUPPLY CHAIN & NEARSHORING -->
     <div class="rc-card">
       <span class="rc-icon">🌐</span>
-      <div class="rc-title">Supply Chain & Nearshoring Strategy Hub</div>
+      <div class="rc-title">Supply Chain &amp; Nearshoring Strategy Hub</div>
       <div class="rc-desc">Operational readiness guidance for Latin America strategies and supply chain planning.</div>
       <ul class="rc-links">
         <li><a href="https://rc2consulting.github.io/RC2_Nearshoring_Readiness_Guide.html" target="_blank">Nearshoring Readiness Guide</a></li>
@@ -856,60 +986,15 @@
       <a href="https://rc2consulting.github.io/RC2_Tariff_Impact_Tool.html" class="btn-blue">Explore Resources ›</a>
     </div>
 
-    <div class="rc-card">
-      <span class="rc-icon">🏛️</span>
-      <div class="rc-title">Government Contracting Resource Center</div>
-      <div class="rc-desc">Complete toolkit for small businesses entering the federal market — SBA certification, SAM.gov, NAICS codes, FAR compliance, and special program access.</div>
-      <ul class="rc-links">
-        <li><a href="https://rc2consulting.github.io/RC2_Article_SBA_Certification.html" target="_blank">SBA Certification Executive Summary</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_SBA_Application_Tool.html" target="_blank">SBA Application Process Tool</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_SBA_Size_Standard_Tool.html" target="_blank">SBA Size Standard Tool</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_SBA_NAICS_Tool.html" target="_blank">SBA–NAICS Codes Tool</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_FAR_DCAA_Tool.html" target="_blank">FAR/DCAA Compliance Readiness Tool</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_Article_SAM_Registration.html" target="_blank">Registering on SAM.gov — Guide</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_Article_SBA_Special_Programs.html" target="_blank">SBA Special Programs — Article</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_Article_NAICS_Codes.html" target="_blank">NAICS Codes Strategy — Article</a></li>
-      </ul>
-      <a href="https://rc2consulting.github.io/RC2_Article_SBA_Certification.html" target="_blank" class="btn-blue">Explore Resources ›</a>
-    </div>
-
-    <div class="rc-card">
-      <span class="rc-icon">📈</span>
-      <div class="rc-title">KPI Resource Center</div>
-      <div class="rc-desc">Complete guide to building, implementing, and sustaining KPI frameworks that drive real organizational performance — from metric selection through continuous improvement.</div>
-      <ul class="rc-links">
-        <li><a href="https://rc2consulting.github.io/RC2_Article_KPI_Framework.html" target="_blank">KPI Framework Development — Executive Summary</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_KPI_Tool.html" target="_blank">KPI Framework Builder — Interactive Tool</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_Article_KPI_Strategic_Alignment.html" target="_blank">Strategic Alignment — Article</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_Article_KPI_Measurable_Metrics.html" target="_blank">Defining Measurable Metrics — Article</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_Article_KPI_Balancing_Indicators.html" target="_blank">Balancing Indicators — Article</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_Article_KPI_Process_Steps.html" target="_blank">Process Steps — Article</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_Article_KPI_Continuous_Improvement.html" target="_blank">Continuous Improvement — Article</a></li>
-      </ul>
-      <a href="https://rc2consulting.github.io/RC2_Article_KPI_Framework.html" target="_blank" class="btn-blue">Explore KPI Resources ›</a>
-    </div>
+    <!-- ⑥ LLC FORMATION -->
     <div class="rc-card">
       <span class="rc-icon">🏢</span>
       <div class="rc-title">LLC Business Formation Resource Center</div>
-      <div class="rc-desc">A complete step-by-step guide to forming and launching a new LLC — business name, state registration, EIN, banking, licenses, insurance, compliance, and growth infrastructure.</div>
+      <div class="rc-desc">Step-by-step guide to forming and launching a new LLC — business name, state registration, EIN, banking, licenses, insurance, compliance, and growth infrastructure.</div>
       <ul class="rc-links">
         <li><a href="https://rc2consulting.github.io/RC2_LLC_Formation_Guide.html" target="_blank">LLC Formation Guide — Interactive Checklist</a></li>
       </ul>
-      <a href="https://rc2consulting.github.io/RC2_LLC_Formation_Guide.html" target="_blank" class="btn-blue">Explore Formation Resources ›</a>
-    </div>
-    <div class="rc-card">
-      <span class="rc-icon">🌎</span>
-      <div class="rc-title">The Americas Trade Landscape</div>
-      <div class="rc-desc">Your complete trade intelligence hub for the Western Hemisphere — from global tariff policy and the Supreme Court IEEPA ruling to country-by-country AAPN region analysis, USMCA, CAFTA-DR, Haiti HOPE/HELP, and the full operational playbook for supply chain and compliance professionals.</div>
-      <ul class="rc-links">
-        <li><a href="https://rc2consulting.github.io/RC2_Article_Americas_Trade.html" target="_blank">The Americas Trade Landscape 2026 — AAPN Region Executive Summary</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_Article_Trade_Tariffs.html" target="_blank">Global Trade &amp; Tariffs 2026 — Executive Summary</a></li>
-      </ul>
-      <ul class="rc-links">
-        <li><a href="https://rc2consulting.github.io/RC2_Americas_Trade_Navigator.html" target="_blank">🗺️ Americas & Caribbean Trade Navigator — Interactive Tool</a></li>
-        <li><a href="https://rc2consulting.github.io/RC2_Americas_Trade_Navigator-es.html" target="_blank">🗺️ Navegador Comercial de las Américas — Herramienta Interactiva (ES)</a></li>
-      </ul>
-      <a href="https://rc2consulting.github.io/RC2_Americas_Trade_Navigator.html" class="btn-blue">Launch Trade Navigator ›</a>
+      <a href="https://rc2consulting.github.io/RC2_LLC_Formation_Guide.html" target="_blank" class="btn-blue">Open Formation Guide ›</a>
     </div>
 
   </div>
