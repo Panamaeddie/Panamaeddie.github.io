@@ -640,6 +640,17 @@
         .p-tariffs    { background-image: linear-gradient(rgba(11,37,69,0.50),rgba(11,37,69,0.42)), url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=400&q=70'); }
     .p-americas   { background-image: linear-gradient(rgba(11,37,69,0.45),rgba(11,37,69,0.38)), url('https://images.unsplash.com/photo-1524661135-423995f22d0b?w=400&q=70'); }
         .p-spesa { background-image: linear-gradient(rgba(11,37,69,0.50),rgba(11,37,69,0.42)), url('https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=400&q=70'); }
+    
+    /* KPI + Trade Nav forced equal-width pair row */
+    .card-pair-row {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .card-pair-row .card {
+      grid-column: unset !important;
+    }
     </style>
 </head>
 <body>
@@ -874,28 +885,30 @@
       <div class="card-body">
         <div class="card-cat">Contratos Gubernamentales</div>
         <div class="card-title">Herramienta de Preparación FAR / DCAA</div>
-        <div class="card-desc">Evalúe su organización en 6 dominios de cumplimiento de contratos federales — sistema contable, control de tiempo, compras, laboral/RRHH, gestión de contratos y ciberseguridad. La puntuación compuesta determina su nivel: Listo para Contratos, Condicional o No Listo.</div>
+        <div class="card-desc">Evalúe su organización en 6 dominios de cumplimiento de contratos federales — sistema contable, control de tiempo, compras, laboral/RRHH, gestión de contratos y ciberseguridad.<div class="card-pair-row">
+    La puntuación compuesta determina su nivel: Listo para Contratos, Condicional o No Listo.</div>
         <a href="https://rc2consulting.github.io/RC2_FAR_DCAA_Tool-es.html" target="_blank" class="btn-blue">Abrir Herramienta ›</a>
       </div>
     </div>
 
-    <div class="card" style="grid-column: span 2">
+    <div class="card">
       <div class="photo p-kpi-tool"></div>
       <div class="card-body">
         <div class="card-cat">Gestión del Desempeño</div>
         <div class="card-title">Constructor de Marco de KPIs — Herramienta Interactiva</div>
-        <div class="card-desc">Evalúe su organización en 6 dominios de desempeño — Financiero, Cliente, Operaciones, Cumplimiento, Personas y Estratégico. Nombre sus KPIs, califique la madurez actual vs. importancia estratégica y obtenga una puntuación compuesta en tiempo real con una lista de acciones prioritarias. Válido para cualquier industria.</div>
+        <div class="card-desc">Evalúe su organización en 6 dominios de desempeño — Financiero, Cliente, Operaciones, Cumplimiento, Personas y Estratégico. Nombre sus KPIs, califique la madurez actual vs. importancia estratégica y obtenga una puntuación compuesta e
+    n tiempo real con una lista de acciones prioritarias. Válido para cualquier industria.</div>
         <a href="https://rc2consulting.github.io/RC2_KPI_Tool-es.html" target="_blank" class="btn-blue">Abrir Herramienta ›</a>
       </div>
     </div>
 
   </div>
-    <div class="card" style="grid-column: span 2">
+    <div class="card">
       <div class="photo p-trade-nav"></div>
       <div class="card-body">
         <div class="card-cat">Inteligencia Comercial</div>
         <div class="card-title">Navegador Comercial de las Am&#233;ricas y el Caribe</div>
-        <div class="card-desc">Encuentre cada acuerdo comercial de EE.UU., Tratado Bilateral de Inversi&#243;n, TIFA y programa de preferencias para 29 pa&#237;ses del Hemisferio Occidental. Cubre TLCs, Acuerdos Rec&#237;procos, CARICOM, CBI/CBTPA y Haiti HOPE/HELP &#8212; con enlaces directos a fuentes USTR, CBP y Trade.gov. Dise&#241;ado para importadores, exportadores, equipos de cumplimiento y profesionales de la cadena de suministro.</div>
+        <div class="card-desc">Encuentre cada acuerdo comercial, TBI, TIFA y programa de preferencias para 29 pa&#237;ses del Hemisferio Occidental. Incluye TLCs, Acuerdos Rec&#237;procos, CARICOM, CBI/CBTPA y HOPE/HELP de Hait&#237; &#8212; con enlaces directos a fuentes oficiales de la USTR, CBP y Trade.gov.</div>exportadores, equipos de cumplimiento y profesionales de la cadena de suministro.</div>
         <a href="https://rc2consulting.github.io/RC2_Americas_Trade_Navigator-es.html" target="_blank" class="btn-blue">Abrir Navegador &#8250;</a>
       </div>
     </div>

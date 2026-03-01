@@ -645,6 +645,17 @@
         .p-tariffs    { background-image: linear-gradient(rgba(11,37,69,0.50),rgba(11,37,69,0.42)), url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=400&q=70'); }
     .p-americas   { background-image: linear-gradient(rgba(11,37,69,0.45),rgba(11,37,69,0.38)), url('https://images.unsplash.com/photo-1524661135-423995f22d0b?w=400&q=70'); }
         .p-spesa { background-image: linear-gradient(rgba(11,37,69,0.50),rgba(11,37,69,0.42)), url('https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=400&q=70'); }
+    
+    /* KPI + Trade Nav forced equal-width pair row */
+    .card-pair-row {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .card-pair-row .card {
+      grid-column: unset !important;
+    }
     </style>
 </head>
 <body>
@@ -879,28 +890,30 @@
       <div class="card-body">
         <div class="card-cat">Government Contracting</div>
         <div class="card-title">FAR / DCAA Compliance Readiness Tool</div>
-        <div class="card-desc">Score your organization across 6 federal contracting compliance domains — accounting system, timekeeping, purchasing, labor/HR, contract management, and cybersecurity. Weighted composite score determines your Contract Ready, Conditional, or Not Ready tier.</div>
+        <div class="card-desc">Score your organization across 6 federal contracting compliance domains — accounting system, timekeeping, purchasing, labor/HR, contract management, and cy<div class="card-pair-row">
+    bersecurity. Weighted composite score determines your Contract Ready, Conditional, or Not Ready tier.</div>
         <a href="https://rc2consulting.github.io/RC2_FAR_DCAA_Tool.html" target="_blank" class="btn-blue">Open Tool ›</a>
       </div>
     </div>
 
-    <div class="card" style="grid-column: span 2">
+    <div class="card">
       <div class="photo p-kpi-tool"></div>
       <div class="card-body">
         <div class="card-cat">Performance Management</div>
         <div class="card-title">KPI Framework Builder — Interactive Tool</div>
-        <div class="card-desc">Score your organization across 6 performance domains — Financial, Customer, Operations, Compliance, People, and Strategic. Name your KPIs, rate current maturity vs. strategic importance, and get a real-time composite score with a priority action list. Works for any industry.</div>
+        <div class="card-desc">Score your organization across 6 performance domains — Financial, Customer, Operations, Compliance, People, and Strategic. Name your KPIs, rate current maturity vs. strategic imp
+    ortance, and get a real-time composite score with a priority action list. Works for any industry.</div>
         <a href="https://rc2consulting.github.io/RC2_KPI_Tool.html" target="_blank" class="btn-blue">Open Tool ›</a>
       </div>
     </div>
 
   </div>
-    <div class="card" style="grid-column: span 2">
+    <div class="card">
       <div class="photo p-trade-nav"></div>
       <div class="card-body">
         <div class="card-cat">Trade Intelligence</div>
         <div class="card-title">Americas &amp; Caribbean Trade Navigator</div>
-        <div class="card-desc">Find every U.S. trade agreement, Bilateral Investment Treaty, TIFA, and preference program for 29 countries across the Western Hemisphere. Covers FTAs, Reciprocal Trade Agreements, CARICOM, CBI/CBTPA, and Haiti HOPE/HELP — with direct USTR, CBP, and Trade.gov source links. Built for importers, exporters, compliance teams, and supply chain professionals.</div>
+        <div class="card-desc">Find every U.S. trade agreement, BIT, TIFA, and preference program for 29 countries across the Western Hemisphere. Covers FTAs, Reciprocal Agreements, CARICOM, CBI/CBTPA, and Haiti HOPE/HELP — with direct USTR, CBP, and Trade.gov source links.</div>
         <a href="https://rc2consulting.github.io/RC2_Americas_Trade_Navigator.html" target="_blank" class="btn-blue">Launch Navigator ›</a>
       </div>
     </div>
