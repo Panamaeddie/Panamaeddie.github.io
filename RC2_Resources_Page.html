@@ -209,6 +209,7 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      height: 370px;
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(11,37,69,0.13); }
@@ -251,16 +252,13 @@
       color: var(--navy);
       line-height: 1.35;
       margin-bottom: 8px;
-      flex: 1;
     }
     .card-desc {
       font-size: 0.78rem;
       color: var(--text-muted);
       line-height: 1.55;
       margin-bottom: 14px;
-      display: -webkit-box;
-      -webkit-line-clamp: 4;
-      -webkit-box-orient: vertical;
+      flex: 1;
       overflow: hidden;
     }
     .coming-tag {
@@ -282,6 +280,7 @@
       flex: 1;
       margin-bottom: 14px;
       line-height: 1.5;
+      overflow: hidden;
     }
 
     /* Buttons */
@@ -645,17 +644,6 @@
         .p-tariffs    { background-image: linear-gradient(rgba(11,37,69,0.50),rgba(11,37,69,0.42)), url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=400&q=70'); }
     .p-americas   { background-image: linear-gradient(rgba(11,37,69,0.45),rgba(11,37,69,0.38)), url('https://images.unsplash.com/photo-1524661135-423995f22d0b?w=400&q=70'); }
         .p-spesa { background-image: linear-gradient(rgba(11,37,69,0.50),rgba(11,37,69,0.42)), url('https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=400&q=70'); }
-    
-    /* KPI + Trade Nav forced equal-width pair row */
-    .card-pair-row {
-      grid-column: 1 / -1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-    .card-pair-row .card {
-      grid-column: unset !important;
-    }
     </style>
 </head>
 <body>
@@ -820,7 +808,7 @@
       <div class="card-body">
         <div class="card-cat">Corrective Action Plan</div>
         <div class="card-title"><a href="https://rc2consulting.github.io/RC2_PASA_CAP.html" style="color:inherit;text-decoration:none;">PASA Corrective Action Plan</a></div>
-        <div class="card-soon">A structured CAP template aligned to WRAP audit format. Document findings, assign ownership, set deadlines, and track closure to verified completion.</div>
+        <div class="card-desc">Structured CAP template aligned to WRAP audit format. Document findings, assign ownership, set deadlines, and track closure.</div>
         <a href="https://rc2consulting.github.io/RC2_PASA_CAP.html" class="btn-blue">Open CAP ›</a>
       </div>
     </div>
@@ -830,7 +818,7 @@
       <div class="card-body">
         <div class="card-cat">Certification Guide</div>
         <div class="card-title">WRAP 12 Principles Checklist</div>
-        <div class="card-desc">A deep dive and explanatory tool to critically address audit readiness across all 12 principles.</div>
+        <div class="card-desc">Deep-dive explanatory tool to address audit readiness across all 12 WRAP principles and prepare for certification.</div>
         <a href="https://rc2consulting.github.io/RC2_WRAP_12_Principles_Guide.html" target="_blank" class="btn-blue">Download Tool ›</a>
       </div>
     </div>
@@ -840,7 +828,7 @@
       <div class="card-body">
         <div class="card-cat">Interactive Template</div>
         <div class="card-title">Corrective Action Tracking Template</div>
-        <div class="card-desc">A practical execution tool for completing and managing audit corrective action plans. Print or save as PDF.</div>
+        <div class="card-desc">Practical execution tool for completing and managing corrective action plans. Track findings, owners, and deadlines. Print or save as PDF.</div>
         <a href="https://rc2consulting.github.io/RC2_CAP_Template.html" target="_blank" class="btn-blue">Download Tool ›</a>
       </div>
     </div>
@@ -850,7 +838,7 @@
       <div class="card-body">
         <div class="card-cat">Assessment Tool</div>
         <div class="card-title">Operational Infrastructure Gap Analysis</div>
-        <div class="card-desc">Assess your facility against all 12 WRAP principles. Get a prioritized action plan in 10–15 minutes.</div>
+        <div class="card-desc">Assess your facility against all 12 WRAP principles. Get a prioritized corrective action plan in 10–15 minutes.</div>
         <a href="https://rc2consulting.github.io/RC2_Gap_Analysis.html" target="_blank" class="btn-blue">Start Analysis ›</a>
       </div>
     </div>
@@ -860,7 +848,7 @@
       <div class="card-body">
         <div class="card-cat">Government Contracting</div>
         <div class="card-title">SBA Application Process Interactive Tool</div>
-        <div class="card-desc">Work through all four phases of SBA certification — pre-application, submission, SBA review, and post-certification — with real-time phase-by-phase progress tracking and a program selector for 8(a), WOSB, HUBZone, SDVOSB, and VOSB.</div>
+        <div class="card-desc">Work through all four phases of SBA certification with real-time progress tracking and a program selector for 8(a), WOSB, HUBZone, SDVOSB, and VOSB.</div>
         <a href="https://rc2consulting.github.io/RC2_SBA_Application_Tool.html" target="_blank" class="btn-blue">Open Tool ›</a>
       </div>
     </div>
@@ -870,7 +858,7 @@
       <div class="card-body">
         <div class="card-cat">Government Contracting</div>
         <div class="card-title">SBA Size Standard Tool</div>
-        <div class="card-desc">Select your NAICS code, enter your 3-year average revenue and employee count — your small business determination, size threshold comparison, and set-aside eligibility badges update in real time. Includes affiliation rule guidance.</div>
+        <div class="card-desc">Enter your NAICS code, revenue, and headcount — your small business determination and set-aside eligibility update in real time. Includes affiliation guidance.</div>
         <a href="https://rc2consulting.github.io/RC2_SBA_Size_Standard_Tool.html" target="_blank" class="btn-blue">Open Tool ›</a>
       </div>
     </div>
@@ -880,7 +868,7 @@
       <div class="card-body">
         <div class="card-cat">Government Contracting</div>
         <div class="card-title">SBA–NAICS Codes Tool</div>
-        <div class="card-desc">Search, filter, and browse 80+ NAICS codes with SBA size standards, government contracting relevance ratings, and set-aside applicability. Sortable by sector, basis, and GovCon use — find your codes before certifying or submitting proposals.</div>
+        <div class="card-desc">Search and filter 80+ NAICS codes with SBA size standards, set-aside applicability, and GovCon relevance ratings. Find your codes before certifying or bidding.</div>
         <a href="https://rc2consulting.github.io/RC2_SBA_NAICS_Tool.html" target="_blank" class="btn-blue">Open Tool ›</a>
       </div>
     </div>
@@ -890,8 +878,7 @@
       <div class="card-body">
         <div class="card-cat">Government Contracting</div>
         <div class="card-title">FAR / DCAA Compliance Readiness Tool</div>
-        <div class="card-desc">Score your organization across 6 federal contracting compliance domains — accounting system, timekeeping, purchasing, labor/HR, contract management, and cy<div class="card-pair-row">
-    bersecurity. Weighted composite score determines your Contract Ready, Conditional, or Not Ready tier.</div>
+        <div class="card-desc">Score your organization across 6 federal compliance domains — accounting, timekeeping, purchasing, HR, contracts, and cybersecurity — and get a Contract Ready or Not Ready rating.</div>
         <a href="https://rc2consulting.github.io/RC2_FAR_DCAA_Tool.html" target="_blank" class="btn-blue">Open Tool ›</a>
       </div>
     </div>
@@ -901,23 +888,22 @@
       <div class="card-body">
         <div class="card-cat">Performance Management</div>
         <div class="card-title">KPI Framework Builder — Interactive Tool</div>
-        <div class="card-desc">Score your organization across 6 performance domains — Financial, Customer, Operations, Compliance, People, and Strategic. Name your KPIs, rate current maturity vs. strategic imp
-    ortance, and get a real-time composite score with a priority action list. Works for any industry.</div>
+        <div class="card-desc">Score your organization across 6 performance domains — Financial, Customer, Operations, Compliance, People, and Strategic. Get a composite score and priority action list.</div>
         <a href="https://rc2consulting.github.io/RC2_KPI_Tool.html" target="_blank" class="btn-blue">Open Tool ›</a>
       </div>
     </div>
 
-  </div>
     <div class="card">
       <div class="photo p-trade-nav"></div>
       <div class="card-body">
         <div class="card-cat">Trade Intelligence</div>
         <div class="card-title">Americas &amp; Caribbean Trade Navigator</div>
-        <div class="card-desc">Find every U.S. trade agreement, BIT, TIFA, and preference program for 29 countries across the Western Hemisphere. Covers FTAs, Reciprocal Agreements, CARICOM, CBI/CBTPA, and Haiti HOPE/HELP — with direct USTR, CBP, and Trade.gov source links.</div>
+        <div class="card-desc">Find every U.S. trade agreement, BIT, TIFA, and preference program for 29 countries across the Western Hemisphere — with direct USTR, CBP, and Trade.gov source links.</div>
         <a href="https://rc2consulting.github.io/RC2_Americas_Trade_Navigator.html" target="_blank" class="btn-blue">Launch Navigator ›</a>
       </div>
     </div>
 
+  </div>
   <div class="center-wrap">
     <a href="/cdn-cgi/l/email-protection#076e6961684775643564686974726b736e69602964686a" class="btn-outline-blue">Request Framework Access ›</a>
   </div>

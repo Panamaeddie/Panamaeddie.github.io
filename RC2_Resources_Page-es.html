@@ -209,6 +209,7 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      height: 370px;
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(11,37,69,0.13); }
@@ -251,16 +252,13 @@
       color: var(--navy);
       line-height: 1.35;
       margin-bottom: 8px;
-      flex: 1;
     }
     .card-desc {
       font-size: 0.78rem;
       color: var(--text-muted);
       line-height: 1.55;
       margin-bottom: 14px;
-      display: -webkit-box;
-      -webkit-line-clamp: 4;
-      -webkit-box-orient: vertical;
+      flex: 1;
       overflow: hidden;
     }
     .coming-tag {
@@ -282,6 +280,7 @@
       flex: 1;
       margin-bottom: 14px;
       line-height: 1.5;
+      overflow: hidden;
     }
 
     /* Buttons */
@@ -640,17 +639,6 @@
         .p-tariffs    { background-image: linear-gradient(rgba(11,37,69,0.50),rgba(11,37,69,0.42)), url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=400&q=70'); }
     .p-americas   { background-image: linear-gradient(rgba(11,37,69,0.45),rgba(11,37,69,0.38)), url('https://images.unsplash.com/photo-1524661135-423995f22d0b?w=400&q=70'); }
         .p-spesa { background-image: linear-gradient(rgba(11,37,69,0.50),rgba(11,37,69,0.42)), url('https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=400&q=70'); }
-    
-    /* KPI + Trade Nav forced equal-width pair row */
-    .card-pair-row {
-      grid-column: 1 / -1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-    .card-pair-row .card {
-      grid-column: unset !important;
-    }
     </style>
 </head>
 <body>
@@ -885,8 +873,7 @@
       <div class="card-body">
         <div class="card-cat">Contratos Gubernamentales</div>
         <div class="card-title">Herramienta de Preparación FAR / DCAA</div>
-        <div class="card-desc">Evalúe su organización en 6 dominios de cumplimiento de contratos federales — sistema contable, control de tiempo, compras, laboral/RRHH, gestión de contratos y ciberseguridad.<div class="card-pair-row">
-    La puntuación compuesta determina su nivel: Listo para Contratos, Condicional o No Listo.</div>
+        <div class="card-desc">Evalúe su organización en 6 dominios de cumplimiento — contabilidad, control de tiempo, compras, RRHH, contratos y ciberseguridad — y obtenga una calificación de Listo o No Listo para contratos.    La puntuación compuesta determina su nivel: Listo para Contratos, Condicional o No Listo.</div>
         <a href="https://rc2consulting.github.io/RC2_FAR_DCAA_Tool-es.html" target="_blank" class="btn-blue">Abrir Herramienta ›</a>
       </div>
     </div>
@@ -902,7 +889,6 @@
       </div>
     </div>
 
-  </div>
     <div class="card">
       <div class="photo p-trade-nav"></div>
       <div class="card-body">
@@ -913,6 +899,7 @@
       </div>
     </div>
 
+  </div>
   <div class="center-wrap">
     <a href="/cdn-cgi/l/email-protection#076e6961684775643564686974726b736e69602964686a" class="btn-outline-blue">Solicitar Acceso al Marco ›</a>
   </div>
